@@ -1,0 +1,24 @@
+ratpoints_gpu
+=============
+
+Copyright (C) 2026 Samuel J. Li
+
+ratpoints_gpu is an independent CUDA implementation for bounded rational-point
+searches on hyperelliptic curves. No source code from ratpoints was copied,
+adapted, or referenced in its development.
+
+The algorithmic approach and command-line conventions were informed by:
+
+  Michael Stoll, "Documentation for the ratpoints program,"
+  arXiv:0803.3165.
+
+ratpoints, developed by Michael Stoll, is a separate project:
+  https://github.com/MichaelStollBayreuth/ratpoints
+
+ratpoints_gpu is not affiliated with or endorsed by Michael Stoll or the
+ratpoints project.
+
+ratpoints_gpu is distributed under the GNU General Public License, version 2
+or, at your option, any later version. See COPYING for the complete license.
+
+This program comes with absolutely no warranty.

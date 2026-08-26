@@ -1,0 +1,15 @@
+/ratpoints_gpu
+/build/
+*.o
+*.a
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.cubin
+*.fatbin
+*.ptx
+__pycache__/
+*.py[cod]
+*.swp
