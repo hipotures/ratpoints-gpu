@@ -39,26 +39,26 @@ constexpr size_t kMinimumSurvivorCapacity = 4096;
 constexpr size_t kMaximumSurvivorCapacity = 1 << 24;
 constexpr size_t kSurvivorMemoryBudgetDivisor = 4;
 
-struct SurvivorState {
+struct OutputState {
     unsigned long long count;
-    bool paused;
+    bool output_full;
 };
 
-struct SurvivorCounter {
-    SurvivorCounter() : count(1), paused(1) {}
+struct DeviceOutputState {
+    DeviceOutputState() : count(1), output_full(1) {}
 
     void clear() {
         count.clear();
-        paused.clear();
+        output_full.clear();
     }
 
-    SurvivorState download_state() const {
+    OutputState download() const {
         check_cuda(cudaDeviceSynchronize(), "sieve_kernel execution");
-        return {count.download_scalar(), paused.download_scalar() != 0};
+        return {count.download_scalar(), output_full.download_scalar() != 0};
     }
 
     DeviceBuffer<unsigned long long> count;
-    DeviceBuffer<unsigned> paused;
+    DeviceBuffer<unsigned> output_full;
 };
 
 struct DeviceWorkspace {
@@ -67,12 +67,12 @@ struct DeviceWorkspace {
           inverses(kMaximumPrime),
           primes(plan.primes.size()), offsets(plan.mask_offsets.size()),
           selected(plan.selected_primes.size()),
-          next_iterations(static_cast<size_t>(plan.denominator_range.count())
-                          * kWarpsPerBlock) {
+          resume_words(static_cast<size_t>(plan.denominator_range.count())
+                       * kWarpsPerBlock) {
         primes.upload(plan.primes);
         offsets.upload(plan.mask_offsets);
         selected.upload(plan.selected_primes);
-        next_iterations.clear();
+        resume_words.clear();
     }
 
     DeviceBuffer<uint32_t> masks;
@@ -81,8 +81,8 @@ struct DeviceWorkspace {
     DeviceBuffer<int> primes;
     DeviceBuffer<long long> offsets;
     DeviceBuffer<int> selected;
-    DeviceBuffer<unsigned long long> next_iterations;
-    SurvivorCounter survivors;
+    DeviceBuffer<unsigned long long> resume_words;
+    DeviceOutputState output_state;
 };
 
 struct DeviceSurvivors {
@@ -119,9 +119,9 @@ size_t initial_survivor_capacity(const SievePlan &plan) {
 // A warp commits all candidates from its current iteration or none of them,
 // so a failed reservation can safely resume that iteration after a flush.
 __device__ __forceinline__ unsigned long long reserve_survivors(
-        unsigned amount, unsigned long long *count, unsigned *paused,
+        unsigned amount, unsigned long long *count, unsigned *output_full,
         unsigned long long capacity) {
-    if (atomicCAS(paused, 0U, 0U)) {
+    if (atomicCAS(output_full, 0U, 0U)) {
         return ULLONG_MAX;
     }
     unsigned long long current = atomicCAS(count, 0ULL, 0ULL);
@@ -133,7 +133,7 @@ __device__ __forceinline__ unsigned long long reserve_survivors(
         }
         current = previous;
     }
-    atomicExch(paused, 1U);
+    atomicExch(output_full, 1U);
     return ULLONG_MAX;
 }
 
@@ -170,6 +170,15 @@ __global__ void basis_kernel(uint32_t *__restrict__ masks,
     masks[offset + id] = packed;
 }
 
+__device__ __forceinline__ void emit_survivor(
+        unsigned long long index, long long word, int bit,
+        long long bound, int denominator,
+        long long *__restrict__ output_numerators,
+        int *__restrict__ output_denominators) {
+    output_numerators[index] = -bound + 32LL * word + bit;
+    output_denominators[index] = denominator;
+}
+
 __device__ __forceinline__ void emit_survivors(
         uint32_t surviving, unsigned long long index, long long word,
         long long bound, int denominator,
@@ -178,9 +187,8 @@ __device__ __forceinline__ void emit_survivors(
     while (surviving) {
         int bit = __ffs(surviving) - 1;
         surviving &= surviving - 1;
-        long long numerator = -bound + 32LL * word + bit;
-        output_numerators[index] = numerator;
-        output_denominators[index++] = denominator;
+        emit_survivor(index++, word, bit, bound, denominator,
+                      output_numerators, output_denominators);
     }
 }
 
@@ -203,7 +211,13 @@ __device__ __noinline__ uint32_t sieve_late_primes(
     return surviving;
 }
 
-template <typename Word, bool Resume>
+enum class SieveMode {
+    fast,
+    streaming_initial,
+    streaming_resume,
+};
+
+template <typename Word, SieveMode Mode>
 __global__ void sieve_kernel(const uint32_t *__restrict__ masks,
                              const int *__restrict__ primes,
                              const long long *__restrict__ offsets,
@@ -213,9 +227,11 @@ __global__ void sieve_kernel(const uint32_t *__restrict__ masks,
                              long long *__restrict__ output_numerators,
                              int *__restrict__ output_denominators,
                              unsigned long long *__restrict__ count,
-                             unsigned *__restrict__ paused,
-                             unsigned long long *__restrict__ next_iterations,
+                             unsigned *__restrict__ output_full,
+                             unsigned long long *__restrict__ resume_words,
                              unsigned long long capacity) {
+    constexpr bool streaming = Mode != SieveMode::fast;
+    constexpr bool resume = Mode == SieveMode::streaming_resume;
 #ifdef SHARED_MASK_ROWS
     extern __shared__ uint32_t local_masks[];
     __shared__ int local_row_offsets[kInitialPrimeCount];
@@ -225,8 +241,8 @@ __global__ void sieve_kernel(const uint32_t *__restrict__ masks,
     __shared__ long long local_offsets[kPrimeCount];
     int lane = threadIdx.x % kWarpSize;
     int warp = threadIdx.x / kWarpSize;
-    // Each warp owns one progress slot and advances one block-sized stride per
-    // iteration. Completed slots naturally resume beyond the word range.
+    // Each warp owns one slot containing its first uncommitted word. Completed
+    // slots contain a word at or beyond the end of the range.
     size_t progress_index = static_cast<size_t>(blockIdx.x) * kWarpsPerBlock
         + warp;
     int denominator = static_cast<int>(
@@ -261,22 +277,20 @@ __global__ void sieve_kernel(const uint32_t *__restrict__ masks,
     __syncthreads();
 #endif
     unsigned residues[kInitialPrimeCount];
-    unsigned long long iteration = Resume
-        ? next_iterations[progress_index] : 0;
-    unsigned long long warp_word = static_cast<unsigned long long>(warp)
-        * kWarpSize + iteration * kBlockSize;
+    Word warp_word = resume
+        ? static_cast<Word>(resume_words[progress_index])
+        : static_cast<Word>(warp * kWarpSize);
 #pragma unroll
     for (int i = 0; i < kInitialPrimeCount; ++i) {
 #ifdef SHARED_MASK_ROWS
-        residues[i] = local_row_offsets[i] + (Resume
+        residues[i] = local_row_offsets[i] + (resume
             ? (warp_word + lane) % local_primes[i] : threadIdx.x);
 #else
-        residues[i] = Resume
+        residues[i] = resume
             ? (warp_word + lane) % local_primes[i] : threadIdx.x;
 #endif
     }
-    for (; warp_word < static_cast<unsigned long long>(words);
-         warp_word += kBlockSize, ++iteration) {
+    for (; warp_word < words; warp_word += kBlockSize) {
         Word word = static_cast<Word>(warp_word + lane);
         uint32_t surviving = 0xffffffffu;
         if (word >= words) {
@@ -304,15 +318,33 @@ __global__ void sieve_kernel(const uint32_t *__restrict__ masks,
         if (surviving) {
             surviving = sieve_late_primes(surviving, word, masks,
                 local_primes, denominator_residues, local_offsets);
-        }
-        if (word == words - 1) {
-            int valid_bits = static_cast<int>(bound
-                - (-bound + 32LL * static_cast<long long>(word)) + 1);
-            if (valid_bits < 32) {
-                surviving &= (1u << valid_bits) - 1;
+            if (surviving && word == words - 1) {
+                int valid_bits = static_cast<int>(bound
+                    - (-bound + 32LL * static_cast<long long>(word)) + 1);
+                if (valid_bits < 32) {
+                    surviving &= (1u << valid_bits) - 1;
+                }
             }
         }
-
+        if (!streaming) {
+            // Keep the common case as lean as the fixed-buffer kernel. An
+            // overflow marks this output incomplete, so the host discards it and
+            // reruns through the resumable path below.
+            while (surviving) {
+                int bit = __ffs(surviving) - 1;
+                surviving &= surviving - 1;
+                unsigned long long output_index = atomicAdd(count, 1ULL);
+                if (output_index < capacity) {
+                    emit_survivor(output_index, static_cast<long long>(word),
+                                  bit, bound, denominator, output_numerators,
+                                  output_denominators);
+                } else {
+                    atomicExch(output_full, 1U);
+                    return;
+                }
+            }
+            continue;
+        }
         unsigned local_count = __popc(surviving);
         if (!__any_sync(0xffffffffu, local_count != 0)) {
             continue;
@@ -331,12 +363,12 @@ __global__ void sieve_kernel(const uint32_t *__restrict__ masks,
         unsigned long long output_index = 0;
         if (lane == 0 && warp_count != 0) {
             output_index = reserve_survivors(
-                warp_count, count, paused, capacity);
+                warp_count, count, output_full, capacity);
         }
         output_index = __shfl_sync(0xffffffffu, output_index, 0);
         if (output_index == ULLONG_MAX) {
             if (lane == 0) {
-                next_iterations[progress_index] = iteration;
+                resume_words[progress_index] = warp_word;
             }
             return;
         }
@@ -347,8 +379,8 @@ __global__ void sieve_kernel(const uint32_t *__restrict__ masks,
                 output_numerators, output_denominators);
         }
     }
-    if (lane == 0) {
-        next_iterations[progress_index] = iteration;
+    if (streaming && lane == 0) {
+        resume_words[progress_index] = warp_word;
     }
 }
 
@@ -373,67 +405,81 @@ void build_mask_basis(const SievePlan &plan, DeviceWorkspace &workspace,
     }
 }
 
-void configure_sieve_kernel(const SievePlan &plan) {
+template <typename Word, SieveMode Mode>
+void configure_sieve_specialization(const SievePlan &plan) {
 #ifdef SHARED_MASK_ROWS
-    check_cuda(cudaFuncSetAttribute(sieve_kernel<unsigned, false>,
-                   cudaFuncAttributeMaxDynamicSharedMemorySize,
-                   plan.shared_mask_bytes), "cudaFuncSetAttribute");
-    check_cuda(cudaFuncSetAttribute(sieve_kernel<unsigned, true>,
-                   cudaFuncAttributeMaxDynamicSharedMemorySize,
-                   plan.shared_mask_bytes), "cudaFuncSetAttribute");
-    check_cuda(cudaFuncSetAttribute(sieve_kernel<long long, false>,
-                   cudaFuncAttributeMaxDynamicSharedMemorySize,
-                   plan.shared_mask_bytes), "cudaFuncSetAttribute");
-    check_cuda(cudaFuncSetAttribute(sieve_kernel<long long, true>,
-                   cudaFuncAttributeMaxDynamicSharedMemorySize,
-                   plan.shared_mask_bytes), "cudaFuncSetAttribute");
+    check_cuda(cudaFuncSetAttribute(sieve_kernel<Word, Mode>,
+                                   cudaFuncAttributeMaxDynamicSharedMemorySize,
+                                   plan.shared_mask_bytes),
+               "cudaFuncSetAttribute");
 #else
     (void)plan;
 #endif
 }
 
-template <typename Word, bool Resume>
+template <typename Word>
+void configure_sieve_specializations(const SievePlan &plan) {
+    configure_sieve_specialization<Word, SieveMode::fast>(plan);
+    configure_sieve_specialization<Word, SieveMode::streaming_initial>(plan);
+    configure_sieve_specialization<Word, SieveMode::streaming_resume>(plan);
+}
+
+void configure_sieve_kernel(const SievePlan &plan) {
+    configure_sieve_specializations<unsigned>(plan);
+    configure_sieve_specializations<long long>(plan);
+}
+
+template <typename Word, SieveMode Mode>
 void launch_sieve_kernel(const SievePlan &plan, DeviceWorkspace &workspace,
                          DeviceSurvivors &survivors,
                          unsigned long long capacity, Word words) {
 #ifdef SHARED_MASK_ROWS
-    sieve_kernel<Word, Resume><<<plan.denominator_range.count(), kBlockSize,
-        plan.shared_mask_bytes>>>(
+    sieve_kernel<Word, Mode><<<plan.denominator_range.count(), kBlockSize,
+                               plan.shared_mask_bytes>>>(
 #else
-    sieve_kernel<Word, Resume><<<plan.denominator_range.count(), kBlockSize>>>(
+    sieve_kernel<Word, Mode><<<plan.denominator_range.count(), kBlockSize>>>(
 #endif
         workspace.masks.data(), workspace.primes.data(),
         workspace.offsets.data(), workspace.selected.data(), words,
         plan.numerator_bound, plan.denominator_range.first,
         survivors.numerators.data(), survivors.denominators.data(),
-        workspace.survivors.count.data(), workspace.survivors.paused.data(),
-        workspace.next_iterations.data(),
-        capacity);
+        workspace.output_state.count.data(),
+        workspace.output_state.output_full.data(),
+        workspace.resume_words.data(), capacity);
+}
+
+template <typename Word>
+void launch_sieve_mode(const SievePlan &plan, DeviceWorkspace &workspace,
+                       DeviceSurvivors &survivors,
+                       unsigned long long capacity, Word words,
+                       SieveMode mode) {
+    switch (mode) {
+    case SieveMode::fast:
+        launch_sieve_kernel<Word, SieveMode::fast>(
+            plan, workspace, survivors, capacity, words);
+        break;
+    case SieveMode::streaming_initial:
+        launch_sieve_kernel<Word, SieveMode::streaming_initial>(
+            plan, workspace, survivors, capacity, words);
+        break;
+    case SieveMode::streaming_resume:
+        launch_sieve_kernel<Word, SieveMode::streaming_resume>(
+            plan, workspace, survivors, capacity, words);
+        break;
+    }
 }
 
 void launch_sieve(const SievePlan &plan, DeviceWorkspace &workspace,
-                   DeviceSurvivors &survivors,
-                   unsigned long long capacity, bool resume) {
-    workspace.survivors.clear();
+                  DeviceSurvivors &survivors,
+                  unsigned long long capacity, SieveMode mode) {
+    workspace.output_state.clear();
     if (plan.word_count
         <= static_cast<long long>(UINT32_MAX) - (kBlockSize - 1)) {
-        if (resume) {
-            launch_sieve_kernel<unsigned, true>(
-                plan, workspace, survivors, capacity,
-                static_cast<unsigned>(plan.word_count));
-        } else {
-            launch_sieve_kernel<unsigned, false>(
-                plan, workspace, survivors, capacity,
-                static_cast<unsigned>(plan.word_count));
-        }
+        launch_sieve_mode(plan, workspace, survivors, capacity,
+                          static_cast<unsigned>(plan.word_count), mode);
     } else {
-        if (resume) {
-            launch_sieve_kernel<long long, true>(
-                plan, workspace, survivors, capacity, plan.word_count);
-        } else {
-            launch_sieve_kernel<long long, false>(
-                plan, workspace, survivors, capacity, plan.word_count);
-        }
+        launch_sieve_mode(plan, workspace, survivors, capacity,
+                          plan.word_count, mode);
     }
     check_cuda(cudaGetLastError(), "sieve_kernel launch");
 }
@@ -468,13 +514,22 @@ SieveResult run_modular_sieve(const Coefficients &coefficients,
     DeviceSurvivors survivors(capacity);
     float sieve_ms = 0.0f;
     unsigned long long survivor_count = 0;
-    bool resume = false;
+    SieveMode mode = SieveMode::fast;
     while (true) {
         sieve_timer.start();
-        launch_sieve(plan, workspace, survivors, capacity, resume);
+        launch_sieve(plan, workspace, survivors, capacity, mode);
         sieve_timer.stop();
-        SurvivorState state = workspace.survivors.download_state();
+        OutputState state = workspace.output_state.download();
         sieve_ms += sieve_timer.milliseconds();
+        if (mode == SieveMode::fast && state.output_full) {
+            // No fast-path output is consumed until its capacity check passes.
+            workspace.resume_words.clear();
+            mode = SieveMode::streaming_initial;
+            continue;
+        }
+        if (state.count > capacity) {
+            throw std::logic_error("streaming survivor count exceeds capacity");
+        }
         if (state.count > std::numeric_limits<unsigned long long>::max()
                               - survivor_count) {
             throw std::overflow_error("total survivor count overflow");
@@ -485,10 +540,10 @@ SieveResult run_modular_sieve(const Coefficients &coefficients,
                 survivors, static_cast<size_t>(state.count));
             callback(candidates);
         }
-        if (!state.paused) {
+        if (!state.output_full) {
             break;
         }
-        resume = true;
+        mode = SieveMode::streaming_resume;
     }
 
     SieveMetrics metrics;

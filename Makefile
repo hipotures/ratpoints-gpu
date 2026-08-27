@@ -15,6 +15,7 @@ DESTDIR ?=
 
 TARGET := ratpoints_gpu
 BUILD_DIR := build
+SIEVE_TEST := $(BUILD_DIR)/test_sieve_streaming
 CPP_SOURCES := src/main.cpp src/command_line.cpp src/exact_polynomial.cpp \
 	src/output_formatter.cpp src/point_search.cpp src/sieve_plan.cpp
 CUDA_SOURCES := src/sieve.cu
@@ -40,6 +41,12 @@ $(BUILD_DIR)/%.o: src/%.cu $(HEADERS) $(INTERNAL_HEADERS) | $(BUILD_DIR)
 	$(NVCC) $(CPPFLAGS) -Iinclude $(NVCCFLAGS) $(WARNING_FLAGS) $(ARCH_FLAGS) \
 		-c -o $@ $<
 
+$(SIEVE_TEST): tests/test_sieve_streaming.cpp $(HEADERS) $(INTERNAL_HEADERS) \
+		$(BUILD_DIR)/sieve.o $(BUILD_DIR)/sieve_plan.o
+	$(NVCC) $(CPPFLAGS) -Iinclude $(NVCCFLAGS) $(WARNING_FLAGS) $(ARCH_FLAGS) \
+		-o $@ tests/test_sieve_streaming.cpp $(BUILD_DIR)/sieve.o \
+		$(BUILD_DIR)/sieve_plan.o $(LDLIBS)
+
 $(BUILD_DIR):
 	mkdir -p $@
 
@@ -47,8 +54,9 @@ install: $(TARGET)
 	$(INSTALL) -d "$(DESTDIR)$(BINDIR)"
 	$(INSTALL) -m 755 $(TARGET) "$(DESTDIR)$(BINDIR)/$(TARGET)"
 
-test: $(TARGET)
+test: $(TARGET) $(SIEVE_TEST)
 	command -v ratpoints >/dev/null
+	$(SIEVE_TEST)
 	$(PYTHON) tests/compare_with_ratpoints.py ./$(TARGET)
 
 record-check: $(TARGET)
@@ -63,5 +71,5 @@ print-config:
 		'BINDIR=$(BINDIR)'
 
 clean:
-	$(RM) $(TARGET) $(OBJECTS)
+	$(RM) $(TARGET) $(OBJECTS) $(SIEVE_TEST)
 	-rmdir $(BUILD_DIR)
