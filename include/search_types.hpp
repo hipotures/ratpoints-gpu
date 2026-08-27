@@ -15,11 +15,6 @@ struct DenominatorRange {
     int count() const { return last - first + 1; }
 };
 
-struct ModularCandidate {
-    long long numerator;
-    int denominator;
-};
-
 struct PointPair {
     long long numerator;
     std::string ordinate;

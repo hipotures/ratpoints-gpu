@@ -33,9 +33,9 @@ GPU: NVIDIA RTX 2000 Ada Generation Laptop GPU (24 SM, 8 GB).
 | Backend | $A$ | Sites ($\sim 2A^2$) | Elapsed | Gsite/s |
 |---|---:|---:|---:|---:|
 | ratpoints 2.1.3 | 300,000 | 180 billion | 54.84 s | 3.28 |
-| ratpoints_gpu | 3,750,000 | 28.13 trillion | 64.47 s | 436.3 |
+| ratpoints_gpu | 4,750,000 | 45.13 trillion | 62.52 s | 721.8 |
 
-The measured end-to-end speedup was $133\times$. CPU ratpoints can still be faster
+The measured end-to-end speedup was $220\times$. CPU ratpoints can still be faster
 for small searches because CUDA has a fixed startup cost.
 
 Enable metrics with `-v` or `RATPOINTS_GPU_BENCHMARK=1`.

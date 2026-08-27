@@ -41,27 +41,29 @@ void add_checked(unsigned long long &total, unsigned long long value,
     total += value;
 }
 
-std::vector<PointPair> verify_candidates(
-        const std::vector<ModularCandidate> &candidates,
-        const ExactPolynomial &polynomial) {
-    std::vector<PointPair> points;
+void append_verified_candidates(
+        const CandidateBatch &candidates,
+        const ExactPolynomial &polynomial, std::vector<PointPair> &points) {
     mpz_class root;
-    for (const auto &candidate : candidates) {
-        if (integer_gcd(candidate.numerator, candidate.denominator) == 1
-            && polynomial.square_root(candidate.numerator,
-                                      candidate.denominator, root)) {
+    for (size_t i = 0; i < candidates.size(); ++i) {
+        long long numerator = candidates.numerators[i];
+        int denominator = candidates.denominators[i];
+        if (integer_gcd(numerator, denominator) == 1
+            && polynomial.square_root(numerator, denominator, root)) {
             points.push_back(
-                {candidate.numerator, root.get_str(), candidate.denominator});
+                {numerator, root.get_str(), denominator});
         }
     }
+}
+
+void sort_points(std::vector<PointPair> &points) {
     std::sort(points.begin(), points.end(),
               [](const PointPair &left, const PointPair &right) {
-        if (left.denominator != right.denominator) {
-            return left.denominator < right.denominator;
-        }
-        return left.numerator < right.numerator;
-    });
-    return points;
+                  if (left.denominator != right.denominator) {
+                      return left.denominator < right.denominator;
+                  }
+                  return left.numerator < right.numerator;
+              });
 }
 
 }  // namespace
@@ -118,19 +120,23 @@ SearchMetrics PointSearch::run(const PointCallback &point_callback) {
         int remaining = impl_->options.denominators.last - first;
         int last = first + std::min(remaining, kDenominatorBatchSize - 1);
         DenominatorRange range{first, last};
+        std::vector<PointPair> points;
         SieveResult sieve = run_modular_sieve(
-            impl_->options.coefficients, impl_->options.numerator_bound, range);
+            impl_->options.coefficients, impl_->options.numerator_bound, range,
+            [&](const CandidateBatch &candidates) {
+                append_verified_candidates(
+                    candidates, impl_->polynomial, points);
+            });
 
         metrics.basis_ms += sieve.metrics.basis_ms;
         metrics.sieve_ms += sieve.metrics.sieve_ms;
         metrics.word_count = sieve.metrics.word_count;
         metrics.denominator_count += static_cast<unsigned>(range.count());
         metrics.initial_mask_bytes += sieve.metrics.initial_mask_bytes;
-        add_checked(metrics.modular_survivors, sieve.candidates.size(),
+        add_checked(metrics.modular_survivors, sieve.survivor_count,
                     "total survivor count overflow");
 
-        std::vector<PointPair> points =
-            verify_candidates(sieve.candidates, impl_->polynomial);
+        sort_points(points);
         if (points.size() > std::numeric_limits<size_t>::max()
                                 - metrics.exact_survivors) {
             throw std::overflow_error("exact survivor count overflow");

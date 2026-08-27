@@ -2,6 +2,8 @@
 """Compare GPU output with ratpoints 2.1.3 or newer on fixed generic models."""
 
 from pathlib import Path
+import math
+import re
 import shutil
 import subprocess
 import sys
@@ -26,6 +28,16 @@ OPTION_CASES = (
     ("1 0 1 0 1", 500, ["-dl", "7", "-du", "40", "-q"]),
     ("1 0 1 0 1", 500, ["-du", "40", "-l", "-1", "-u", "2", "-q"]),
 )
+
+
+def dense_sieve_polynomial():
+    """Return a linear polynomial passing every default sieve prime."""
+    primes = []
+    for candidate in range(2, 512):
+        divisors = range(2, math.isqrt(candidate) + 1)
+        if all(candidate % divisor for divisor in divisors):
+            primes.append(candidate)
+    return f"1 {math.prod(primes[-32:])}"
 
 
 def points(command):
@@ -62,8 +74,25 @@ def main():
     )
     if rejected.returncode == 0 or "not squarefree" not in rejected.stderr:
         raise AssertionError("non-squarefree polynomial was not rejected")
-    total = len(CASES) + len(OPTION_CASES) + 1
-    print(f"CPU/GPU agreement on {total} point-search cases")
+
+    dense = subprocess.run(
+        [gpu, dense_sieve_polynomial(), "5000", "-du", "2", "-z", "-v"],
+        check=True,
+        text=True,
+        capture_output=True,
+    )
+    match = re.search(r"survivors=(\d+) exact_survivors=(\d+)", dense.stderr)
+    if match is None or tuple(map(int, match.groups())) != (20_002, 1):
+        raise AssertionError(
+            "multi-flush sieve mismatch; expected 20002 modular and 1 exact "
+            f"survivor in {dense.stderr!r}"
+        )
+
+    comparisons = len(CASES) + len(OPTION_CASES)
+    print(
+        f"CPU/GPU agreement on {comparisons} point-search cases; "
+        "validation and multi-flush checks passed"
+    )
 
 
 if __name__ == "__main__":
