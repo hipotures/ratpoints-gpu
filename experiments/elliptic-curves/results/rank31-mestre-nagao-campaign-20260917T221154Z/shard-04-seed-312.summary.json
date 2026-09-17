@@ -1,0 +1,1135 @@
+{
+  "elapsed_seconds": 26.877897760999986,
+  "gpu_totals": [
+    {
+      "candidate_count": 500001,
+      "candidates_per_second": 28573.12085929288,
+      "device": 0,
+      "seconds": 17.498998533000076
+    },
+    {
+      "candidate_count": 500000,
+      "candidates_per_second": 28728.117172622755,
+      "device": 1,
+      "seconds": 17.404551679999713
+    }
+  ],
+  "gpu_work": [
+    {
+      "batch": 1,
+      "candidate_count": 50000,
+      "device": 0,
+      "end_seconds_from_stage": 1.7764577390000795,
+      "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.338651",
+      "seconds": 1.7439367650000577,
+      "start_seconds_from_stage": 0.03252097400002185
+    },
+    {
+      "batch": 2,
+      "candidate_count": 50000,
+      "device": 0,
+      "end_seconds_from_stage": 3.572523789999991,
+      "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.329356",
+      "seconds": 1.7394338519999337,
+      "start_seconds_from_stage": 1.8330899380000574
+    },
+    {
+      "batch": 3,
+      "candidate_count": 50000,
+      "device": 0,
+      "end_seconds_from_stage": 5.407239639000068,
+      "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.329281",
+      "seconds": 1.7795021750000615,
+      "start_seconds_from_stage": 3.627737464000006
+    },
+    {
+      "batch": 4,
+      "candidate_count": 50000,
+      "device": 0,
+      "end_seconds_from_stage": 7.216043120999984,
+      "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.329076",
+      "seconds": 1.6505142989999513,
+      "start_seconds_from_stage": 5.565528822000033
+    },
+    {
+      "batch": 5,
+      "candidate_count": 50000,
+      "device": 0,
+      "end_seconds_from_stage": 8.943196141000044,
+      "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.329468",
+      "seconds": 1.6721698840000272,
+      "start_seconds_from_stage": 7.271026257000017
+    },
+    {
+      "batch": 6,
+      "candidate_count": 50000,
+      "device": 0,
+      "end_seconds_from_stage": 10.73445313000002,
+      "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.329367",
+      "seconds": 1.73855645499998,
+      "start_seconds_from_stage": 8.99589667500004
+    },
+    {
+      "batch": 7,
+      "candidate_count": 50000,
+      "device": 0,
+      "end_seconds_from_stage": 12.521235948000026,
+      "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.329555",
+      "seconds": 1.7316470130000425,
+      "start_seconds_from_stage": 10.789588934999983
+    },
+    {
+      "batch": 8,
+      "candidate_count": 50000,
+      "device": 0,
+      "end_seconds_from_stage": 14.363357119000057,
+      "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.329471",
+      "seconds": 1.759422594000057,
+      "start_seconds_from_stage": 12.603934525
+    },
+    {
+      "batch": 9,
+      "candidate_count": 50000,
+      "device": 0,
+      "end_seconds_from_stage": 16.04595713399999,
+      "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.329388",
+      "seconds": 1.6049823079999896,
+      "start_seconds_from_stage": 14.440974826000001
+    },
+    {
+      "batch": 10,
+      "candidate_count": 50000,
+      "device": 0,
+      "end_seconds_from_stage": 18.15899497700002,
+      "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.329469",
+      "seconds": 1.7406297879999784,
+      "start_seconds_from_stage": 16.418365189000042
+    },
+    {
+      "batch": 11,
+      "candidate_count": 1,
+      "device": 0,
+      "end_seconds_from_stage": 18.53522047900003,
+      "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=1 primes=668 prime_bound=5000 kernel_seconds=0.008595",
+      "seconds": 0.3382033999999976,
+      "start_seconds_from_stage": 18.197017079000034
+    },
+    {
+      "batch": 1,
+      "candidate_count": 50000,
+      "device": 1,
+      "end_seconds_from_stage": 1.8506927089999863,
+      "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.331808",
+      "seconds": 1.8175314569999728,
+      "start_seconds_from_stage": 0.03316125200001352
+    },
+    {
+      "batch": 2,
+      "candidate_count": 50000,
+      "device": 1,
+      "end_seconds_from_stage": 3.4871594319999986,
+      "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.318981",
+      "seconds": 1.582456003999937,
+      "start_seconds_from_stage": 1.9047034280000616
+    },
+    {
+      "batch": 3,
+      "candidate_count": 50000,
+      "device": 1,
+      "end_seconds_from_stage": 5.295327237000038,
+      "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.320098",
+      "seconds": 1.7502843199999916,
+      "start_seconds_from_stage": 3.545042917000046
+    },
+    {
+      "batch": 4,
+      "candidate_count": 50000,
+      "device": 1,
+      "end_seconds_from_stage": 7.11363730000005,
+      "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.319756",
+      "seconds": 1.7607757880000463,
+      "start_seconds_from_stage": 5.352861512000004
+    },
+    {
+      "batch": 5,
+      "candidate_count": 50000,
+      "device": 1,
+      "end_seconds_from_stage": 8.868858181000064,
+      "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.320928",
+      "seconds": 1.6981362830000535,
+      "start_seconds_from_stage": 7.170721898000011
+    },
+    {
+      "batch": 6,
+      "candidate_count": 50000,
+      "device": 1,
+      "end_seconds_from_stage": 10.670148081999969,
+      "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.321151",
+      "seconds": 1.7440113749999,
+      "start_seconds_from_stage": 8.926136707000069
+    },
+    {
+      "batch": 7,
+      "candidate_count": 50000,
+      "device": 1,
+      "end_seconds_from_stage": 12.429118377000009,
+      "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.320034",
+      "seconds": 1.703168542999947,
+      "start_seconds_from_stage": 10.725949834000062
+    },
+    {
+      "batch": 8,
+      "candidate_count": 50000,
+      "device": 1,
+      "end_seconds_from_stage": 14.258806957000047,
+      "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.319263",
+      "seconds": 1.6675756729999875,
+      "start_seconds_from_stage": 12.59123128400006
+    },
+    {
+      "batch": 9,
+      "candidate_count": 50000,
+      "device": 1,
+      "end_seconds_from_stage": 16.339004338999985,
+      "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.319882",
+      "seconds": 2.019259599999941,
+      "start_seconds_from_stage": 14.319744739000043
+    },
+    {
+      "batch": 10,
+      "candidate_count": 50000,
+      "device": 1,
+      "end_seconds_from_stage": 18.088822350999976,
+      "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.319681",
+      "seconds": 1.6613526369999363,
+      "start_seconds_from_stage": 16.42746971400004
+    }
+  ],
+  "parameters": {
+    "denominator_max": 5000000,
+    "denominator_min": 1000,
+    "new_candidate_count": 1000000,
+    "prime_bound": 5000,
+    "t_span": "1/2"
+  },
+  "record_control": {
+    "good_primes": 654,
+    "percentile": 99.9953000047,
+    "population": 1000001,
+    "rank_higher_score_is_better": 48,
+    "score": 95.12904185176171
+  },
+  "seed": 312,
+  "shard": 4,
+  "source_commit": "691140a59b5ae124469c96f65d8a874123dc45b0",
+  "stage_a_artifacts": [
+    {
+      "bytes": 22794900,
+      "path": "rank31-mestre-nagao-campaign-20260917T221154Z/shard-04-seed-312-stage-a.part-001.jsonl.gz",
+      "row_count": 1000001,
+      "sha256": "d627999cffeb0780ebd044e80d7c1e3c8c3ada7cc1eca3e8a639687cec196b29"
+    }
+  ],
+  "top_new_leads": [
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 122634,
+      "stage_a_rank_in_shard": 1,
+      "stage_a_score": 100.95508642830627,
+      "t": "243067/681023"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 359388,
+      "stage_a_rank_in_shard": 2,
+      "stage_a_score": 99.43138534407251,
+      "t": "-309917/1154340"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 658,
+      "stage_a_index_in_shard": 283468,
+      "stage_a_rank_in_shard": 3,
+      "stage_a_score": 98.71782737836969,
+      "t": "13032/22507"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 850295,
+      "stage_a_rank_in_shard": 4,
+      "stage_a_score": 98.63875670416898,
+      "t": "30209/959212"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 664,
+      "stage_a_index_in_shard": 462241,
+      "stage_a_rank_in_shard": 5,
+      "stage_a_score": 97.8099999893563,
+      "t": "485445/2641313"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 683806,
+      "stage_a_rank_in_shard": 6,
+      "stage_a_score": 97.51535891745918,
+      "t": "-314933/1794275"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 83029,
+      "stage_a_rank_in_shard": 7,
+      "stage_a_score": 97.46324001013888,
+      "t": "35163/107138"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 664,
+      "stage_a_index_in_shard": 841226,
+      "stage_a_rank_in_shard": 8,
+      "stage_a_score": 97.40494836048977,
+      "t": "97738/265233"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 664,
+      "stage_a_index_in_shard": 441674,
+      "stage_a_rank_in_shard": 9,
+      "stage_a_score": 97.35211453874453,
+      "t": "-23707/123887"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 782445,
+      "stage_a_rank_in_shard": 10,
+      "stage_a_score": 97.23915487035934,
+      "t": "105217/1285537"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 292233,
+      "stage_a_rank_in_shard": 11,
+      "stage_a_score": 97.03160770423752,
+      "t": "-661/24659"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 116315,
+      "stage_a_rank_in_shard": 12,
+      "stage_a_score": 97.00150776309708,
+      "t": "99284/153223"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 682290,
+      "stage_a_rank_in_shard": 13,
+      "stage_a_score": 96.8187811640157,
+      "t": "1216817/4890287"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 991339,
+      "stage_a_rank_in_shard": 14,
+      "stage_a_score": 96.7024587691911,
+      "t": "-708833/2460743"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 369055,
+      "stage_a_rank_in_shard": 15,
+      "stage_a_score": 96.57628661115005,
+      "t": "1780729/3308409"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 516748,
+      "stage_a_rank_in_shard": 16,
+      "stage_a_score": 96.52519922734366,
+      "t": "-34548/148717"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 665,
+      "stage_a_index_in_shard": 350737,
+      "stage_a_rank_in_shard": 17,
+      "stage_a_score": 96.51115759886603,
+      "t": "1708893/4620403"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 664,
+      "stage_a_index_in_shard": 992200,
+      "stage_a_rank_in_shard": 18,
+      "stage_a_score": 96.04813239434402,
+      "t": "151345/3309114"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 739468,
+      "stage_a_rank_in_shard": 19,
+      "stage_a_score": 96.00244069366204,
+      "t": "993955/2220312"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 11270,
+      "stage_a_rank_in_shard": 20,
+      "stage_a_score": 95.92115754627348,
+      "t": "-411011/3503405"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 124320,
+      "stage_a_rank_in_shard": 21,
+      "stage_a_score": 95.90215362811196,
+      "t": "69249/340636"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 31304,
+      "stage_a_rank_in_shard": 22,
+      "stage_a_score": 95.90176536202826,
+      "t": "17887/54113"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 115788,
+      "stage_a_rank_in_shard": 23,
+      "stage_a_score": 95.89199496504916,
+      "t": "72792/107737"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 490006,
+      "stage_a_rank_in_shard": 24,
+      "stage_a_score": 95.80980834211312,
+      "t": "1023658/2865929"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 128318,
+      "stage_a_rank_in_shard": 25,
+      "stage_a_score": 95.72295103834331,
+      "t": "245686/1015103"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 361835,
+      "stage_a_rank_in_shard": 26,
+      "stage_a_score": 95.68895732606198,
+      "t": "170483/680798"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 495788,
+      "stage_a_rank_in_shard": 27,
+      "stage_a_score": 95.68687202592994,
+      "t": "-689371/3812556"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 295951,
+      "stage_a_rank_in_shard": 28,
+      "stage_a_score": 95.67934555996503,
+      "t": "893168/2856019"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 236719,
+      "stage_a_rank_in_shard": 29,
+      "stage_a_score": 95.6660528924417,
+      "t": "-599385/3010136"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 884347,
+      "stage_a_rank_in_shard": 30,
+      "stage_a_score": 95.61559397339163,
+      "t": "1361251/4649643"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 664,
+      "stage_a_index_in_shard": 580652,
+      "stage_a_rank_in_shard": 31,
+      "stage_a_score": 95.55405968906929,
+      "t": "2068139/3508667"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 665,
+      "stage_a_index_in_shard": 68150,
+      "stage_a_rank_in_shard": 32,
+      "stage_a_score": 95.5036362032994,
+      "t": "540068/1034383"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 879657,
+      "stage_a_rank_in_shard": 33,
+      "stage_a_score": 95.45139834531899,
+      "t": "-255144/1312895"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 664,
+      "stage_a_index_in_shard": 128298,
+      "stage_a_rank_in_shard": 34,
+      "stage_a_score": 95.43855292031388,
+      "t": "-58334/621343"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 356685,
+      "stage_a_rank_in_shard": 35,
+      "stage_a_score": 95.42148175631989,
+      "t": "-393721/1390359"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 661575,
+      "stage_a_rank_in_shard": 36,
+      "stage_a_score": 95.38825344305023,
+      "t": "2867255/4235399"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 14234,
+      "stage_a_rank_in_shard": 37,
+      "stage_a_score": 95.38652663515889,
+      "t": "141604/1644095"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 976859,
+      "stage_a_rank_in_shard": 38,
+      "stage_a_score": 95.36151392040111,
+      "t": "-24593/320027"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 374465,
+      "stage_a_rank_in_shard": 39,
+      "stage_a_score": 95.34670777195582,
+      "t": "-90932/1600333"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 255115,
+      "stage_a_rank_in_shard": 40,
+      "stage_a_score": 95.34557725040729,
+      "t": "521785/1039656"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 949158,
+      "stage_a_rank_in_shard": 41,
+      "stage_a_score": 95.2981715417677,
+      "t": "-5949/55988"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 664,
+      "stage_a_index_in_shard": 305342,
+      "stage_a_rank_in_shard": 42,
+      "stage_a_score": 95.23492630942388,
+      "t": "40165/236679"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 200646,
+      "stage_a_rank_in_shard": 43,
+      "stage_a_score": 95.20822222179265,
+      "t": "-44785/703121"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 422534,
+      "stage_a_rank_in_shard": 44,
+      "stage_a_score": 95.19440330173222,
+      "t": "-604078/2532007"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 515053,
+      "stage_a_rank_in_shard": 45,
+      "stage_a_score": 95.1703906063655,
+      "t": "1379073/2084689"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 83658,
+      "stage_a_rank_in_shard": 46,
+      "stage_a_score": 95.15379631428566,
+      "t": "618524/1317889"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 508582,
+      "stage_a_rank_in_shard": 47,
+      "stage_a_score": 95.13121222494142,
+      "t": "66111/405761"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 503904,
+      "stage_a_rank_in_shard": 48,
+      "stage_a_score": 95.11155361104039,
+      "t": "281561/4310989"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 665,
+      "stage_a_index_in_shard": 551852,
+      "stage_a_rank_in_shard": 49,
+      "stage_a_score": 95.10972085506768,
+      "t": "54819/606649"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 265484,
+      "stage_a_rank_in_shard": 50,
+      "stage_a_score": 95.05442246740574,
+      "t": "-258683/1165147"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 70148,
+      "stage_a_rank_in_shard": 51,
+      "stage_a_score": 94.92871735246827,
+      "t": "73443/142325"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 222856,
+      "stage_a_rank_in_shard": 52,
+      "stage_a_score": 94.9285025703213,
+      "t": "473052/2065103"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 509284,
+      "stage_a_rank_in_shard": 53,
+      "stage_a_score": 94.9142620892363,
+      "t": "-50005/178799"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 175171,
+      "stage_a_rank_in_shard": 54,
+      "stage_a_score": 94.90980478169475,
+      "t": "1057528/2043017"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 879925,
+      "stage_a_rank_in_shard": 55,
+      "stage_a_score": 94.88899820689127,
+      "t": "-507605/1650959"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 37438,
+      "stage_a_rank_in_shard": 56,
+      "stage_a_score": 94.87226331591064,
+      "t": "1168283/2241717"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 259787,
+      "stage_a_rank_in_shard": 57,
+      "stage_a_score": 94.8716561154595,
+      "t": "25514/244457"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 460713,
+      "stage_a_rank_in_shard": 58,
+      "stage_a_score": 94.87076450093244,
+      "t": "10555/3323477"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 664,
+      "stage_a_index_in_shard": 330600,
+      "stage_a_rank_in_shard": 59,
+      "stage_a_score": 94.86006900265458,
+      "t": "401121/4810943"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 659,
+      "stage_a_index_in_shard": 321780,
+      "stage_a_rank_in_shard": 60,
+      "stage_a_score": 94.82467697457399,
+      "t": "146103/1192753"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 630290,
+      "stage_a_rank_in_shard": 61,
+      "stage_a_score": 94.81524434881617,
+      "t": "1551189/4631026"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 435091,
+      "stage_a_rank_in_shard": 62,
+      "stage_a_score": 94.78862568256622,
+      "t": "531397/1543635"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 658,
+      "stage_a_index_in_shard": 951198,
+      "stage_a_rank_in_shard": 63,
+      "stage_a_score": 94.78809525779258,
+      "t": "678223/1648979"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 656,
+      "stage_a_index_in_shard": 928403,
+      "stage_a_rank_in_shard": 64,
+      "stage_a_score": 94.78648686794159,
+      "t": "-200618/1010153"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 665,
+      "stage_a_index_in_shard": 735371,
+      "stage_a_rank_in_shard": 65,
+      "stage_a_score": 94.78474385401361,
+      "t": "1618453/2630277"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 273407,
+      "stage_a_rank_in_shard": 66,
+      "stage_a_score": 94.75704663903743,
+      "t": "2756198/4314337"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 665,
+      "stage_a_index_in_shard": 876379,
+      "stage_a_rank_in_shard": 67,
+      "stage_a_score": 94.73137501221105,
+      "t": "-167487/2437300"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 188291,
+      "stage_a_rank_in_shard": 68,
+      "stage_a_score": 94.71282254131447,
+      "t": "10675/758661"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 666,
+      "stage_a_index_in_shard": 47282,
+      "stage_a_rank_in_shard": 69,
+      "stage_a_score": 94.70493679896407,
+      "t": "95451/2117699"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 171032,
+      "stage_a_rank_in_shard": 70,
+      "stage_a_score": 94.70330241162439,
+      "t": "232303/532413"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 658,
+      "stage_a_index_in_shard": 571156,
+      "stage_a_rank_in_shard": 71,
+      "stage_a_score": 94.70129851049334,
+      "t": "595974/4753823"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 657,
+      "stage_a_index_in_shard": 140705,
+      "stage_a_rank_in_shard": 72,
+      "stage_a_score": 94.69855652558195,
+      "t": "76503/176107"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 93443,
+      "stage_a_rank_in_shard": 73,
+      "stage_a_score": 94.69195799315506,
+      "t": "30053/280080"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 659,
+      "stage_a_index_in_shard": 98997,
+      "stage_a_rank_in_shard": 74,
+      "stage_a_score": 94.68808533496741,
+      "t": "1007419/1497829"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 482352,
+      "stage_a_rank_in_shard": 75,
+      "stage_a_score": 94.68541971891801,
+      "t": "-20857/80627"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 438919,
+      "stage_a_rank_in_shard": 76,
+      "stage_a_score": 94.67400324056574,
+      "t": "140104/656821"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 612375,
+      "stage_a_rank_in_shard": 77,
+      "stage_a_score": 94.6727970267829,
+      "t": "3077887/4612406"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 602872,
+      "stage_a_rank_in_shard": 78,
+      "stage_a_score": 94.6661930569578,
+      "t": "1081022/2236373"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 91078,
+      "stage_a_rank_in_shard": 79,
+      "stage_a_score": 94.66158304230977,
+      "t": "906845/1693248"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 659,
+      "stage_a_index_in_shard": 875477,
+      "stage_a_rank_in_shard": 80,
+      "stage_a_score": 94.66096994521476,
+      "t": "265118/1580611"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 664,
+      "stage_a_index_in_shard": 8268,
+      "stage_a_rank_in_shard": 81,
+      "stage_a_score": 94.61080380764156,
+      "t": "1009086/2363981"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 394568,
+      "stage_a_rank_in_shard": 82,
+      "stage_a_score": 94.59204972425003,
+      "t": "356727/4712347"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 623284,
+      "stage_a_rank_in_shard": 83,
+      "stage_a_score": 94.57017551491714,
+      "t": "1023486/1720063"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 615567,
+      "stage_a_rank_in_shard": 84,
+      "stage_a_score": 94.55424672793725,
+      "t": "643/49140"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 222086,
+      "stage_a_rank_in_shard": 85,
+      "stage_a_score": 94.54726109264355,
+      "t": "-279962/4336687"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 899930,
+      "stage_a_rank_in_shard": 86,
+      "stage_a_score": 94.54541112858418,
+      "t": "43801/2120308"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 659,
+      "stage_a_index_in_shard": 537362,
+      "stage_a_rank_in_shard": 87,
+      "stage_a_score": 94.54430805148377,
+      "t": "677824/1671519"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 107568,
+      "stage_a_rank_in_shard": 88,
+      "stage_a_score": 94.54041528036872,
+      "t": "-47839/156669"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 123540,
+      "stage_a_rank_in_shard": 89,
+      "stage_a_score": 94.50580757925812,
+      "t": "53476/101547"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 442081,
+      "stage_a_rank_in_shard": 90,
+      "stage_a_score": 94.4984817842947,
+      "t": "-1005985/4125922"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 733999,
+      "stage_a_rank_in_shard": 91,
+      "stage_a_score": 94.4877851343855,
+      "t": "-47237/534628"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 666,
+      "stage_a_index_in_shard": 965885,
+      "stage_a_rank_in_shard": 92,
+      "stage_a_score": 94.47631746052728,
+      "t": "689049/1657039"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 660,
+      "stage_a_index_in_shard": 286401,
+      "stage_a_rank_in_shard": 93,
+      "stage_a_score": 94.46460929861975,
+      "t": "-165293/996568"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 659,
+      "stage_a_index_in_shard": 603786,
+      "stage_a_rank_in_shard": 94,
+      "stage_a_score": 94.44743689157644,
+      "t": "-17141/90914"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 663,
+      "stage_a_index_in_shard": 608925,
+      "stage_a_rank_in_shard": 95,
+      "stage_a_score": 94.43857919229616,
+      "t": "3265/972189"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 661,
+      "stage_a_index_in_shard": 456874,
+      "stage_a_rank_in_shard": 96,
+      "stage_a_score": 94.41629456202297,
+      "t": "44545/121537"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 665,
+      "stage_a_index_in_shard": 72465,
+      "stage_a_rank_in_shard": 97,
+      "stage_a_score": 94.40448840077914,
+      "t": "228757/1558678"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 665,
+      "stage_a_index_in_shard": 397183,
+      "stage_a_rank_in_shard": 98,
+      "stage_a_score": 94.40017977949087,
+      "t": "504303/1258643"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 665,
+      "stage_a_index_in_shard": 865976,
+      "stage_a_rank_in_shard": 99,
+      "stage_a_score": 94.36149292583373,
+      "t": "135906/237821"
+    },
+    {
+      "source_seed": 312,
+      "source_shard": 4,
+      "stage_a_good_primes": 662,
+      "stage_a_index_in_shard": 560661,
+      "stage_a_rank_in_shard": 100,
+      "stage_a_score": 94.35804973057772,
+      "t": "873883/1319975"
+    }
+  ]
+}
