@@ -20,15 +20,19 @@ void print_device(std::FILE *stream, const GpuDevice &device) {
 }
 
 void print_metrics(const SearchMetrics &metrics) {
-    // Event times are sums over devices, NOT multi-GPU wall-clock times.
+    // Phase and event times sum over devices; they can exceed multi-GPU wall time.
     std::fprintf(stderr,
         "wall_ms=%.3f devices=%zu denominators=%llu "
         "basis_ms=%.3f sieve_ms=%.3f words=%llu "
-        "initial_mask_gbs=%.3f survivors=%llu exact_survivors=%zu\n",
+        "initial_mask_gbs=%.3f survivors=%llu exact_survivors=%zu "
+        "plan_ms=%.3f workspace_ms=%.3f basis_wall_ms=%.3f "
+        "survivor_setup_ms=%.3f verification_ms=%.3f sieve_wall_ms=%.3f\n",
         metrics.wall_ms, metrics.devices.size(), metrics.denominator_count,
         metrics.basis_ms, metrics.sieve_ms, metrics.word_count,
         metrics.initial_mask_gbs(), metrics.modular_survivors,
-        metrics.exact_survivors);
+        metrics.exact_survivors, metrics.plan_ms, metrics.workspace_ms,
+        metrics.basis_wall_ms, metrics.survivor_setup_ms,
+        metrics.verification_ms, metrics.sieve_wall_ms);
     for (const auto &entry : metrics.devices) {
         print_device(stderr, entry.device);
         std::fprintf(stderr,

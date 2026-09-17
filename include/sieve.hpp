@@ -13,6 +13,12 @@ namespace ratpoints_gpu {
 struct SieveMetrics {
     float basis_ms = 0.0f;
     float sieve_ms = 0.0f;
+    double plan_ms = 0.0;
+    double workspace_ms = 0.0;
+    double basis_wall_ms = 0.0;
+    double survivor_setup_ms = 0.0;
+    double verification_ms = 0.0;
+    double sieve_wall_ms = 0.0;
     unsigned long long word_count = 0;
     long double initial_mask_bytes = 0.0L;
 };

@@ -44,6 +44,12 @@ struct SearchMetrics {
     std::vector<DeviceSearchMetrics> devices;
     double basis_ms = 0.0;
     double sieve_ms = 0.0;
+    double plan_ms = 0.0;
+    double workspace_ms = 0.0;
+    double basis_wall_ms = 0.0;
+    double survivor_setup_ms = 0.0;
+    double verification_ms = 0.0;
+    double sieve_wall_ms = 0.0;
     unsigned long long word_count = 0;
     unsigned long long denominator_count = 0;
     unsigned long long modular_survivors = 0;

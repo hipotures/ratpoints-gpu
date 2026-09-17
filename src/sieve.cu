@@ -1,6 +1,7 @@
 #include "sieve.hpp"
 
 #include <algorithm>
+#include <chrono>
 #include <climits>
 #include <cmath>
 #include <cstdint>
@@ -500,19 +501,29 @@ SieveResult run_modular_sieve(const Coefficients &coefficients,
                                long long numerator_bound,
                                DenominatorRange denominators,
                                const CandidateBatchCallback &callback) {
+    using Clock = std::chrono::steady_clock;
+    auto milliseconds = [](Clock::time_point first, Clock::time_point last) {
+        return std::chrono::duration<double, std::milli>(last - first).count();
+    };
+    const auto plan_start = Clock::now();
     SievePlan plan(numerator_bound, denominators);
+    const auto workspace_start = Clock::now();
     DeviceWorkspace workspace(plan);
     configure_sieve_kernel(plan);
+    const auto basis_start = Clock::now();
 
     EventInterval basis_timer;
     EventInterval sieve_timer;
     basis_timer.start();
     build_mask_basis(plan, workspace, coefficients);
     basis_timer.stop();
+    const auto survivor_setup_start = Clock::now();
 
     size_t capacity = initial_survivor_capacity(plan);
     DeviceSurvivors survivors(capacity);
+    const auto sieve_start = Clock::now();
     float sieve_ms = 0.0f;
+    double verification_ms = 0.0;
     unsigned long long survivor_count = 0;
     SieveMode mode = SieveMode::fast;
     while (true) {
@@ -538,7 +549,9 @@ SieveResult run_modular_sieve(const Coefficients &coefficients,
         if (state.count != 0) {
             CandidateBatch candidates = download_survivors(
                 survivors, static_cast<size_t>(state.count));
+            const auto verification_start = Clock::now();
             callback(candidates);
+            verification_ms += milliseconds(verification_start, Clock::now());
         }
         if (!state.output_full) {
             break;
@@ -549,6 +562,12 @@ SieveResult run_modular_sieve(const Coefficients &coefficients,
     SieveMetrics metrics;
     metrics.basis_ms = basis_timer.milliseconds();
     metrics.sieve_ms = sieve_ms;
+    metrics.plan_ms = milliseconds(plan_start, workspace_start);
+    metrics.workspace_ms = milliseconds(workspace_start, basis_start);
+    metrics.basis_wall_ms = milliseconds(basis_start, survivor_setup_start);
+    metrics.survivor_setup_ms = milliseconds(survivor_setup_start, sieve_start);
+    metrics.verification_ms = verification_ms;
+    metrics.sieve_wall_ms = milliseconds(sieve_start, Clock::now()) - verification_ms;
     metrics.word_count = static_cast<unsigned long long>(plan.word_count);
     metrics.initial_mask_bytes =
         static_cast<long double>(denominators.count()) * plan.word_count

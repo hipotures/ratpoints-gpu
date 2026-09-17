@@ -108,6 +108,12 @@ void accumulate(SearchMetrics &metrics, size_t device_index,
     ++device.batches;
     metrics.basis_ms += sieve.metrics.basis_ms;
     metrics.sieve_ms += sieve.metrics.sieve_ms;
+    metrics.plan_ms += sieve.metrics.plan_ms;
+    metrics.workspace_ms += sieve.metrics.workspace_ms;
+    metrics.basis_wall_ms += sieve.metrics.basis_wall_ms;
+    metrics.survivor_setup_ms += sieve.metrics.survivor_setup_ms;
+    metrics.verification_ms += sieve.metrics.verification_ms;
+    metrics.sieve_wall_ms += sieve.metrics.sieve_wall_ms;
     metrics.word_count = sieve.metrics.word_count;
     metrics.denominator_count += static_cast<unsigned>(batch.range.count());
     metrics.initial_mask_bytes += sieve.metrics.initial_mask_bytes;
