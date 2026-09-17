@@ -1,0 +1,75 @@
+{
+  "center": "-1343557003575107586",
+  "center_label": "R",
+  "command": [
+    "/home/user/DEV/ratpoints-gpu/ratpoints_gpu",
+    "15982061409417105441391771842091323012 16370577606921945369823673384720755428 -16122684042901291031 4",
+    "100000000",
+    "-dl",
+    "1",
+    "-du",
+    "1000000",
+    "--devices",
+    "0,1",
+    "-i",
+    "-v",
+    "-f",
+    "%x %y %z\\n"
+  ],
+  "denominators": [
+    1,
+    1000000
+  ],
+  "devices": "0,1",
+  "discriminant_cubic_coefficients_ascending": [
+    "15982061409417105441391771842091323012",
+    "16370577606921945369823673384720755428",
+    "-16122684042901291031",
+    "4"
+  ],
+  "elapsed_seconds": 10.224207016000037,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 94.19444444444444,
+      "samples": 36
+    },
+    "1": {
+      "max": 100,
+      "mean": 96.27777777777777,
+      "samples": 36
+    }
+  },
+  "height": 100000000,
+  "metrics": {
+    "basis_ms": "9.720",
+    "basis_wall_ms": "10.940",
+    "denominators": "1000000",
+    "devices": "2",
+    "exact_survivors": "0",
+    "initial_mask_gbs": "18148.141",
+    "plan_ms": "63.944",
+    "sieve_ms": "19285.725",
+    "sieve_wall_ms": "19288.058",
+    "survivor_setup_ms": "4.702",
+    "survivors": "285638",
+    "verification_ms": "31.408",
+    "wall_ms": "9959.493",
+    "words": "6250001",
+    "workspace_ms": "25.605"
+  },
+  "model": [
+    1,
+    0,
+    0,
+    "-1322791863836678632756897906456499538",
+    "648069501075857258662767528794908106200954623218194692"
+  ],
+  "points": [],
+  "returncode": 0,
+  "sieve_proof": "At selected primes p coprime to d, every square value of d^4*f(n/d) reduces to a quadratic residue. Every GPU survivor is checked by exact square and curve identities.",
+  "sites": 200000001000000,
+  "sites_per_second": 19561419353796.004,
+  "stderr_tail": "wall_ms=9959.493 devices=2 denominators=1000000 basis_ms=9.720 sieve_ms=19285.725 words=6250001 initial_mask_gbs=18148.141 survivors=285638 exact_survivors=0 plan_ms=63.944 workspace_ms=25.605 basis_wall_ms=10.940 survivor_setup_ms=4.702 verification_ms=31.408 sieve_wall_ms=19288.058\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=500000 batches=8 basis_ms=4.859 sieve_ms=9674.340\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=500000 batches=8 basis_ms=4.862 sieve_ms=9611.385\n",
+  "timed_out": false
+}

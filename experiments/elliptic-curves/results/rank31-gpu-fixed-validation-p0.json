@@ -1,0 +1,90 @@
+{
+  "center": "-1076035859747408082",
+  "center_label": "P0",
+  "command": [
+    "/home/user/DEV/ratpoints-gpu/ratpoints_gpu",
+    "3302197794921952138924787217119518164070734206998652484 8603070602201409586445661259146210372 -12912430316968896983 4",
+    "1000",
+    "-dl",
+    "1",
+    "-du",
+    "1",
+    "--devices",
+    "0,1",
+    "-i",
+    "-v",
+    "-f",
+    "%x %y %z\\n"
+  ],
+  "denominators": [
+    1,
+    1
+  ],
+  "devices": "0,1",
+  "discriminant_cubic_coefficients_ascending": [
+    "3302197794921952138924787217119518164070734206998652484",
+    "8603070602201409586445661259146210372",
+    "-12912430316968896983",
+    "4"
+  ],
+  "elapsed_seconds": 0.4145744259994899,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 1,
+      "mean": 1.0,
+      "samples": 1
+    },
+    "1": {
+      "max": 0,
+      "mean": 0.0,
+      "samples": 1
+    }
+  },
+  "height": 1000,
+  "metrics": {
+    "basis_ms": "0.599",
+    "basis_wall_ms": "0.609",
+    "denominators": "1",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "0.215",
+    "plan_ms": "0.003",
+    "sieve_ms": "0.016",
+    "sieve_wall_ms": "0.051",
+    "survivor_setup_ms": "0.276",
+    "survivors": "1",
+    "verification_ms": "0.010",
+    "wall_ms": "108.348",
+    "words": "63",
+    "workspace_ms": "15.759"
+  },
+  "model": [
+    1,
+    0,
+    0,
+    "-1322791863836678632756897906456499538",
+    "648069501075857258662767528794908106200954623218194692"
+  ],
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "root": "1817195034915611951338416978",
+      "x": "-1076035859747408082",
+      "y": "908597517995823905542912530"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "root": "-1817195034915611951338416978",
+      "x": "-1076035859747408082",
+      "y": "-908597516919788045795504448"
+    }
+  ],
+  "returncode": 0,
+  "sieve_proof": "At selected primes p coprime to d, every square value of d^4*f(n/d) reduces to a quadratic residue. Every GPU survivor is checked by exact square and curve identities.",
+  "sites": 2001,
+  "sites_per_second": 4826.636363726068,
+  "stderr_tail": "wall_ms=108.348 devices=2 denominators=1 basis_ms=0.599 sieve_ms=0.016 words=63 initial_mask_gbs=0.215 survivors=1 exact_survivors=1 plan_ms=0.003 workspace_ms=15.759 basis_wall_ms=0.609 survivor_setup_ms=0.276 verification_ms=0.010 sieve_wall_ms=0.051\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=1 batches=1 basis_ms=0.599 sieve_ms=0.016\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=0 batches=0 basis_ms=0.000 sieve_ms=0.000\n",
+  "timed_out": false
+}

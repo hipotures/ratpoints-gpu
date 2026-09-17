@@ -18,7 +18,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 IMAGE = "sagemath/sagemath:10.10.beta10"
-MODES = ("invariants", "pari-bound", "mwrank-bound", "saturation", "analytic", "sections", "search")
+MODES = ("invariants", "pari-bound", "pari-init", "mwrank-bound", "simon-bound", "simon-shifted", "small-isogenies", "saturation", "analytic", "sections", "section-scan", "section-scan-lll", "rational-section-scan", "verify-gpu", "search")
 
 
 def parse_args(argv=None):

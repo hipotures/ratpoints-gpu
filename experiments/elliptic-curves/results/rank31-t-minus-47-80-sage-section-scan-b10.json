@@ -1,0 +1,225 @@
+{
+  "backend": null,
+  "base_report": "/work/experiments/elliptic-curves/results/rank31-t-minus-47-80.json",
+  "base_sha256": "4a86fcc4f536150cef83f1b91cdd11b9ce9dd87c6df9c2c7cc85595afcbe8ba7",
+  "candidate_x_square_tests": {
+    "D": false,
+    "E": false,
+    "minus_D": true,
+    "minus_D_minus_E": false,
+    "minus_E": true,
+    "minus_p_squared": false,
+    "minus_pq": true,
+    "minus_pq_minus_D": false,
+    "minus_pq_minus_E": false,
+    "minus_q_squared": false,
+    "p_squared": false,
+    "p_times_q_plus_D": false,
+    "p_times_q_plus_E": false,
+    "pq": false,
+    "q_squared": false
+  },
+  "command": "sage -python /work/experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode section-scan --section-coeff-bound 10 --output /work/experiments/elliptic-curves/results/sage-d3axm9pr.json",
+  "elapsed_seconds": 86.64329582899973,
+  "generic_section": {
+    "specialized_integral": {
+      "x": "1942076385439057064",
+      "y": "203546904176741168766498512"
+    },
+    "specialized_minimal": {
+      "x": "866040525691648982",
+      "y": "389911807110387068101800434"
+    },
+    "verified_exactly": true,
+    "x": "-233630177976*T^4 - 255941333538*T^3 + 74604470758*T^2 + 2241967100*T - 1085647200",
+    "y": "-206784596180618352*T^6 - 416200307434544412*T^5 - 181017225427033526*T^4 + 22886540756984316*T^3 + 17584039853419962*T^2 - 915718039133620*T - 251961048679200"
+  },
+  "image": "sagemath/sagemath:10.10.beta10",
+  "integral_ainvariants": [
+    "-743773643",
+    "-3366407387247597108",
+    "1817195034915611951338416978",
+    "2826558536130700845922071875576608020",
+    "0"
+  ],
+  "integral_to_minimal_isomorphism": {
+    "convention": "x_old=u^2*x_new+r; y_old=u^3*y_new+s*u^2*x_new+t",
+    "description": "Elliptic-curve morphism:\n  From: Elliptic Curve defined by y^2 - 743773643*x*y + 1817195034915611951338416978*y = x^3 - 3366407387247597108*x^2 + 2826558536130700845922071875576608020*x over Rational Field\n  To:   Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\n  Via:  (u,r,s,t) = (1, 1076035859747408082, 371886822, -508433961756322591190817126)",
+    "parameters_u_r_s_t": [
+      "1",
+      "1076035859747408082",
+      "371886822",
+      "-508433961756322591190817126"
+    ],
+    "rational_maps": [
+      "x - 1076035859747408082",
+      "-371886822*x + y + 908597517995823905542912530"
+    ]
+  },
+  "minimal_ainvariants": [
+    "1",
+    "0",
+    "0",
+    "-1322791863836678632756897906456499538",
+    "648069501075857258662767528794908106200954623218194692"
+  ],
+  "minimal_discriminant": "-33303520599931763950103061542094412347814978171853250595158989021069462122510537288328566558809969494784000000",
+  "mode": "section-scan",
+  "runner_invocation": "experiments/elliptic-curves/run_sage_docker.py --timeout 150.0 --tag b10 experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode section-scan --section-coeff-bound 10",
+  "sage_command": "/usr/bin/sage -python /work/experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode section-scan --section-coeff-bound 10 --output /work/experiments/elliptic-curves/results/sage-d3axm9pr.json",
+  "sage_version": "10.10.beta10",
+  "scan": {
+    "basis": [
+      "101475376704*T^4 + 234807227616*T^3 + 89597413636*T^2 - 53491927560*T + 5266404900",
+      "233630177976*T^4 + 255941333538*T^3 - 74604470758*T^2 - 2241967100*T + 1085647200",
+      "537894628569*T^4 - 66127449732*T^3 - 19911330236*T^2 + 1348853440*T + 223801600",
+      "35872464810*T^4 - 35572947575*T^3 - 110345014800*T^2 + 19545723395*T - 1025670750",
+      "882769396002*T^4 + 811447034567*T^3 - 1174040743*T^2 - 32493137198*T - 2386325360"
+    ],
+    "coefficient_range": [
+      -10,
+      10
+    ],
+    "distinct_polynomials_tested": 4084101,
+    "hits": [
+      {
+        "coefficients": [
+          0,
+          -1,
+          0,
+          0,
+          0
+        ],
+        "minimal": {
+          "x": "866040525691648982",
+          "y": "-389911807976427593793449416"
+        },
+        "verified_generic": true,
+        "x": "-233630177976*T^4 - 255941333538*T^3 + 74604470758*T^2 + 2241967100*T - 1085647200",
+        "y": "145038077686215558*T^6 + 204885050228979057*T^5 + 10112077417375720*T^4 - 21951684300961359*T^3 + 1996022155690620*T^2 + 230761413983300*T - 31585316532000"
+      },
+      {
+        "coefficients": [
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        "minimal": {
+          "x": "525828187343488308",
+          "y": "-312885388772960289278028258"
+        },
+        "verified_generic": true,
+        "x": "-35872464810*T^4 + 35572947575*T^3 + 110345014800*T^2 - 19545723395*T + 1025670750",
+        "y": "26585325972314928*T^6 + 12130590191856372*T^5 + 29768269570954012*T^4 + 77734415571719867*T^3 + 18794060759870864*T^2 - 4897475443245965*T + 221124075695250"
+      },
+      {
+        "coefficients": [
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "minimal": {
+          "x": "688507480409292636",
+          "y": "252387102943683493520774334"
+        },
+        "verified_generic": true,
+        "x": "-882769396002*T^4 - 811447034567*T^3 + 1174040743*T^2 + 32493137198*T + 2386325360",
+        "y": "0"
+      },
+      {
+        "coefficients": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "minimal": {
+          "x": "-1076035859747408082",
+          "y": "-908597516919788045795504448"
+        },
+        "verified_generic": true,
+        "x": "0",
+        "y": "42608372211603198*T^6 + 13153975911485307*T^5 - 27716011320113428*T^4 + 25937885223897707*T^3 + 1175192276468884*T^2 - 709010520235220*T - 24043029348000"
+      }
+    ]
+  },
+  "source_commit": "90ec6225f17c5b828b596c9280a34b386858bfb9",
+  "status": "completed",
+  "steps": {},
+  "timed_out": false,
+  "total_elapsed_seconds": 82.67687197299983,
+  "value": {},
+  "verified_points": [
+    {
+      "integral": {
+        "x": "0",
+        "y": "0"
+      },
+      "label": "P0",
+      "minimal": {
+        "x": "-1076035859747408082",
+        "y": "908597517995823905542912530"
+      }
+    },
+    {
+      "integral": {
+        "x": "0",
+        "y": "-1817195034915611951338416978"
+      },
+      "label": "-P0",
+      "minimal": {
+        "x": "-1076035859747408082",
+        "y": "-908597516919788045795504448"
+      }
+    },
+    {
+      "integral": {
+        "x": "1601864047090896390",
+        "y": "0"
+      },
+      "label": "PD",
+      "minimal": {
+        "x": "525828187343488308",
+        "y": "312885388247132101934539950"
+      }
+    },
+    {
+      "integral": {
+        "x": "1601864047090896390",
+        "y": "-625770777020092391212568208"
+      },
+      "label": "-PD",
+      "minimal": {
+        "x": "525828187343488308",
+        "y": "-312885388772960289278028258"
+      }
+    },
+    {
+      "integral": {
+        "x": "1764543340156700718",
+        "y": "0"
+      },
+      "label": "PE",
+      "minimal": {
+        "x": "688507480409292636",
+        "y": "252387102943683493520774334"
+      }
+    },
+    {
+      "integral": {
+        "x": "1764543340156700718",
+        "y": "-504774206575874467450841304"
+      },
+      "label": "-PE",
+      "minimal": {
+        "x": "688507480409292636",
+        "y": "-252387103632190973930066970"
+      }
+    }
+  ]
+}

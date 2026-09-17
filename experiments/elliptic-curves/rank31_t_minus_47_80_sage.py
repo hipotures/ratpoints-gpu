@@ -17,7 +17,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 BASE = HERE / "results" / "rank31-t-minus-47-80.json"
-MODES = ("invariants", "pari-bound", "mwrank-bound", "saturation", "analytic", "sections", "search")
+MODES = ("invariants", "pari-bound", "pari-init", "mwrank-bound", "simon-bound", "simon-shifted", "small-isogenies", "saturation", "analytic", "sections", "section-scan", "section-scan-lll", "rational-section-scan", "verify-gpu", "search")
 
 
 def parse_args(argv=None):
@@ -25,10 +25,18 @@ def parse_args(argv=None):
     parser.add_argument("--mode", required=True, choices=MODES)
     parser.add_argument("--log-height", type=float,
                         help="logarithmic naive x-height bound on the minimal model; required for search")
+    parser.add_argument("--gpu-report", action="append", default=[],
+                        help="GPU report basename under results/ (repeatable)")
+    parser.add_argument("--section-coeff-bound", type=int, default=2,
+                        help="absolute coefficient bound for polynomial section scans (1..10)")
     parser.add_argument("--output", type=Path, help="result path (set by the Docker runner)")
     args = parser.parse_args(argv)
     if args.mode == "search" and (args.log_height is None or args.log_height <= 0):
         parser.error("--mode search requires a positive --log-height")
+    if args.mode == "verify-gpu" and not args.gpu_report:
+        parser.error("--mode verify-gpu requires --gpu-report")
+    if not 1 <= args.section_coeff_bound <= 10:
+        parser.error("--section-coeff-bound must be in 1..10")
     return args
 
 
@@ -111,6 +119,40 @@ def main():
             f"rank_upper_bound_{algorithm}",
             lambda: int(minimal.rank_bound(algorithm=algorithm)),
             "rigorous algebraic upper bound when completed")
+    elif args.mode == "pari-init":
+        result["steps"]["ellrankinit"] = measured(
+            "ellrankinit", lambda: str(minimal.pari_curve().ellrankinit()),
+            "PARI 2-descent initialization diagnostic; no rank bound by itself")
+    elif args.mode in ("simon-bound", "simon-shifted"):
+        known = [minimal(QQ(point_rows[i]["minimal"]["x"]),
+                         QQ(point_rows[i]["minimal"]["y"])) for i in (0, 2)]
+        curve = minimal
+        if args.mode == "simon-shifted":
+            center = QQ(-1343557003575107586)
+            a4, a6 = minimal.a4(), minimal.a6()
+            curve = EllipticCurve(QQ, [1, 3*center, center,
+                                      3*center**2+a4,
+                                      center**3+a4*center+a6])
+            known = [curve(point[0]-center, point[1]) for point in known]
+            result["shifted_model"] = {"center": str(center),
+                                       "ainvariants": [str(z) for z in curve.ainvs()]}
+        def simon_descent():
+            lower, upper, points = curve.simon_two_descent(
+                known_points=known, limbigprime=0)
+            return {"lower": int(lower), "upper": int(upper),
+                    "points": [point_json(z) for z in points]}
+        result["steps"]["simon_two_descent"] = measured(
+            "simon_two_descent", simon_descent,
+            "Denis Simon PARI/GP 2-Selmer upper bound if completed")
+    elif args.mode == "small-isogenies":
+        for degree in (2, 3, 5, 7):
+            result["steps"][f"isogenies_degree_{degree}"] = measured(
+                f"isogenies_degree_{degree}",
+                lambda degree=degree: [
+                    {"degree": degree,
+                     "codomain_ainvariants": [str(z) for z in phi.codomain().ainvs()]}
+                    for phi in minimal.isogenies_prime_degree(l=degree)],
+                "exact rational prime-degree isogeny computation")
     elif args.mode == "saturation":
         known = [minimal(QQ(point_rows[i]["minimal"]["x"]),
                          QQ(point_rows[i]["minimal"]["y"])) for i in (0, 2)]
@@ -126,7 +168,7 @@ def main():
         result["steps"]["analytic_rank"] = measured(
             "analytic_rank", lambda: int(minimal.analytic_rank(algorithm="pari")),
             "numerical/heuristic, not a Mordell-Weil rank proof")
-    elif args.mode == "sections":
+    elif args.mode in ("sections", "section-scan", "section-scan-lll", "rational-section-scan"):
         from sage.all import PolynomialRing, FractionField
         R = PolynomialRing(QQ, "T")
         T = R.gen()
@@ -166,8 +208,115 @@ def main():
         for label, trial_x in candidates.items():
             discriminant_y = (L*trial_x+B)**2 + 4*trial_x*(trial_x+D)*(trial_x+E)
             result["candidate_x_square_tests"][label] = bool(discriminant_y.is_square())
-        result["steps"]["section_saturation"] = measured("section_saturation", certify,
-            "exact Sage/eclib saturation of independent input points")
+        if args.mode == "sections":
+            result["steps"]["section_saturation"] = measured("section_saturation", certify,
+                "exact Sage/eclib saturation of independent input points")
+        elif args.mode in ("section-scan", "section-scan-lll"):
+            from itertools import product
+            expressions = (p*p, p*q, q*q, D, E)
+            if args.mode == "section-scan-lll":
+                from sage.all import Matrix, ZZ
+                rows = Matrix(ZZ, [[ZZ(v[i]) for i in range(5)] for v in expressions]).LLL()
+                expressions = tuple(R(list(row)) for row in rows.rows())
+            seen = set()
+            hits = []
+            bound = args.section_coeff_bound
+            for coefficients in product(range(-bound, bound+1), repeat=len(expressions)):
+                trial_x = sum((c*v for c, v in zip(coefficients, expressions)), R.zero())
+                if trial_x in seen:
+                    continue
+                seen.add(trial_x)
+                disc_y = (L*trial_x+B)**2 + 4*trial_x*(trial_x+D)*(trial_x+E)
+                if not disc_y.is_square():
+                    continue
+                trial_y = (L*trial_x+B+disc_y.sqrt())/2
+                pt = family(K(trial_x), K(trial_y))
+                sx, sy = QQ(trial_x(-QQ(47)/80)), QQ(trial_y(-QQ(47)/80))
+                special = iso(integral(sx*6400**2, sy*6400**3))
+                hits.append({"coefficients": list(coefficients), "x": str(trial_x),
+                             "y": str(trial_y), "minimal": point_json(special),
+                             "verified_generic": bool(pt in family)})
+            result["scan"] = {"basis": [str(v) for v in expressions],
+                              "coefficient_range": [-bound, bound],
+                              "distinct_polynomials_tested": len(seen), "hits": hits}
+        else:
+            from itertools import combinations, product
+            numerators = (p*p, p*q, q*q, D, E, p*D, q*D, p*E, q*E)
+            denominators = (p, q, L, p+q, p-q, L+p, L+q)
+            seen = set()
+            hits = []
+            templates = []
+            for i in range(len(numerators)):
+                for j in range(i, len(numerators)):
+                    for a, b in product((-2, -1, 0, 1, 2), repeat=2):
+                        if a != 0 and not (i == j and b != 0):
+                            templates.append(((i, j), (a, b)))
+            for indices in combinations(range(len(numerators)), 3):
+                for coeffs in product((-1, 1), repeat=3):
+                    templates.append((indices, coeffs))
+            for indices, coeffs in templates:
+                numerator = sum((c*numerators[i] for i, c in zip(indices, coeffs)), R.zero())
+                for denominator in denominators:
+                    trial_x = K(numerator)/denominator
+                    if trial_x.denominator() == 1 or trial_x in seen:
+                        continue
+                    seen.add(trial_x)
+                    disc_y = (L*trial_x+B)**2 + 4*trial_x*(trial_x+D)*(trial_x+E)
+                    if not disc_y.is_square():
+                        continue
+                    trial_y = (L*trial_x+B+disc_y.sqrt())/2
+                    pt = family(trial_x, trial_y)
+                    sx = QQ(trial_x(-QQ(47)/80))
+                    sy = QQ(trial_y(-QQ(47)/80))
+                    special = iso(integral(sx*6400**2, sy*6400**3))
+                    hits.append({"numerator_indices": list(indices),
+                                 "numerator_coefficients": list(coeffs),
+                                 "denominator": str(denominator),
+                                 "x": str(trial_x), "y": str(trial_y),
+                                 "minimal": point_json(special),
+                                 "verified_generic": bool(pt in family)})
+            result["scan"] = {"numerator_basis": [str(z) for z in numerators],
+                              "denominators": [str(z) for z in denominators],
+                              "distinct_rational_functions_tested": len(seen),
+                              "hits": hits}
+    elif args.mode == "verify-gpu":
+        t = QQ(-47)/80
+        p = 318552*t**2 + 368554*t - 72570
+        q = 733413*t**2 - 45082*t - 14960
+        E = 882769396002*t**4 + 811447034567*t**3 - 1174040743*t**2 - 32493137198*t - 2386325360
+        section = iso(integral(QQ(-p*q)*6400**2, QQ(p*(p*q-E))*6400**3))
+        basis = [minimal(QQ(point_rows[i]["minimal"]["x"]),
+                         QQ(point_rows[i]["minimal"]["y"])) for i in (0, 2)] + [section]
+        verified = []
+        additions = []
+        unresolved = []
+        for basename in args.gpu_report:
+            if Path(basename).name != basename or not basename.startswith("rank31-gpu-fixed-"):
+                raise ValueError("GPU report must be a rank31-gpu-fixed basename")
+            report = json.loads((HERE / "results" / basename).read_text())
+            if [str(z) for z in report["model"]] != [str(z) for z in minimal.ainvs()]:
+                raise ArithmeticError("GPU report uses a different minimal model")
+            for row in report["points"]:
+                point = minimal(QQ(row["x"]), QQ(row["y"]))
+                verified.append({"report": basename, "point": point_json(point)})
+                known_pe = -basis[0]-basis[1]
+                if point in basis or -point in basis or point == known_pe or -point == known_pe:
+                    continue
+                try:
+                    enlarged, index, regulator = minimal.saturation(basis + [point])
+                    if len(enlarged) > len(basis):
+                        basis = enlarged
+                        additions.append({"point": point_json(point),
+                                          "rank": len(basis), "index": str(index),
+                                          "regulator_numerical": str(regulator)})
+                except (ArithmeticError, ValueError, RuntimeError) as exc:
+                    unresolved.append({"point": point_json(point), "error": str(exc)})
+        result["gpu_verification"] = {"reports": args.gpu_report,
+                                      "verified_points": verified,
+                                      "independent_additions": additions,
+                                      "unresolved_candidates": unresolved,
+                                      "final_basis": [point_json(z) for z in basis],
+                                      "rank_lower_bound": len(basis)}
     elif args.mode == "search":
         heights = []
         for row in point_rows:

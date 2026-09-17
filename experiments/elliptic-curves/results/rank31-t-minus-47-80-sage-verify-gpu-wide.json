@@ -1,0 +1,184 @@
+{
+  "backend": null,
+  "base_report": "/work/experiments/elliptic-curves/results/rank31-t-minus-47-80.json",
+  "base_sha256": "4a86fcc4f536150cef83f1b91cdd11b9ce9dd87c6df9c2c7cc85595afcbe8ba7",
+  "command": "sage -python /work/experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode verify-gpu --gpu-report rank31-gpu-fixed-p0-2b-65536.json --gpu-report rank31-gpu-fixed-pd-2b-65536.json --gpu-report rank31-gpu-fixed-s-2b-65536.json --gpu-report rank31-gpu-fixed-r-2b-65536.json --output /work/experiments/elliptic-curves/results/sage-sbv8ntvr.json",
+  "elapsed_seconds": 2.2856618819996584,
+  "gpu_verification": {
+    "final_basis": [
+      {
+        "x": "-1076035859747408082",
+        "y": "908597517995823905542912530"
+      },
+      {
+        "x": "525828187343488308",
+        "y": "312885388247132101934539950"
+      },
+      {
+        "x": "866040525691648982",
+        "y": "389911807110387068101800434"
+      }
+    ],
+    "independent_additions": [],
+    "rank_lower_bound": 3,
+    "reports": [
+      "rank31-gpu-fixed-p0-2b-65536.json",
+      "rank31-gpu-fixed-pd-2b-65536.json",
+      "rank31-gpu-fixed-s-2b-65536.json",
+      "rank31-gpu-fixed-r-2b-65536.json"
+    ],
+    "unresolved_candidates": [],
+    "verified_points": [
+      {
+        "point": {
+          "x": "-1076035859747408082",
+          "y": "908597517995823905542912530"
+        },
+        "report": "rank31-gpu-fixed-p0-2b-65536.json"
+      },
+      {
+        "point": {
+          "x": "-1076035859747408082",
+          "y": "-908597516919788045795504448"
+        },
+        "report": "rank31-gpu-fixed-p0-2b-65536.json"
+      },
+      {
+        "point": {
+          "x": "525828187343488308",
+          "y": "312885388247132101934539950"
+        },
+        "report": "rank31-gpu-fixed-pd-2b-65536.json"
+      },
+      {
+        "point": {
+          "x": "525828187343488308",
+          "y": "-312885388772960289278028258"
+        },
+        "report": "rank31-gpu-fixed-pd-2b-65536.json"
+      },
+      {
+        "point": {
+          "x": "866040525691648982",
+          "y": "389911807110387068101800434"
+        },
+        "report": "rank31-gpu-fixed-s-2b-65536.json"
+      },
+      {
+        "point": {
+          "x": "866040525691648982",
+          "y": "-389911807976427593793449416"
+        },
+        "report": "rank31-gpu-fixed-s-2b-65536.json"
+      }
+    ]
+  },
+  "image": "sagemath/sagemath:10.10.beta10",
+  "integral_ainvariants": [
+    "-743773643",
+    "-3366407387247597108",
+    "1817195034915611951338416978",
+    "2826558536130700845922071875576608020",
+    "0"
+  ],
+  "integral_to_minimal_isomorphism": {
+    "convention": "x_old=u^2*x_new+r; y_old=u^3*y_new+s*u^2*x_new+t",
+    "description": "Elliptic-curve morphism:\n  From: Elliptic Curve defined by y^2 - 743773643*x*y + 1817195034915611951338416978*y = x^3 - 3366407387247597108*x^2 + 2826558536130700845922071875576608020*x over Rational Field\n  To:   Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\n  Via:  (u,r,s,t) = (1, 1076035859747408082, 371886822, -508433961756322591190817126)",
+    "parameters_u_r_s_t": [
+      "1",
+      "1076035859747408082",
+      "371886822",
+      "-508433961756322591190817126"
+    ],
+    "rational_maps": [
+      "x - 1076035859747408082",
+      "-371886822*x + y + 908597517995823905542912530"
+    ]
+  },
+  "minimal_ainvariants": [
+    "1",
+    "0",
+    "0",
+    "-1322791863836678632756897906456499538",
+    "648069501075857258662767528794908106200954623218194692"
+  ],
+  "minimal_discriminant": "-33303520599931763950103061542094412347814978171853250595158989021069462122510537288328566558809969494784000000",
+  "mode": "verify-gpu",
+  "runner_invocation": "experiments/elliptic-curves/run_sage_docker.py --timeout 30.0 --tag wide experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode verify-gpu --gpu-report rank31-gpu-fixed-p0-2b-65536.json --gpu-report rank31-gpu-fixed-pd-2b-65536.json --gpu-report rank31-gpu-fixed-s-2b-65536.json --gpu-report rank31-gpu-fixed-r-2b-65536.json",
+  "sage_command": "/usr/bin/sage -python /work/experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode verify-gpu --gpu-report rank31-gpu-fixed-p0-2b-65536.json --gpu-report rank31-gpu-fixed-pd-2b-65536.json --gpu-report rank31-gpu-fixed-s-2b-65536.json --gpu-report rank31-gpu-fixed-r-2b-65536.json --output /work/experiments/elliptic-curves/results/sage-sbv8ntvr.json",
+  "sage_version": "10.10.beta10",
+  "source_commit": "90ec6225f17c5b828b596c9280a34b386858bfb9",
+  "status": "completed",
+  "steps": {},
+  "timed_out": false,
+  "total_elapsed_seconds": 0.05784850400050345,
+  "value": {},
+  "verified_points": [
+    {
+      "integral": {
+        "x": "0",
+        "y": "0"
+      },
+      "label": "P0",
+      "minimal": {
+        "x": "-1076035859747408082",
+        "y": "908597517995823905542912530"
+      }
+    },
+    {
+      "integral": {
+        "x": "0",
+        "y": "-1817195034915611951338416978"
+      },
+      "label": "-P0",
+      "minimal": {
+        "x": "-1076035859747408082",
+        "y": "-908597516919788045795504448"
+      }
+    },
+    {
+      "integral": {
+        "x": "1601864047090896390",
+        "y": "0"
+      },
+      "label": "PD",
+      "minimal": {
+        "x": "525828187343488308",
+        "y": "312885388247132101934539950"
+      }
+    },
+    {
+      "integral": {
+        "x": "1601864047090896390",
+        "y": "-625770777020092391212568208"
+      },
+      "label": "-PD",
+      "minimal": {
+        "x": "525828187343488308",
+        "y": "-312885388772960289278028258"
+      }
+    },
+    {
+      "integral": {
+        "x": "1764543340156700718",
+        "y": "0"
+      },
+      "label": "PE",
+      "minimal": {
+        "x": "688507480409292636",
+        "y": "252387102943683493520774334"
+      }
+    },
+    {
+      "integral": {
+        "x": "1764543340156700718",
+        "y": "-504774206575874467450841304"
+      },
+      "label": "-PE",
+      "minimal": {
+        "x": "688507480409292636",
+        "y": "-252387103632190973930066970"
+      }
+    }
+  ]
+}

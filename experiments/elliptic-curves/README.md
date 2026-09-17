@@ -119,6 +119,22 @@ limit, so do not use it for exploratory checks. `saturation` and `analytic` are
 also explicit modes and may be expensive.
 
 The optional `--mode search --log-height N` searches the **minimal model** with
-Sage's logarithmic naive x-height convention. Choose `N` only after inspecting
-the minimal model, the known point heights printed by that mode, and the
-rank bounds. Increasing `N` can make the search much slower.
+Sage's logarithmic naive x-height convention. It does not require a global rank
+upper bound. Increasing `N` can make the search much slower.
+
+The [issue 14 report](results/rank31-t-minus-47-80-issue14.md) records the
+certified rank-3 subgroup and bounded follow-up. Its generic-section scans
+are Sage modes `section-scan`, `section-scan-lll`, and
+`rational-section-scan`. The fixed-curve GPU search reuses the repository CUDA
+modular sieve, with a centered discriminant cubic and exact CPU verification:
+
+```bash
+python3 experiments/elliptic-curves/rank31_gpu_fixed_search.py --center P0 --height 2000000000 --denominators 8192 --devices 0,1 --timeout 60 --tag example
+python3 experiments/elliptic-curves/run_sage_docker.py --timeout 30 experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode verify-gpu --gpu-report rank31-gpu-fixed-example.json
+```
+
+The GPU driver accepts centers `P0`, `PD`, `PE`, `S`, and `R` (the integer next to
+the real branch endpoint). Each run writes exact points, throughput, survivor
+counts, and sampled utilization under `results/`. The Sage verification mode
+checks all returned coordinates on the minimal model and tests additions to
+the known rank-3 subgroup.

@@ -1,0 +1,90 @@
+{
+  "center": "688507480409292636",
+  "center_label": "PE",
+  "command": [
+    "/home/user/DEV/ratpoints-gpu/ratpoints_gpu",
+    "254796999624303590457973928778999328488427817392420416 397343151607915265837683597598529072 8262089764911511633 4",
+    "100000000",
+    "-dl",
+    "1",
+    "-du",
+    "1000000",
+    "--devices",
+    "0,1",
+    "-i",
+    "-v",
+    "-f",
+    "%x %y %z\\n"
+  ],
+  "denominators": [
+    1,
+    1000000
+  ],
+  "devices": "0,1",
+  "discriminant_cubic_coefficients_ascending": [
+    "254796999624303590457973928778999328488427817392420416",
+    "397343151607915265837683597598529072",
+    "8262089764911511633",
+    "4"
+  ],
+  "elapsed_seconds": 10.877969300000586,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 96.86842105263158,
+      "samples": 38
+    },
+    "1": {
+      "max": 100,
+      "mean": 96.63157894736842,
+      "samples": 38
+    }
+  },
+  "height": 100000000,
+  "metrics": {
+    "basis_ms": "10.458",
+    "basis_wall_ms": "11.684",
+    "denominators": "1000000",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "17002.233",
+    "plan_ms": "70.435",
+    "sieve_ms": "20585.535",
+    "sieve_wall_ms": "20590.996",
+    "survivor_setup_ms": "6.586",
+    "survivors": "1284270",
+    "verification_ms": "36.198",
+    "wall_ms": "10609.016",
+    "words": "6250001",
+    "workspace_ms": "66.160"
+  },
+  "model": [
+    1,
+    0,
+    0,
+    "-1322791863836678632756897906456499538",
+    "648069501075857258662767528794908106200954623218194692"
+  ],
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "root": "504774206575874467450841304",
+      "x": "688507480409292636",
+      "y": "252387102943683493520774334"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "root": "-504774206575874467450841304",
+      "x": "688507480409292636",
+      "y": "-252387103632190973930066970"
+    }
+  ],
+  "returncode": 0,
+  "sieve_proof": "At selected primes p coprime to d, every square value of d^4*f(n/d) reduces to a quadratic residue. Every GPU survivor is checked by exact square and curve identities.",
+  "sites": 200000001000000,
+  "sites_per_second": 18385784651919.29,
+  "stderr_tail": "wall_ms=10609.016 devices=2 denominators=1000000 basis_ms=10.458 sieve_ms=20585.535 words=6250001 initial_mask_gbs=17002.233 survivors=1284270 exact_survivors=1 plan_ms=70.435 workspace_ms=66.160 basis_wall_ms=11.684 survivor_setup_ms=6.586 verification_ms=36.198 sieve_wall_ms=20590.996\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=500000 batches=8 basis_ms=5.235 sieve_ms=10325.594\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=500000 batches=8 basis_ms=5.223 sieve_ms=10259.942\n",
+  "timed_out": false
+}

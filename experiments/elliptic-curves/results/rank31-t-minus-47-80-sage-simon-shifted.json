@@ -1,0 +1,14 @@
+{
+  "backend": null,
+  "elapsed_seconds": 90.21629872500034,
+  "error": "wall-clock timeout after 90 seconds",
+  "image": "sagemath/sagemath:10.10.beta10",
+  "mode": "simon-shifted",
+  "runner_invocation": "experiments/elliptic-curves/run_sage_docker.py --timeout 90.0 experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode simon-shifted",
+  "sage_command": "/usr/bin/sage -python /work/experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode simon-shifted --output /work/experiments/elliptic-curves/results/sage-pc04uu5i.json",
+  "sage_version": null,
+  "source_commit": "90ec6225f17c5b828b596c9280a34b386858bfb9",
+  "status": "timeout",
+  "timed_out": true,
+  "value": null
+}
