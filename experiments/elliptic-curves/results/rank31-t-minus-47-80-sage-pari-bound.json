@@ -1,0 +1,14 @@
+{
+  "backend": "pari",
+  "elapsed_seconds": 30.215865400999974,
+  "error": "wall-clock timeout after 30 seconds",
+  "image": "sagemath/sagemath:10.10.beta10",
+  "mode": "pari-bound",
+  "runner_invocation": "experiments/elliptic-curves/run_sage_docker.py --timeout 30.0 experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode pari-bound",
+  "sage_command": "/usr/bin/sage -python /work/experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode pari-bound --output /work/experiments/elliptic-curves/results/sage-u3eo6f84.json",
+  "sage_version": null,
+  "source_commit": "b3e492c69fc58ad64be2bdade5dc3167fcc778c1",
+  "status": "timeout",
+  "timed_out": true,
+  "value": null
+}

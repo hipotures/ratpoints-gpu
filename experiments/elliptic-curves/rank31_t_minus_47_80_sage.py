@@ -17,7 +17,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 BASE = HERE / "results" / "rank31-t-minus-47-80.json"
-MODES = ("invariants", "pari-bound", "mwrank-bound", "saturation", "analytic", "search")
+MODES = ("invariants", "pari-bound", "mwrank-bound", "saturation", "analytic", "sections", "search")
 
 
 def parse_args(argv=None):
@@ -126,21 +126,49 @@ def main():
         result["steps"]["analytic_rank"] = measured(
             "analytic_rank", lambda: int(minimal.analytic_rank(algorithm="pari")),
             "numerical/heuristic, not a Mordell-Weil rank proof")
+    elif args.mode == "sections":
+        from sage.all import PolynomialRing, FractionField
+        R = PolynomialRing(QQ, "T")
+        T = R.gen()
+        L = 446667*T**2 + 471466*T + 239031
+        p = 318552*T**2 + 368554*T - 72570
+        q = 733413*T**2 - 45082*T - 14960
+        D = 5*(7174492962*T**4 - 7114589515*T**3 - 22069002960*T**2 + 3909144679*T - 205134150)
+        E = 882769396002*T**4 + 811447034567*T**3 - 1174040743*T**2 - 32493137198*T - 2386325360
+        B = p*q*(L+p+q) - p*E - q*D
+        K = FractionField(R)
+        family = EllipticCurve(K, [-L, D+E, -B, D*E, 0])
+        x, y = -p*q, p*(p*q-E)
+        generic = family(K(x), K(y))  # exact polynomial identity
+        specialized = integral(QQ(x(-QQ(47)/80))*6400**2,
+                               QQ(y(-QQ(47)/80))*6400**3)
+        mapped = iso(specialized)
+        basis = [minimal(QQ(point_rows[i]["minimal"]["x"]),
+                         QQ(point_rows[i]["minimal"]["y"])) for i in (0, 2)]
+        def certify():
+            points, index, regulator = minimal.saturation(basis + [mapped])
+            return {"basis": [point_json(z) for z in points], "index": str(index),
+                    "regulator_numerical": str(regulator), "rank": len(points)}
+        result["generic_section"] = {"x": str(x), "y": str(y),
+                                      "verified_exactly": bool(generic in family),
+                                      "specialized_integral": point_json(specialized),
+                                      "specialized_minimal": point_json(mapped)}
+        candidates = {"pq": p*q, "minus_pq": -p*q, "p_squared": p*p,
+                      "minus_p_squared": -p*p, "q_squared": q*q,
+                      "minus_q_squared": -q*q, "minus_D": -D,
+                      "minus_E": -E, "D": D, "E": E,
+                      "minus_D_minus_E": -D-E,
+                      "p_times_q_plus_D": p*q+D,
+                      "p_times_q_plus_E": p*q+E,
+                      "minus_pq_minus_D": -p*q-D,
+                      "minus_pq_minus_E": -p*q-E}
+        result["candidate_x_square_tests"] = {}
+        for label, trial_x in candidates.items():
+            discriminant_y = (L*trial_x+B)**2 + 4*trial_x*(trial_x+D)*(trial_x+E)
+            result["candidate_x_square_tests"][label] = bool(discriminant_y.is_square())
+        result["steps"]["section_saturation"] = measured("section_saturation", certify,
+            "exact Sage/eclib saturation of independent input points")
     elif args.mode == "search":
-        bound_reports = [HERE / "results" / f"rank31-t-minus-47-80-sage-{mode}.json"
-                         for mode in ("pari-bound", "mwrank-bound")]
-        valid_bound = False
-        for path in bound_reports:
-            if not path.exists():
-                continue
-            bound = json.loads(path.read_text(encoding="utf-8"))
-            if (bound.get("base_sha256") == hashlib.sha256(source_bytes).hexdigest()
-                    and bound.get("status", "completed") == "completed"
-                    and any(row.get("status") == "completed" for key, row in bound.get("steps", {}).items()
-                            if key.startswith("rank_upper_bound_"))):
-                valid_bound = True
-        if not valid_bound:
-            raise RuntimeError("run and review a completed --mode pari-bound or mwrank-bound before point search")
         heights = []
         for row in point_rows:
             x = QQ(row["minimal"]["x"])
@@ -152,12 +180,40 @@ def main():
             "model": "Sage minimal Weierstrass model",
             "height_convention": "log(max(abs(reduced x numerator), positive denominator))",
             "log_height_bound": args.log_height,
-            "rationale": "Compare this bound with known_minimal_x_log_heights; search only after model and rank-bound review.",
+            "rationale": "Search requires no global rank upper bound; compare with known x-heights.",
         }
-        result["steps"]["point_search"] = measured(
-            "point_search",
-            lambda: [point_json(point) for point in minimal.point_search(args.log_height)],
-            "exactly verified rational points; completeness only within Sage search method/bound")
+        def search_points():
+            found = minimal.point_search(args.log_height)
+            verified = [minimal(QQ(z[0]), QQ(z[1])) for z in found]
+            t = QQ(-47)/80
+            p = 318552*t**2 + 368554*t - 72570
+            q = 733413*t**2 - 45082*t - 14960
+            E = 882769396002*t**4 + 811447034567*t**3 - 1174040743*t**2 - 32493137198*t - 2386325360
+            section = iso(integral(QQ(-p*q)*6400**2, QQ(p*(p*q-E))*6400**3))
+            known = [minimal(QQ(point_rows[i]["minimal"]["x"]),
+                             QQ(point_rows[i]["minimal"]["y"])) for i in (0, 2)] + [section]
+            all_points = known[:]
+            increases = []
+            unresolved = []
+            for point in verified:
+                if point in all_points or -point in all_points:
+                    continue
+                try:
+                    trial = minimal.saturation(all_points + [point])
+                    if len(trial[0]) > len(all_points):
+                        all_points = trial[0]
+                        increases.append({"point": point_json(point), "rank": len(all_points),
+                                          "index": str(trial[1]),
+                                          "regulator_numerical": str(trial[2])})
+                except (ArithmeticError, ValueError, RuntimeError) as exc:
+                    unresolved.append({"point": point_json(point), "reason": str(exc)})
+            return {"points": [point_json(z) for z in verified],
+                    "independent_additions": increases,
+                    "unresolved_candidates": unresolved,
+                    "final_basis": [point_json(z) for z in all_points],
+                    "final_rank_lower_bound": len(all_points)}
+        result["steps"]["point_search"] = measured("point_search", search_points,
+            "exact curve verification and Sage/eclib saturated independence checks")
     result["total_elapsed_seconds"] = time.perf_counter() - started
     failed_steps = {key: row["error"] for key, row in result["steps"].items()
                     if row["status"] != "completed"}

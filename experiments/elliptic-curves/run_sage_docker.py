@@ -18,13 +18,14 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 IMAGE = "sagemath/sagemath:10.10.beta10"
-MODES = ("invariants", "pari-bound", "mwrank-bound", "saturation", "analytic", "search")
+MODES = ("invariants", "pari-bound", "mwrank-bound", "saturation", "analytic", "sections", "search")
 
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--timeout", type=float, default=30,
                         help="hard wall-clock limit in seconds (default: 30)")
+    parser.add_argument("--tag", help="distinct result suffix for bounded experiments")
     parser.add_argument("script", type=Path)
     parser.add_argument("script_args", nargs=argparse.REMAINDER)
     args = parser.parse_args(argv)
@@ -41,6 +42,8 @@ def parse_args(argv=None):
         parser.error("--mode requires a value")
     if mode not in MODES:
         parser.error(f"unknown mode {mode!r}")
+    if args.tag and (not args.tag.replace('-', '').replace('_', '').isalnum()):
+        parser.error("--tag must contain only letters, digits, hyphens or underscores")
     if "--output" in args.script_args:
         parser.error("--output is managed by the runner")
     args.script = script
@@ -64,7 +67,9 @@ def remove_container(docker: str, name: str) -> None:
 
 
 def run(args, docker="docker") -> int:
-    output = HERE / "results" / f"rank31-t-minus-47-80-sage-{args.mode}.json"
+    tag = getattr(args, "tag", None)
+    suffix = f"-{tag}" if tag else ""
+    output = HERE / "results" / f"rank31-t-minus-47-80-sage-{args.mode}{suffix}.json"
     name = "rank31-sage-" + uuid.uuid4().hex
     started = time.monotonic()
     source_commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT,
@@ -84,6 +89,7 @@ def run(args, docker="docker") -> int:
                "--env", f"RESULT_PATH={relative_output}", "--entrypoint", "/bin/sh",
                IMAGE, "-c", shell, "sage-runner", *sage_command]
     invocation = shlex.join([str((HERE / Path(__file__).name).relative_to(ROOT)), "--timeout", str(args.timeout),
+                             *(["--tag", tag] if tag else []),
                              str(args.script.relative_to(ROOT)), *args.script_args])
     status = "error"
     error = None

@@ -1,0 +1,14 @@
+{
+  "backend": null,
+  "elapsed_seconds": 45.16650639799991,
+  "error": "wall-clock timeout after 45 seconds",
+  "image": "sagemath/sagemath:10.10.beta10",
+  "mode": "search",
+  "runner_invocation": "experiments/elliptic-curves/run_sage_docker.py --timeout 45.0 --tag h21 experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode search --log-height 21",
+  "sage_command": "/usr/bin/sage -python /work/experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode search --log-height 21 --output /work/experiments/elliptic-curves/results/sage-r1zqn842.json",
+  "sage_version": null,
+  "source_commit": "b3e492c69fc58ad64be2bdade5dc3167fcc778c1",
+  "status": "timeout",
+  "timed_out": true,
+  "value": null
+}
