@@ -1,0 +1,197 @@
+{
+  "backend": null,
+  "base_report": "/work/experiments/elliptic-curves/results/rank31-t-minus-47-80.json",
+  "base_sha256": "4a86fcc4f536150cef83f1b91cdd11b9ce9dd87c6df9c2c7cc85595afcbe8ba7",
+  "command": "sage -python /work/experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode invariants --output /work/experiments/elliptic-curves/results/sage-78348v9w.json",
+  "elapsed_seconds": 2.937800177000099,
+  "image": "sagemath/sagemath:10.10.beta10",
+  "integral_ainvariants": [
+    "-743773643",
+    "-3366407387247597108",
+    "1817195034915611951338416978",
+    "2826558536130700845922071875576608020",
+    "0"
+  ],
+  "integral_to_minimal_isomorphism": {
+    "convention": "x_old=u^2*x_new+r; y_old=u^3*y_new+s*u^2*x_new+t",
+    "description": "Elliptic-curve morphism:\n  From: Elliptic Curve defined by y^2 - 743773643*x*y + 1817195034915611951338416978*y = x^3 - 3366407387247597108*x^2 + 2826558536130700845922071875576608020*x over Rational Field\n  To:   Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\n  Via:  (u,r,s,t) = (1, 1076035859747408082, 371886822, -508433961756322591190817126)",
+    "parameters_u_r_s_t": [
+      "1",
+      "1076035859747408082",
+      "371886822",
+      "-508433961756322591190817126"
+    ],
+    "rational_maps": [
+      "x - 1076035859747408082",
+      "-371886822*x + y + 908597517995823905542912530"
+    ]
+  },
+  "minimal_ainvariants": [
+    "1",
+    "0",
+    "0",
+    "-1322791863836678632756897906456499538",
+    "648069501075857258662767528794908106200954623218194692"
+  ],
+  "minimal_discriminant": "-33303520599931763950103061542094412347814978171853250595158989021069462122510537288328566558809969494784000000",
+  "mode": "invariants",
+  "runner_invocation": "experiments/elliptic-curves/run_sage_docker.py --timeout 20.0 experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode invariants",
+  "sage_command": "/usr/bin/sage -python /work/experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode invariants --output /work/experiments/elliptic-curves/results/sage-78348v9w.json",
+  "sage_version": "10.10.beta10",
+  "source_commit": "d8d73135a5834d7bc8caa8a47e1c35e11db98762",
+  "status": "completed",
+  "steps": {
+    "conductor": {
+      "classification": "rigorous",
+      "elapsed_seconds": 0.3259803990004002,
+      "status": "completed",
+      "value": "156889111317058904627359095900392258545849757386739107494369298910894227152978519034867350"
+    },
+    "global_root_number": {
+      "classification": "rigorous",
+      "elapsed_seconds": 5.872000019735424e-05,
+      "status": "completed",
+      "value": -1
+    },
+    "local_reduction_data": {
+      "classification": "rigorous",
+      "elapsed_seconds": 0.33341466399997444,
+      "status": "completed",
+      "value": [
+        "Local data at Principal ideal (2) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 14\nConductor exponent: 1\nKodaira Symbol: I14\nTamagawa Number: 14",
+        "Local data at Principal ideal (3) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 7\nConductor exponent: 1\nKodaira Symbol: I7\nTamagawa Number: 7",
+        "Local data at Principal ideal (5) of Integer Ring:\nReduction type: bad additive\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 6\nConductor exponent: 2\nKodaira Symbol: I0*\nTamagawa Number: 4",
+        "Local data at Principal ideal (11) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 3\nConductor exponent: 1\nKodaira Symbol: I3\nTamagawa Number: 3",
+        "Local data at Principal ideal (29) of Integer Ring:\nReduction type: bad non-split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 2\nConductor exponent: 1\nKodaira Symbol: I2\nTamagawa Number: 2",
+        "Local data at Principal ideal (37) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 2\nConductor exponent: 1\nKodaira Symbol: I2\nTamagawa Number: 2",
+        "Local data at Principal ideal (43) of Integer Ring:\nReduction type: bad non-split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 2\nConductor exponent: 1\nKodaira Symbol: I2\nTamagawa Number: 2",
+        "Local data at Principal ideal (61) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 2\nConductor exponent: 1\nKodaira Symbol: I2\nTamagawa Number: 2",
+        "Local data at Principal ideal (167) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 2\nConductor exponent: 1\nKodaira Symbol: I2\nTamagawa Number: 2",
+        "Local data at Principal ideal (687437) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 1\nConductor exponent: 1\nKodaira Symbol: I1\nTamagawa Number: 1",
+        "Local data at Principal ideal (567870619) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 1\nConductor exponent: 1\nKodaira Symbol: I1\nTamagawa Number: 1",
+        "Local data at Principal ideal (15899278987) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 1\nConductor exponent: 1\nKodaira Symbol: I1\nTamagawa Number: 1",
+        "Local data at Principal ideal (5211124590731) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 1\nConductor exponent: 1\nKodaira Symbol: I1\nTamagawa Number: 1",
+        "Local data at Principal ideal (5947074660082643) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 1\nConductor exponent: 1\nKodaira Symbol: I1\nTamagawa Number: 1",
+        "Local data at Principal ideal (1051719181626496323255151) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 1\nConductor exponent: 1\nKodaira Symbol: I1\nTamagawa Number: 1"
+      ]
+    },
+    "torsion": {
+      "classification": "rigorous",
+      "elapsed_seconds": 0.009682437999799731,
+      "status": "completed",
+      "value": "Torsion Subgroup isomorphic to Trivial group associated to the Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field"
+    }
+  },
+  "timed_out": false,
+  "total_elapsed_seconds": 0.726389628999641,
+  "value": {
+    "conductor": {
+      "classification": "rigorous",
+      "elapsed_seconds": 0.3259803990004002,
+      "status": "completed",
+      "value": "156889111317058904627359095900392258545849757386739107494369298910894227152978519034867350"
+    },
+    "global_root_number": {
+      "classification": "rigorous",
+      "elapsed_seconds": 5.872000019735424e-05,
+      "status": "completed",
+      "value": -1
+    },
+    "local_reduction_data": {
+      "classification": "rigorous",
+      "elapsed_seconds": 0.33341466399997444,
+      "status": "completed",
+      "value": [
+        "Local data at Principal ideal (2) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 14\nConductor exponent: 1\nKodaira Symbol: I14\nTamagawa Number: 14",
+        "Local data at Principal ideal (3) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 7\nConductor exponent: 1\nKodaira Symbol: I7\nTamagawa Number: 7",
+        "Local data at Principal ideal (5) of Integer Ring:\nReduction type: bad additive\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 6\nConductor exponent: 2\nKodaira Symbol: I0*\nTamagawa Number: 4",
+        "Local data at Principal ideal (11) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 3\nConductor exponent: 1\nKodaira Symbol: I3\nTamagawa Number: 3",
+        "Local data at Principal ideal (29) of Integer Ring:\nReduction type: bad non-split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 2\nConductor exponent: 1\nKodaira Symbol: I2\nTamagawa Number: 2",
+        "Local data at Principal ideal (37) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 2\nConductor exponent: 1\nKodaira Symbol: I2\nTamagawa Number: 2",
+        "Local data at Principal ideal (43) of Integer Ring:\nReduction type: bad non-split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 2\nConductor exponent: 1\nKodaira Symbol: I2\nTamagawa Number: 2",
+        "Local data at Principal ideal (61) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 2\nConductor exponent: 1\nKodaira Symbol: I2\nTamagawa Number: 2",
+        "Local data at Principal ideal (167) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 2\nConductor exponent: 1\nKodaira Symbol: I2\nTamagawa Number: 2",
+        "Local data at Principal ideal (687437) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 1\nConductor exponent: 1\nKodaira Symbol: I1\nTamagawa Number: 1",
+        "Local data at Principal ideal (567870619) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 1\nConductor exponent: 1\nKodaira Symbol: I1\nTamagawa Number: 1",
+        "Local data at Principal ideal (15899278987) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 1\nConductor exponent: 1\nKodaira Symbol: I1\nTamagawa Number: 1",
+        "Local data at Principal ideal (5211124590731) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 1\nConductor exponent: 1\nKodaira Symbol: I1\nTamagawa Number: 1",
+        "Local data at Principal ideal (5947074660082643) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 1\nConductor exponent: 1\nKodaira Symbol: I1\nTamagawa Number: 1",
+        "Local data at Principal ideal (1051719181626496323255151) of Integer Ring:\nReduction type: bad split multiplicative\nLocal minimal model: Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field\nMinimal discriminant valuation: 1\nConductor exponent: 1\nKodaira Symbol: I1\nTamagawa Number: 1"
+      ]
+    },
+    "torsion": {
+      "classification": "rigorous",
+      "elapsed_seconds": 0.009682437999799731,
+      "status": "completed",
+      "value": "Torsion Subgroup isomorphic to Trivial group associated to the Elliptic Curve defined by y^2 + x*y = x^3 - 1322791863836678632756897906456499538*x + 648069501075857258662767528794908106200954623218194692 over Rational Field"
+    }
+  },
+  "verified_points": [
+    {
+      "integral": {
+        "x": "0",
+        "y": "0"
+      },
+      "label": "P0",
+      "minimal": {
+        "x": "-1076035859747408082",
+        "y": "908597517995823905542912530"
+      }
+    },
+    {
+      "integral": {
+        "x": "0",
+        "y": "-1817195034915611951338416978"
+      },
+      "label": "-P0",
+      "minimal": {
+        "x": "-1076035859747408082",
+        "y": "-908597516919788045795504448"
+      }
+    },
+    {
+      "integral": {
+        "x": "1601864047090896390",
+        "y": "0"
+      },
+      "label": "PD",
+      "minimal": {
+        "x": "525828187343488308",
+        "y": "312885388247132101934539950"
+      }
+    },
+    {
+      "integral": {
+        "x": "1601864047090896390",
+        "y": "-625770777020092391212568208"
+      },
+      "label": "-PD",
+      "minimal": {
+        "x": "525828187343488308",
+        "y": "-312885388772960289278028258"
+      }
+    },
+    {
+      "integral": {
+        "x": "1764543340156700718",
+        "y": "0"
+      },
+      "label": "PE",
+      "minimal": {
+        "x": "688507480409292636",
+        "y": "252387102943683493520774334"
+      }
+    },
+    {
+      "integral": {
+        "x": "1764543340156700718",
+        "y": "-504774206575874467450841304"
+      },
+      "label": "-PE",
+      "minimal": {
+        "x": "688507480409292636",
+        "y": "-252387103632190973930066970"
+      }
+    }
+  ]
+}
