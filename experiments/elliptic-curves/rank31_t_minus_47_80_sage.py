@@ -15,11 +15,21 @@ import sys
 import time
 from pathlib import Path
 
-from sage.all import EllipticCurve, QQ
-import sage.version
-
 HERE = Path(__file__).resolve().parent
 BASE = HERE / "results" / "rank31-t-minus-47-80.json"
+MODES = ("invariants", "pari-bound", "mwrank-bound", "saturation", "analytic", "search")
+
+
+def parse_args(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--mode", required=True, choices=MODES)
+    parser.add_argument("--log-height", type=float,
+                        help="logarithmic naive x-height bound on the minimal model; required for search")
+    parser.add_argument("--output", type=Path, help="result path (set by the Docker runner)")
+    args = parser.parse_args(argv)
+    if args.mode == "search" and (args.log_height is None or args.log_height <= 0):
+        parser.error("--mode search requires a positive --log-height")
+    return args
 
 
 def point_json(point):
@@ -41,14 +51,9 @@ def measured(name, function, classification):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--mode", required=True,
-                        choices=("invariants", "descent", "saturation", "analytic", "search"))
-    parser.add_argument("--log-height", type=float,
-                        help="logarithmic naive x-height bound on the minimal model; required for search")
-    args = parser.parse_args()
-    if args.mode == "search" and (args.log_height is None or args.log_height <= 0):
-        parser.error("--mode search requires a positive --log-height")
+    args = parse_args()
+    from sage.all import EllipticCurve, QQ
+    import sage.version
     started = time.perf_counter()
     source_bytes = BASE.read_bytes()
     base = json.loads(source_bytes)
@@ -100,15 +105,12 @@ def main():
         result["steps"]["local_reduction_data"] = measured(
             "local_reduction_data", lambda: [str(item) for item in minimal.local_data()],
             "rigorous")
-    elif args.mode == "descent":
-        for algorithm in ("mwrank", "pari"):
-            result["steps"][f"rank_upper_bound_{algorithm}"] = measured(
-                f"rank_upper_bound_{algorithm}",
-                lambda algorithm=algorithm: int(minimal.rank_bound(algorithm=algorithm)),
-                "rigorous algebraic upper bound when completed")
-        result["steps"]["two_selmer_rank"] = measured(
-            "two_selmer_rank", lambda: int(minimal.selmer_rank(algorithm="mwrank")),
-            "rigorous algebraic Selmer rank when completed")
+    elif args.mode in ("pari-bound", "mwrank-bound"):
+        algorithm = args.mode.removesuffix("-bound")
+        result["steps"][f"rank_upper_bound_{algorithm}"] = measured(
+            f"rank_upper_bound_{algorithm}",
+            lambda: int(minimal.rank_bound(algorithm=algorithm)),
+            "rigorous algebraic upper bound when completed")
     elif args.mode == "saturation":
         known = [minimal(QQ(point_rows[i]["minimal"]["x"]),
                          QQ(point_rows[i]["minimal"]["y"])) for i in (0, 2)]
@@ -125,15 +127,20 @@ def main():
             "analytic_rank", lambda: int(minimal.analytic_rank(algorithm="pari")),
             "numerical/heuristic, not a Mordell-Weil rank proof")
     elif args.mode == "search":
-        descent_path = HERE / "results" / "rank31-t-minus-47-80-sage-descent.json"
-        if not descent_path.exists():
-            raise RuntimeError("run --mode descent and review its rank bounds before point search")
-        descent = json.loads(descent_path.read_text(encoding="utf-8"))
-        if descent.get("base_sha256") != hashlib.sha256(source_bytes).hexdigest():
-            raise RuntimeError("descent report refers to a different exact base report")
-        if not any(row.get("status") == "completed" for key, row in descent["steps"].items()
-                   if key.startswith("rank_upper_bound_")):
-            raise RuntimeError("descent report has no completed rank upper bound")
+        bound_reports = [HERE / "results" / f"rank31-t-minus-47-80-sage-{mode}.json"
+                         for mode in ("pari-bound", "mwrank-bound")]
+        valid_bound = False
+        for path in bound_reports:
+            if not path.exists():
+                continue
+            bound = json.loads(path.read_text(encoding="utf-8"))
+            if (bound.get("base_sha256") == hashlib.sha256(source_bytes).hexdigest()
+                    and bound.get("status", "completed") == "completed"
+                    and any(row.get("status") == "completed" for key, row in bound.get("steps", {}).items()
+                            if key.startswith("rank_upper_bound_"))):
+                valid_bound = True
+        if not valid_bound:
+            raise RuntimeError("run and review a completed --mode pari-bound or mwrank-bound before point search")
         heights = []
         for row in point_rows:
             x = QQ(row["minimal"]["x"])
@@ -152,7 +159,12 @@ def main():
             lambda: [point_json(point) for point in minimal.point_search(args.log_height)],
             "exactly verified rational points; completeness only within Sage search method/bound")
     result["total_elapsed_seconds"] = time.perf_counter() - started
-    target = HERE / "results" / f"rank31-t-minus-47-80-sage-{args.mode}.json"
+    failed_steps = {key: row["error"] for key, row in result["steps"].items()
+                    if row["status"] != "completed"}
+    result["status"] = "error" if failed_steps else "completed"
+    if failed_steps:
+        result["error"] = failed_steps
+    target = args.output or HERE / "results" / f"rank31-t-minus-47-80-sage-{args.mode}.json"
     target.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(f"Wrote {target}")
 

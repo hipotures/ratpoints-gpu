@@ -98,20 +98,27 @@ python3 experiments/elliptic-curves/rank31_t_minus_47_80.py
 It writes `results/rank31-t-minus-47-80.json` and a short Markdown summary.
 The report proves trivial rational torsion and rank at least 1 from visible
 family points. It does not claim their exact subgroup rank or a global rank
-upper bound. SageMath, PARI/GP, mwrank and Magma are not installed on the
-current host, so minimal-model and descent results remain pending.
+upper bound. The exact Python report does not compute a global rank bound.
 
-On a machine with SageMath, run the following modes separately after reviewing
-their expected cost:
+The repository runner uses the pinned `sagemath/sagemath:10.10.beta10` Docker
+image. It starts Sage as root inside the container, restores host ownership of
+the result, enforces a 30-second wall-clock limit by default, and removes the
+container and its descendants on timeout. Run from the repository root:
 
 ```bash
-sage -python experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode invariants
-sage -python experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode descent
-sage -python experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode saturation
-sage -python experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode analytic
+python3 experiments/elliptic-curves/run_sage_docker.py --timeout 30 experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode invariants
+python3 experiments/elliptic-curves/run_sage_docker.py --timeout 30 experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode pari-bound
 ```
+
+Each run writes `results/rank31-t-minus-47-80-sage-MODE.json` with its status,
+elapsed time, Sage version when available, source commit, and result or error.
+A timeout exits with code 124 and writes an explicit timeout report. The PARI
+bound is optional and can still time out. `--mode mwrank-bound` is separate and
+must be requested explicitly; this curve has already triggered an eclib size
+limit, so do not use it for exploratory checks. `saturation` and `analytic` are
+also explicit modes and may be expensive.
 
 The optional `--mode search --log-height N` searches the **minimal model** with
 Sage's logarithmic naive x-height convention. Choose `N` only after inspecting
 the minimal model, the known point heights printed by that mode, and the
-descent bounds. Increasing `N` can make the search much slower.
+rank bounds. Increasing `N` can make the search much slower.
