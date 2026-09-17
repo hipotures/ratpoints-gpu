@@ -1,0 +1,44 @@
+{
+  "binary_sha256": "9b5559e9c6724ae764c13a83366cb80f5bc6855c2f5db47f4f65f235d452895c",
+  "device_listing": "device=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\n",
+  "coefficients": "247747600 -985905640 567207969 2396040466 52485681 -470135160 82342800",
+  "height": 10000000,
+  "denominator_min": 1,
+  "denominator_max": 10000000,
+  "batch_size": 65536,
+  "repeats": 5,
+  "warmups": 2,
+  "output_sha256": "4d30d69412568b0459b9ca0f25a7519f662948dd0b7269a5bb07502d9268eef9",
+  "modular_survivors": 67691763,
+  "exact_survivors": 313,
+  "num_primes": 32,
+  "results": [
+    {
+      "devices": "0",
+      "median_seconds": 27.086015445000157,
+      "minimum_seconds": 27.055406855,
+      "mean_seconds": 27.085099017599894,
+      "stddev_seconds": 0.023294549184103435,
+      "coefficient_of_variation": 0.0008600503608632422,
+      "speedup_vs_fastest_single": 0.9946750670177728
+    },
+    {
+      "devices": "1",
+      "median_seconds": 26.94178422799996,
+      "minimum_seconds": 26.904803643999912,
+      "mean_seconds": 26.94945508899982,
+      "stddev_seconds": 0.040921634736293205,
+      "coefficient_of_variation": 0.0015184587072781491,
+      "speedup_vs_fastest_single": 1.0
+    },
+    {
+      "devices": "0,1",
+      "median_seconds": 13.929336401999535,
+      "minimum_seconds": 13.911199664000378,
+      "mean_seconds": 13.939705584000148,
+      "stddev_seconds": 0.025645467695497883,
+      "coefficient_of_variation": 0.0018397424207390355,
+      "speedup_vs_fastest_single": 1.9341757173825243
+    }
+  ]
+}

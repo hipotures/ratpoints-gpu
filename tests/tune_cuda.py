@@ -37,6 +37,8 @@ def summary(samples):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--reference-output", type=Path,
+                        help="require byte-identical ordered output to this file")
     parser.add_argument("--device", type=int, default=0)
     parser.add_argument("--height", type=int, default=10_000_000)
     parser.add_argument("--denominator-max", type=int)
@@ -44,7 +46,7 @@ def main():
     parser.add_argument("--repeats", type=int, default=5)
     parser.add_argument("--arch", default="sm_89")
     parser.add_argument("--block", type=int, default=256)
-    parser.add_argument("--num-primes", type=int, default=28)
+    parser.add_argument("--num-primes", type=int, default=32)
     parser.add_argument("--batch-size", type=int, default=65_536)
     parser.add_argument("--primes", type=int, nargs="+", default=[14, 12, 10, 8])
     parser.add_argument("--masks", nargs="+", choices=["shared", "global"],
@@ -79,8 +81,13 @@ def main():
               "arch": args.arch, "block": args.block,
               "num_primes": args.num_primes, "batch_size": args.batch_size,
               "coefficients": RECORD_CURVE,
+              "reference_output_sha256": None,
               "variants": [], "baseline": None}
     report_path = output / "results.json"
+    reference_output = (args.reference_output.read_bytes()
+                        if args.reference_output else None)
+    if reference_output is not None:
+        report["reference_output_sha256"] = digest(reference_output)
     env = os.environ.copy()
     env["RATPOINTS_GPU_BENCHMARK"] = "1"
 
@@ -112,6 +119,7 @@ def main():
                        "initial_primes": initial, "mask": mask,
                        "build_command": build,
                        "binary_sha256": digest(binary.read_bytes()), "samples": []}
+            expected_modular = None
             search = [str(binary), RECORD_CURVE, str(args.height), "-dl", "1",
                       "-du", str(upper), "--devices", str(args.device),
                       "--batch-size", str(args.batch_size), "-v"]
@@ -130,15 +138,23 @@ def main():
                 if report["baseline"] is None:
                     report["baseline"] = identity
                     (output / "baseline.stdout").write_bytes(result.stdout)
-                if (identity != report["baseline"]
-                        or result.stdout != (output / "baseline.stdout").read_bytes()):
-                    raise RuntimeError(f"exact output or survivor mismatch: {name}")
+                if expected_modular is None:
+                    expected_modular = identity["modular_survivors"]
+                if (result.stdout != (output / "baseline.stdout").read_bytes()
+                        or (reference_output is not None
+                            and result.stdout != reference_output)
+                        or identity["exact_survivors"]
+                        != report["baseline"]["exact_survivors"]
+                        or identity["modular_survivors"] != expected_modular):
+                    raise RuntimeError(f"output or within-variant count mismatch: {name}")
                 if index >= args.warmups:
                     variant["samples"].append({"seconds": seconds, "metrics": metrics})
                 print(f"{name} {'warmup' if index < args.warmups else 'run'} "
                       f"{index + 1}: {seconds:.6f}s output=OK", file=sys.stderr,
                       flush=True)
             variant.update(summary(variant["samples"]))
+            variant["modular_survivors"] = expected_modular
+            variant["exact_survivors"] = report["baseline"]["exact_survivors"]
             report["variants"].append(variant)
             report_path.write_text(json.dumps(report, indent=2) + "\n")
     baseline = report["variants"][0]["median_seconds"]

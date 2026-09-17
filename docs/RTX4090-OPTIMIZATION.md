@@ -6,7 +6,8 @@ The workload is Michael Stoll's record curve, numerator height 10,000,000,
 and denominators 1 through 10,000,000. Run on an otherwise idle RTX 4090.
 
 ```bash
-python3 tests/tune_cuda.py --output /tmp/ratpoints-gpu-issue1-sweep
+python3 tests/tune_cuda.py --output /tmp/ratpoints-gpu-issue1-sweep \
+  --num-primes 28
 ```
 
 The tuner makes a separate source tree and binary for each combination of
@@ -153,7 +154,8 @@ For example, reproduce the baseline and the 32-prime candidate with:
 
 ```bash
 python3 tests/tune_cuda.py --output /tmp/screen-baseline --height 10000000 \
-  --denominator-max 1000000 --warmups 1 --repeats 3 --primes 14 --masks shared
+  --denominator-max 1000000 --warmups 1 --repeats 3 --primes 14 --masks shared \
+  --num-primes 28
 python3 tests/tune_cuda.py --output /tmp/screen-primes32 --height 10000000 \
   --denominator-max 1000000 --warmups 1 --repeats 3 --primes 14 --masks shared \
   --num-primes 32
@@ -165,33 +167,35 @@ Pass `--block 128` or `--batch-size 16384`/`32768` for the other cases.
 | :--- | ---: | ---: | :--- |
 | Baseline | 3.307 | 14,001,483 | Reference |
 | `BLOCK=128` | 3.986 | 14,001,483 | 20.5% slower |
-| `NUM_PRIMES=24` | 4.164 | 19,152,464 | Slower and survivor count differs |
-| `NUM_PRIMES=32` | 3.195 | 13,619,470 | Survivor count differs |
+| `NUM_PRIMES=24` | 4.164 | 19,152,464 | Slower |
+| `NUM_PRIMES=32` | 3.195 | 13,619,470 | Advance to full-box confirmation |
 | Batch size 16,384 | 3.361 | 14,001,483 | Slower |
 | Batch size 32,768 | 3.249 | 14,001,483 | 1.75% faster, below the screening threshold |
 
 The short baseline CV was 0.92%, so the issue's threshold was 2.76% for a
-performance acceptance decision. The apparent `NUM_PRIMES=32` gain does not
-pass the issue's explicit modular-survivor equality gate, although exact
-ordered output matched. `BLOCK=512` is unsupported by the current sieve plan:
-selected primes must exceed the block size, and the candidate primes are all
-below 512. It was rejected before benchmarking. None of these candidates
-qualified for a full-box confirmation, so the final defaults stayed unchanged.
+performance acceptance decision. Changing `NUM_PRIMES` changes the modular
+survivor count by design. Correctness requires byte-identical final ordered
+point output and the same exact point count; modular survivor counts are
+recorded for diagnosis. The 32-prime result therefore qualified for full-box
+confirmation. `BLOCK=512` is unsupported by the current sieve plan: selected
+primes must exceed the block size, and the candidate primes are all below 512.
+It was rejected before benchmarking.
 
-## Final validation and scaling
+## Previous validation and scaling at 28 primes
 
 All four requested validation commands passed: `make test-host` (89 mock
 checks and sieve-plan boundaries), `make test-multi-gpu DEVICES=0,1` (79 real
 CUDA checks), `make test` (CUDA streaming and nine CPU `ratpoints` comparison
 cases), and `make record-check` (all 301 published points through height 1M).
 
-The final height-10M benchmark after adding phase timers used the unchanged
-14/shared default, two warmups and five measured runs per GPU configuration.
+The earlier height-10M benchmark after adding phase timers used 28 primes,
+14 initial primes, and shared mask rows, with two warmups and five measured
+runs per GPU configuration.
 The executable SHA-256 was
 `2ac81c12647620176eedbdfc6e4d6bcdbaf6018eea3407088b081506e43424c5`.
 Compact results are in `docs/RTX4090-MULTIGPU.json`; per-run diagnostics are
 in the local benchmark JSON. All ordered outputs and both survivor counts
-matched the sweep baseline.
+matched the initial/mask sweep baseline.
 
 | GPUs | Median (s) | Minimum (s) | Mean (s) | Std. dev. (s) | CV | Speedup vs. GPU 1 |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -204,3 +208,61 @@ the fast sieve kernel's ALU/load-store and shared-memory work. Mask placement
 and initial-prime count alone do not improve it. The next investigation should
 examine shared-load bank conflicts and integer instruction cost without
 changing the searched set or exact verification.
+
+## Corrected 28/30/32/34-prime confirmation
+
+The follow-up corrected the acceptance criterion for `NUM_PRIMES`: a different
+number of modular survivors is expected when sieve strength changes. Every
+candidate must produce identical final ordered point output and the same
+exact point count. The tuner now records modular survivors per variant and
+can check output byte-for-byte against a separate reference file with
+`--reference-output`.
+
+Isolated `-arch=sm_89` builds on GPU 0 used the full height-10M box, two
+discarded warmups, and five measured runs each. `INITIAL_PRIMES=14`, shared
+rows, `BLOCK=256`, and batch size 65,536 were fixed. The complete compact
+results are in `docs/RTX4090-NUM-PRIMES.json`.
+
+| `NUM_PRIMES` | Median (s) | Minimum (s) | CV | Gain vs. 28 | Modular survivors |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 28 | 27.794 | 27.739 | 0.160% | reference | 71,497,766 |
+| 30 | 27.232 | 27.209 | 0.072% | 2.02% | 68,542,652 |
+| 32 | 27.051 | 27.015 | 0.199% | 2.68% | 67,691,763 |
+| 34 | 27.075 | 27.037 | 0.143% | 2.59% | 67,404,435 |
+
+All runs had 313 exact points and byte-identical ordered output, SHA-256
+`4d30d69412568b0459b9ca0f25a7519f662948dd0b7269a5bb07502d9268eef9`.
+The 2.68% median gain of 32 primes exceeds the 2% acceptance threshold;
+its difference from 34 primes is only 0.09%, below measurement significance.
+`NUM_PRIMES=32` was therefore selected as the default. The kernel and exact
+GMP verifier were not modified.
+
+To reproduce the full comparison, run the tuner separately with
+`--num-primes 28`, `30`, `32`, and `34`, together with `--primes 14 --masks
+shared --warmups 2 --repeats 5`. For the latter three, pass
+`--reference-output /path/to/num28/baseline.stdout`.
+
+## Final 32-prime validation and two-GPU scaling
+
+With `NUM_PRIMES=32` as the source default, `make test-host`,
+`make test-multi-gpu DEVICES=0,1`, `make test`, and `make record-check` all
+passed again. The real-GPU suite passed 79 checks, the CPU comparison covered
+nine searches, and the record-curve check found all 301 expected points.
+
+The final default executable SHA-256 was
+`9b5559e9c6724ae764c13a83366cb80f5bc6855c2f5db47f4f65f235d452895c`.
+At height 10M, two discarded warmups and five measured runs per configuration
+gave the following end-to-end results. The compact report is in
+`docs/RTX4090-MULTIGPU-32.json`.
+
+| GPUs | Median (s) | Minimum (s) | Mean (s) | Std. dev. (s) | CV | Speedup vs. GPU 1 |
+| :--- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 0 | 27.086 | 27.055 | 27.085 | 0.023 | 0.086% | 0.995× |
+| 1 | 26.942 | 26.905 | 26.949 | 0.041 | 0.152% | 1.000× |
+| 0,1 | 13.929 | 13.911 | 13.940 | 0.026 | 0.184% | 1.934× |
+
+The two-GPU median improved 2.58% from the previous 14.298 seconds, and
+parallel efficiency remained 96.7%. All GPU selections produced identical
+ordered output and 313 exact points; 67,691,763 modular survivors were
+reported for the 32-prime configuration. The remaining measured bottleneck
+is still the fast sieve kernel's ALU/load-store work and shared-memory access.

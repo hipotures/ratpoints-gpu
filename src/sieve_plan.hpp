@@ -8,7 +8,7 @@
 #include "search_types.hpp"
 
 #ifndef NUM_PRIMES
-#define NUM_PRIMES 28
+#define NUM_PRIMES 32
 #endif
 #ifndef INITIAL_PRIMES
 #if NUM_PRIMES < 14
