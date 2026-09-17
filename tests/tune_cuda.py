@@ -43,13 +43,22 @@ def main():
     parser.add_argument("--warmups", type=int, default=2)
     parser.add_argument("--repeats", type=int, default=5)
     parser.add_argument("--arch", default="sm_89")
+    parser.add_argument("--block", type=int, default=256)
+    parser.add_argument("--num-primes", type=int, default=28)
+    parser.add_argument("--batch-size", type=int, default=65_536)
     parser.add_argument("--primes", type=int, nargs="+", default=[14, 12, 10, 8])
     parser.add_argument("--masks", nargs="+", choices=["shared", "global"],
                         default=["shared", "global"])
     args = parser.parse_args()
     if (args.height < 1 or args.warmups < 0 or args.repeats < 1
-            or args.device < 0 or any(n < 1 or n > 28 for n in args.primes)):
-        parser.error("invalid height, repeats, device, or initial prime count")
+            or args.device < 0 or args.num_primes < 1 or args.num_primes > 93
+            or args.block < 32 or args.block > 1024 or args.block % 32
+            or args.batch_size < 1 or args.batch_size > 65_536
+            or any(n < 1 or n > args.num_primes for n in args.primes)):
+        parser.error("invalid height, repeats, device, or tuning parameter")
+    if args.block >= 512:
+        parser.error("BLOCK >= 512 is unsupported: selected primes must exceed "
+                     "BLOCK, but the sieve uses primes below 512")
     upper = args.height if args.denominator_max is None else args.denominator_max
     if upper < 1 or upper > args.height:
         parser.error("denominator max must be in 1..height")
@@ -67,7 +76,9 @@ def main():
               "height": args.height, "denominator_min": 1,
               "denominator_max": upper, "device": args.device,
               "warmups": args.warmups, "repeats": args.repeats,
-              "arch": args.arch, "coefficients": RECORD_CURVE,
+              "arch": args.arch, "block": args.block,
+              "num_primes": args.num_primes, "batch_size": args.batch_size,
+              "coefficients": RECORD_CURVE,
               "variants": [], "baseline": None}
     report_path = output / "results.json"
     env = os.environ.copy()
@@ -75,7 +86,8 @@ def main():
 
     for initial in args.primes:
         for mask in args.masks:
-            name = f"initial{initial}_{mask}"
+            name = (f"block{args.block}_primes{args.num_primes}_"
+                    f"initial{initial}_{mask}_batch{args.batch_size}")
             directory = output / name
             directory.mkdir(exist_ok=True)
             for relative in files:
@@ -84,7 +96,8 @@ def main():
                     target = directory / relative
                     target.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copy2(source, target)
-            flags = f"-DINITIAL_PRIMES={initial}"
+            flags = (f"-DBLOCK={args.block} -DNUM_PRIMES={args.num_primes} "
+                     f"-DINITIAL_PRIMES={initial}")
             if mask == "global":
                 flags += " -DGLOBAL_MASK_ROWS"
             build = ["make", "-j", str(min(os.cpu_count() or 1, 8)),
@@ -94,11 +107,14 @@ def main():
                 subprocess.run(build, cwd=directory, check=True,
                                stdout=build_log, stderr=subprocess.STDOUT)
             binary = directory / "ratpoints_gpu"
-            variant = {"name": name, "initial_primes": initial, "mask": mask,
+            variant = {"name": name, "block": args.block,
+                       "num_primes": args.num_primes, "batch_size": args.batch_size,
+                       "initial_primes": initial, "mask": mask,
                        "build_command": build,
                        "binary_sha256": digest(binary.read_bytes()), "samples": []}
             search = [str(binary), RECORD_CURVE, str(args.height), "-dl", "1",
-                      "-du", str(upper), "--devices", str(args.device), "-v"]
+                      "-du", str(upper), "--devices", str(args.device),
+                      "--batch-size", str(args.batch_size), "-v"]
             for index in range(args.warmups + args.repeats):
                 started = time.perf_counter()
                 result = subprocess.run(search, env=env, capture_output=True, check=True)

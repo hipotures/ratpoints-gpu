@@ -139,6 +139,45 @@ profiled launch and software run are different; the 50% shared-memory limit
 is consistent. Reducing shared memory by moving mask rows to global memory
 or using fewer initial primes worsened the complete workload.
 
+## Other staged screening
+
+After the full mask/initial-prime sweep, the tuner was extended with `--block`,
+`--num-primes`, and `--batch-size`. Each case below used height 10M, the first
+1M denominators, one discarded warmup, and three measured runs on GPU 0. The
+baseline was `BLOCK=256`, `NUM_PRIMES=28`, `INITIAL_PRIMES=14`, shared rows,
+and batch size 65,536. These shorter runs screened candidates; they are not
+full-box performance claims. Exact ordered output and exact point counts were
+the same for every case. The compact results are in `docs/RTX4090-SCREEN.json`.
+
+For example, reproduce the baseline and the 32-prime candidate with:
+
+```bash
+python3 tests/tune_cuda.py --output /tmp/screen-baseline --height 10000000 \
+  --denominator-max 1000000 --warmups 1 --repeats 3 --primes 14 --masks shared
+python3 tests/tune_cuda.py --output /tmp/screen-primes32 --height 10000000 \
+  --denominator-max 1000000 --warmups 1 --repeats 3 --primes 14 --masks shared \
+  --num-primes 32
+```
+
+Pass `--block 128` or `--batch-size 16384`/`32768` for the other cases.
+
+| Change from baseline | Median (s) | Modular survivors | Decision |
+| :--- | ---: | ---: | :--- |
+| Baseline | 3.307 | 14,001,483 | Reference |
+| `BLOCK=128` | 3.986 | 14,001,483 | 20.5% slower |
+| `NUM_PRIMES=24` | 4.164 | 19,152,464 | Slower and survivor count differs |
+| `NUM_PRIMES=32` | 3.195 | 13,619,470 | Survivor count differs |
+| Batch size 16,384 | 3.361 | 14,001,483 | Slower |
+| Batch size 32,768 | 3.249 | 14,001,483 | 1.75% faster, below the screening threshold |
+
+The short baseline CV was 0.92%, so the issue's threshold was 2.76% for a
+performance acceptance decision. The apparent `NUM_PRIMES=32` gain does not
+pass the issue's explicit modular-survivor equality gate, although exact
+ordered output matched. `BLOCK=512` is unsupported by the current sieve plan:
+selected primes must exceed the block size, and the candidate primes are all
+below 512. It was rejected before benchmarking. None of these candidates
+qualified for a full-box confirmation, so the final defaults stayed unchanged.
+
 ## Final validation and scaling
 
 All four requested validation commands passed: `make test-host` (89 mock
