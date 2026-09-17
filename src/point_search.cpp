@@ -1,6 +1,8 @@
 #include "point_search.hpp"
 
 #include <algorithm>
+#include <chrono>
+#include <future>
 #include <limits>
 #include <stdexcept>
 #include <string>
@@ -12,9 +14,11 @@
 namespace ratpoints_gpu {
 namespace {
 
-constexpr int kDenominatorBatchSize = 1 << 16;
-
 SearchOptions validate_search_options(SearchOptions options) {
+    if (options.denominator_batch_size < 1
+        || options.denominator_batch_size > (1 << 16)) {
+        throw std::invalid_argument("denominator batch size must be in 1..65536");
+    }
     if (!ExactPolynomial::is_squarefree(options.coefficients)) {
         throw std::invalid_argument("polynomial is not squarefree");
     }
@@ -50,8 +54,7 @@ void append_verified_candidates(
         int denominator = candidates.denominators[i];
         if (integer_gcd(numerator, denominator) == 1
             && polynomial.square_root(numerator, denominator, root)) {
-            points.push_back(
-                {numerator, root.get_str(), denominator});
+            points.push_back({numerator, root.get_str(), denominator});
         }
     }
 }
@@ -64,6 +67,57 @@ void sort_points(std::vector<PointPair> &points) {
                   }
                   return left.numerator < right.numerator;
               });
+}
+
+struct VerifiedBatch {
+    DenominatorRange range;
+    SieveResult sieve;
+    std::vector<PointPair> points;
+};
+
+VerifiedBatch search_batch(const SearchOptions &options, int device,
+                            DenominatorRange range) {
+    try {
+        // Bind before any CUDA allocation, event, or kernel launch. All CUDA
+        // resources are destroyed on this same thread before it returns.
+        activate_gpu(device);
+        ExactPolynomial polynomial(options.coefficients);
+        VerifiedBatch batch;
+        batch.range = range;
+        batch.sieve = run_modular_sieve(
+            options.coefficients, options.numerator_bound, range,
+            [&](const CandidateBatch &candidates) {
+                append_verified_candidates(candidates, polynomial, batch.points);
+            });
+        sort_points(batch.points);
+        return batch;
+    } catch (const std::exception &error) {
+        throw std::runtime_error("GPU " + std::to_string(device)
+            + ", denominators " + std::to_string(range.first) + ".."
+            + std::to_string(range.last) + ": " + error.what());
+    }
+}
+
+void accumulate(SearchMetrics &metrics, size_t device_index,
+                 const VerifiedBatch &batch) {
+    const auto &sieve = batch.sieve;
+    auto &device = metrics.devices[device_index];
+    device.basis_ms += sieve.metrics.basis_ms;
+    device.sieve_ms += sieve.metrics.sieve_ms;
+    device.denominator_count += static_cast<unsigned>(batch.range.count());
+    ++device.batches;
+    metrics.basis_ms += sieve.metrics.basis_ms;
+    metrics.sieve_ms += sieve.metrics.sieve_ms;
+    metrics.word_count = sieve.metrics.word_count;
+    metrics.denominator_count += static_cast<unsigned>(batch.range.count());
+    metrics.initial_mask_bytes += sieve.metrics.initial_mask_bytes;
+    add_checked(metrics.modular_survivors, sieve.survivor_count,
+                "total survivor count overflow");
+    if (batch.points.size() > std::numeric_limits<size_t>::max()
+                                  - metrics.exact_survivors) {
+        throw std::overflow_error("exact survivor count overflow");
+    }
+    metrics.exact_survivors += batch.points.size();
 }
 
 }  // namespace
@@ -95,10 +149,12 @@ double SearchMetrics::initial_mask_gbs() const {
 struct PointSearch::Impl {
     explicit Impl(SearchOptions search_options)
         : options(validate_search_options(std::move(search_options))),
-          polynomial(options.coefficients) {}
+          polynomial(options.coefficients),
+          devices(select_gpu_devices(options.devices)) {}
 
     SearchOptions options;
     ExactPolynomial polynomial;
+    std::vector<GpuDevice> devices;
 };
 
 PointSearch::PointSearch(SearchOptions options)
@@ -107,54 +163,74 @@ PointSearch::PointSearch(SearchOptions options)
 PointSearch::~PointSearch() = default;
 
 SearchMetrics PointSearch::run(const PointCallback &point_callback) {
+    const auto started = std::chrono::steady_clock::now();
     SearchMetrics metrics;
+    for (const auto &device : impl_->devices) {
+        DeviceSearchMetrics entry;
+        entry.device = device;
+        metrics.devices.push_back(std::move(entry));
+    }
+    auto finish = [&]() {
+        metrics.wall_ms = std::chrono::duration<double, std::milli>(
+            std::chrono::steady_clock::now() - started).count();
+        return metrics;
+    };
     mpz_class root;
     if (impl_->options.include_infinity
         && impl_->polynomial.square_root(1, 0, root)
         && !point_callback({1, root.get_str(), 0})) {
-        return metrics;
+        return finish();
     }
 
-    int first = impl_->options.denominators.first;
-    while (first <= impl_->options.denominators.last) {
-        int remaining = impl_->options.denominators.last - first;
-        int last = first + std::min(remaining, kDenominatorBatchSize - 1);
-        DenominatorRange range{first, last};
-        std::vector<PointPair> points;
-        SieveResult sieve = run_modular_sieve(
-            impl_->options.coefficients, impl_->options.numerator_bound, range,
-            [&](const CandidateBatch &candidates) {
-                append_verified_candidates(
-                    candidates, impl_->polynomial, points);
-            });
-
-        metrics.basis_ms += sieve.metrics.basis_ms;
-        metrics.sieve_ms += sieve.metrics.sieve_ms;
-        metrics.word_count = sieve.metrics.word_count;
-        metrics.denominator_count += static_cast<unsigned>(range.count());
-        metrics.initial_mask_bytes += sieve.metrics.initial_mask_bytes;
-        add_checked(metrics.modular_survivors, sieve.survivor_count,
-                    "total survivor count overflow");
-
-        sort_points(points);
-        if (points.size() > std::numeric_limits<size_t>::max()
-                                - metrics.exact_survivors) {
-            throw std::overflow_error("exact survivor count overflow");
-        }
-        metrics.exact_survivors += points.size();
-
-        for (const auto &point : points) {
-            if (impl_->options.accepts(point.numerator, point.denominator)
-                && !point_callback(point)) {
-                return metrics;
+    // Process bounded waves in denominator order. There is no unbounded
+    // reorder queue, no cross-device memory access, and no output from workers.
+    long long first = impl_->options.denominators.first;
+    const long long last = impl_->options.denominators.last;
+    while (first <= last) {
+        long long remaining = last - first + 1;
+        size_t workers = static_cast<size_t>(std::min<long long>(
+            remaining, static_cast<long long>(impl_->devices.size())));
+        long long wave_size = std::min<long long>(remaining,
+            static_cast<long long>(workers) * impl_->options.denominator_batch_size);
+        std::vector<std::future<VerifiedBatch>> futures;
+        std::vector<VerifiedBatch> batches;
+        futures.reserve(workers);
+        batches.reserve(workers);
+        for (size_t i = 0; i < workers; ++i) {
+            long long count = wave_size / static_cast<long long>(workers)
+                + (static_cast<long long>(i) < wave_size % static_cast<long long>(workers));
+            DenominatorRange range{static_cast<int>(first),
+                                    static_cast<int>(first + count - 1)};
+            first += count;  // 64-bit cursor also handles an INT_MAX endpoint.
+            int device = impl_->devices[i].id;
+            if (workers == 1) {
+                batches.push_back(search_batch(impl_->options, device, range));
+            } else {
+                futures.push_back(std::async(std::launch::async,
+                    [this, device, range]() {
+                        return search_batch(impl_->options, device, range);
+                    }));
             }
         }
-        if (last == impl_->options.denominators.last) {
-            break;
+        // Getting every result before output propagates errors from this wave.
+        // If get(), allocation, or thread creation throws, async future
+        // destruction joins all outstanding workers before options can die.
+        for (auto &future : futures) {
+            batches.push_back(future.get());
         }
-        first = last + 1;
+        for (size_t i = 0; i < batches.size(); ++i) {
+            accumulate(metrics, i, batches[i]);
+        }
+        for (const auto &batch : batches) {
+            for (const auto &point : batch.points) {
+                if (impl_->options.accepts(point.numerator, point.denominator)
+                    && !point_callback(point)) {
+                    return finish();
+                }
+            }
+        }
     }
-    return metrics;
+    return finish();
 }
 
 }  // namespace ratpoints_gpu

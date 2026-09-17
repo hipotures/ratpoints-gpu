@@ -233,7 +233,15 @@ private:
     }
 
     bool parse_runtime_option(const std::string &option) {
-        if (option == "-q") {
+        if (option == "--devices") {
+            result_.search.devices = parse_device_selection(argument(option));
+        } else if (option == "--batch-size") {
+            result_.search.denominator_batch_size = parse_positive_int(
+                argument(option), "denominator batch size");
+            if (result_.search.denominator_batch_size > (1 << 16)) {
+                throw std::invalid_argument("--batch-size must not exceed 65536");
+            }
+        } else if (option == "-q") {
             result_.quiet = true;
         } else if (option == "-v") {
             result_.verbose = true;
@@ -292,6 +300,11 @@ bool help_requested(int argc, char **argv) {
 void print_help(std::FILE *stream) {
     constexpr char help_text[] =
         "Usage: ratpoints_gpu 'c0 c1 ... cn' HEIGHT [OPTIONS]\n"
+        "\n"
+        "GPU selection (IDs are relative to CUDA_VISIBLE_DEVICES):\n"
+        "  --devices all|0,1,...  select GPUs (default: all visible)\n"
+        "  --batch-size N        denominators per GPU batch, 1..65536\n"
+        "  --list-devices        list GPUs and exit; use without a curve\n"
         "\n"
         "Supported options:\n"
         "  -dl B       set the lower denominator bound\n"

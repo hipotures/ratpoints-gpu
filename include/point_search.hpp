@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "search_types.hpp"
+#include "gpu_devices.hpp"
 
 namespace ratpoints_gpu {
 
@@ -24,11 +25,23 @@ struct SearchOptions {
     DenominatorRange denominators{1, 0};
     std::vector<SearchInterval> intervals;
     bool include_infinity = true;
+    std::vector<int> devices;  // Empty means all visible GPUs.
+    int denominator_batch_size = 1 << 16;
 
     bool accepts(long long numerator, int denominator) const;
 };
 
+struct DeviceSearchMetrics {
+    GpuDevice device;
+    unsigned long long denominator_count = 0;
+    unsigned long long batches = 0;
+    double basis_ms = 0.0;
+    double sieve_ms = 0.0;
+};
+
 struct SearchMetrics {
+    double wall_ms = 0.0;
+    std::vector<DeviceSearchMetrics> devices;
     double basis_ms = 0.0;
     double sieve_ms = 0.0;
     unsigned long long word_count = 0;

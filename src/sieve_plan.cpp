@@ -68,7 +68,8 @@ SievePlan::SievePlan(long long numerator_bound, DenominatorRange range)
     }
 
     selected_primes.resize(static_cast<size_t>(range.count()) * kPrimeCount);
-    for (int denominator = range.first;
+    // The inclusive endpoint can be INT_MAX; increment a wider cursor.
+    for (long long denominator = range.first;
          denominator <= range.last; ++denominator) {
         int selected_count = 0;
         size_t row = static_cast<size_t>(

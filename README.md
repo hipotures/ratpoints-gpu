@@ -22,7 +22,16 @@ the program searches reduced $x=a/b$ in a bounded rectangle.
 
 Results are exhaustive within the requested bounds only.
 
+This fork supports **native multi-GPU search in one process**. By default it
+uses all CUDA-visible GPUs; select a subset with `--devices 0,1`, or use
+`--devices 0` for a single-GPU baseline. Run `./ratpoints_gpu --list-devices`
+first. See [Multi-GPU usage and benchmarks](MULTI_GPU.md).
+
 ## Performance
+
+The following are historical upstream single-GPU measurements, not new
+measurements of this fork. Measure local scaling with `make benchmark
+DEVICES=0,1 HEIGHT=1000000` (run this command on one line).
 
 Measurements used
 [Stoll's record curve](https://www.mathe2.uni-bayreuth.de/stoll/recordcurve.html)
@@ -61,6 +70,9 @@ Coefficients are listed from constant to leading term.
 
 | Option | Action |
 |---|---|
+| `--devices all` or `--devices 0,1` | Select visible GPUs (default: all) |
+| `--batch-size N` | Denominators per GPU batch, 1 through 65,536 |
+| `--list-devices` | List GPUs and exit; use without a curve |
 | `-dl B`, `-du B` | Set denominator bounds |
 | `-l L`, `-u U` | Restrict $x$ to closed intervals |
 | `-1` | Stop after the first point |
@@ -82,7 +94,8 @@ Unsupported options return an error.
 - Sieve-tuning options `-n`, `-N`, `-p`, `-F`, and `-S` are not supported.
 - Unchecked-survivor output via `-x` is not supported.
 - CUDA is required. There is no CPU fallback.
-- One process uses one default GPU. Multi-GPU execution is not supported.
+- Multi-GPU execution partitions denominators across independent GPU workers.
+  No NVLink, peer access, or shared VRAM is required.
 - Ratpoints optimizations based on Sturm isolation, coefficient reversal,
   forbidden divisors, and Jacobi symbols are not implemented. These omissions
   can affect performance and diagnostics, but not the searched set.
@@ -98,7 +111,9 @@ Build and runtime dependencies:
 - GNU Make
 - Host C++ compiler supported by the installed CUDA Toolkit
 
-Tests also require Python 3 and ratpoints 2.1.3 or newer.
+Tests require Python 3. Only `make test` needs ratpoints 2.1.3 or newer;
+`make test-multi-gpu` does not. `make test-host` needs a host C++ compiler and
+GMP but no CUDA toolkit, driver, or GPU.
 
 Debian or Ubuntu packages, excluding CUDA and the NVIDIA driver:
 
@@ -188,6 +203,18 @@ total number of sites: (numerator range width) times (denominator count).
 
 ## Tests
 
+```bash
+make test-host
+make test-multi-gpu DEVICES=0,1
+make benchmark DEVICES=0,1 HEIGHT=1000000 REPEATS=3
+```
+
+`test-host` uses an explicitly mocked CUDA backend and real GMP arithmetic;
+it does **not** validate CUDA kernels or measure GPU performance. The multi-GPU
+test compares ordered results against an independent integer oracle and checks
+single/multiple-device equivalence. The benchmark checks identical point output
+and survivor counts before reporting scaling. See [MULTI_GPU.md](MULTI_GPU.md).
+
 `make test` requires ratpoints 2.1.3 or newer installed and available on `PATH`.
 
 ```bash
@@ -211,13 +238,16 @@ The repository includes Stoll's published list. Of its 321 $x$-coordinates,
 
 - `src/sieve.cu` contains the modular square sieve and CUDA orchestration
 - `src/sieve_plan.cpp` builds prime tables and denominator-specific sieve plans
-- `src/point_search.cpp` batches searches and performs exact verification
+- `src/point_search.cpp` schedules ordered multi-GPU batches and exact verification
+- `src/gpu_devices.cpp` handles CUDA device discovery and selection
 - `src/exact_polynomial.cpp` contains exact GMP polynomial arithmetic
 - `src/command_line.cpp` parses and validates command-line arguments
 - `src/output_formatter.cpp` implements ratpoints-compatible output
 - `include/` contains the interfaces shared between those modules
 - `tests/compare_with_ratpoints.py` runs CPU and GPU comparison tests
 - `tests/verify_record_curve.py` checks Stoll's published record-curve points
+- `tests/test_multi_gpu.py` checks multi-GPU orchestration and ordered output
+- `tests/benchmark_multi_gpu.py` measures validated single/multi-GPU scaling
 
 ## License
 
