@@ -30,3 +30,23 @@ python3 -m unittest discover -s experiments/elliptic-curves/tests -v
 4. Later: Mordell-Weil lattices, descent/Selmer groups, and high-rank families.
 
 Finite computation does not prove a global rank, determine all rational points, or replace Mordell-Weil/descent arguments.
+
+## Rank-31 specialization sieve
+
+The prepared Mestre–Nagao pipeline can be run manually from the repository root:
+
+```bash
+python3 experiments/elliptic-curves/rank31_mestre_nagao_gpu.py
+```
+
+By default, Stage A scores 50,000 new rational parameters plus the known record
+control on GPUs 0 and 1 through prime 5000. Stage B scores the top 1,000 new
+parameters plus the control through prime 20000. The script checks exact
+CPU/GPU point counts on both devices before scoring, reports the control's rank
+and percentile at both stages, prints 50 new leads, writes timestamped and
+`latest` JSON reports, then commits and pushes those reports to `master`.
+
+Use `--candidates`, `--first-prime-bound`, `--finalists`,
+`--second-prime-bound`, `--devices`, and `--batch-candidates` to configure the
+run. `--no-push` writes results without publishing them. The scores rank
+candidate specializations heuristically; they do not prove rank.

@@ -272,6 +272,15 @@ def cpu_np(t:Fraction,prime:int):
     return prime+1+total
 
 
+def odd_primes_up_to(bound:int):
+    sieve=bytearray(b"\x01")*(bound+1)
+    sieve[:2]=b"\x00\x00"
+    for p in range(2,math.isqrt(bound)+1):
+        if sieve[p]:
+            sieve[p*p:bound+1:p]=b"\x00"*(((bound-p*p)//p)+1)
+    return [p for p in range(3,bound+1,2) if sieve[p]]
+
+
 def validate_gpu_counts(binary:Path,device:int,candidates,prime_bound:int):
     indices=sorted({0,1,len(candidates)//2,len(candidates)-1})
     sample=[(i,candidates[i]) for i in indices]
@@ -279,15 +288,24 @@ def validate_gpu_counts(binary:Path,device:int,candidates,prime_bound:int):
     counts=BUILD_DIR/f"mn-validation-gpu{device}-counts.tsv"; helper_input(inp,sample)
     cmd=[str(binary),"--device",str(device),"--input",str(inp),"--output",str(outp),"--prime-bound",str(prime_bound),"--counts",str(counts)]
     done=subprocess.run(cmd,cwd=ROOT,check=True,capture_output=True,text=True); smap=dict(sample); checked=0; mismatches=[]
+    primes=odd_primes_up_to(prime_bound)
     scores={i:[0.0,0] for i in indices}
-    for line in counts.read_text().splitlines():
-        i,p,n=line.split("\t"); i=int(i); p=int(p); n=int(n); expected=cpu_np(smap[i],p); expected=-1 if expected is None else expected; checked+=1
-        if n!=expected:mismatches.append({"candidate_index":i,"t":str(smap[i]),"prime":p,"gpu_np":n,"cpu_np":expected})
-        if expected!=-1:
-            scores[i][0]+=(1.0-(p-1)/expected)*math.log(p)
-            scores[i][1]+=1
-    if checked != len(sample)*len([p for p in range(3,prime_bound+1,2) if all(p%d for d in range(3,math.isqrt(p)+1,2))]):
+    lines=counts.read_text().splitlines()
+    if len(lines)!=len(sample)*len(primes):
         raise RuntimeError("GPU validation count output is incomplete")
+    for line,(expected_i,expected_p) in zip(lines,((i,p) for i in indices for p in primes)):
+        i,p,n=map(int,line.split("\t"))
+        if (i,p)!=(expected_i,expected_p):
+            raise RuntimeError(f"GPU validation count row is missing, duplicated or out of order: {(i,p)}")
+        expected=cpu_np(smap[i],p)
+        expected=-1 if expected is None else expected
+        checked+=1
+        if n!=expected:
+            mismatches.append({"candidate_index":i,"t":str(smap[i]),"prime":p,"gpu_np":n,"cpu_np":expected})
+        if n!=-1:
+            if n<=0: raise RuntimeError(f"invalid GPU point count {n} at candidate {i}, prime {p}")
+            scores[i][0]+=(1.0-(p-1)/n)*math.log(p)
+            scores[i][1]+=1
     if mismatches: raise RuntimeError(f"GPU/CPU point-count mismatch: {mismatches[:3]}")
     gpu_scores={row.index:row for row in parse_scores(outp,smap)}
     if set(gpu_scores)!=set(indices): raise RuntimeError("GPU validation score output is incomplete")
@@ -297,6 +315,8 @@ def validate_gpu_counts(binary:Path,device:int,candidates,prime_bound:int):
             raise RuntimeError(f"GPU/CPU score mismatch at candidate {i}: GPU={row}, CPU={(score,good)}")
     return {"device":device,"prime_bound":prime_bound,"candidate_indices":indices,
             "candidate_count":len(sample),"candidate_prime_pairs_checked":checked,
+            "all_gpu_count_rows_aggregated":len(lines),"oracle_prime_count":len(primes),
+            "oracle_prime_min":primes[0],"oracle_prime_max":primes[-1],
             "scores_checked":len(sample),"mismatches":0,"helper_stderr":done.stderr.strip()}
 
 

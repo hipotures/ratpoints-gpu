@@ -45,10 +45,14 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--devices", default="0,1")
     parser.add_argument("--candidates", type=int, default=50_000,
-                        help="new broad-scan candidates, excluding record control")
-    parser.add_argument("--broad-prime-bound", type=int, default=1000)
-    parser.add_argument("--refine-top", type=int, default=512)
-    parser.add_argument("--refine-prime-bound", type=int, default=5000)
+                        help="new candidates for Stage A, excluding record control")
+    parser.add_argument("--first-prime-bound", "--broad-prime-bound",
+                        dest="broad_prime_bound", type=int, default=5000)
+    parser.add_argument("--finalists", "--refine-top",
+                        dest="refine_top", type=int, default=1000,
+                        help="top new candidates for Stage B, excluding record control")
+    parser.add_argument("--second-prime-bound", "--refine-prime-bound",
+                        dest="refine_prime_bound", type=int, default=20000)
     parser.add_argument("--seed", type=int, default=302)
     parser.add_argument("--denominator-min", type=int, default=1_000)
     parser.add_argument("--denominator-max", type=int, default=1_000_000)
@@ -106,7 +110,7 @@ def main() -> None:
     )
     timings["build_and_validation"] = time.perf_counter() - started
 
-    started = stage(3, "broad dual-GPU Mestre-Nagao sieve")
+    started = stage(3, f"full-population sieve (A) through p={args.broad_prime_bound}")
     broad_rows, broad_stats = score_candidates(
         helper,
         candidates,
@@ -128,7 +132,7 @@ def main() -> None:
     selected = broad_new[:args.refine_top]
     refined_candidates = [RECORD_T] + [row.t for row in selected]
 
-    started = stage(4, "refine top candidates to the larger prime bound")
+    started = stage(4, f"refine {args.refine_top} new finalists (B) through p={args.refine_prime_bound}")
     refine_batch = max(
         1,
         min(
@@ -155,7 +159,7 @@ def main() -> None:
     refined_new = [row for row in refined_rows if row.index != 0]
     refined_new.sort(key=lambda row: (row.score, row.good_primes), reverse=True)
     print("\nTop new leads (Mestre-Nagao heuristic, not rank proofs):")
-    for rank, row in enumerate(refined_new[:25], 1):
+    for rank, row in enumerate(refined_new[:50], 1):
         print(
             f"  {rank:2d}. T={row.t.numerator}/{row.t.denominator} "
             f"score={row.score:.9f} good_primes={row.good_primes}"
@@ -180,6 +184,14 @@ def main() -> None:
             "Promising specializations require exact independence/descent certification."
         ),
         "environment": environment(),
+        "pipeline": {
+            "stage_a": {"prime_bound": args.broad_prime_bound,
+                        "new_candidate_count": args.candidates,
+                        "population_including_control": len(broad_rows)},
+            "stage_b": {"prime_bound": args.refine_prime_bound,
+                        "new_finalist_count": args.refine_top,
+                        "population_including_control": len(refined_rows)},
+        },
         "parameters": {
             "devices": devices,
             "new_candidate_count": args.candidates,
