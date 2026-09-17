@@ -1,0 +1,14 @@
+[00:00]  associativity-sample    0.0%  0/729
+[00:00]  associativity-sample    0.1%  1/729  ETA 00:00  8,329/s
+[00:00]  associativity-sample  100.0%  729/729  31,449/s
+Curve: y^2 = x^3 - 2
+Discriminant: -1728 (nonzero, so the curve is nonsingular)
+P = (3, 5)
+-P = (3, -5)
+P + O = (3, 5)
+P + (-P) = O
+2P = (129/100, -383/1000)
+3P = (164323/29241, -66234835/5000211)
+7P = (49680317504529227786118937923/3458519104702616679044719441, -11069550171650699467350859369161931440285365/203392656460831967707109939312836961532761)
+Finite associativity check: 729 triples passed.
+This finite check is evidence for the implementation, not a proof of the group law.

@@ -1,0 +1,13 @@
+[00:00]  rational-points    0.0%  0/4,001,000
+[00:00]  rational-points    0.1%  4,001/4,001,000  ETA 00:00  6,109,722/s  reduced=4,001  points=2
+[00:00]  rational-points   73.9%  2,956,739/4,001,000  ETA 00:00  8,420,125/s  reduced=1,799,683  points=4
+[00:00]  rational-points  100.0%  4,001,000/4,001,000  8,496,306/s  reduced=2,433,355  points=4
+Curve: y^2 = x^3 - 2
+Raw (a,b) pairs visited: 4,001,000
+Reduced rational x values tested: 2,433,355
+Rational affine points found in the box: 4
+(129/100, -383/1000)
+(129/100, 383/1000)
+(3, -5)
+(3, 5)
+The search is exhaustive only inside the requested numerator/denominator box.
