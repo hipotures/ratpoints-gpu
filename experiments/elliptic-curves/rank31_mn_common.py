@@ -5,6 +5,7 @@ from __future__ import annotations
 import concurrent.futures
 import hashlib
 import math
+import os
 import platform
 import shutil
 import subprocess
@@ -70,6 +71,38 @@ class ScoreRow:
     t: Fraction
     score: float
     good_primes: int
+
+
+@dataclass(frozen=True)
+class ValidationOracle:
+    candidates: tuple[tuple[int, Fraction], ...]
+    primes: tuple[int, ...]
+    sampled_primes: tuple[int, ...]
+    expected: dict[tuple[int, int], int]
+    mode: str
+    prime_bound: int
+    max_sampled_primes: int
+    low_prime_cutoff: int
+    cpu_workers: int
+    cpu_seconds: float
+
+    def report(self):
+        return {
+            "mode": self.mode,
+            "research_prime_bound": self.prime_bound,
+            "sampling_policy": ("all odd primes through the research bound" if self.mode == "exhaustive"
+                                else "all odd primes through cutoff; evenly spaced higher primes plus up to four highest"),
+            "low_prime_cutoff": self.low_prime_cutoff,
+            "max_sampled_primes": self.max_sampled_primes,
+            "sampled_primes": list(self.sampled_primes),
+            "sampled_prime_count": len(self.sampled_primes),
+            "sampled_prime_min": self.sampled_primes[0],
+            "sampled_prime_max": self.sampled_primes[-1],
+            "candidate_indices": [i for i, _ in self.candidates],
+            "candidate_prime_pairs_checked_per_gpu": len(self.expected),
+            "cpu_workers": self.cpu_workers,
+            "cpu_elapsed_seconds": self.cpu_seconds,
+        }
 
 
 def family_values(t: Fraction):
@@ -281,14 +314,70 @@ def odd_primes_up_to(bound:int):
     return [p for p in range(3,bound+1,2) if sieve[p]]
 
 
-def validate_gpu_counts(binary:Path,device:int,candidates,prime_bound:int):
+def select_validation_primes(primes, max_sampled_primes=256, low_prime_cutoff=1000, exhaustive=False):
+    if not primes or max_sampled_primes < 1 or low_prime_cutoff < 3:
+        raise ValueError("invalid validation prime selection")
+    if exhaustive or len(primes) <= max_sampled_primes:
+        return tuple(primes)
+    low=[p for p in primes if p <= low_prime_cutoff]
+    if len(low) > max_sampled_primes:
+        raise ValueError("--validation-primes is smaller than the required low-prime set")
+    high=[p for p in primes if p > low_prime_cutoff]
+    slots=min(max_sampled_primes-len(low), len(high))
+    if slots < 2:
+        raise ValueError("--validation-primes must leave room for both middle and upper-range primes")
+    tail_count=min(4,slots-1)
+    tail=high[-tail_count:]
+    remaining=high[:-tail_count]
+    spread_slots=slots-tail_count
+    if spread_slots == 1:
+        spread=[remaining[0]]
+    elif spread_slots > 1:
+        spread=[remaining[j*(len(remaining)-1)//(spread_slots-1)] for j in range(spread_slots)]
+    else:
+        spread=[]
+    selected=tuple(sorted(set(low+spread+tail)))
+    if len(selected) > max_sampled_primes or selected[-1] != primes[-1]:
+        raise AssertionError("validation prime sample is not bounded or does not reach the upper bound")
+    return selected
+
+
+def _cpu_oracle_for_candidate(item):
+    i,t,primes=item
+    return i,tuple(-1 if (n:=cpu_np(t,p)) is None else n for p in primes)
+
+
+def build_validation_oracle(candidates, prime_bound, max_sampled_primes=256, exhaustive=False):
+    started=time.perf_counter()
+    primes=tuple(odd_primes_up_to(prime_bound))
+    sampled=select_validation_primes(primes,max_sampled_primes,1000,exhaustive)
     indices=sorted({0,1,len(candidates)//2,len(candidates)-1})
-    sample=[(i,candidates[i]) for i in indices]
+    sample=tuple((i,candidates[i]) for i in indices)
+    tasks=[(i,t,sampled) for i,t in sample]
+    estimated_work=len(sample)*sum(sampled)
+    workers=min(len(sample),len(os.sched_getaffinity(0)) if hasattr(os,"sched_getaffinity") else (os.cpu_count() or 1))
+    if estimated_work < 2_000_000:
+        workers=1
+        results=map(_cpu_oracle_for_candidate,tasks)
+        expected={(i,p):n for i,counts in results for p,n in zip(sampled,counts)}
+    else:
+        with concurrent.futures.ProcessPoolExecutor(max_workers=workers) as pool:
+            expected={(i,p):n for i,counts in pool.map(_cpu_oracle_for_candidate,tasks)
+                      for p,n in zip(sampled,counts)}
+    return ValidationOracle(sample,primes,sampled,expected,
+                            "exhaustive" if exhaustive else "sampled",prime_bound,
+                            max_sampled_primes,1000,workers,time.perf_counter()-started)
+
+
+def validate_gpu_counts(binary:Path,device:int,oracle:ValidationOracle):
+    started=time.perf_counter()
+    sample=oracle.candidates
+    indices=[i for i,_ in sample]
     inp=BUILD_DIR/f"mn-validation-gpu{device}.tsv"; outp=BUILD_DIR/f"mn-validation-gpu{device}.out"
     counts=BUILD_DIR/f"mn-validation-gpu{device}-counts.tsv"; helper_input(inp,sample)
-    cmd=[str(binary),"--device",str(device),"--input",str(inp),"--output",str(outp),"--prime-bound",str(prime_bound),"--counts",str(counts)]
-    done=subprocess.run(cmd,cwd=ROOT,check=True,capture_output=True,text=True); smap=dict(sample); checked=0; mismatches=[]
-    primes=odd_primes_up_to(prime_bound)
+    cmd=[str(binary),"--device",str(device),"--input",str(inp),"--output",str(outp),"--prime-bound",str(oracle.prime_bound),"--counts",str(counts)]
+    done=subprocess.run(cmd,cwd=ROOT,check=True,capture_output=True,text=True); smap=dict(sample); checked=0
+    primes=oracle.primes
     scores={i:[0.0,0] for i in indices}
     lines=counts.read_text().splitlines()
     if len(lines)!=len(sample)*len(primes):
@@ -297,27 +386,29 @@ def validate_gpu_counts(binary:Path,device:int,candidates,prime_bound:int):
         i,p,n=map(int,line.split("\t"))
         if (i,p)!=(expected_i,expected_p):
             raise RuntimeError(f"GPU validation count row is missing, duplicated or out of order: {(i,p)}")
-        expected=cpu_np(smap[i],p)
-        expected=-1 if expected is None else expected
-        checked+=1
-        if n!=expected:
-            mismatches.append({"candidate_index":i,"t":str(smap[i]),"prime":p,"gpu_np":n,"cpu_np":expected})
+        expected=oracle.expected.get((i,p))
+        if expected is not None:
+            checked+=1
+            if n!=expected:
+                raise RuntimeError(f"GPU/CPU point-count mismatch on GPU {device}, candidate {i}, T={smap[i]}, prime {p}: GPU={n}, CPU={expected}")
         if n!=-1:
             if n<=0: raise RuntimeError(f"invalid GPU point count {n} at candidate {i}, prime {p}")
             scores[i][0]+=(1.0-(p-1)/n)*math.log(p)
             scores[i][1]+=1
-    if mismatches: raise RuntimeError(f"GPU/CPU point-count mismatch: {mismatches[:3]}")
-    gpu_scores={row.index:row for row in parse_scores(outp,smap)}
-    if set(gpu_scores)!=set(indices): raise RuntimeError("GPU validation score output is incomplete")
+    if checked != len(oracle.expected): raise RuntimeError("GPU validation sampled count output is incomplete")
+    score_rows=parse_scores(outp,smap)
+    if [row.index for row in score_rows]!=indices: raise RuntimeError("GPU validation score output is incomplete or duplicated")
+    gpu_scores={row.index:row for row in score_rows}
     for i,(score,good) in scores.items():
         row=gpu_scores[i]
         if row.good_primes!=good or not math.isclose(row.score,score,rel_tol=1e-10,abs_tol=1e-9):
             raise RuntimeError(f"GPU/CPU score mismatch at candidate {i}: GPU={row}, CPU={(score,good)}")
-    return {"device":device,"prime_bound":prime_bound,"candidate_indices":indices,
+    return {"device":device,"prime_bound":oracle.prime_bound,"candidate_indices":indices,
             "candidate_count":len(sample),"candidate_prime_pairs_checked":checked,
-            "all_gpu_count_rows_aggregated":len(lines),"oracle_prime_count":len(primes),
-            "oracle_prime_min":primes[0],"oracle_prime_max":primes[-1],
-            "scores_checked":len(sample),"mismatches":0,"helper_stderr":done.stderr.strip()}
+            "all_gpu_count_rows_aggregated":len(lines),
+            "scores_checked":len(sample),"mismatches":0,
+            "gpu_validation_elapsed_seconds":time.perf_counter()-started,
+            "helper_stderr":done.stderr.strip()}
 
 
 def percentile(rows,record_index=0):

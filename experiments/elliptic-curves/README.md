@@ -41,8 +41,12 @@ python3 experiments/elliptic-curves/rank31_mestre_nagao_gpu.py
 
 By default, Stage A scores 50,000 new rational parameters plus the known record
 control on GPUs 0 and 1 through prime 5000. Stage B scores the top 1,000 new
-parameters plus the control through prime 20000. The script checks exact
-CPU/GPU point counts on both devices before scoring, reports the control's rank
+parameters plus the control through prime 20000. Before scoring, the script
+computes one exact CPU oracle and checks both GPUs against it. By default it
+checks every odd prime through 1000 and a deterministic sample across the rest
+of the configured second range, capped at 256 primes total. Use
+`--validation-primes N` to change the cap or `--validation-exhaustive` to check
+every odd prime. The script reports the control's rank
 and percentile at both stages, prints 50 new leads, writes timestamped and
 `latest` JSON reports, then commits and pushes those reports to `master`.
 

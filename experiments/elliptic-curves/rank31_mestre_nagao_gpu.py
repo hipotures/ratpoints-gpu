@@ -19,6 +19,7 @@ from rank31_mn_common import (
     RECORD_T,
     RESULTS_DIR,
     calibration,
+    build_validation_oracle,
     commit_and_push,
     compile_helper,
     environment,
@@ -60,6 +61,10 @@ def main() -> None:
     parser.add_argument("--denominator-max", type=int, default=1_000_000)
     parser.add_argument("--t-span", type=parse_fraction, default=Fraction(1, 5))
     parser.add_argument("--batch-candidates", type=int, default=12_500)
+    parser.add_argument("--validation-primes", type=int, default=256,
+                        help="maximum sampled odd primes for the CPU oracle (default: 256)")
+    parser.add_argument("--validation-exhaustive", action="store_true",
+                        help="CPU-check every odd prime through the second prime bound")
     parser.add_argument("--force-rebuild", action="store_true")
     parser.add_argument("--calibration-only", action="store_true")
     parser.add_argument("--no-push", action="store_true")
@@ -76,6 +81,8 @@ def main() -> None:
         parser.error("invalid denominator range")
     if args.batch_candidates < 1:
         parser.error("--batch-candidates must be positive")
+    if args.validation_primes < 1:
+        parser.error("--validation-primes must be positive")
 
     total_started = time.perf_counter()
     timings: dict[str, float] = {}
@@ -103,11 +110,17 @@ def main() -> None:
         args.t_span,
     )
     print(f"Generated {len(candidates)-1:,} new T values plus record control T={RECORD_T}.")
-    validation = [validate_gpu_counts(helper, device, candidates, args.refine_prime_bound)
-                  for device in devices]
+    oracle = build_validation_oracle(candidates, args.refine_prime_bound,
+                                     args.validation_primes, args.validation_exhaustive)
+    print(f"CPU oracle: {len(oracle.expected)} pairs at {len(oracle.sampled_primes)} primes "
+          f"({oracle.sampled_primes[0]}..{oracle.sampled_primes[-1]}), "
+          f"mode={oracle.mode}, workers={oracle.cpu_workers}, "
+          f"elapsed={oracle.cpu_seconds:.2f}s", flush=True)
+    gpu_checks = [validate_gpu_counts(helper, device, oracle) for device in devices]
+    validation = {"oracle": oracle.report(), "gpu_checks": gpu_checks}
     print(
         f"GPU/CPU exact point-count validation passed for "
-        f"{sum(item['candidate_prime_pairs_checked'] for item in validation)} "
+        f"{sum(item['candidate_prime_pairs_checked'] for item in gpu_checks)} "
         f"candidate-prime pairs across {len(devices)} GPU(s)."
     )
     timings["build_and_validation"] = time.perf_counter() - started
@@ -208,6 +221,8 @@ def main() -> None:
             "refine_top": args.refine_top,
             "refine_prime_bound": args.refine_prime_bound,
             "batch_candidates": args.batch_candidates,
+            "validation_primes": args.validation_primes,
+            "validation_exhaustive": args.validation_exhaustive,
         },
         "calibration": cal,
         "cuda_helper": helper_meta,
