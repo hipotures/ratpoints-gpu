@@ -1,0 +1,259 @@
+{
+  "curve": {
+    "a_invariants": [
+      0,
+      1,
+      1,
+      -2,
+      0
+    ],
+    "discriminant": 389,
+    "equation": "y^2 + y = x^3 + x^2 - 2x",
+    "generator_p": [
+      0,
+      0
+    ],
+    "generator_q": [
+      1,
+      0
+    ],
+    "lmfdb_label": "389.a1"
+  },
+  "direction_samples": [
+    {
+      "difference": 0.1644413507565332,
+      "m": 80,
+      "n": 0,
+      "observed_naive_x_height": 2092.803129336885,
+      "predicted_height_quadratic": 2092.6386879861284
+    },
+    {
+      "difference": -0.3656122274469453,
+      "m": 0,
+      "n": 80,
+      "observed_naive_x_height": 3050.4785721876287,
+      "predicted_height_quadratic": 3050.8441844150757
+    },
+    {
+      "difference": -0.431033974856291,
+      "m": 80,
+      "n": 80,
+      "observed_naive_x_height": 5892.401044652388,
+      "predicted_height_quadratic": 5892.832078627244
+    },
+    {
+      "difference": 0.07680186587549542,
+      "m": 80,
+      "n": -80,
+      "observed_naive_x_height": 4394.210468041039,
+      "predicted_height_quadratic": 4394.133666175164
+    },
+    {
+      "difference": -0.0015719736170467513,
+      "m": 40,
+      "n": 80,
+      "observed_naive_x_height": 3948.676887551011,
+      "predicted_height_quadratic": 3948.678459524628
+    },
+    {
+      "difference": -0.1520338861860182,
+      "m": 80,
+      "n": 40,
+      "observed_naive_x_height": 3229.872303316731,
+      "predicted_height_quadratic": 3230.024337202917
+    }
+  ],
+  "environment": {
+    "implementation": "CPython",
+    "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.43",
+    "python": "3.14.4"
+  },
+  "generated_at_utc": "2026-09-17T18:07:14.744408+00:00",
+  "git_head": "faf8aee2913702a927208705608b349b84619d82",
+  "height_convergence": [
+    {
+      "height_p": 0.29973690909979633,
+      "height_p_plus_q": 0.9160525404107304,
+      "height_q": 0.45413304872227817,
+      "pairing_pq": 0.08109129129432793,
+      "regulator": 0.12954463882030132,
+      "scale": 4
+    },
+    {
+      "height_p": 0.3262429167292151,
+      "height_p_plus_q": 0.9166951140129959,
+      "height_q": 0.4702676962014585,
+      "pairing_pq": 0.06009225054116113,
+      "regulator": 0.14981042627719057,
+      "scale": 8
+    },
+    {
+      "height_p": 0.32630789988230813,
+      "height_p_plus_q": 0.9191536831930887,
+      "height_q": 0.4755231938258831,
+      "pairing_pq": 0.058661294742448716,
+      "regulator": 0.15172582722179123,
+      "scale": 16
+    },
+    {
+      "height_p": 0.32654507017067946,
+      "height_p_plus_q": 0.9207549430382473,
+      "height_q": 0.4762654557142895,
+      "pairing_pq": 0.05897220857663918,
+      "regulator": 0.15204441527168666,
+      "scale": 32
+    },
+    {
+      "height_p": 0.32696454966708133,
+      "height_p_plus_q": 0.920754956872399,
+      "height_q": 0.47669130359417294,
+      "pairing_pq": 0.05854955180557239,
+      "regulator": 0.1524331073932493,
+      "scale": 64
+    },
+    {
+      "height_p": 0.32697479499783255,
+      "height_p_plus_q": 0.9207550122855069,
+      "height_q": 0.47669440381485556,
+      "pairing_pq": 0.05854290673640941,
+      "regulator": 0.15243978303482847,
+      "scale": 128
+    }
+  ],
+  "height_pairing_final": {
+    "matrix": [
+      [
+        0.32697479499783255,
+        0.05854290673640941
+      ],
+      [
+        0.05854290673640941,
+        0.47669440381485556
+      ]
+    ],
+    "regulator": 0.15243978303482847,
+    "regulator_absolute_error": 2.0394908315291005e-05
+  },
+  "lattice": {
+    "extra_integral_points": [],
+    "integral_points_found": [
+      [
+        -2,
+        -1
+      ],
+      [
+        -2,
+        0
+      ],
+      [
+        -1,
+        -2
+      ],
+      [
+        -1,
+        1
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        3,
+        -6
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        -9
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        6,
+        -16
+      ],
+      [
+        6,
+        15
+      ],
+      [
+        39,
+        -247
+      ],
+      [
+        39,
+        246
+      ],
+      [
+        133,
+        -1540
+      ],
+      [
+        133,
+        1539
+      ],
+      [
+        188,
+        -2585
+      ],
+      [
+        188,
+        2584
+      ]
+    ],
+    "known_integral_points_missing": [],
+    "known_integral_points_recovered": 20,
+    "maximum_component_bit_lengths": [
+      8501,
+      8501,
+      12749,
+      12752
+    ],
+    "maximum_component_bits": 12752,
+    "maximum_component_pair": [
+      -80,
+      -80
+    ],
+    "nonzero_pairs": 25920,
+    "relations_to_infinity": []
+  },
+  "parameters": {
+    "height_scale": 128,
+    "radius": 80
+  },
+  "reference": {
+    "height_p": 0.32700077365160496,
+    "height_q": 0.47671165934373955,
+    "integral_points_count": 20,
+    "rank": 2,
+    "regulator": 0.15246017794314376,
+    "source": "https://www.lmfdb.org/EllipticCurve/Q/389/a/1",
+    "torsion": "trivial"
+  },
+  "timings_seconds": {
+    "stage1_validation": 0.00018473999989510048,
+    "stage2_heights": 0.41752979600096296,
+    "stage3_precompute": 0.05934757599970908,
+    "stage4_lattice": 17.437671263000084,
+    "stage5_directions": 0.01066887399974803,
+    "stage6_summary": 3.182000000379048e-05,
+    "total": 17.9254838249999
+  }
+}
