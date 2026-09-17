@@ -233,7 +233,9 @@ int main(int argc, char** argv) {
         int p = primes[i];
         int off = offsets[i];
         chi[off] = 0;
-        for (int y = 1; y < p; ++y) chi[off + (long long(y) * y) % p] = 1;
+        for (int y = 1; y < p; ++y) {
+            chi[off + (static_cast<long long>(y) * y) % p] = 1;
+        }
     }
 
     Candidate* d_candidates = nullptr;
