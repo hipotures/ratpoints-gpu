@@ -97,10 +97,12 @@ def main() -> None:
         args.t_span,
     )
     print(f"Generated {len(candidates)-1:,} new T values plus record control T={RECORD_T}.")
-    validation = validate_gpu_counts(helper, devices[0], candidates, args.broad_prime_bound)
+    validation = [validate_gpu_counts(helper, device, candidates, args.refine_prime_bound)
+                  for device in devices]
     print(
         f"GPU/CPU exact point-count validation passed for "
-        f"{validation['candidate_prime_pairs_checked']} candidate-prime pairs."
+        f"{sum(item['candidate_prime_pairs_checked'] for item in validation)} "
+        f"candidate-prime pairs across {len(devices)} GPU(s)."
     )
     timings["build_and_validation"] = time.perf_counter() - started
 

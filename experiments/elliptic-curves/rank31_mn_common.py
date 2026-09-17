@@ -221,8 +221,9 @@ def score_candidates(binary:Path,candidates,devices,prime_bound,label,batch_size
             batch=assigned[start:start+batch_size]
             inp=BUILD_DIR/f"mn-{label}-gpu{device}-batch{b}.tsv"; outp=BUILD_DIR/f"mn-{label}-gpu{device}-batch{b}.out"
             helper_input(inp,batch); cmd=[str(binary),"--device",str(device),"--input",str(inp),"--output",str(outp),"--prime-bound",str(prime_bound)]
-            t0=time.perf_counter(); done=subprocess.run(cmd,cwd=ROOT,check=True,capture_output=True,text=True); sec=time.perf_counter()-t0
-            rows.extend(parse_scores(outp,cmap)); stats.append({"device":device,"batch":b,"candidate_count":len(batch),"seconds":sec,"helper_stderr":done.stderr.strip()})
+            t0=time.perf_counter(); done=subprocess.run(cmd,cwd=ROOT,check=True,capture_output=True,text=True); t1=time.perf_counter(); sec=t1-t0
+            rows.extend(parse_scores(outp,cmap)); stats.append({"device":device,"batch":b,"candidate_count":len(batch),"seconds":sec,
+                "start_seconds_from_stage":t0-started,"end_seconds_from_stage":t1-started,"helper_stderr":done.stderr.strip()})
             with lock:
                 completed_global+=len(batch); elapsed=time.perf_counter()-started; rate=completed_global/elapsed if elapsed else 0; eta=(total-completed_global)/rate if rate else 0
                 print(f"[{label}] GPU {device} batch {b}: {completed_global:,}/{total:,} ({100*completed_global/total:5.1f}%) rate={rate:,.0f}/s ETA={eta:,.1f}s",flush=True)
@@ -232,7 +233,15 @@ def score_candidates(binary:Path,candidates,devices,prime_bound,label,batch_size
         for future in [pool.submit(worker,d) for d in devices]:
             rows,stats=future.result(); all_rows.extend(rows); all_stats.extend(stats)
     all_rows.sort(key=lambda r:r.index)
-    if len(all_rows)!=len(candidates): raise RuntimeError("GPU scorer returned wrong row count")
+    if [row.index for row in all_rows]!=list(range(len(candidates))):
+        raise RuntimeError("GPU scorer returned missing or duplicate candidate rows")
+    if len(devices)>1 and not any(
+        a["device"]!=b["device"] and
+        max(a["start_seconds_from_stage"],b["start_seconds_from_stage"]) <
+        min(a["end_seconds_from_stage"],b["end_seconds_from_stage"])
+        for i,a in enumerate(all_stats) for b in all_stats[i+1:]
+    ):
+        raise RuntimeError("GPU worker intervals did not overlap")
     return all_rows,all_stats
 
 
@@ -264,15 +273,31 @@ def cpu_np(t:Fraction,prime:int):
 
 
 def validate_gpu_counts(binary:Path,device:int,candidates,prime_bound:int):
-    sample=[(i,candidates[i]) for i in range(min(4,len(candidates)))]
-    inp=BUILD_DIR/"mn-validation.tsv"; outp=BUILD_DIR/"mn-validation.out"; counts=BUILD_DIR/"mn-validation-counts.tsv"; helper_input(inp,sample)
-    bound=min(prime_bound,97); cmd=[str(binary),"--device",str(device),"--input",str(inp),"--output",str(outp),"--prime-bound",str(bound),"--counts",str(counts)]
+    indices=sorted({0,1,len(candidates)//2,len(candidates)-1})
+    sample=[(i,candidates[i]) for i in indices]
+    inp=BUILD_DIR/f"mn-validation-gpu{device}.tsv"; outp=BUILD_DIR/f"mn-validation-gpu{device}.out"
+    counts=BUILD_DIR/f"mn-validation-gpu{device}-counts.tsv"; helper_input(inp,sample)
+    cmd=[str(binary),"--device",str(device),"--input",str(inp),"--output",str(outp),"--prime-bound",str(prime_bound),"--counts",str(counts)]
     done=subprocess.run(cmd,cwd=ROOT,check=True,capture_output=True,text=True); smap=dict(sample); checked=0; mismatches=[]
+    scores={i:[0.0,0] for i in indices}
     for line in counts.read_text().splitlines():
         i,p,n=line.split("\t"); i=int(i); p=int(p); n=int(n); expected=cpu_np(smap[i],p); expected=-1 if expected is None else expected; checked+=1
         if n!=expected:mismatches.append({"candidate_index":i,"t":str(smap[i]),"prime":p,"gpu_np":n,"cpu_np":expected})
+        if expected!=-1:
+            scores[i][0]+=(1.0-(p-1)/expected)*math.log(p)
+            scores[i][1]+=1
+    if checked != len(sample)*len([p for p in range(3,prime_bound+1,2) if all(p%d for d in range(3,math.isqrt(p)+1,2))]):
+        raise RuntimeError("GPU validation count output is incomplete")
     if mismatches: raise RuntimeError(f"GPU/CPU point-count mismatch: {mismatches[:3]}")
-    return {"device":device,"prime_bound":bound,"candidate_count":len(sample),"candidate_prime_pairs_checked":checked,"mismatches":0,"helper_stderr":done.stderr.strip()}
+    gpu_scores={row.index:row for row in parse_scores(outp,smap)}
+    if set(gpu_scores)!=set(indices): raise RuntimeError("GPU validation score output is incomplete")
+    for i,(score,good) in scores.items():
+        row=gpu_scores[i]
+        if row.good_primes!=good or not math.isclose(row.score,score,rel_tol=1e-10,abs_tol=1e-9):
+            raise RuntimeError(f"GPU/CPU score mismatch at candidate {i}: GPU={row}, CPU={(score,good)}")
+    return {"device":device,"prime_bound":prime_bound,"candidate_indices":indices,
+            "candidate_count":len(sample),"candidate_prime_pairs_checked":checked,
+            "scores_checked":len(sample),"mismatches":0,"helper_stderr":done.stderr.strip()}
 
 
 def percentile(rows,record_index=0):

@@ -146,7 +146,7 @@ __global__ void score_kernel(
         delta = subm(delta, mulm(mulm(b2, b2, prime), b8, prime), prime);
         delta = subm(delta, mulm(norm64(8LL, prime), mulm(mulm(b4, b4, prime), b4, prime), prime), prime);
         delta = subm(delta, mulm(norm64(27LL, prime), mulm(b6, b6, prime), prime), prime);
-        delta = addm(delta, mulm(norm64(9LL, prime), mulm(mulm(b2, b4, prime), b6, prime), prime);
+        delta = addm(delta, mulm(norm64(9LL, prime), mulm(mulm(b2, b4, prime), b6, prime), prime), prime);
         if (delta == 0) {
             if (tid == 0 && counts) counts[ci * prime_count + pi] = -1;
             __syncthreads();
