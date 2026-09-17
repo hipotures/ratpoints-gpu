@@ -166,7 +166,7 @@ def parse_args():
     parser.add_argument("--denominator-max", type=int, default=5_000_000)
     parser.add_argument("--t-span", type=parse_fraction, default=Fraction(1, 2))
     parser.add_argument("--devices", default="0,1")
-    parser.add_argument("--batch-candidates", type=int, default=12_500)
+    parser.add_argument("--batch-candidates", type=int, default=50_000)
     parser.add_argument("--validation-primes", type=int, default=256)
     parser.add_argument("--validation-exhaustive", action="store_true")
     parser.add_argument("--no-push", action="store_true")
