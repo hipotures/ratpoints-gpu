@@ -1,0 +1,229 @@
+{
+  "arithmetic_backend": {
+    "name": "Python fractions.Fraction",
+    "python": "3.14.4"
+  },
+  "arithmetic_invariants": {
+    "analytic_rank": null,
+    "conductor": null,
+    "global_root_number": null,
+    "integral_discriminant_small_prime_divisors_up_to_1000": [
+      {
+        "prime": 2,
+        "valuation_on_integral_model": 14
+      },
+      {
+        "prime": 3,
+        "valuation_on_integral_model": 7
+      },
+      {
+        "prime": 5,
+        "valuation_on_integral_model": 6
+      },
+      {
+        "prime": 11,
+        "valuation_on_integral_model": 3
+      },
+      {
+        "prime": 29,
+        "valuation_on_integral_model": 2
+      },
+      {
+        "prime": 37,
+        "valuation_on_integral_model": 2
+      },
+      {
+        "prime": 43,
+        "valuation_on_integral_model": 2
+      },
+      {
+        "prime": 61,
+        "valuation_on_integral_model": 2
+      },
+      {
+        "prime": 167,
+        "valuation_on_integral_model": 2
+      }
+    ],
+    "local_reduction_data": null,
+    "unfactored_discriminant_cofactor": "202299297697581141037437089621184905839886492854404028579093526655941687377163",
+    "warning": "Divisors of a nonminimal model discriminant are not a certified bad-prime list."
+  },
+  "external_work": {
+    "commands": [
+      "sage -python experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode invariants",
+      "sage -python experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode descent",
+      "sage -python experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode saturation",
+      "sage -python experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode search --log-height N"
+    ],
+    "reason": "SageMath, PARI/GP, mwrank and Magma executables are unavailable on this host",
+    "search_note": "Run only after inspecting the minimal model, known-point x-heights and descent bounds; N is logarithmic naive x-height on the minimal model."
+  },
+  "family_to_integral_change": {
+    "convention": "x_family=u^2*x_integral; y_family=u^3*y_integral",
+    "five_ainvariants_verified_exactly": true,
+    "r": "0",
+    "s": "0",
+    "t": "0",
+    "u": "1/6400"
+  },
+  "family_values": {
+    "B": "-908597517457805975669208489/131072000000",
+    "D": "-160186404709089639/4096000",
+    "E": "-882271670078350359/20480000",
+    "L": "743773643/6400",
+    "p": "-143316209/800",
+    "q": "1693873637/6400"
+  },
+  "generated_at_utc": "2026-09-17T22:52:45.864131+00:00",
+  "heuristic_evidence": {
+    "known_rank_31_control_score_p_500000": 227.159765987,
+    "mestre_nagao_score_p_500000": 215.984351659,
+    "rank_claim": "none; these scores are not rank proofs",
+    "source": "GitHub issue #12"
+  },
+  "models": {
+    "family": {
+      "ainvariants": [
+        "-743773643/6400",
+        "-841601846811899277/10240000",
+        "908597517457805975669208489/131072000000",
+        "141327926806535042296103593778830401/83886080000000",
+        "0"
+      ],
+      "c4": "2539760378566422974893243980396479113/67108864000000",
+      "c6": "-895891278287265074527795454520066344505794309960621089/109951162777600000000",
+      "discriminant": "-130091877343483452930090084148806298233652258483801760137339800863552586416056786282533463120351443339/18446744073709551616000000000000000000",
+      "j_invariant": "-16382426612592092200466828607651847372777388764075263486248632637063790120740631746199119011277034819421495897/2131425318395632892806595938694042390260158602998608038090175297348445575840674386453028259763838047666176"
+    },
+    "integral": {
+      "ainvariants": [
+        "-743773643",
+        "-3366407387247597108",
+        "1817195034915611951338416978",
+        "2826558536130700845922071875576608020",
+        "0"
+      ],
+      "c4": "63494009464160574372331099509911977825",
+      "c6": "-559932048929540671579872159075041465316121443725388180625",
+      "discriminant": "-33303520599931763950103061542094412347814978171853250595158989021069462122510537288328566558809969494784000000",
+      "j_invariant": "-16382426612592092200466828607651847372777388764075263486248632637063790120740631746199119011277034819421495897/2131425318395632892806595938694042390260158602998608038090175297348445575840674386453028259763838047666176",
+      "minimality": "not established"
+    },
+    "minimal": null
+  },
+  "parameter_t": "-47/80",
+  "point_relation": "P0 + PD + PE = O, verified by exact group addition",
+  "rank": {
+    "global_upper_bound": null,
+    "proof": "P0 is nonidentity and rational torsion is trivial",
+    "rigorous_lower_bound": 1,
+    "saturation_status": "not attempted; SageMath/mwrank unavailable on this host",
+    "visible_subgroup_rank_exact": null,
+    "visible_subgroup_rank_range": [
+      1,
+      2
+    ]
+  },
+  "source": "https://elliptic-rank.icarm.cloud/curve/302",
+  "source_commit": "aa5b51a2248b95b9cd6e1f8fe740542beaca95cf",
+  "timings_seconds": {
+    "exact_triage": 0.00039042800017341506
+  },
+  "torsion": {
+    "good_prime_reductions": [
+      {
+        "integral_discriminant_mod_prime": 4,
+        "point_count": 13,
+        "prime": 7
+      },
+      {
+        "integral_discriminant_mod_prime": 4,
+        "point_count": 21,
+        "prime": 13
+      }
+    ],
+    "proof": "good reduction at 7 and 13; torsion order divides gcd(13,21)=1",
+    "status": "proven trivial"
+  },
+  "visible_points": [
+    {
+      "family_xy": [
+        "0",
+        "0"
+      ],
+      "integral_xy": [
+        "0",
+        "0"
+      ],
+      "inverse_of": null,
+      "label": "P0",
+      "verified_exactly": true
+    },
+    {
+      "family_xy": [
+        "0",
+        "-908597517457805975669208489/131072000000"
+      ],
+      "integral_xy": [
+        "0",
+        "-1817195034915611951338416978"
+      ],
+      "inverse_of": "P0",
+      "label": "-P0",
+      "verified_exactly": true
+    },
+    {
+      "family_xy": [
+        "160186404709089639/4096000",
+        "0"
+      ],
+      "integral_xy": [
+        "1601864047090896390",
+        "0"
+      ],
+      "inverse_of": null,
+      "label": "PD",
+      "verified_exactly": true
+    },
+    {
+      "family_xy": [
+        "160186404709089639/4096000",
+        "-39110673563755774450785513/16384000000"
+      ],
+      "integral_xy": [
+        "1601864047090896390",
+        "-625770777020092391212568208"
+      ],
+      "inverse_of": "PD",
+      "label": "-PD",
+      "verified_exactly": true
+    },
+    {
+      "family_xy": [
+        "882271670078350359/20480000",
+        "0"
+      ],
+      "integral_xy": [
+        "1764543340156700718",
+        "0"
+      ],
+      "inverse_of": null,
+      "label": "PE",
+      "verified_exactly": true
+    },
+    {
+      "family_xy": [
+        "882271670078350359/20480000",
+        "-63096775821984308431355163/32768000000"
+      ],
+      "integral_xy": [
+        "1764543340156700718",
+        "-504774206575874467450841304"
+      ],
+      "inverse_of": "PE",
+      "label": "-PE",
+      "verified_exactly": true
+    }
+  ]
+}
