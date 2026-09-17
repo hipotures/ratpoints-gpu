@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import argparse
+import gzip
+import hashlib
 import json
 import subprocess
 import sys
@@ -169,12 +171,15 @@ def main() -> None:
     generated = datetime.now(timezone.utc)
     stamp = generated.strftime("%Y%m%dT%H%M%SZ")
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    timestamped = RESULTS_DIR / f"rank31-mestre-nagao-{stamp}.json"
-    latest = RESULTS_DIR / "rank31-mestre-nagao-latest.json"
+    full_timestamped = RESULTS_DIR / f"rank31-mestre-nagao-{stamp}.json.gz"
+    full_latest = RESULTS_DIR / "rank31-mestre-nagao-latest.json.gz"
+    summary_timestamped = RESULTS_DIR / f"rank31-mestre-nagao-{stamp}.summary.json"
+    summary_latest = RESULTS_DIR / "rank31-mestre-nagao-latest.json"
     timings["total_before_publication"] = time.perf_counter() - total_started
+    source_head = git(["rev-parse", "HEAD"]).stdout.strip()
     report = {
         "generated_at_utc": generated.isoformat(),
-        "git_head_before_result_commit": git(["rev-parse", "HEAD"]).stdout.strip(),
+        "git_head_before_result_commit": source_head,
         "sources": {
             "icarm_curve_302": ICARM_URL,
             "mestre_nagao_reference": MESTRE_NAGAO_REFERENCE_URL,
@@ -218,11 +223,62 @@ def main() -> None:
         "gpu_work": {"broad": broad_stats, "refined": refined_stats},
         "timings_seconds": timings,
     }
-    text = json.dumps(report, indent=2, sort_keys=True) + "\n"
-    timestamped.write_text(text)
-    latest.write_text(text)
-    print(f"Wrote {timestamped}")
-    print(f"Wrote {latest}")
+
+    full_bytes = (json.dumps(report, indent=2, sort_keys=True) + "\n").encode("utf-8")
+    compressed = gzip.compress(full_bytes, compresslevel=9, mtime=0)
+    full_timestamped.write_bytes(compressed)
+    full_latest.write_bytes(compressed)
+
+    calibration_summary = {
+        "source": cal["source"],
+        "record_t": cal["record_t"],
+        "change_of_variables_u": cal["change_of_variables"]["u"],
+        "witness_count": len(cal["witnesses"]),
+        "minimum_family_x_projective_height": cal["minimum_family_x_projective_height"],
+        "median_family_x_projective_height": cal["median_family_x_projective_height"],
+        "maximum_family_x_projective_height": cal["maximum_family_x_projective_height"],
+        "reachable_at_h_2m": cal["reachable_at_h_2m"],
+        "reachable_at_h_20m": cal["reachable_at_h_20m"],
+    }
+    artifact_meta = {
+        "full_report_timestamped": full_timestamped.name,
+        "full_report_latest": full_latest.name,
+        "format": "gzip-compressed UTF-8 JSON",
+        "uncompressed_bytes": len(full_bytes),
+        "compressed_bytes": len(compressed),
+        "compression_ratio": len(compressed) / len(full_bytes) if full_bytes else 0.0,
+        "compressed_sha256": hashlib.sha256(compressed).hexdigest(),
+        "uncompressed_sha256": hashlib.sha256(full_bytes).hexdigest(),
+    }
+    summary = {
+        "generated_at_utc": generated.isoformat(),
+        "git_head_before_result_commit": source_head,
+        "sources": report["sources"],
+        "research_note": report["research_note"],
+        "environment": report["environment"],
+        "pipeline": report["pipeline"],
+        "parameters": report["parameters"],
+        "calibration_summary": calibration_summary,
+        "cuda_helper": helper_meta,
+        "gpu_cpu_validation": validation,
+        "record_control": report["record_control"],
+        "top_new_leads": report["top_new_leads"],
+        "gpu_work": report["gpu_work"],
+        "timings_seconds": timings,
+        "full_report_artifact": artifact_meta,
+    }
+    summary_text = json.dumps(summary, indent=2, sort_keys=True) + "\n"
+    summary_timestamped.write_text(summary_text, encoding="utf-8")
+    summary_latest.write_text(summary_text, encoding="utf-8")
+
+    print(
+        f"Wrote {full_timestamped} "
+        f"({len(full_bytes):,} -> {len(compressed):,} bytes, "
+        f"{100.0 * len(compressed) / len(full_bytes):.1f}% of original)"
+    )
+    print(f"Wrote {full_latest}")
+    print(f"Wrote {summary_timestamped}")
+    print(f"Wrote {summary_latest}")
 
     if args.no_push:
         print("--no-push selected; result files were not committed.")
@@ -230,7 +286,7 @@ def main() -> None:
 
     stage(6, "commit, push, and verify GitHub results")
     publication = commit_and_push(
-        [timestamped, latest],
+        [full_timestamped, full_latest, summary_timestamped, summary_latest],
         f"Record rank-31 Mestre-Nagao GPU sieve {stamp}",
     )
     print(json.dumps(publication, indent=2))
