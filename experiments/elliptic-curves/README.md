@@ -86,3 +86,32 @@ above one million and unsupported memory budgets with an error. Optional
 `--counts` output remains ordered by candidate and then prime.
 The Python build helper retains only the current source-hash executable in
 ignored `build/`, so a stale helper cannot be selected by a filename glob.
+
+## Exact triage of T=-47/80
+
+Run the short, standard-library-only exact computation with:
+
+```bash
+python3 experiments/elliptic-curves/rank31_t_minus_47_80.py
+```
+
+It writes `results/rank31-t-minus-47-80.json` and a short Markdown summary.
+The report proves trivial rational torsion and rank at least 1 from visible
+family points. It does not claim their exact subgroup rank or a global rank
+upper bound. SageMath, PARI/GP, mwrank and Magma are not installed on the
+current host, so minimal-model and descent results remain pending.
+
+On a machine with SageMath, run the following modes separately after reviewing
+their expected cost:
+
+```bash
+sage -python experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode invariants
+sage -python experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode descent
+sage -python experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode saturation
+sage -python experiments/elliptic-curves/rank31_t_minus_47_80_sage.py --mode analytic
+```
+
+The optional `--mode search --log-height N` searches the **minimal model** with
+Sage's logarithmic naive x-height convention. Choose `N` only after inspecting
+the minimal model, the known point heights printed by that mode, and the
+descent bounds. Increasing `N` can make the search much slower.
