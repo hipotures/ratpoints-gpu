@@ -54,3 +54,26 @@ Use `--candidates`, `--first-prime-bound`, `--finalists`,
 `--second-prime-bound`, `--devices`, and `--batch-candidates` to configure the
 run. `--no-push` writes results without publishing them. The scores rank
 candidate specializations heuristically; they do not prove rank.
+
+## Multi-seed campaign
+
+Run the sharded campaign manually from the repository root:
+
+```bash
+python3 experiments/elliptic-curves/rank31_mestre_nagao_campaign.py
+```
+
+Its defaults use seeds 304–308, one million new candidates per seed, Stage A
+through prime 5000, the global top 50,000 distinct new parameters, and Stage B
+through prime 100000. It uses both GPUs and the shared bounded CPU oracle from
+the single-run tool. Each shard gets compressed complete results and a readable
+summary. A compressed global Stage B report contains every finalist with its
+source shard, seed, and Stage A rank; a readable campaign summary and `latest`
+summary give the control statistics, top 100 leads, timings, and artifact
+hashes. Results are committed, pushed, and verified after a successful run.
+
+Configure the campaign with `--seeds` or `--seed-start` and `--shards`,
+`--candidates-per-shard`, `--first-prime-bound`, `--global-finalists`,
+`--second-prime-bound`, `--denominator-min`, `--denominator-max`, `--t-span`,
+`--devices`, and `--batch-candidates`. `--no-push` keeps generated results local.
+The campaign is a heuristic search; its scores do not prove curve rank.
