@@ -1,0 +1,958 @@
+{
+  "calibration_summary": {
+    "change_of_variables_u": "1/285174417675",
+    "maximum_family_x_projective_height": "33706711876716923375481602382047364043808",
+    "median_family_x_projective_height": "28749164200925044659885901334624",
+    "minimum_family_x_projective_height": "70896929906058073734428243314",
+    "reachable_at_h_20m": 0,
+    "reachable_at_h_2m": 0,
+    "record_t": "164518/924945",
+    "source": "https://elliptic-rank.icarm.cloud/curve/302",
+    "witness_count": 31
+  },
+  "cuda_helper": {
+    "binary_sha256": "a2eeca113c3c1569dd04da1ab7d1099ba9a6e826b62b6512ac96c50431a1a8ad",
+    "compile_command": [
+      "/usr/local/cuda/bin/nvcc",
+      "-O3",
+      "-std=c++14",
+      "-arch=native",
+      "-lineinfo",
+      "-o",
+      "/home/user/DEV/ratpoints-gpu/build/mestre_nagao_5dc753195b0bb163",
+      "/home/user/DEV/ratpoints-gpu/experiments/elliptic-curves/mestre_nagao_score.cu"
+    ],
+    "nvcc_version": "Build cuda_13.4.r13.4/compiler.38855100_0",
+    "source_path": "experiments/elliptic-curves/mestre_nagao_score.cu",
+    "source_sha256": "5dc753195b0bb163c03d81d1c855f710d58b0b905b921b4bc86752738c89e2bf"
+  },
+  "environment": {
+    "device_listing": "device=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\n",
+    "implementation": "CPython",
+    "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.43",
+    "python": "3.14.4"
+  },
+  "full_report_artifact": {
+    "compressed_bytes": 22931833,
+    "compressed_sha256": "3ce945e12435f1a934c35bc5a09065cee0a786ae4733fc88c7495cefe4a5de7f",
+    "compression_ratio": 0.1839330340921383,
+    "format": "gzip-compressed UTF-8 JSON",
+    "full_report_latest": "rank31-mestre-nagao-latest.json.gz",
+    "full_report_timestamped": "rank31-mestre-nagao-20260917T194611Z.json.gz",
+    "uncompressed_bytes": 124674902,
+    "uncompressed_sha256": "6845ae50c65d44216965c22526895defa51bb3c73123ebeff0d7d1f0c7a5eab1"
+  },
+  "generated_at_utc": "2026-09-17T19:46:11.522262+00:00",
+  "git_head_before_result_commit": "8718aced62b58acd2866a97ef3c03484fae84b2f",
+  "gpu_cpu_validation": [
+    {
+      "all_gpu_count_rows_aggregated": 9044,
+      "candidate_count": 4,
+      "candidate_indices": [
+        0,
+        1,
+        500000,
+        1000000
+      ],
+      "candidate_prime_pairs_checked": 9044,
+      "device": 0,
+      "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=4 primes=2261 prime_bound=20000 kernel_seconds=0.057889",
+      "mismatches": 0,
+      "oracle_prime_count": 2261,
+      "oracle_prime_max": 19997,
+      "oracle_prime_min": 3,
+      "prime_bound": 20000,
+      "scores_checked": 4
+    },
+    {
+      "all_gpu_count_rows_aggregated": 9044,
+      "candidate_count": 4,
+      "candidate_indices": [
+        0,
+        1,
+        500000,
+        1000000
+      ],
+      "candidate_prime_pairs_checked": 9044,
+      "device": 1,
+      "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=4 primes=2261 prime_bound=20000 kernel_seconds=0.057838",
+      "mismatches": 0,
+      "oracle_prime_count": 2261,
+      "oracle_prime_max": 19997,
+      "oracle_prime_min": 3,
+      "prime_bound": 20000,
+      "scores_checked": 4
+    }
+  ],
+  "gpu_work": {
+    "broad": [
+      {
+        "batch": 1,
+        "candidate_count": 50000,
+        "device": 0,
+        "end_seconds_from_stage": 1.794750428000043,
+        "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.335022",
+        "seconds": 1.7727125190012885,
+        "start_seconds_from_stage": 0.022037908998754574
+      },
+      {
+        "batch": 2,
+        "candidate_count": 50000,
+        "device": 0,
+        "end_seconds_from_stage": 3.5591231159996823,
+        "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.329548",
+        "seconds": 1.7147636280005827,
+        "start_seconds_from_stage": 1.8443594879990997
+      },
+      {
+        "batch": 3,
+        "candidate_count": 50000,
+        "device": 0,
+        "end_seconds_from_stage": 5.574322129999928,
+        "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.327564",
+        "seconds": 1.8459397820006416,
+        "start_seconds_from_stage": 3.728382347999286
+      },
+      {
+        "batch": 4,
+        "candidate_count": 50000,
+        "device": 0,
+        "end_seconds_from_stage": 7.371289741999135,
+        "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.328555",
+        "seconds": 1.75147558900062,
+        "start_seconds_from_stage": 5.619814152998515
+      },
+      {
+        "batch": 5,
+        "candidate_count": 50000,
+        "device": 0,
+        "end_seconds_from_stage": 9.142408687999705,
+        "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.326870",
+        "seconds": 1.7246555270012323,
+        "start_seconds_from_stage": 7.417753160998473
+      },
+      {
+        "batch": 6,
+        "candidate_count": 50000,
+        "device": 0,
+        "end_seconds_from_stage": 10.94078778399853,
+        "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.328914",
+        "seconds": 1.753087463999691,
+        "start_seconds_from_stage": 9.18770031999884
+      },
+      {
+        "batch": 7,
+        "candidate_count": 50000,
+        "device": 0,
+        "end_seconds_from_stage": 12.770242159998816,
+        "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.329149",
+        "seconds": 1.782426117999421,
+        "start_seconds_from_stage": 10.987816041999395
+      },
+      {
+        "batch": 8,
+        "candidate_count": 50000,
+        "device": 0,
+        "end_seconds_from_stage": 14.479044036999767,
+        "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.329006",
+        "seconds": 1.6634094140008528,
+        "start_seconds_from_stage": 12.815634622998914
+      },
+      {
+        "batch": 9,
+        "candidate_count": 50000,
+        "device": 0,
+        "end_seconds_from_stage": 16.34998386999905,
+        "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.326833",
+        "seconds": 1.8254716299998108,
+        "start_seconds_from_stage": 14.52451223999924
+      },
+      {
+        "batch": 10,
+        "candidate_count": 50000,
+        "device": 0,
+        "end_seconds_from_stage": 18.138059388998954,
+        "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.329214",
+        "seconds": 1.7429063170002337,
+        "start_seconds_from_stage": 16.39515307199872
+      },
+      {
+        "batch": 11,
+        "candidate_count": 1,
+        "device": 0,
+        "end_seconds_from_stage": 18.50160629199854,
+        "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=1 primes=668 prime_bound=5000 kernel_seconds=0.008605",
+        "seconds": 0.3272513399988384,
+        "start_seconds_from_stage": 18.174354951999703
+      },
+      {
+        "batch": 1,
+        "candidate_count": 50000,
+        "device": 1,
+        "end_seconds_from_stage": 1.8691737079989252,
+        "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.330732",
+        "seconds": 1.8470970090002083,
+        "start_seconds_from_stage": 0.022076698998716893
+      },
+      {
+        "batch": 2,
+        "candidate_count": 50000,
+        "device": 1,
+        "end_seconds_from_stage": 3.6565667309987475,
+        "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.323072",
+        "seconds": 1.7357189109989122,
+        "start_seconds_from_stage": 1.9208478199998353
+      },
+      {
+        "batch": 3,
+        "candidate_count": 50000,
+        "device": 1,
+        "end_seconds_from_stage": 5.45288648299902,
+        "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.317234",
+        "seconds": 1.7203307290001248,
+        "start_seconds_from_stage": 3.732555753998895
+      },
+      {
+        "batch": 4,
+        "candidate_count": 50000,
+        "device": 1,
+        "end_seconds_from_stage": 7.273819797999749,
+        "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.317586",
+        "seconds": 1.7740698260004137,
+        "start_seconds_from_stage": 5.499749971999336
+      },
+      {
+        "batch": 5,
+        "candidate_count": 50000,
+        "device": 1,
+        "end_seconds_from_stage": 9.044912122999449,
+        "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.316884",
+        "seconds": 1.7235500700007833,
+        "start_seconds_from_stage": 7.321362052998666
+      },
+      {
+        "batch": 6,
+        "candidate_count": 50000,
+        "device": 1,
+        "end_seconds_from_stage": 10.862028578998434,
+        "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.316489",
+        "seconds": 1.770081107999431,
+        "start_seconds_from_stage": 9.091947470999003
+      },
+      {
+        "batch": 7,
+        "candidate_count": 50000,
+        "device": 1,
+        "end_seconds_from_stage": 12.605440502999045,
+        "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.317046",
+        "seconds": 1.6941230539996468,
+        "start_seconds_from_stage": 10.911317448999398
+      },
+      {
+        "batch": 8,
+        "candidate_count": 50000,
+        "device": 1,
+        "end_seconds_from_stage": 14.40985271199861,
+        "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.317599",
+        "seconds": 1.7579856880001898,
+        "start_seconds_from_stage": 12.65186702399842
+      },
+      {
+        "batch": 9,
+        "candidate_count": 50000,
+        "device": 1,
+        "end_seconds_from_stage": 16.231386733999898,
+        "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.316943",
+        "seconds": 1.7738496080000914,
+        "start_seconds_from_stage": 14.457537125999806
+      },
+      {
+        "batch": 10,
+        "candidate_count": 50000,
+        "device": 1,
+        "end_seconds_from_stage": 18.048079370999403,
+        "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=50000 primes=668 prime_bound=5000 kernel_seconds=1.316292",
+        "seconds": 1.7702035389993398,
+        "start_seconds_from_stage": 16.277875832000063
+      }
+    ],
+    "refined": [
+      {
+        "batch": 1,
+        "candidate_count": 5001,
+        "device": 0,
+        "end_seconds_from_stage": 1.2727896899996267,
+        "helper_stderr": "device=0 name=\"NVIDIA GeForce RTX 4090\" candidates=5001 primes=2261 prime_bound=20000 kernel_seconds=0.881559",
+        "seconds": 1.2669530580005812,
+        "start_seconds_from_stage": 0.005836631999045494
+      },
+      {
+        "batch": 1,
+        "candidate_count": 5000,
+        "device": 1,
+        "end_seconds_from_stage": 1.3659035579985357,
+        "helper_stderr": "device=1 name=\"NVIDIA GeForce RTX 4090\" candidates=5000 primes=2261 prime_bound=20000 kernel_seconds=0.882854",
+        "seconds": 1.360107695998522,
+        "start_seconds_from_stage": 0.005795862000013585
+      }
+    ]
+  },
+  "parameters": {
+    "batch_candidates": 50000,
+    "broad_prime_bound": 5000,
+    "denominator_max": 5000000,
+    "denominator_min": 1000,
+    "devices": [
+      0,
+      1
+    ],
+    "new_candidate_count": 1000000,
+    "refine_prime_bound": 20000,
+    "refine_top": 10000,
+    "seed": 303,
+    "t_span": "1/2"
+  },
+  "pipeline": {
+    "stage_a": {
+      "new_candidate_count": 1000000,
+      "population_including_control": 1000001,
+      "prime_bound": 5000
+    },
+    "stage_b": {
+      "new_finalist_count": 10000,
+      "population_including_control": 10001,
+      "prime_bound": 20000
+    }
+  },
+  "record_control": {
+    "broad": {
+      "good_primes": 654,
+      "percentile": 99.9951000049,
+      "population": 1000001,
+      "rank_higher_score_is_better": 50,
+      "score": 95.12904185176171
+    },
+    "refined_population": {
+      "good_primes": 2246,
+      "percentile": 100.0,
+      "population": 10001,
+      "rank_higher_score_is_better": 1,
+      "score": 135.2294367172776
+    },
+    "t": "164518/924945"
+  },
+  "research_note": "Mestre-Nagao scores are heuristic candidate rankings, not rank proofs. Promising specializations require exact independence/descent certification.",
+  "sources": {
+    "icarm_curve_302": "https://elliptic-rank.icarm.cloud/curve/302",
+    "mestre_nagao_reference": "https://math.mit.edu/~drew/ANTSXIV/NewRankRecordsSlides.pdf"
+  },
+  "timings_seconds": {
+    "broad_gpu": 18.937423340999885,
+    "build_and_validation": 27.88190492799913,
+    "calibration": 0.000961327001277823,
+    "refined_gpu": 1.3759432050010219,
+    "total_before_publication": 48.9262120479998
+  },
+  "top_new_leads": [
+    {
+      "good_primes": 2255,
+      "index": 1245,
+      "score": 128.77829952233543,
+      "t": "-215006/886235"
+    },
+    {
+      "good_primes": 2252,
+      "index": 49,
+      "score": 128.3432944926791,
+      "t": "1859267/3960399"
+    },
+    {
+      "good_primes": 2257,
+      "index": 6,
+      "score": 127.72698967781342,
+      "t": "-466332/1668773"
+    },
+    {
+      "good_primes": 2256,
+      "index": 488,
+      "score": 127.4914949620069,
+      "t": "432533/1540803"
+    },
+    {
+      "good_primes": 2253,
+      "index": 449,
+      "score": 127.17851439005838,
+      "t": "98883/1341290"
+    },
+    {
+      "good_primes": 2258,
+      "index": 3428,
+      "score": 126.87812607570142,
+      "t": "-199943/960162"
+    },
+    {
+      "good_primes": 2255,
+      "index": 42,
+      "score": 126.83845484750509,
+      "t": "385972/1010565"
+    },
+    {
+      "good_primes": 2257,
+      "index": 63,
+      "score": 126.75791281439939,
+      "t": "45259/128034"
+    },
+    {
+      "good_primes": 2257,
+      "index": 58,
+      "score": 126.52449076719068,
+      "t": "-97673/651458"
+    },
+    {
+      "good_primes": 2252,
+      "index": 435,
+      "score": 126.42721449741114,
+      "t": "939047/4240607"
+    },
+    {
+      "good_primes": 2255,
+      "index": 87,
+      "score": 126.3382414657303,
+      "t": "189562/3985617"
+    },
+    {
+      "good_primes": 2255,
+      "index": 94,
+      "score": 126.15882817305028,
+      "t": "200767/2125566"
+    },
+    {
+      "good_primes": 2253,
+      "index": 344,
+      "score": 126.08555124175842,
+      "t": "3215/17426"
+    },
+    {
+      "good_primes": 2251,
+      "index": 7680,
+      "score": 126.07861134478479,
+      "t": "677567/1146725"
+    },
+    {
+      "good_primes": 2255,
+      "index": 4914,
+      "score": 125.96336984086174,
+      "t": "-150014/1033525"
+    },
+    {
+      "good_primes": 2251,
+      "index": 5134,
+      "score": 125.93792212993515,
+      "t": "-166027/557571"
+    },
+    {
+      "good_primes": 2256,
+      "index": 272,
+      "score": 125.89130429037641,
+      "t": "774878/1954473"
+    },
+    {
+      "good_primes": 2254,
+      "index": 489,
+      "score": 125.786326904631,
+      "t": "890189/2689990"
+    },
+    {
+      "good_primes": 2254,
+      "index": 11,
+      "score": 125.78268119693949,
+      "t": "-13266/1249423"
+    },
+    {
+      "good_primes": 2254,
+      "index": 1650,
+      "score": 125.76949707522263,
+      "t": "-75809/295441"
+    },
+    {
+      "good_primes": 2254,
+      "index": 164,
+      "score": 125.69983120196807,
+      "t": "692567/2628566"
+    },
+    {
+      "good_primes": 2253,
+      "index": 1035,
+      "score": 125.69780078069941,
+      "t": "1917459/4950065"
+    },
+    {
+      "good_primes": 2253,
+      "index": 6540,
+      "score": 125.69483007689372,
+      "t": "-895940/3645687"
+    },
+    {
+      "good_primes": 2251,
+      "index": 523,
+      "score": 125.64560315191028,
+      "t": "355623/1192075"
+    },
+    {
+      "good_primes": 2255,
+      "index": 2286,
+      "score": 125.44112382445168,
+      "t": "452475/915029"
+    },
+    {
+      "good_primes": 2253,
+      "index": 248,
+      "score": 125.37450812014679,
+      "t": "455387/775736"
+    },
+    {
+      "good_primes": 2253,
+      "index": 2406,
+      "score": 125.3606171148621,
+      "t": "372622/909947"
+    },
+    {
+      "good_primes": 2252,
+      "index": 141,
+      "score": 125.35188354239605,
+      "t": "16636/1294743"
+    },
+    {
+      "good_primes": 2258,
+      "index": 1339,
+      "score": 125.30862946045579,
+      "t": "-18470/835611"
+    },
+    {
+      "good_primes": 2255,
+      "index": 555,
+      "score": 125.26557290090614,
+      "t": "582830/2233523"
+    },
+    {
+      "good_primes": 2257,
+      "index": 24,
+      "score": 125.26513372424174,
+      "t": "1772423/2643213"
+    },
+    {
+      "good_primes": 2255,
+      "index": 230,
+      "score": 125.24359759265056,
+      "t": "45299/801039"
+    },
+    {
+      "good_primes": 2251,
+      "index": 6379,
+      "score": 125.1855448069911,
+      "t": "794606/2500501"
+    },
+    {
+      "good_primes": 2253,
+      "index": 476,
+      "score": 125.12374213601512,
+      "t": "-20528/294693"
+    },
+    {
+      "good_primes": 2256,
+      "index": 306,
+      "score": 125.12316835666547,
+      "t": "2875615/4578074"
+    },
+    {
+      "good_primes": 2256,
+      "index": 171,
+      "score": 125.11290536045901,
+      "t": "25397/37959"
+    },
+    {
+      "good_primes": 2253,
+      "index": 211,
+      "score": 125.04683592018132,
+      "t": "-407209/1988677"
+    },
+    {
+      "good_primes": 2252,
+      "index": 3340,
+      "score": 125.04271055431988,
+      "t": "1032743/1754296"
+    },
+    {
+      "good_primes": 2255,
+      "index": 3426,
+      "score": 125.01890350591948,
+      "t": "35305/789124"
+    },
+    {
+      "good_primes": 2255,
+      "index": 3317,
+      "score": 124.9731080519392,
+      "t": "398261/3363229"
+    },
+    {
+      "good_primes": 2254,
+      "index": 368,
+      "score": 124.96816768552364,
+      "t": "-288823/1447676"
+    },
+    {
+      "good_primes": 2254,
+      "index": 485,
+      "score": 124.96417765578592,
+      "t": "581647/3420022"
+    },
+    {
+      "good_primes": 2256,
+      "index": 2734,
+      "score": 124.95228909031384,
+      "t": "183734/2400159"
+    },
+    {
+      "good_primes": 2252,
+      "index": 263,
+      "score": 124.91942713385366,
+      "t": "450334/1856679"
+    },
+    {
+      "good_primes": 2254,
+      "index": 137,
+      "score": 124.91260005145476,
+      "t": "1741/129605"
+    },
+    {
+      "good_primes": 2251,
+      "index": 5671,
+      "score": 124.9120852951501,
+      "t": "792596/3829929"
+    },
+    {
+      "good_primes": 2256,
+      "index": 200,
+      "score": 124.81332548573403,
+      "t": "-35071/339579"
+    },
+    {
+      "good_primes": 2253,
+      "index": 917,
+      "score": 124.78513553294512,
+      "t": "215737/878359"
+    },
+    {
+      "good_primes": 2256,
+      "index": 663,
+      "score": 124.77689710950914,
+      "t": "64234/4188201"
+    },
+    {
+      "good_primes": 2257,
+      "index": 232,
+      "score": 124.73483768928484,
+      "t": "87881/330426"
+    },
+    {
+      "good_primes": 2255,
+      "index": 328,
+      "score": 124.63138876600217,
+      "t": "-121441/463537"
+    },
+    {
+      "good_primes": 2251,
+      "index": 290,
+      "score": 124.61817305441147,
+      "t": "595647/2166428"
+    },
+    {
+      "good_primes": 2257,
+      "index": 1142,
+      "score": 124.61404974349206,
+      "t": "235329/519521"
+    },
+    {
+      "good_primes": 2254,
+      "index": 463,
+      "score": 124.5962977847548,
+      "t": "49567/97427"
+    },
+    {
+      "good_primes": 2256,
+      "index": 40,
+      "score": 124.55310175206708,
+      "t": "602071/2386087"
+    },
+    {
+      "good_primes": 2256,
+      "index": 640,
+      "score": 124.5142895591071,
+      "t": "411072/881917"
+    },
+    {
+      "good_primes": 2252,
+      "index": 648,
+      "score": 124.50096678826011,
+      "t": "1378049/4936484"
+    },
+    {
+      "good_primes": 2251,
+      "index": 783,
+      "score": 124.41107320376948,
+      "t": "-990073/3408166"
+    },
+    {
+      "good_primes": 2254,
+      "index": 29,
+      "score": 124.40610602256035,
+      "t": "548226/3608131"
+    },
+    {
+      "good_primes": 2252,
+      "index": 64,
+      "score": 124.40157853427885,
+      "t": "2226601/4148090"
+    },
+    {
+      "good_primes": 2254,
+      "index": 610,
+      "score": 124.36147376156214,
+      "t": "-720266/2321391"
+    },
+    {
+      "good_primes": 2254,
+      "index": 2538,
+      "score": 124.31193699108165,
+      "t": "1229799/2199973"
+    },
+    {
+      "good_primes": 2255,
+      "index": 1168,
+      "score": 124.29958943866353,
+      "t": "11447/145374"
+    },
+    {
+      "good_primes": 2255,
+      "index": 409,
+      "score": 124.29874248647698,
+      "t": "113227/503003"
+    },
+    {
+      "good_primes": 2254,
+      "index": 8,
+      "score": 124.28340953017079,
+      "t": "562109/1218504"
+    },
+    {
+      "good_primes": 2255,
+      "index": 387,
+      "score": 124.2833037929813,
+      "t": "342073/764078"
+    },
+    {
+      "good_primes": 2251,
+      "index": 2740,
+      "score": 124.2702797130498,
+      "t": "1525301/2485583"
+    },
+    {
+      "good_primes": 2256,
+      "index": 26,
+      "score": 124.24398210823342,
+      "t": "229200/435221"
+    },
+    {
+      "good_primes": 2258,
+      "index": 207,
+      "score": 124.22188744212279,
+      "t": "64777/453897"
+    },
+    {
+      "good_primes": 2255,
+      "index": 2871,
+      "score": 124.19641382102435,
+      "t": "-41221/629714"
+    },
+    {
+      "good_primes": 2254,
+      "index": 635,
+      "score": 124.19070131437032,
+      "t": "-113326/616507"
+    },
+    {
+      "good_primes": 2250,
+      "index": 320,
+      "score": 124.14857033971371,
+      "t": "809110/1790387"
+    },
+    {
+      "good_primes": 2252,
+      "index": 69,
+      "score": 124.14218783745693,
+      "t": "371121/560230"
+    },
+    {
+      "good_primes": 2253,
+      "index": 1160,
+      "score": 124.11553514851501,
+      "t": "883844/1536319"
+    },
+    {
+      "good_primes": 2253,
+      "index": 788,
+      "score": 124.07549345145868,
+      "t": "152561/238780"
+    },
+    {
+      "good_primes": 2254,
+      "index": 4,
+      "score": 124.0651592967357,
+      "t": "-512627/2429873"
+    },
+    {
+      "good_primes": 2256,
+      "index": 1679,
+      "score": 124.06155817343159,
+      "t": "305066/3658911"
+    },
+    {
+      "good_primes": 2256,
+      "index": 4621,
+      "score": 124.05966421620126,
+      "t": "-200666/706677"
+    },
+    {
+      "good_primes": 2255,
+      "index": 1836,
+      "score": 124.03559200961112,
+      "t": "29762/346213"
+    },
+    {
+      "good_primes": 2252,
+      "index": 5928,
+      "score": 124.01482515725422,
+      "t": "1361607/2065834"
+    },
+    {
+      "good_primes": 2257,
+      "index": 634,
+      "score": 124.01241794914087,
+      "t": "2623945/4120406"
+    },
+    {
+      "good_primes": 2252,
+      "index": 3656,
+      "score": 124.01053508117278,
+      "t": "598397/4061177"
+    },
+    {
+      "good_primes": 2254,
+      "index": 6801,
+      "score": 124.00186737907019,
+      "t": "-752585/4772402"
+    },
+    {
+      "good_primes": 2254,
+      "index": 3360,
+      "score": 123.99223397040582,
+      "t": "-1002843/3295366"
+    },
+    {
+      "good_primes": 2254,
+      "index": 7828,
+      "score": 123.98009456455387,
+      "t": "133977/527182"
+    },
+    {
+      "good_primes": 2256,
+      "index": 44,
+      "score": 123.97896971777507,
+      "t": "23102/112099"
+    },
+    {
+      "good_primes": 2252,
+      "index": 1125,
+      "score": 123.97612383724253,
+      "t": "-50094/222811"
+    },
+    {
+      "good_primes": 2256,
+      "index": 1188,
+      "score": 123.96418768025157,
+      "t": "3015964/4630589"
+    },
+    {
+      "good_primes": 2254,
+      "index": 1314,
+      "score": 123.95249427784114,
+      "t": "-325888/2663651"
+    },
+    {
+      "good_primes": 2254,
+      "index": 405,
+      "score": 123.93497673360213,
+      "t": "-1724/40699"
+    },
+    {
+      "good_primes": 2257,
+      "index": 148,
+      "score": 123.92973118383742,
+      "t": "-204742/1021879"
+    },
+    {
+      "good_primes": 2252,
+      "index": 9022,
+      "score": 123.92969952843538,
+      "t": "-335501/4581501"
+    },
+    {
+      "good_primes": 2255,
+      "index": 519,
+      "score": 123.91855945444141,
+      "t": "-397/5623"
+    },
+    {
+      "good_primes": 2252,
+      "index": 2356,
+      "score": 123.91380376863712,
+      "t": "-1110071/3448205"
+    },
+    {
+      "good_primes": 2253,
+      "index": 79,
+      "score": 123.90621406147756,
+      "t": "65178/627583"
+    },
+    {
+      "good_primes": 2255,
+      "index": 2275,
+      "score": 123.89850811953367,
+      "t": "69668/264943"
+    },
+    {
+      "good_primes": 2251,
+      "index": 1847,
+      "score": 123.87671066248346,
+      "t": "694900/1225723"
+    },
+    {
+      "good_primes": 2255,
+      "index": 404,
+      "score": 123.86211267997636,
+      "t": "-87321/808499"
+    },
+    {
+      "good_primes": 2255,
+      "index": 3060,
+      "score": 123.85328430954897,
+      "t": "40498/643679"
+    },
+    {
+      "good_primes": 2256,
+      "index": 700,
+      "score": 123.84716170212694,
+      "t": "116968/4175395"
+    }
+  ]
+}
