@@ -77,3 +77,10 @@ Configure the campaign with `--seeds` or `--seed-start` and `--shards`,
 `--second-prime-bound`, `--denominator-min`, `--denominator-max`, `--t-span`,
 `--devices`, and `--batch-candidates`. `--no-push` keeps generated results local.
 The campaign is a heuristic search; its scores do not prove curve rank.
+
+The CUDA scorer processes primes in bounded chi-table chunks. Its default
+`--chi-chunk-bytes` budget is 256 MiB; the helper's `--plan-only --prime-bound B`
+prints the prime count, chunk count, largest chunk, and cumulative chi entries
+without allocating chi tables or launching a kernel. The helper rejects bounds
+above one million and unsupported memory budgets with an error. Optional
+`--counts` output remains ordered by candidate and then prime.

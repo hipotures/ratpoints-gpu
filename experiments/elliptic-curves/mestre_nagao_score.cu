@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include <sstream>
 #include <stdexcept>
 #include <string>
@@ -68,7 +69,7 @@ __global__ void score_kernel(
     const Candidate* candidates,
     int candidate_count,
     const int* primes,
-    const int* offsets,
+    const size_t* offsets,
     int prime_count,
     const signed char* chi,
     double* scores,
@@ -81,14 +82,14 @@ __global__ void score_kernel(
     extern __shared__ int shared[];
 
     Candidate c = candidates[ci];
-    double score = 0.0;
-    int good = 0;
+    double score = scores[ci];
+    int good = good_counts[ci];
 
     for (int pi = 0; pi < prime_count; ++pi) {
         int prime = primes[pi];
         int den = norm64(c.den, prime);
         if (den == 0) {
-            if (tid == 0 && counts) counts[ci * prime_count + pi] = -1;
+            if (tid == 0 && counts) counts[size_t(ci) * prime_count + pi] = -1;
             __syncthreads();
             continue;
         }
@@ -148,7 +149,7 @@ __global__ void score_kernel(
         delta = subm(delta, mulm(norm64(27LL, prime), mulm(b6, b6, prime), prime), prime);
         delta = addm(delta, mulm(norm64(9LL, prime), mulm(mulm(b2, b4, prime), b6, prime), prime), prime);
         if (delta == 0) {
-            if (tid == 0 && counts) counts[ci * prime_count + pi] = -1;
+            if (tid == 0 && counts) counts[size_t(ci) * prime_count + pi] = -1;
             __syncthreads();
             continue;
         }
@@ -168,7 +169,7 @@ __global__ void score_kernel(
         }
         if (tid == 0) {
             int np = prime + 1 + shared[0];
-            if (counts) counts[ci * prime_count + pi] = np;
+            if (counts) counts[size_t(ci) * prime_count + pi] = np;
             score += (1.0 - double(prime - 1) / double(np)) * log(double(prime));
             ++good;
         }
@@ -192,13 +193,47 @@ static std::vector<int> primes_up_to(int bound) {
     return out;
 }
 
-int main(int argc, char** argv) {
-    if (argc < 9) {
-        std::cerr << "usage: helper --device N --input FILE --output FILE --prime-bound B [--counts FILE]\n";
-        return 2;
+static size_t checked_add(size_t a, size_t b, const char* label) {
+    if (b > std::numeric_limits<size_t>::max() - a)
+        throw std::runtime_error(std::string(label) + " overflows size_t");
+    return a + b;
+}
+
+static size_t checked_multiply(size_t a, size_t b, const char* label) {
+    if (a && b > std::numeric_limits<size_t>::max() / a)
+        throw std::runtime_error(std::string(label) + " overflows size_t");
+    return a * b;
+}
+
+struct PrimeChunk { size_t begin, end, chi_bytes; };
+
+static std::vector<PrimeChunk> plan_chunks(const std::vector<int>& primes,
+                                            size_t budget, size_t& total_chi_bytes) {
+    std::vector<PrimeChunk> chunks;
+    total_chi_bytes = 0;
+    size_t begin = 0, bytes = 0;
+    for (size_t i = 0; i < primes.size(); ++i) {
+        size_t p = static_cast<size_t>(primes[i]);
+        total_chi_bytes = checked_add(total_chi_bytes, p, "total chi entries");
+        if (p > budget)
+            throw std::runtime_error("chi chunk budget is smaller than prime " + std::to_string(p));
+        if (bytes && p > budget - bytes) {
+            chunks.push_back({begin, i, bytes});
+            begin = i;
+            bytes = 0;
+        }
+        bytes = checked_add(bytes, p, "chunk chi entries");
     }
+    if (bytes) chunks.push_back({begin, primes.size(), bytes});
+    return chunks;
+}
+
+int main(int argc, char** argv) {
+    try {
     int device = -1;
     int prime_bound = -1;
+    size_t chi_chunk_bytes = 256ULL * 1024 * 1024;
+    bool plan_only = false;
     std::string input_path, output_path, counts_path;
     for (int i = 1; i < argc; ++i) {
         std::string arg = argv[i];
@@ -207,9 +242,30 @@ int main(int argc, char** argv) {
         else if (arg == "--output" && i + 1 < argc) output_path = argv[++i];
         else if (arg == "--prime-bound" && i + 1 < argc) prime_bound = std::stoi(argv[++i]);
         else if (arg == "--counts" && i + 1 < argc) counts_path = argv[++i];
+        else if (arg == "--chi-chunk-bytes" && i + 1 < argc) chi_chunk_bytes = std::stoull(argv[++i]);
+        else if (arg == "--plan-only") plan_only = true;
         else { std::cerr << "unknown/incomplete argument: " << arg << "\n"; return 2; }
     }
-    if (device < 0 || prime_bound < 3 || input_path.empty() || output_path.empty()) return 2;
+    if (prime_bound < 3 || prime_bound > 1000000)
+        throw std::runtime_error("--prime-bound must be between 3 and 1000000");
+    if (chi_chunk_bytes == 0 || chi_chunk_bytes > (1ULL << 30))
+        throw std::runtime_error("--chi-chunk-bytes must be between 1 byte and 1 GiB");
+    std::vector<int> primes = primes_up_to(prime_bound);
+    size_t total_chi_bytes = 0;
+    std::vector<PrimeChunk> chunks = plan_chunks(primes, chi_chunk_bytes, total_chi_bytes);
+    size_t max_chi_bytes = 0, max_chunk_primes = 0;
+    for (const PrimeChunk& chunk : chunks) {
+        max_chi_bytes = std::max(max_chi_bytes, chunk.chi_bytes);
+        max_chunk_primes = std::max(max_chunk_primes, chunk.end - chunk.begin);
+    }
+    if (plan_only) {
+        std::cout << "prime_bound=" << prime_bound << " primes=" << primes.size()
+                  << " chunks=" << chunks.size() << " max_chi_bytes=" << max_chi_bytes
+                  << " total_chi_entries=" << total_chi_bytes << "\n";
+        return 0;
+    }
+    if (device < 0 || input_path.empty() || output_path.empty())
+        throw std::runtime_error("usage: helper --device N --input FILE --output FILE --prime-bound B [--counts FILE] [--chi-chunk-bytes N] [--plan-only]");
 
     CUDA_CHECK(cudaSetDevice(device));
     cudaDeviceProp prop{};
@@ -224,84 +280,130 @@ int main(int argc, char** argv) {
         candidates.push_back(c);
     }
     if (candidates.empty()) throw std::runtime_error("no candidates");
-
-    std::vector<int> primes = primes_up_to(prime_bound);
-    std::vector<int> offsets(primes.size() + 1, 0);
-    for (size_t i = 0; i < primes.size(); ++i) offsets[i + 1] = offsets[i] + primes[i];
-    std::vector<signed char> chi(offsets.back(), -1);
-    for (size_t i = 0; i < primes.size(); ++i) {
-        int p = primes[i];
-        int off = offsets[i];
-        chi[off] = 0;
-        for (int y = 1; y < p; ++y) {
-            chi[off + (static_cast<long long>(y) * y) % p] = 1;
-        }
-    }
+    if (candidates.size() > static_cast<size_t>(std::numeric_limits<int>::max()) ||
+        candidates.size() > static_cast<size_t>(prop.maxGridSize[0]))
+        throw std::runtime_error("candidate count exceeds one-dimensional CUDA grid limit");
 
     Candidate* d_candidates = nullptr;
     int* d_primes = nullptr;
-    int* d_offsets = nullptr;
+    size_t* d_offsets = nullptr;
     signed char* d_chi = nullptr;
     double* d_scores = nullptr;
     int* d_good = nullptr;
     int* d_counts = nullptr;
     size_t nc = candidates.size();
     size_t np = primes.size();
-
-    CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_candidates), nc * sizeof(Candidate)));
-    CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_primes), np * sizeof(int)));
-    CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_offsets), offsets.size() * sizeof(int)));
-    CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_chi), chi.size() * sizeof(signed char)));
-    CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_scores), nc * sizeof(double)));
-    CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_good), nc * sizeof(int)));
+    size_t candidate_bytes = checked_multiply(nc, sizeof(Candidate), "candidate allocation");
+    size_t score_bytes = checked_multiply(nc, sizeof(double), "score allocation");
+    size_t good_bytes = checked_multiply(nc, sizeof(int), "good-count allocation");
+    size_t chunk_prime_bytes = checked_multiply(max_chunk_primes, sizeof(int), "prime allocation");
+    size_t chunk_offset_bytes = checked_multiply(max_chunk_primes + 1, sizeof(size_t), "offset allocation");
+    size_t chunk_count_bytes = checked_multiply(checked_multiply(nc, max_chunk_primes, "chunk count entries"),
+                                                sizeof(int), "chunk count allocation");
+    size_t all_count_bytes = 0;
     if (!counts_path.empty()) {
-        CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_counts), nc * np * sizeof(int)));
-        CUDA_CHECK(cudaMemset(d_counts, 0xff, nc * np * sizeof(int)));
+        all_count_bytes = checked_multiply(checked_multiply(nc, np, "all count entries"),
+                                           sizeof(int), "all count allocation");
+        if (all_count_bytes > (1ULL << 30))
+            throw std::runtime_error("--counts would require over 1 GiB of host storage; use fewer candidates");
+    }
+    size_t free_bytes = 0, total_bytes = 0;
+    CUDA_CHECK(cudaMemGetInfo(&free_bytes, &total_bytes));
+    size_t needed = checked_add(max_chi_bytes, candidate_bytes, "GPU allocation estimate");
+    needed = checked_add(needed, score_bytes, "GPU allocation estimate");
+    needed = checked_add(needed, good_bytes, "GPU allocation estimate");
+    needed = checked_add(needed, chunk_prime_bytes, "GPU allocation estimate");
+    needed = checked_add(needed, chunk_offset_bytes, "GPU allocation estimate");
+    if (!counts_path.empty()) needed = checked_add(needed, chunk_count_bytes, "GPU allocation estimate");
+    if (needed > free_bytes / 2)
+        throw std::runtime_error("chunk and candidate buffers exceed half of free GPU memory; reduce --chi-chunk-bytes or candidate batch size");
+
+    CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_candidates), candidate_bytes));
+    CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_primes), chunk_prime_bytes));
+    CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_offsets), chunk_offset_bytes));
+    CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_chi), max_chi_bytes));
+    CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_scores), score_bytes));
+    CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_good), good_bytes));
+    if (!counts_path.empty()) {
+        CUDA_CHECK(cudaMalloc(reinterpret_cast<void**>(&d_counts), chunk_count_bytes));
     }
 
-    CUDA_CHECK(cudaMemcpy(d_candidates, candidates.data(), nc * sizeof(Candidate), cudaMemcpyHostToDevice));
-    CUDA_CHECK(cudaMemcpy(d_primes, primes.data(), np * sizeof(int), cudaMemcpyHostToDevice));
-    CUDA_CHECK(cudaMemcpy(d_offsets, offsets.data(), offsets.size() * sizeof(int), cudaMemcpyHostToDevice));
-    CUDA_CHECK(cudaMemcpy(d_chi, chi.data(), chi.size() * sizeof(signed char), cudaMemcpyHostToDevice));
-
-    auto started = std::chrono::steady_clock::now();
-    score_kernel<<<int(nc), 256, 256 * sizeof(int)>>>(
-        d_candidates, int(nc), d_primes, d_offsets, int(np), d_chi,
-        d_scores, d_good, d_counts);
-    CUDA_CHECK(cudaGetLastError());
-    CUDA_CHECK(cudaDeviceSynchronize());
-    auto stopped = std::chrono::steady_clock::now();
+    CUDA_CHECK(cudaMemcpy(d_candidates, candidates.data(), candidate_bytes, cudaMemcpyHostToDevice));
+    CUDA_CHECK(cudaMemset(d_scores, 0, score_bytes));
+    CUDA_CHECK(cudaMemset(d_good, 0, good_bytes));
+    std::vector<int> all_counts;
+    if (!counts_path.empty()) all_counts.resize(all_count_bytes / sizeof(int));
+    double kernel_seconds = 0.0;
+    for (const PrimeChunk& chunk : chunks) {
+        size_t chunk_np = chunk.end - chunk.begin;
+        std::vector<size_t> offsets(chunk_np + 1, 0);
+        for (size_t j = 0; j < chunk_np; ++j)
+            offsets[j + 1] = checked_add(offsets[j], static_cast<size_t>(primes[chunk.begin + j]), "chunk offset");
+        if (offsets.back() != chunk.chi_bytes) throw std::runtime_error("chunk plan offset mismatch");
+        std::vector<signed char> chi(chunk.chi_bytes, -1);
+        for (size_t j = 0; j < chunk_np; ++j) {
+            int p = primes[chunk.begin + j];
+            size_t off = offsets[j];
+            chi[off] = 0;
+            for (int y = 1; y < p; ++y)
+                chi[off + (static_cast<long long>(y) * y) % p] = 1;
+        }
+        CUDA_CHECK(cudaMemcpy(d_primes, primes.data() + chunk.begin,
+                              chunk_np * sizeof(int), cudaMemcpyHostToDevice));
+        CUDA_CHECK(cudaMemcpy(d_offsets, offsets.data(), offsets.size() * sizeof(size_t), cudaMemcpyHostToDevice));
+        CUDA_CHECK(cudaMemcpy(d_chi, chi.data(), chi.size(), cudaMemcpyHostToDevice));
+        auto kernel_started = std::chrono::steady_clock::now();
+        score_kernel<<<int(nc), 256, 256 * sizeof(int)>>>(
+            d_candidates, int(nc), d_primes, d_offsets, int(chunk_np), d_chi,
+            d_scores, d_good, d_counts);
+        CUDA_CHECK(cudaGetLastError());
+        CUDA_CHECK(cudaDeviceSynchronize());
+        kernel_seconds += std::chrono::duration<double>(std::chrono::steady_clock::now() - kernel_started).count();
+        if (d_counts) {
+            std::vector<int> chunk_counts(nc * chunk_np);
+            CUDA_CHECK(cudaMemcpy(chunk_counts.data(), d_counts, chunk_counts.size() * sizeof(int), cudaMemcpyDeviceToHost));
+            for (size_t i = 0; i < nc; ++i)
+                std::copy(chunk_counts.begin() + i * chunk_np,
+                          chunk_counts.begin() + (i + 1) * chunk_np,
+                          all_counts.begin() + i * np + chunk.begin);
+        }
+    }
 
     std::vector<double> scores(nc);
     std::vector<int> good(nc);
-    CUDA_CHECK(cudaMemcpy(scores.data(), d_scores, nc * sizeof(double), cudaMemcpyDeviceToHost));
-    CUDA_CHECK(cudaMemcpy(good.data(), d_good, nc * sizeof(int), cudaMemcpyDeviceToHost));
+    CUDA_CHECK(cudaMemcpy(scores.data(), d_scores, score_bytes, cudaMemcpyDeviceToHost));
+    CUDA_CHECK(cudaMemcpy(good.data(), d_good, good_bytes, cudaMemcpyDeviceToHost));
 
     std::ofstream output(output_path);
+    if (!output) throw std::runtime_error("cannot open score output");
     output << std::setprecision(17);
     for (size_t i = 0; i < nc; ++i) {
         output << candidates[i].id << '\t' << scores[i] << '\t' << good[i] << '\n';
     }
 
     if (!counts_path.empty()) {
-        std::vector<int> counts(nc * np);
-        CUDA_CHECK(cudaMemcpy(counts.data(), d_counts, counts.size() * sizeof(int), cudaMemcpyDeviceToHost));
         std::ofstream count_out(counts_path);
+        if (!count_out) throw std::runtime_error("cannot open count output");
         for (size_t i = 0; i < nc; ++i) {
             for (size_t j = 0; j < np; ++j) {
                 count_out << candidates[i].id << '\t' << primes[j] << '\t'
-                          << counts[i * np + j] << '\n';
+                          << all_counts[i * np + j] << '\n';
             }
         }
     }
 
-    double seconds = std::chrono::duration<double>(stopped - started).count();
     std::cerr << "device=" << device << " name=\"" << prop.name << "\" candidates=" << nc
               << " primes=" << np << " prime_bound=" << prime_bound
-              << " kernel_seconds=" << std::fixed << std::setprecision(6) << seconds << "\n";
+              << " prime_chunks=" << chunks.size() << " max_chi_bytes=" << max_chi_bytes
+              << " total_chi_entries=" << total_chi_bytes
+              << " kernel_seconds=" << std::fixed << std::setprecision(6) << kernel_seconds << "\n";
 
     if (d_counts) cudaFree(d_counts);
     cudaFree(d_good); cudaFree(d_scores); cudaFree(d_chi); cudaFree(d_offsets);
     cudaFree(d_primes); cudaFree(d_candidates);
     return 0;
+    } catch (const std::exception& exc) {
+        std::cerr << "mestre_nagao_score failed: " << exc.what() << "\n";
+        return 2;
+    }
 }
