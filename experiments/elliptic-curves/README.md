@@ -84,3 +84,5 @@ prints the prime count, chunk count, largest chunk, and cumulative chi entries
 without allocating chi tables or launching a kernel. The helper rejects bounds
 above one million and unsupported memory budgets with an error. Optional
 `--counts` output remains ordered by candidate and then prime.
+The Python build helper retains only the current source-hash executable in
+ignored `build/`, so a stale helper cannot be selected by a filename glob.

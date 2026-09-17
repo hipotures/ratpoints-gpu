@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+import tempfile
 import unittest
 from fractions import Fraction
 from pathlib import Path
@@ -11,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from rank31_mn_common import (
     build_validation_oracle,
     odd_primes_up_to,
+    prune_stale_helpers,
     select_validation_primes,
 )
 
@@ -38,6 +40,19 @@ class ValidationSelectionTests(unittest.TestCase):
         self.assertEqual(cpu.call_count, len(oracle.candidates) * len(oracle.sampled_primes))
         self.assertEqual(len(oracle.expected), cpu.call_count)
         self.assertEqual(oracle.report()["candidate_indices"], [0, 1, 2, 3])
+
+    def test_stale_hash_named_helpers_are_pruned(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            current = root / "mestre_nagao_0123456789abcdef"
+            stale = root / "mestre_nagao_fedcba9876543210"
+            unrelated = root / "mestre_nagao_notes"
+            for path in (current, stale, unrelated):
+                path.write_text("test")
+            prune_stale_helpers(current)
+            self.assertTrue(current.exists())
+            self.assertFalse(stale.exists())
+            self.assertTrue(unrelated.exists())
 
 
 if __name__ == "__main__":

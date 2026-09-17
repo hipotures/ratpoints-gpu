@@ -7,6 +7,7 @@ import hashlib
 import math
 import os
 import platform
+import re
 import shutil
 import subprocess
 import sys
@@ -216,6 +217,13 @@ def generate_candidates(count:int,seed:int,dmin:int,dmax:int,span:Fraction):
 def sha256_file(path:Path)->str: return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def prune_stale_helpers(current:Path):
+    """Keep only the helper built from the current CUDA source in ignored build/."""
+    for path in current.parent.glob("mestre_nagao_*"):
+        if path != current and path.is_file() and re.fullmatch(r"mestre_nagao_[0-9a-f]{16}",path.name):
+            path.unlink()
+
+
 def compile_helper(force=False):
     nvcc=shutil.which("nvcc")
     if nvcc is None: raise RuntimeError("nvcc is required")
@@ -225,6 +233,7 @@ def compile_helper(force=False):
     cmd=[nvcc,"-O3","-std=c++14","-arch=native","-lineinfo","-o",str(binary),str(CUDA_SOURCE_PATH)]
     if force or not binary.exists():
         print("Compiling CUDA scorer...",flush=True); subprocess.run(cmd,cwd=ROOT,check=True)
+    prune_stale_helpers(binary)
     version=subprocess.check_output([nvcc,"--version"],text=True).strip().splitlines()[-1]
     return binary,{"source_path":str(CUDA_SOURCE_PATH.relative_to(ROOT)),"source_sha256":source_hash,
                    "binary_sha256":sha256_file(binary),"compile_command":cmd,"nvcc_version":version}
