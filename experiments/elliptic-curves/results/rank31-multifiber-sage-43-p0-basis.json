@@ -1,0 +1,357 @@
+{
+  "ainvariants": [
+    "-6157027",
+    "535727832540",
+    "-788134950910943850",
+    "-1254083476196235258445500",
+    "0"
+  ],
+  "certified_subgroup_rank": 12,
+  "gpu_points_verified": [
+    {
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "x": "0",
+      "y": "788134950910943850"
+    },
+    {
+      "x": "883584977010",
+      "y": "0"
+    },
+    {
+      "x": "883584977010",
+      "y": "6228391511155893120"
+    },
+    {
+      "x": "-1419312809550",
+      "y": "-7950612338934264000"
+    },
+    {
+      "x": "-1419312809550",
+      "y": "0"
+    },
+    {
+      "x": "-198163768800",
+      "y": "-771336349291656000"
+    },
+    {
+      "x": "-198163768800",
+      "y": "339371625279242250"
+    },
+    {
+      "x": "-57678777600",
+      "y": "-131057145018969600"
+    },
+    {
+      "x": "-57678777600",
+      "y": "564062304919718250"
+    },
+    {
+      "x": "-20963148960",
+      "y": "-38037153245164470"
+    },
+    {
+      "x": "-20963148960",
+      "y": "697101430004366400"
+    },
+    {
+      "x": "-7276607580",
+      "y": "-12116570734884600"
+    },
+    {
+      "x": "-7276607580",
+      "y": "755449252307363790"
+    },
+    {
+      "x": "-6724471800",
+      "y": "-11158560312720750"
+    },
+    {
+      "x": "-6724471800",
+      "y": "757890756790326000"
+    },
+    {
+      "x": "-2231896750",
+      "y": "-3601109531278400"
+    },
+    {
+      "x": "-2231896750",
+      "y": "777994211891260000"
+    },
+    {
+      "x": "-411189150",
+      "y": "-655961827212000"
+    },
+    {
+      "x": "-411189150",
+      "y": "786259210039498800"
+    },
+    {
+      "x": "-331156050",
+      "y": "-528023584749000"
+    },
+    {
+      "x": "-331156050",
+      "y": "786624037754629500"
+    },
+    {
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "x": "0",
+      "y": "788134950910943850"
+    },
+    {
+      "x": "1728755598",
+      "y": "2721408299277432"
+    },
+    {
+      "x": "1728755598",
+      "y": "796057537504953564"
+    },
+    {
+      "x": "20383029200",
+      "y": "28622193638496250"
+    },
+    {
+      "x": "20383029200",
+      "y": "885011618398636000"
+    }
+  ],
+  "independent_generators": [
+    {
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "x": "883584977010",
+      "y": "0"
+    },
+    {
+      "x": "-198163768800",
+      "y": "-771336349291656000"
+    },
+    {
+      "x": "-57678777600",
+      "y": "-131057145018969600"
+    },
+    {
+      "x": "-20963148960",
+      "y": "-38037153245164470"
+    },
+    {
+      "x": "-7276607580",
+      "y": "-12116570734884600"
+    },
+    {
+      "x": "-6724471800",
+      "y": "-11158560312720750"
+    },
+    {
+      "x": "-2231896750",
+      "y": "-3601109531278400"
+    },
+    {
+      "x": "-411189150",
+      "y": "-655961827212000"
+    },
+    {
+      "x": "-331156050",
+      "y": "-528023584749000"
+    },
+    {
+      "x": "1728755598",
+      "y": "2721408299277432"
+    },
+    {
+      "x": "20383029200",
+      "y": "28622193638496250"
+    }
+  ],
+  "model_sha256": "a74ded3f5a84c452dc8d11904dc9558f72dcb5f1769f567ed055d3f17ce2a0b0",
+  "runner_elapsed_seconds": 19.80086807400039,
+  "runner_status": "completed",
+  "saturation": "through prime 11 (Sage/eclib)",
+  "sections_verified": [
+    {
+      "label": "P0",
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "label": "PD",
+      "x": "883584977010",
+      "y": "0"
+    },
+    {
+      "label": "PE",
+      "x": "-1419312809550",
+      "y": "0"
+    },
+    {
+      "label": "PQ",
+      "x": "-198163768800",
+      "y": "-771336349291656000"
+    }
+  ],
+  "steps": [
+    {
+      "label": "PE",
+      "proof": "P0 + PD + PE = O, exact group law",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 0.1795703030002187,
+      "label": "P0,PD,PQ",
+      "regulator": "4060.75364162740",
+      "saturation_index": "1",
+      "status": "certified"
+    },
+    {
+      "label": "GPU:rank31-multifiber-screen-43-P0.json",
+      "status": "known section or inverse"
+    },
+    {
+      "label": "GPU:rank31-multifiber-screen-43-PD.json",
+      "status": "known section or inverse"
+    },
+    {
+      "label": "GPU:rank31-multifiber-screen-43-PE.json",
+      "status": "known section or inverse"
+    },
+    {
+      "label": "GPU:rank31-multifiber-screen-43-PQ.json",
+      "status": "known section or inverse"
+    },
+    {
+      "elapsed_seconds": 0.2386440339996625,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "66863.1563223791",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 0.2845906410002499,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "66863.1563223791",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 0.34962249000091106,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "972092.539113412",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 0.4093150480002805,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "972092.539113412",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 0.48445110200009367,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.45510860869579e7",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 0.5594244570002047,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.45510860869579e7",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 0.6495546469996043,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.37205212269725e8",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 0.7332094899993535,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.37205212269725e8",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 0.8269147680002789,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.83083645365085e9",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 0.9285458969989122,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.83083645365085e9",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 1.0481628329998784,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.12962802650219e10",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 1.1438423840008909,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.12962802650219e10",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 1.2653678420010692,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.54639178772852e11",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 1.3858347259993025,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.54639178772852e11",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 1.5280847710000671,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.39281799383439e12",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 1.6731917060005799,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.39281799383439e12",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 1.8096325940005045,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.08013502028210e13",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 1.9665591169996333,
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "regulator": "1.08013502028210e13",
+      "saturation_index": "1",
+      "status": "dependent"
+    }
+  ],
+  "t": "1/4"
+}

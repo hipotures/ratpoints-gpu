@@ -1560,6 +1560,734 @@
       "new_x_count": 0,
       "t": "792596/3829929",
       "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "9675039280943850",
+          "y": "2320983062563907365984800"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-434069086564230",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "1076425499682000",
+          "y": "230239614519703051567200"
+        }
+      ],
+      "index": 30,
+      "model_sha256": "56acfc74ecdd2b8232238b98ae9bdcf2d3fa04340193430552e9abc30c3bff4a",
+      "modular_survivors": 30,
+      "new_x_count": 0,
+      "t": "-5/36",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "2140880199992407440",
+          "y": "14675626161952837868668658112"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-20802277567878964312",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-4722000491909626416",
+          "y": "14112488464788485790198119232"
+        }
+      ],
+      "index": 31,
+      "model_sha256": "04e9f2e24f422e9d626dc2e9ac39e4bed631d7e6ff4588fef7de294a6167cb1a",
+      "modular_survivors": 39,
+      "new_x_count": 0,
+      "t": "57/85",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "376647325500962460",
+          "y": "250455999209765886509353920"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "120525166334729100",
+          "y": "43688747362635630531738000"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "197124683111435100",
+          "y": "61324268794859149850232000"
+        }
+      ],
+      "index": 32,
+      "model_sha256": "245accde6955186cbf377fccc0e4de7481eaded2cb9f2019876cfe2dc981c7e8",
+      "modular_survivors": 23,
+      "new_x_count": 0,
+      "t": "-19/74",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "121480864540278900",
+          "y": "219671114135758083969984000"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-640388801966596620",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-119566844349959988",
+          "y": "69508583141613812778896424"
+        }
+      ],
+      "index": 33,
+      "model_sha256": "e01dbae13d06bb692e992715e1a7f58da211c5c8082f334e6806f49fbfeddd91",
+      "modular_survivors": 21,
+      "new_x_count": 0,
+      "t": "23/54",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "769513333733449800",
+          "y": "8806175352235360221884139000"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-34016130952505753760",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-8916968428737102400",
+          "y": "33053736559753619585290016000"
+        }
+      ],
+      "index": 34,
+      "model_sha256": "d1a1521a671e8916b884de249fbd3b59d7b93e719387a3d0fd982edbbedd5a5f",
+      "modular_survivors": 15,
+      "new_x_count": 0,
+      "t": "70/47",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "185518568784757560",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "203980303938901010",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "221168717047345260",
+          "y": "6802791431753745048549000"
+        }
+      ],
+      "index": 35,
+      "model_sha256": "a3f2d6851a6d4b46b9fc3dd6b1293d27d2231d594a96864ef772ee601f42e751",
+      "modular_survivors": 25,
+      "new_x_count": 0,
+      "t": "-27/47",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "7827643562615340",
+          "y": "6817173412136175012867648"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "16337961681071228",
+          "y": "14016198115788237311650224"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-17585889165636",
+          "y": "167268381267383250970368"
+        }
+      ],
+      "index": 36,
+      "model_sha256": "f72bed53e69754f797d705a2415ce86e1b583f876bc64c16a3f2d7d6b378c672",
+      "modular_survivors": 12,
+      "new_x_count": 0,
+      "t": "9/50",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "4237080940030050",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "94794018801273090",
+          "y": "115067398529608753309155360"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-13385143367294400",
+          "y": "-1166020200966199741197750"
+        }
+      ],
+      "index": 37,
+      "model_sha256": "6f5c71ff8f904a23669a26be9d2070cf67984a88c46174d62c782ad269673065",
+      "modular_survivors": 25,
+      "new_x_count": 0,
+      "t": "5/68",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "803739763059210",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "885116561077530",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "969286802809680",
+          "y": "2171555875145041711200"
+        }
+      ],
+      "index": 38,
+      "model_sha256": "ba2f99107b5a0d64b90d65437a99956f6d870e126ef48c483060b791c4d6b2da",
+      "modular_survivors": 27,
+      "new_x_count": 0,
+      "t": "-7/12",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "4004578040905728360",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "2612591897855538330",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "5850611075833813980",
+          "y": "4637515118706940408561528200"
+        }
+      ],
+      "index": 39,
+      "model_sha256": "345378403d0e270af6171d03767bc9091dc70d432c6f2178c3fe5fc261db06da",
+      "modular_survivors": 43,
+      "new_x_count": 0,
+      "t": "-73/93",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "23018805556777260",
+          "y": "20606887408182539654684340"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-86721069786771960",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-14093697012554160",
+          "y": "3441224141738994907850400"
+        }
+      ],
+      "index": 40,
+      "model_sha256": "ecb27d47bde52aae86691dcc18429d95da1b892229c0dc5324d442206fbeb6f6",
+      "modular_survivors": 21,
+      "new_x_count": 0,
+      "t": "14/41",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "1582655533631220",
+          "y": "390233885291422151680512"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-5233945584660108",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-810171842418996",
+          "y": "52053492560947741307304"
+        }
+      ],
+      "index": 41,
+      "model_sha256": "b85d943688beab22537fb034b4e5f5ced0e1c17e811c4c49fe693850a93d68ea",
+      "modular_survivors": 33,
+      "new_x_count": 0,
+      "t": "7/22",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "306853346451120",
+          "y": "24456233884247760197568"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "103076432168472",
+          "y": "8606668453150024274976"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-125298811987216",
+          "y": "-1646754261271380339904"
+        }
+      ],
+      "index": 42,
+      "model_sha256": "f8225a1227ea671fc0cd600eecec72f39788044af00f4f937faf67554ac6caa0",
+      "modular_survivors": 16,
+      "new_x_count": 0,
+      "t": "-1/19",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "883584977010",
+          "y": "6228391511155893120"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-1419312809550",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-198163768800",
+          "y": "339371625279242250"
+        }
+      ],
+      "index": 43,
+      "model_sha256": "a74ded3f5a84c452dc8d11904dc9558f72dcb5f1769f567ed055d3f17ce2a0b0",
+      "modular_survivors": 38,
+      "new_x_count": 0,
+      "t": "1/4",
+      "tested_expressions": 2929536
     }
   ],
   "generic": {

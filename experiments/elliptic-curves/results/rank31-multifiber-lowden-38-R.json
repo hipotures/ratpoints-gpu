@@ -1,0 +1,60 @@
+{
+  "center": "-132293936302281",
+  "center_label": "R",
+  "denominator_mode": "consecutive",
+  "denominators": 65536,
+  "devices": "0,1",
+  "elapsed_seconds": 16.27972598100132,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 95.74137931034483,
+      "samples": 58
+    },
+    "1": {
+      "max": 100,
+      "mean": 97.20689655172414,
+      "samples": 58
+    }
+  },
+  "height": 2000000000,
+  "metrics": {
+    "basis_ms": "1.263",
+    "basis_wall_ms": "1.276",
+    "denominators": "65536",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "14671.193",
+    "plan_ms": "6.406",
+    "sieve_ms": "31268.896",
+    "sieve_wall_ms": "31271.787",
+    "survivor_setup_ms": "0.469",
+    "survivors": "363167",
+    "verification_ms": "36.751",
+    "wall_ms": "15877.318",
+    "words": "125000001",
+    "workspace_ms": "12.009"
+  },
+  "model_sha256": "ba2f99107b5a0d64b90d65437a99956f6d870e126ef48c483060b791c4d6b2da",
+  "points": [
+    {
+      "d": 768,
+      "n": 1235690353,
+      "x": "-132260572662750",
+      "y": "-11408902798751626217040"
+    },
+    {
+      "d": 768,
+      "n": 1235690353,
+      "x": "-132260572662750",
+      "y": "-11039375236152515805000"
+    }
+  ],
+  "returncode": 0,
+  "sites": 262144000065536,
+  "sites_per_second": 16102482337323.238,
+  "stderr_tail": "wall_ms=15877.318 devices=2 denominators=65536 basis_ms=1.263 sieve_ms=31268.896 words=125000001 initial_mask_gbs=14671.193 survivors=363167 exact_survivors=1 plan_ms=6.406 workspace_ms=12.009 basis_wall_ms=1.276 survivor_setup_ms=0.469 verification_ms=36.751 sieve_wall_ms=31271.787\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=32768 batches=1 basis_ms=0.628 sieve_ms=15678.594\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=32768 batches=1 basis_ms=0.635 sieve_ms=15590.303\n",
+  "stride": "20736",
+  "t": "-7/12",
+  "timed_out": false
+}

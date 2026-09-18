@@ -1,0 +1,60 @@
+{
+  "center": "-119566844349959988",
+  "center_label": "PQ",
+  "denominator_mode": "consecutive",
+  "denominators": 65536,
+  "devices": "0,1",
+  "elapsed_seconds": 15.444416166999872,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 98.30909090909091,
+      "samples": 55
+    },
+    "1": {
+      "max": 100,
+      "mean": 98.18181818181819,
+      "samples": 55
+    }
+  },
+  "height": 2000000000,
+  "metrics": {
+    "basis_ms": "1.347",
+    "basis_wall_ms": "1.366",
+    "denominators": "65536",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "15442.259",
+    "plan_ms": "6.800",
+    "sieve_ms": "29707.570",
+    "sieve_wall_ms": "29710.205",
+    "survivor_setup_ms": "0.504",
+    "survivors": "299860",
+    "verification_ms": "26.268",
+    "wall_ms": "15169.278",
+    "words": "125000001",
+    "workspace_ms": "5.703"
+  },
+  "model_sha256": "e01dbae13d06bb692e992715e1a7f58da211c5c8082f334e6806f49fbfeddd91",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "-119566844349959988",
+      "y": "-215955676877826544506996192"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "-119566844349959988",
+      "y": "69508583141613812778896424"
+    }
+  ],
+  "returncode": 0,
+  "sites": 262144000065536,
+  "sites_per_second": 16973383599029.133,
+  "stderr_tail": "wall_ms=15169.278 devices=2 denominators=65536 basis_ms=1.347 sieve_ms=29707.570 words=125000001 initial_mask_gbs=15442.259 survivors=299860 exact_survivors=1 plan_ms=6.800 workspace_ms=5.703 basis_wall_ms=1.366 survivor_setup_ms=0.504 verification_ms=26.268 sieve_wall_ms=29710.205\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=32768 batches=1 basis_ms=0.616 sieve_ms=14940.774\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=32768 batches=1 basis_ms=0.730 sieve_ms=14766.796\n",
+  "stride": "8503056",
+  "t": "23/54",
+  "timed_out": false
+}

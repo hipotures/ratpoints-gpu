@@ -1,0 +1,60 @@
+{
+  "center": "-132260572662750",
+  "center_label": "N0-u",
+  "denominator_mode": "consecutive",
+  "denominators": 65536,
+  "devices": "0,1",
+  "elapsed_seconds": 16.348498134999318,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 96.75862068965517,
+      "samples": 58
+    },
+    "1": {
+      "max": 100,
+      "mean": 98.34482758620689,
+      "samples": 58
+    }
+  },
+  "height": 2000000000,
+  "metrics": {
+    "basis_ms": "1.335",
+    "basis_wall_ms": "1.351",
+    "denominators": "65536",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "14507.218",
+    "plan_ms": "6.388",
+    "sieve_ms": "31622.327",
+    "sieve_wall_ms": "31625.739",
+    "survivor_setup_ms": "0.483",
+    "survivors": "432526",
+    "verification_ms": "38.793",
+    "wall_ms": "16032.514",
+    "words": "125000001",
+    "workspace_ms": "6.269"
+  },
+  "model_sha256": "ba2f99107b5a0d64b90d65437a99956f6d870e126ef48c483060b791c4d6b2da",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "-132260572662750",
+      "y": "-11408902798751626217040"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "-132260572662750",
+      "y": "-11039375236152515805000"
+    }
+  ],
+  "returncode": 0,
+  "sites": 262144000065536,
+  "sites_per_second": 16034745081832.982,
+  "stderr_tail": "wall_ms=16032.514 devices=2 denominators=65536 basis_ms=1.335 sieve_ms=31622.327 words=125000001 initial_mask_gbs=14507.218 survivors=432526 exact_survivors=1 plan_ms=6.388 workspace_ms=6.269 basis_wall_ms=1.351 survivor_setup_ms=0.483 verification_ms=38.793 sieve_wall_ms=31625.739\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=32768 batches=1 basis_ms=0.727 sieve_ms=15874.239\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=32768 batches=1 basis_ms=0.608 sieve_ms=15748.088\n",
+  "stride": "1",
+  "t": "-7/12",
+  "timed_out": false
+}

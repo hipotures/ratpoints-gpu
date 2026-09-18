@@ -1,0 +1,72 @@
+{
+  "center": "72327048136200",
+  "center_label": "N0-f",
+  "denominator_mode": "consecutive",
+  "denominators": 65536,
+  "devices": "0,1",
+  "elapsed_seconds": 15.386257717998888,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 98.30909090909091,
+      "samples": 55
+    },
+    "1": {
+      "max": 100,
+      "mean": 98.18181818181819,
+      "samples": 55
+    }
+  },
+  "height": 2000000000,
+  "metrics": {
+    "basis_ms": "1.280",
+    "basis_wall_ms": "1.291",
+    "denominators": "65536",
+    "devices": "2",
+    "exact_survivors": "2",
+    "initial_mask_gbs": "15454.079",
+    "plan_ms": "6.298",
+    "sieve_ms": "29684.849",
+    "sieve_wall_ms": "29687.271",
+    "survivor_setup_ms": "0.467",
+    "survivors": "295093",
+    "verification_ms": "25.624",
+    "wall_ms": "15071.255",
+    "words": "125000001",
+    "workspace_ms": "5.617"
+  },
+  "model_sha256": "56acfc74ecdd2b8232238b98ae9bdcf2d3fa04340193430552e9abc30c3bff4a",
+  "points": [
+    {
+      "d": 32,
+      "n": -1377973025,
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "d": 32,
+      "n": -1377973025,
+      "x": "0",
+      "y": "36832344419855798406450"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "72327048136200",
+      "y": "7594080701734516210650"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "72327048136200",
+      "y": "46313737433967935646000"
+    }
+  ],
+  "returncode": 0,
+  "sites": 262144000065536,
+  "sites_per_second": 17037541218283.326,
+  "stderr_tail": "wall_ms=15071.255 devices=2 denominators=65536 basis_ms=1.280 sieve_ms=29684.849 words=125000001 initial_mask_gbs=15454.079 survivors=295093 exact_survivors=2 plan_ms=6.298 workspace_ms=5.617 basis_wall_ms=1.291 survivor_setup_ms=0.467 verification_ms=25.624 sieve_wall_ms=29687.271\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=32768 batches=1 basis_ms=0.644 sieve_ms=14896.928\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=32768 batches=1 basis_ms=0.636 sieve_ms=14787.921\n",
+  "stride": "1679616",
+  "t": "-5/36",
+  "timed_out": false
+}

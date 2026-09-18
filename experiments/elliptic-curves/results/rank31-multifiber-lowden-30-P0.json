@@ -1,0 +1,72 @@
+{
+  "center": "0",
+  "center_label": "P0",
+  "denominator_mode": "consecutive",
+  "denominators": 65536,
+  "devices": "0,1",
+  "elapsed_seconds": 15.450974577001034,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 96.27272727272727,
+      "samples": 55
+    },
+    "1": {
+      "max": 100,
+      "mean": 96.21818181818182,
+      "samples": 55
+    }
+  },
+  "height": 2000000000,
+  "metrics": {
+    "basis_ms": "1.248",
+    "basis_wall_ms": "1.262",
+    "denominators": "65536",
+    "devices": "2",
+    "exact_survivors": "2",
+    "initial_mask_gbs": "15399.455",
+    "plan_ms": "6.712",
+    "sieve_ms": "29790.146",
+    "sieve_wall_ms": "29792.625",
+    "survivor_setup_ms": "0.461",
+    "survivors": "297609",
+    "verification_ms": "26.273",
+    "wall_ms": "15118.545",
+    "words": "125000001",
+    "workspace_ms": "10.377"
+  },
+  "model_sha256": "56acfc74ecdd2b8232238b98ae9bdcf2d3fa04340193430552e9abc30c3bff4a",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "0",
+      "y": "36832344419855798406450"
+    },
+    {
+      "d": 32,
+      "n": 1377973025,
+      "x": "72327048136200",
+      "y": "7594080701734516210650"
+    },
+    {
+      "d": 32,
+      "n": 1377973025,
+      "x": "72327048136200",
+      "y": "46313737433967935646000"
+    }
+  ],
+  "returncode": 0,
+  "sites": 262144000065536,
+  "sites_per_second": 16966178978492.436,
+  "stderr_tail": "wall_ms=15118.545 devices=2 denominators=65536 basis_ms=1.248 sieve_ms=29790.146 words=125000001 initial_mask_gbs=15399.455 survivors=297609 exact_survivors=2 plan_ms=6.712 workspace_ms=10.377 basis_wall_ms=1.262 survivor_setup_ms=0.461 verification_ms=26.273 sieve_wall_ms=29792.625\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=32768 batches=1 basis_ms=0.620 sieve_ms=14935.615\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=32768 batches=1 basis_ms=0.628 sieve_ms=14854.530\n",
+  "stride": "1679616",
+  "t": "-5/36",
+  "timed_out": false
+}

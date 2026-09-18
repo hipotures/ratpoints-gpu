@@ -68,7 +68,8 @@ def main():
                 entry['certified_subgroup_rank']=sage['certified_subgroup_rank']
                 entry['independent_generators']=sage['independent_generators']
                 entry['saturation_status']=sage.get('saturation','Sage saturation completed')
-                entries=[step for step in sage.get('steps',[]) if step.get('status')=='certified']
+                entries=[step for step in sage.get('steps',[])
+                         if step.get('status') in ('certified','independent')]
                 if entries:
                     entry['saturation_index']=entries[-1]['saturation_index']
                     entry['regulator_numerical']=entries[-1].get('regulator')
@@ -94,26 +95,67 @@ def main():
                 entry['saturation_status']='rank 3 certified by exact height intervals; saturation not completed'
             growth=[item for item in height.get('gpu_rank_growth_tests',[])
                     if item.get('proof',{}).get('certified_rank')==4]
-            if growth:
+            if growth and entry['certified_subgroup_rank']<4:
                 entry['certified_subgroup_rank']=4
                 entry['independent_generators']=[{'x':section['x'],'y':section['y']}
                                                   for section in row['model']['sections'] if section['label'] in ('P0','PD','PQ')]+[growth[0]['point']]
                 entry['saturation_status']='rank 4 certified by exact height intervals; saturation pending'
+            cumulative=[item for item in height.get('cumulative_growth_tests',[])
+                        if item.get('proof',{}).get('certified_rank',0)>3]
+            if cumulative:
+                strongest=max(cumulative,key=lambda item:item['proof']['certified_rank'])
+                entry['rank_growth_certificate']={'path':height_path.name,
+                    'certified_rank':strongest['proof']['certified_rank'],
+                    'doublings':strongest['proof']['doublings'],
+                    'new_points':strongest['points'],
+                    'principal_minor_lower_bounds':strongest['proof']['principal_minor_lower_bounds']}
+                if strongest['proof']['certified_rank']>entry['certified_subgroup_rank']:
+                    entry['certified_subgroup_rank']=strongest['proof']['certified_rank']
+                    entry['independent_generators']=[{'x':section['x'],'y':section['y']}
+                        for section in row['model']['sections'] if section['label'] in ('P0','PD','PQ')]+strongest['points']
+                    entry['saturation_status']=f"rank {entry['certified_subgroup_rank']} certified by exact height intervals; saturation pending"
+        extended_path=RESULTS_DIR/f'rank31-multifiber-sage-{i:02d}-height-extended.json'
+        if extended_path.exists():
+            extended=json.loads(extended_path.read_text())
+            entry['extended_height_attempt']={'path':extended_path.name,
+                'status':extended.get('runner_status','unknown')}
+            if (extended.get('model_sha256')==entry['model_sha256'] and
+                extended.get('runner_status')=='completed'):
+                extended_growth=[item for item in extended.get('cumulative_growth_tests',[])
+                                 if item.get('proof',{}).get('certified_rank',0)>3]
+                if extended_growth:
+                    strongest=max(extended_growth,key=lambda item:item['proof']['certified_rank'])
+                    rank=strongest['proof']['certified_rank']
+                    if rank>entry.get('rank_growth_certificate',{}).get('certified_rank',0):
+                        entry['rank_growth_certificate']={'path':extended_path.name,
+                            'certified_rank':rank,'doublings':strongest['proof']['doublings'],
+                            'new_points':strongest['points'],
+                            'principal_minor_lower_bounds':strongest['proof']['principal_minor_lower_bounds']}
+                    if rank>entry['certified_subgroup_rank']:
+                        entry['certified_subgroup_rank']=rank
+                        entry['independent_generators']=[{'x':section['x'],'y':section['y']}
+                            for section in row['model']['sections'] if section['label'] in ('P0','PD','PQ')]+strongest['points']
+                        entry['saturation_status']=f'rank {rank} certified by exact height intervals; saturation pending'
         full_path=RESULTS_DIR/f'rank31-multifiber-sage-{i:02d}-p-1.json'
         if full_path.exists():
             full=json.loads(full_path.read_text())
             entry['cpu_elapsed_seconds']+=full.get('runner_elapsed_seconds',0)
+            entry['full_saturation_attempt']={'path':full_path.name,
+                'status':full.get('runner_status',full.get('status','unknown')),
+                'current_label':full.get('current_label')}
             if (full.get('model_sha256')==entry['model_sha256'] and
                 full.get('certified_subgroup_rank',0)>=entry['certified_subgroup_rank'] and
                 full.get('saturation')=='full computed saturation bound (Sage/eclib)'):
                 entry['independent_generators']=full['independent_generators']
                 entry['saturation_status']='full Sage/eclib saturation'
-                certified=[step for step in full['steps'] if step.get('status')=='certified']
+                certified=[step for step in full['steps'] if step.get('status') in ('certified','independent')]
                 entry['saturation_index']=certified[-1]['saturation_index'] if certified else None
                 entry['regulator_numerical']=certified[-1].get('regulator') if certified else None
                 entry['full_saturation_source']=full_path.name
         entry['auxiliary_cpu_experiments']=[]
-        for suffix in ('p2','pairing','descent','rank-bound','pari-rank-e0','geometry'):
+        for suffix in ('p2','pairing','descent','rank-bound','pari-rank-e0','geometry',
+                       'height-extended','basis-height','greedy-height','greedy-height-n5',
+                       'numerical-select','selected-height-n5','selected-height-n6'):
             auxiliary=RESULTS_DIR/f'rank31-multifiber-sage-{i:02d}-{suffix}.json'
             if auxiliary.exists():
                 experiment=json.loads(auxiliary.read_text())
@@ -122,6 +164,16 @@ def main():
                 entry['auxiliary_cpu_experiments'].append({'path':auxiliary.name,
                     'status':experiment.get('runner_status',experiment.get('status','completed')),
                     'elapsed_seconds':seconds})
+                if suffix=='p2' and (experiment.get('model_sha256')==entry['model_sha256']
+                                     and experiment.get('certified_subgroup_rank',0)>entry['certified_subgroup_rank']):
+                    entry['certified_subgroup_rank']=experiment['certified_subgroup_rank']
+                    entry['independent_generators']=experiment['independent_generators']
+                    entry['saturation_status']=experiment['saturation']
+                    independent=[step for step in experiment.get('steps',[])
+                                 if step.get('status') in ('certified','independent')]
+                    entry['saturation_index']=independent[-1]['saturation_index'] if independent else None
+                    entry['regulator_numerical']=independent[-1].get('regulator') if independent else None
+                    entry['sage_certificate_path']=auxiliary.name
         if row['t']=='-47/80':
             previous=json.loads((RESULTS_DIR/'rank31-t-minus-47-80.json').read_text())
             previous_sage=json.loads((RESULTS_DIR/'rank31-t-minus-47-80-sage-sections.json').read_text())
@@ -171,11 +223,16 @@ def main():
         if 'square_rescale' in used:decisions.append('combined deeper square denominators with rescaled family-coordinate spacing')
         if 'square_frontier' in used:decisions.append('extended square-denominator search to the high-score frontier')
         if 'group' in used:decisions.append('searched around exact small-height sums of known generators')
+        if 'lowden' in used:decisions.append('promoted for small parameter denominator and strong Stage B score')
+        if 'discovery' in used:decisions.append('searched around newly certified independent points')
+        if 'discovery_expand' in used or 'discovery_expand2' in used:
+            decisions.append('expanded around additional small-height discovered points')
+        if 'lowden_remaining' in used:decisions.append('widened after the first small-denominator discoveries to test remaining diverse leads')
         entry['scheduling_decisions']=decisions
         novel=any(point['x'] not in {section['x'] for section in row['model']['sections']} | known_subgroup_x
                   for point in entry['exact_points'])
         if entry['certified_subgroup_rank']>=4:
-            entry['status_reason']='new exact GPU point and independent rank-four height certificate; inspect saturation status'
+            entry['status_reason']=f"new exact GPU points and independent rank-{entry['certified_subgroup_rank']} certificate; inspect saturation status"
         elif novel:
             entry['status_reason']='new exact GPU point found; independence not yet certified'
         elif entry['certified_subgroup_rank']>=3:
@@ -203,8 +260,8 @@ def main():
             stages[stage]['exact_x_survivors']+=run.get('exact_survivors') or 0
     total_sites=sum(value['sites'] for value in stages.values())
     total_seconds=sum(value['seconds'] for value in stages.values())
-    bulk_sites=sum(stages[name]['sites'] for name in ('promote','rescale','coarse','standalone','deeper','outer','square','square_rescale','square_frontier','group'))
-    bulk_seconds=sum(stages[name]['seconds'] for name in ('promote','rescale','coarse','standalone','deeper','outer','square','square_rescale','square_frontier','group'))
+    bulk_sites=sum(stages[name]['sites'] for name in ('promote','rescale','coarse','standalone','deeper','outer','square','square_rescale','square_frontier','group','lowden','lowden_remaining','discovery','discovery_expand','discovery_expand2'))
+    bulk_seconds=sum(stages[name]['seconds'] for name in ('promote','rescale','coarse','standalone','deeper','outer','square','square_rescale','square_frontier','group','lowden','lowden_remaining','discovery','discovery_expand','discovery_expand2'))
     total_cpu_seconds=sum(r['cpu_elapsed_seconds'] for r in ranked)
     best_rank=max(r['certified_subgroup_rank'] for r in ranked)
     doubling_counts=', '.join(map(str,sorted({r['height_certificate']['doublings'] for r in ranked})))
@@ -224,14 +281,24 @@ def main():
            f"Its {inventory['control']['exact_curve_witnesses_verified']} published witness coordinates were checked exactly on the recorded minimal model.",'',
            '## Rigorous results','',
            f"Best newly certified lower bound: **rank at least {best_rank}**. "
-           +('At least one fourth independent point was certified. ' if best_rank>=4 else 'No fourth independent point was found in the completed GPU rectangles. ')
+           +(f'The leading specialization contains {best_rank-3} independent generators beyond the three known sections. ' if best_rank>=4 else 'No fourth independent point was found in the completed GPU rectangles. ')
            +'No new generic section was found. The previously known x=-pq section is included in every exact specialization.','',
            '| T | Certified subgroup rank | Stage B score | GPU sites | Sage status |',
            '|---|---:|---:|---:|---|']
     for entry in ranked[:15]:
         lines.append(f"| {entry['t']} | {entry['certified_subgroup_rank']} | {entry['score']:.2f} | "
                      f"{entry['gpu_sites']:,} | {entry['saturation_status']} |")
-    lines.extend(['',f"All {len(ranked)} fibers have exact rank-at-least-three certificates for P0, PD, and PQ. Under pinned Sage 10.10.beta10, the certificates use {doubling_counts} point-doubling rounds, exact x-coordinates, rational enclosures of logarithms, and an upward bound on Sage’s Silverman height-difference formula; all three leading principal minors are strictly positive. The known relation P0+PD+PE=O is checked as a negative control for both triples and quadruples. Sage/eclib saturation completed on a subset; a saturation timeout leaves the index unknown, not the rank-three lower bound. Good reductions separately prove torsion is trivial for every selected fiber.",'',
+    growth_rows=[entry for entry in ranked if entry['certified_subgroup_rank']>3]
+    if growth_rows:
+        lines.extend(['','### New independent generators',''])
+        for entry in growth_rows:
+            sample='; '.join(f"({p['x']}, {p['y']})" for p in entry['independent_generators'][-2:])
+            growth=entry.get('rank_growth_certificate',{})
+            source=(growth['path'] if growth.get('certified_rank')==entry['certified_subgroup_rank']
+                    else entry.get('sage_certificate_path',''))
+            lines.append(f"- T={entry['t']}: {entry['certified_subgroup_rank']} independent generators; "
+                         f"basis sample {sample}. Full basis: scoreboard; certificate: {source}.")
+    lines.extend(['',f"All {len(ranked)} fibers have exact rank-at-least-three certificates for P0, PD, and PQ. Under pinned Sage 10.10.beta10, the certificates use {doubling_counts} point-doubling rounds, exact x-coordinates, rational enclosures of logarithms, and an upward bound on Sage’s Silverman height-difference formula; all three leading principal minors are strictly positive. Additional interval proofs certify rank growth where their principal minor lower bounds are positive. Sage/eclib saturation certifies the higher ranks shown for T=-7/12 and T=1/4 through prime 11. The known relation P0+PD+PE=O is checked as a negative control for both triples and quadruples. A full saturation timeout leaves the index unknown, not the certified subgroup rank. Good reductions separately prove torsion is trivial for every selected fiber.",'',
                   '## GPU work and limits','',
                   '| Stage | Rectangles | Sites | Modular survivors | Exact x survivors | GPU time |',
                   '|---|---:|---:|---:|---:|---:|'])
@@ -253,7 +320,8 @@ def main():
                   'The separate Sage verification artifacts record exact point construction for each completed report. '
                   'Absence of a new point excludes only these rectangles. A bounded Simon 2-descent for T=-44/43 timed out at 120 seconds; '
                   'for T=-802/2917 it hit PARI’s 1 GiB bnfinit stack limit before returning a bound. Bounded mwrank bounds on both fibers failed because their 2-descents did not complete. '
-                  'PARI ellrank with known points and zero search effort also timed out at 60 seconds for T=-44/43 and 45 seconds for T=-47/500. None supplies an upper bound.','',
+                  'PARI ellrank with known points and zero search effort also timed out at 60 seconds for T=-44/43 and 45 seconds for T=-47/500. '
+                  'Full Sage/eclib saturation attempts on T=-5/36 and T=1/4 reached their 120-second hard limits; the bounded-prime independence certificates remain valid. None supplies a global upper bound.','',
                   '## Adaptation and next work','',
                   'The cheap screen returned only known section points. Wide windows therefore went to the strongest 12 Stage B leads; '
                   'six additional standalone refined leads were screened and widened. Structured x lattices and subsequent rescaled windows favored smaller parameter denominators, which provide better resolution in family coordinates. '
@@ -261,8 +329,9 @@ def main():
                   'Fourteen outer windows on two small-denominator fibers tested logarithmically spaced family-coordinate regions and found no points. '
                   'A new GPU mode enumerated square denominators k² through k=46,340. Forty-six rectangles across 15 fibers, including rescaled family-coordinate windows, returned only known points; the square mode matched exact CPU enumeration on a small reference rectangle. '
                   'Exact Sage group arithmetic identified small-height integral x-coordinates of sums of the three known generators on six fibers. Twelve GPU rectangles centered at those subgroup points found no new points. '
-                  'A separate sparse-coordinate scan tested 2,929,536 low-complexity expressions over Q(T) and 87,886,080 specialized expressions across all 30 fibers. Its modular filter left only the three known generic section forms; exact fixed-fiber checks returned only the 90 known section x-coordinates. This excludes only the explicitly recorded ansatz. '
+                  f"A separate sparse-coordinate scan tested {sparse['generic']['tested_expressions']:,} low-complexity expressions over Q(T) and {sum(item['tested_expressions'] for item in sparse['fibers']):,} specialized expressions across all {len(sparse['fibers'])} selected fibers. Its modular filter left only the three known generic section forms; exact fixed-fiber checks returned no new x-coordinate. This excludes only the explicitly recorded ansatz. "
                   'Minimal-model diagnostics on six leading fibers found larger maximum coefficient bit sizes than the integral factored models, so repeating the failed descents on these minimal models was not prioritized. '
+                  'Fourteen additional small-denominator leads were inventoried; wide windows produced independent point discoveries on T=-5/36, -7/12, -1/19, and 1/4. Discovery-centered windows raised the certified subgroup ranks further on the first two. The T=1/4 point set was reduced numerically to a candidate basis and certified independently by bounded Sage/eclib saturation through prime 11; numerical selection itself is not a rank proof. '
                   'Promising follow-up is to derive candidate x-coordinates from covering curves or lattice reduction, then feed those centers to the exact GPU sieve; repeated local rectangles around section points have low yield. '
                   'Alternative bounded descent algorithms may resolve upper bounds for the smaller-denominator fibers. '
                   'No global upper bound is claimed.',''])

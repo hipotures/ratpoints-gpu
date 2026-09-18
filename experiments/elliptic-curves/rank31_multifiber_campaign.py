@@ -27,7 +27,7 @@ def candidate_entry(row):
 
 def main():
     ap=argparse.ArgumentParser()
-    ap.add_argument('--stage',choices=('screen','promote','rescale','coarse','structured','deeper','standalone','outer','square','square_rescale','square_frontier','group'),required=True)
+    ap.add_argument('--stage',choices=('screen','promote','rescale','coarse','structured','deeper','standalone','outer','square','square_rescale','square_frontier','group','lowden','lowden_remaining','discovery','discovery_expand','discovery_expand2'),required=True)
     ap.add_argument('--limit',type=int,default=24)
     args=ap.parse_args()
     inventory=json.loads(INVENTORY.read_text())
@@ -41,9 +41,43 @@ def main():
         entry.update(score=row['score'],prime_bound=row['prime_bound'],
                      stage_a_score=row['stage_a_score'],stage_a_prime_bound=row['stage_a_prime_bound'],
                      source_campaigns=row['source_campaigns'],source_seeds=row['source_seeds'])
-    selected=inventory['selected'][:max(args.limit,25) if args.stage=='group' else args.limit]
+    selected=inventory['selected'] if args.stage in ('lowden','lowden_remaining','discovery','discovery_expand','discovery_expand2') else inventory['selected'][:max(args.limit,25) if args.stage=='group' else args.limit]
     group_centers={}
-    if args.stage=='group':
+    discovery_centers={}
+    if args.stage in ('discovery','discovery_expand','discovery_expand2'):
+        jobs=[]
+        for i,row in enumerate(selected[30:],30):
+            if args.stage in ('discovery_expand','discovery_expand2') and row['t']!='1/4':continue
+            entry=board['candidate_rows'][row['t']]
+            section_x={p['x'] for p in row['model']['sections']}
+            distinct=sorted({p['x'] for p in entry['exact_points'] if p['x'] not in section_x},
+                            key=lambda x:(max(abs(Fraction(x).numerator),Fraction(x).denominator).bit_length(),Fraction(x)))
+            scale=int(row['model']['scale'])**2
+            used_centers={int(run['center']) for run in entry['gpu_searches']
+                          if run['center_label'].startswith(('N','X','Y'))}
+            available=[x for x in distinct if Fraction(x).numerator//Fraction(x).denominator not in used_centers]
+            selected_x=available[:4] if args.stage in ('discovery_expand','discovery_expand2') else distinct[:2]
+            for number,x in enumerate(selected_x):
+                variants=(('f',scale,65536),('s',scale,46340)) if args.stage in ('discovery_expand','discovery_expand2') else (('u',1,65536),('f',scale,65536),('s',scale,46340))
+                for suffix,stride,denominators in variants:
+                    prefix='Y' if args.stage=='discovery_expand2' else 'X' if args.stage=='discovery_expand' else 'N'
+                    label=f'{prefix}{number}-{suffix}'
+                    value=Fraction(x)
+                    discovery_centers[i,label]=value.numerator//value.denominator
+                    jobs.append((i,label,2_000_000_000,denominators,stride,None))
+        if not jobs:raise RuntimeError('no integral discovered x-coordinate to center')
+    elif args.stage in ('lowden','lowden_remaining'):
+        new_indices=list(range(30,len(selected)))
+        strongest=sorted(new_indices,key=lambda i:(-selected[i]['score'],i))[:5]
+        tiny=sorted((i for i in new_indices if Fraction(selected[i]['t']).denominator<=20),
+                    key=lambda i:(Fraction(selected[i]['t']).denominator,i))[:3]
+        promoted=set(strongest+tiny)
+        promote=sorted(promoted if args.stage=='lowden' else set(new_indices)-promoted)
+        jobs=[(i,label,2_000_000_000,65536,
+               int(selected[i]['model']['scale'])**2,None)
+              for i in promote for label in (('P0','PD','PE','PQ','R') if args.stage=='lowden' else ('P0','PD','PQ','R'))
+              if label in centers(selected[i]['model'])]
+    elif args.stage=='group':
         jobs=[]
         for i in (0,1,3,5,21,24):
             if i>=len(selected):continue
@@ -123,12 +157,13 @@ def main():
               if label in centers(selected[i]['model'])]
     for number,(i,label,h,d,stride,stride_label) in enumerate(jobs,1):
         row=selected[i]; entry=board['candidate_rows'][row['t']]
-        mode='squares' if args.stage in ('square','square_rescale','square_frontier','group') else 'consecutive'
+        mode='squares' if args.stage in ('square','square_rescale','square_frontier','group') or (args.stage in ('discovery','discovery_expand','discovery_expand2') and label.endswith('-s')) else 'consecutive'
         key=(label,h,d,str(stride),mode)
         if any((run['center_label'],run['height'],run['denominators'],str(run.get('stride',1)),
                 run.get('denominator_mode','consecutive'))==key
                for run in entry['gpu_searches']):continue
-        override=(group_centers[i,label] if args.stage=='group' else
+        override=(discovery_centers[i,label] if args.stage in ('discovery','discovery_expand','discovery_expand2') else
+                  group_centers[i,label] if args.stage=='group' else
                   (1 if label[6]=='p' else -1)*(1<<int(label[7:]))*stride if label.startswith('outer-') else None)
         try: result=search(row['model'],label,h,d,timeout=180,stride=stride,
                            center_override=override,square_denominators=mode=='squares')
@@ -149,6 +184,7 @@ def main():
                                      'elapsed_seconds':result['elapsed_seconds'],
                                      'returncode':result['returncode'],'timed_out':result['timed_out']})
         entry['gpu_sites']+=result['sites'];entry['gpu_elapsed_seconds']+=result['elapsed_seconds']
+        previous_x={p['x'] for p in entry['exact_points']}
         seen={(p['x'],p['y']) for p in entry['exact_points']}
         for p in result['points']:
             if (p['x'],p['y']) not in seen:
@@ -156,12 +192,12 @@ def main():
         known_x={s['x'] for s in row['model']['sections']}
         if args.stage=='group':
             known_x.update(str(x) for (index,_),x in group_centers.items() if index==i)
-        novel=[p for p in entry['exact_points'] if p['x'] not in known_x]
-        entry['status_reason']=('promoted: non-section exact point; needs subgroup test' if novel else
+        new_x={p['x'] for p in result['points']} - previous_x - known_x
+        entry['status_reason']=('promoted: new non-section x-coordinate; needs subgroup test' if new_x else
             'screened: only section x-coordinates found; wider search scheduled' if args.stage=='screen' else
-            f'{args.stage} rectangle completed; only section x-coordinates found')
+            f'{args.stage} rectangle completed; no new x-coordinate found')
         write_board(board)
-        if novel:
+        if new_x and len(new_x)<=4 and len(entry['exact_points'])<=30:
             reports=[str(RESULTS_DIR/item['path']) for item in entry['gpu_searches']]
             base=[sys.executable,str(Path(__file__).with_name('run_multifiber_sage.py')),
                   str(i),'--timeout','90']
@@ -179,9 +215,12 @@ def main():
                     subprocess.run(base,check=False)
                     entry['status_reason']='new independent point certified; bounded saturation attempted'
                     write_board(board)
+        elif new_x:
+            entry['status_reason']='new exact x-coordinates; deferred batched Sage verification and subgroup basis selection'
+            write_board(board)
         print(f'{args.stage} {number}/{len(jobs)} T={row["t"]} {label} stride={stride} '
-              f'{result["sites"]/1e12:.2f}T sites {result["elapsed_seconds"]:.1f}s '
-              f'{len(result["points"])} points {len(novel)} novel',flush=True)
+               f'{result["sites"]/1e12:.2f}T sites {result["elapsed_seconds"]:.1f}s '
+              f'{len(result["points"])} points {len(new_x)} new x',flush=True)
         if result['returncode']!=0:raise RuntimeError(f'GPU search failed: {path}')
 
 if __name__=='__main__':main()

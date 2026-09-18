@@ -20,6 +20,12 @@ def main():
     ap.add_argument('--descent',action='store_true')
     ap.add_argument('--pairing',action='store_true')
     ap.add_argument('--height-proof',action='store_true')
+    ap.add_argument('--extended-height-proof',action='store_true')
+    ap.add_argument('--basis-height-proof',action='store_true')
+    ap.add_argument('--greedy-height-proof',action='store_true')
+    ap.add_argument('--numerical-select',action='store_true')
+    ap.add_argument('--selected-height-proof',action='store_true')
+    ap.add_argument('--max-doublings',type=int,default=6)
     ap.add_argument('--rank-bound',action='store_true')
     ap.add_argument('--minimal-info',action='store_true')
     ap.add_argument('--pari-rank',action='store_true')
@@ -28,7 +34,7 @@ def main():
     ap.add_argument('--max-prime',type=int,default=11)
     args=ap.parse_args()
     name='sage-mf-'+uuid.uuid4().hex
-    suffix=('-geometry' if args.geometry else '-pari-rank-e'+str(args.pari_effort) if args.pari_rank else '-minimal-info' if args.minimal_info else '-height-proof' if args.height_proof else '-rank-bound' if args.rank_bound else '-descent' if args.descent else '-pairing' if args.pairing else '-verify' if args.verify_only else ('-p'+str(args.max_prime) if args.max_prime!=11 else ''))
+    suffix=('-selected-height-n'+str(args.max_doublings) if args.selected_height_proof else '-numerical-select' if args.numerical_select else '-greedy-height' if args.greedy_height_proof else '-basis-height' if args.basis_height_proof else '-height-extended' if args.extended_height_proof else '-geometry' if args.geometry else '-pari-rank-e'+str(args.pari_effort) if args.pari_rank else '-minimal-info' if args.minimal_info else '-height-proof' if args.height_proof else '-rank-bound' if args.rank_bound else '-descent' if args.descent else '-pairing' if args.pairing else '-verify' if args.verify_only else ('-p'+str(args.max_prime) if args.max_prime!=11 else ''))
     out=HERE/'results'/f'rank31-multifiber-sage-{args.index:02d}{suffix}.json'
     with tempfile.NamedTemporaryFile(dir=out.parent,prefix='sage-mf-',suffix='.json',delete=False) as stream:
         temporary=Path(stream.name)
@@ -40,6 +46,11 @@ def main():
          *(['--descent'] if args.descent else []),
          *(['--pairing'] if args.pairing else []),
          *(['--height-proof'] if args.height_proof else []),
+         *(['--extended-height-proof'] if args.extended_height_proof else []),
+         *(['--basis-height-proof','--max-doublings',str(args.max_doublings)] if args.basis_height_proof else []),
+         *(['--greedy-height-proof','--max-doublings',str(args.max_doublings)] if args.greedy_height_proof else []),
+         *(['--numerical-select'] if args.numerical_select else []),
+         *(['--selected-height-proof','--max-doublings',str(args.max_doublings)] if args.selected_height_proof else []),
          *(['--rank-bound'] if args.rank_bound else []),
          *(['--minimal-info'] if args.minimal_info else []),
          *(['--pari-rank','--pari-effort',str(args.pari_effort)] if args.pari_rank else []),

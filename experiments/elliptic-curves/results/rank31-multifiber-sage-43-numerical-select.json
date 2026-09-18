@@ -1,0 +1,828 @@
+{
+  "basis": [
+    {
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "x": "883584977010",
+      "y": "0"
+    },
+    {
+      "x": "-198163768800",
+      "y": "-771336349291656000"
+    },
+    {
+      "x": "-411189150",
+      "y": "-655961827212000"
+    },
+    {
+      "x": "-331156050",
+      "y": "-528023584749000"
+    },
+    {
+      "x": "1728755598",
+      "y": "2721408299277432"
+    },
+    {
+      "x": "-2231896750",
+      "y": "-3601109531278400"
+    },
+    {
+      "x": "-7276607580",
+      "y": "-12116570734884600"
+    },
+    {
+      "x": "-6907597950",
+      "y": "-11475582504606000"
+    },
+    {
+      "x": "-6724471800",
+      "y": "-11158560312720750"
+    },
+    {
+      "x": "-5256258910",
+      "y": "-8642488276385120"
+    },
+    {
+      "x": "5307606798",
+      "y": "8172037265171832"
+    },
+    {
+      "x": "7414905390",
+      "y": "11269090141993980"
+    },
+    {
+      "x": "8379880050",
+      "y": "12660188001984000"
+    },
+    {
+      "x": "-11951146950",
+      "y": "-20492049236826000"
+    },
+    {
+      "x": "-9874083450",
+      "y": "-16711471721983500"
+    },
+    {
+      "x": "11063687490",
+      "y": "16441590108001680"
+    },
+    {
+      "x": "11299301370",
+      "y": "16767506597158440"
+    }
+  ],
+  "canonical_height_evaluations": 2612,
+  "classification": "heuristic point selection only; certify basis exactly before rank claim",
+  "mode": "numerical_point_selection",
+  "model_sha256": "a74ded3f5a84c452dc8d11904dc9558f72dcb5f1769f567ed055d3f17ce2a0b0",
+  "new_x_candidates": 145,
+  "runner_elapsed_seconds": 3.0534063080012857,
+  "runner_status": "completed",
+  "selected": [
+    {
+      "label": "P0",
+      "numerical_pivot": "24.135236895406240557792915930",
+      "x": "0"
+    },
+    {
+      "label": "PD",
+      "numerical_pivot": "13.835995365513881913418995497",
+      "x": "883584977010"
+    },
+    {
+      "label": "PQ",
+      "numerical_pivot": "12.160310621891870570082696374",
+      "x": "-198163768800"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "numerical_pivot": "11.481089707242971721281949669",
+      "x": "-411189150"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "numerical_pivot": "16.856225888182568887141815864",
+      "x": "-331156050"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "numerical_pivot": "14.583975145461171104425992712",
+      "x": "1728755598"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "numerical_pivot": "18.247903806929434907929469617",
+      "x": "-2231896750"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "numerical_pivot": "10.484393174830319465354757188",
+      "x": "-7276607580"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "9.0953399658037464656114540882",
+      "x": "-6907597950"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "numerical_pivot": "10.452257913209987718196556633",
+      "x": "-6724471800"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "11.656516199231414073039522063",
+      "x": "-5256258910"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "8.7193790876410248080518282860",
+      "x": "5307606798"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "7.6314785771016666870073001564",
+      "x": "7414905390"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "4.7371366374398655910118130523",
+      "x": "8379880050"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "8.9475419931535339797045139304",
+      "x": "-11951146950"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N1-f.json",
+      "numerical_pivot": "2.7928884644604338476639081696",
+      "x": "-9874083450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "1.5441629283522792660383646075",
+      "x": "11063687490"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "1.0819214121348112733660329084",
+      "x": "11299301370"
+    }
+  ],
+  "skipped": [
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "3.7865323450608566659762971134e-29",
+      "x": "-16716413550"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "1.5146129380243426663905188453e-28",
+      "x": "-11831432142"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "5.0487097934144755546350628178e-29",
+      "x": "-11700407950"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N1-f.json",
+      "numerical_pivot": "1.7670484276950664441222719862e-28",
+      "x": "11255889750"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N1-f.json",
+      "numerical_pivot": "1.2621774483536188886587657045e-28",
+      "x": "11808381150"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "7.5730646901217133319525942267e-29",
+      "x": "12603190650"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X2-f.json",
+      "numerical_pivot": "-1.2621774483536188886587657045e-28",
+      "x": "13249152884"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-1.7670484276950664441222719862e-28",
+      "x": "-32880758670"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand2-43-Y0-f.json",
+      "numerical_pivot": "5.0487097934144755546350628178e-28",
+      "x": "-31648695960"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "2.5243548967072377773175314089e-29",
+      "x": "-29018870670"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-1.4136387421560531552978175890e-27",
+      "x": "-23796942270"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "2.2719194070365139995857782680e-28",
+      "x": "-23670075870"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X2-f.json",
+      "numerical_pivot": "1.0097419586828951109270125636e-28",
+      "x": "-22525547700"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "numerical_pivot": "-1.5651000359584874219368694735e-27",
+      "x": "-20963148960"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-1.9185097214975007107613238708e-27",
+      "x": "-18768435342"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X2-f.json",
+      "numerical_pivot": "2.5243548967072377773175314089e-29",
+      "x": "-17768094300"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X2-f.json",
+      "numerical_pivot": "5.0487097934144755546350628178e-29",
+      "x": "-17276098500"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N1-f.json",
+      "numerical_pivot": "2.5243548967072377773175314089e-29",
+      "x": "-28565921970/49"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "1.2621774483536188886587657045e-28",
+      "x": "17819502450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X2-f.json",
+      "numerical_pivot": "-2.2719194070365139995857782680e-27",
+      "x": "18628688100"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N1-f.json",
+      "numerical_pivot": "8.0779356694631608874161005085e-28",
+      "x": "18777041598"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "numerical_pivot": "-9.0876776281460559983431130721e-28",
+      "x": "20383029200"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-7.5730646901217133319525942267e-29",
+      "x": "22023904578"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-5.0487097934144755546350628178e-29",
+      "x": "29599114434"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-1.4388822911231255330709929031e-27",
+      "x": "32056943730"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-2.5748419946413825328638820371e-27",
+      "x": "32919181938"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-9.3401131178167797760748662129e-28",
+      "x": "-64961153566"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-1.2621774483536188886587657045e-27",
+      "x": "-59659910062"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-P0.json",
+      "numerical_pivot": "0.00000000000000000000000000000",
+      "x": "-57678777600"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-1.0097419586828951109270125636e-28",
+      "x": "-55265951790"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-1.0097419586828951109270125636e-28",
+      "x": "-48953284782"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-9.0876776281460559983431130721e-28",
+      "x": "-44277983310"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-1.0097419586828951109270125636e-28",
+      "x": "-43195104750"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "6.0584517520973706655620753814e-28",
+      "x": "-41894207550"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "5.0487097934144755546350628178e-29",
+      "x": "-37467335550"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "1.7670484276950664441222719862e-28",
+      "x": "-36825132510"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N1-f.json",
+      "numerical_pivot": "1.0097419586828951109270125636e-28",
+      "x": "-37371927666/25"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N1-f.json",
+      "numerical_pivot": "-1.7670484276950664441222719862e-28",
+      "x": "-37091659234/25"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "5.0487097934144755546350628178e-29",
+      "x": "35914575138"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-2.5243548967072377773175314089e-29",
+      "x": "36956515250"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "1.2621774483536188886587657045e-28",
+      "x": "38421875250"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "2.5243548967072377773175314089e-29",
+      "x": "41308231538"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-1.2621774483536188886587657045e-28",
+      "x": "48842059650"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-6.8157582211095419987573348040e-28",
+      "x": "54487424370"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-5.0487097934144755546350628178e-29",
+      "x": "55271471730"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-7.5730646901217133319525942267e-29",
+      "x": "57712362450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-2.5243548967072377773175314089e-29",
+      "x": "58012974450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-9.5925486074875035538066193538e-28",
+      "x": "61726512450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-1.2116903504194741331124150763e-27",
+      "x": "-123345059310"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X3-f.json",
+      "numerical_pivot": "-3.2816613657194091105127908316e-28",
+      "x": "-118140786750"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "1.0097419586828951109270125636e-28",
+      "x": "-114756275550"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand2-43-Y0-f.json",
+      "numerical_pivot": "-8.5828066488046084428796067903e-28",
+      "x": "-109832008632"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "1.7670484276950664441222719862e-28",
+      "x": "-95491566750"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "2.5243548967072377773175314089e-29",
+      "x": "-89755739566"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-2.5243548967072377773175314089e-28",
+      "x": "-84795626910"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X3-f.json",
+      "numerical_pivot": "-2.7767903863779615550492845498e-28",
+      "x": "-79993963710"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "2.5243548967072377773175314089e-28",
+      "x": "-77474589150"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-1.1107161545511846220197138199e-27",
+      "x": "-70936562142"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "7.5730646901217133319525942267e-29",
+      "x": "-111367095950/9"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "0.00000000000000000000000000000",
+      "x": "-93551006910/169"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-2.2719194070365139995857782680e-28",
+      "x": "72719126370"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X0-f.json",
+      "numerical_pivot": "-1.0097419586828951109270125636e-28",
+      "x": "80723183118"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-2.5243548967072377773175314089e-29",
+      "x": "108040140450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-4.0389678347315804437080502542e-28",
+      "x": "112432279698"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-4.2914033244023042214398033951e-28",
+      "x": "125050550370"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand2-43-Y3-f.json",
+      "numerical_pivot": "7.5730646901217133319525942267e-29",
+      "x": "-263999082450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PQ.json",
+      "numerical_pivot": "-1.2621774483536188886587657045e-28",
+      "x": "-212466267840"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand2-43-Y1-f.json",
+      "numerical_pivot": "-1.2621774483536188886587657045e-28",
+      "x": "-208877305566"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PQ.json",
+      "numerical_pivot": "-2.5243548967072377773175314089e-28",
+      "x": "-205824002160"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N1-f.json",
+      "numerical_pivot": "-7.3206292004509895542208410858e-28",
+      "x": "-205709380050"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PQ.json",
+      "numerical_pivot": "-1.7670484276950664441222719862e-28",
+      "x": "-201864505470"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PQ.json",
+      "numerical_pivot": "-1.0097419586828951109270125636e-28",
+      "x": "-201506693550"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PQ.json",
+      "numerical_pivot": "-1.0097419586828951109270125636e-28",
+      "x": "-200617751230"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PQ.json",
+      "numerical_pivot": "-2.2719194070365139995857782680e-28",
+      "x": "-198640124982"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PQ.json",
+      "numerical_pivot": "-7.5730646901217133319525942267e-29",
+      "x": "-197300688150"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PQ.json",
+      "numerical_pivot": "6.8157582211095419987573348040e-28",
+      "x": "-192551504400"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand2-43-Y0-f.json",
+      "numerical_pivot": "-1.7670484276950664441222719862e-28",
+      "x": "-177669175800"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X3-f.json",
+      "numerical_pivot": "-9.3401131178167797760748662129e-28",
+      "x": "-161957409150"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X3-f.json",
+      "numerical_pivot": "-9.8449840971582273315383724947e-28",
+      "x": "-155084854782"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand2-43-Y1-f.json",
+      "numerical_pivot": "-5.0487097934144755546350628178e-29",
+      "x": "-146039538638/9"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "7.5730646901217133319525942267e-29",
+      "x": "148411047426/25"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-8.8352421384753322206113599312e-28",
+      "x": "145040394450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-2.2719194070365139995857782680e-28",
+      "x": "170118458850"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "3.2816613657194091105127908316e-28",
+      "x": "195671524050"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-1.0602290566170398664733631917e-27",
+      "x": "209942271570"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand2-43-Y1-f.json",
+      "numerical_pivot": "-5.8060162624266468878303222405e-28",
+      "x": "227477309730"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "2.5243548967072377773175314089e-29",
+      "x": "-424676319150"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-1.0097419586828951109270125636e-27",
+      "x": "-418308973230"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-5.0487097934144755546350628178e-29",
+      "x": "-390524087982"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand2-43-Y1-f.json",
+      "numerical_pivot": "-2.5243548967072377773175314089e-28",
+      "x": "-348912348510"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N1-f.json",
+      "numerical_pivot": "7.5730646901217133319525942267e-29",
+      "x": "-305296610130"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "-7.5730646901217133319525942267e-29",
+      "x": "-303492983982"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X1-f.json",
+      "numerical_pivot": "2.5243548967072377773175314089e-28",
+      "x": "-302475154350"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X3-f.json",
+      "numerical_pivot": "-2.7767903863779615550492845498e-28",
+      "x": "-311477606510/9"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand2-43-Y0-f.json",
+      "numerical_pivot": "-8.0779356694631608874161005085e-28",
+      "x": "330143287560"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand-43-X3-f.json",
+      "numerical_pivot": "-1.0602290566170398664733631917e-27",
+      "x": "372536749698"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "-2.2719194070365139995857782680e-28",
+      "x": "423304979058"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-43-N0-f.json",
+      "numerical_pivot": "-1.3631516442219083997514669608e-27",
+      "x": "464744196450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "1.5146129380243426663905188453e-28",
+      "x": "526527746930"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "0.00000000000000000000000000000",
+      "x": "676535694450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "7.5730646901217133319525942267e-29",
+      "x": "759896041650"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "-8.0779356694631608874161005085e-28",
+      "x": "779009504370"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "2.2719194070365139995857782680e-28",
+      "x": "788964250290"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "-7.5730646901217133319525942267e-29",
+      "x": "808887630450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "1.2621774483536188886587657045e-28",
+      "x": "850981030770"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "-1.4136387421560531552978175890e-27",
+      "x": "861493754850"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "-2.2719194070365139995857782680e-28",
+      "x": "876439850370"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "7.5730646901217133319525942267e-29",
+      "x": "884946433938"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "0.00000000000000000000000000000",
+      "x": "885228054738"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "3.7865323450608566659762971134e-28",
+      "x": "895370653010"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "1.0097419586828951109270125636e-28",
+      "x": "925489334450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "-5.0487097934144755546350628178e-29",
+      "x": "928180902450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "-1.8932661725304283329881485567e-28",
+      "x": "1097490894450"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PE.json",
+      "numerical_pivot": "0.00000000000000000000000000000",
+      "x": "-1662712351950"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PE.json",
+      "numerical_pivot": "1.0097419586828951109270125636e-28",
+      "x": "-1651415031630"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PE.json",
+      "numerical_pivot": "1.5146129380243426663905188453e-28",
+      "x": "-1613800073550"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PE.json",
+      "numerical_pivot": "-2.5243548967072377773175314089e-29",
+      "x": "-1599868522830"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PE.json",
+      "numerical_pivot": "7.5730646901217133319525942267e-29",
+      "x": "-1425037403262"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PE.json",
+      "numerical_pivot": "-7.5730646901217133319525942267e-29",
+      "x": "-1402031456430"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PE.json",
+      "numerical_pivot": "-1.2621774483536188886587657045e-27",
+      "x": "-1250208713550"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PE.json",
+      "numerical_pivot": "0.00000000000000000000000000000",
+      "x": "-1242152126670"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PE.json",
+      "numerical_pivot": "-1.7670484276950664441222719862e-28",
+      "x": "-1115536169550"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery_expand2-43-Y0-f.json",
+      "numerical_pivot": "-1.7670484276950664441222719862e-28",
+      "x": "-1133549231688/169"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "0.00000000000000000000000000000",
+      "x": "1206754928498"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-PD.json",
+      "numerical_pivot": "7.5730646901217133319525942267e-29",
+      "x": "1209843384690"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-R.json",
+      "numerical_pivot": "-8.3303711591338846651478536494e-28",
+      "x": "-9895308302550"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-R.json",
+      "numerical_pivot": "-8.5828066488046084428796067903e-28",
+      "x": "-9894692683722"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-R.json",
+      "numerical_pivot": "-2.0194839173657902218540251271e-28",
+      "x": "-9894138568230"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-R.json",
+      "numerical_pivot": "-2.7767903863779615550492845498e-28",
+      "x": "-9893425471630"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-43-R.json",
+      "numerical_pivot": "-4.0389678347315804437080502542e-28",
+      "x": "-9885392091660"
+    }
+  ],
+  "t": "1/4"
+}

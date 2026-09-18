@@ -22,7 +22,7 @@ ROOT = HERE.parents[1]
 CORE = ('-47/80', '-191989/4040887', '532929/2579219', '-47/500', '-353682/460195')
 
 
-def inventory(limit=24, standalone_extra=6):
+def inventory(limit=24, standalone_extra=6, lowden_extra=12, tiny_extra=2):
     seen = {}
     sources = sorted(RESULTS_DIR.glob('rank31-mestre-nagao-campaign-*/global-stage-b.json.gz'))
     for source in sources:
@@ -85,9 +85,20 @@ def inventory(limit=24, standalone_extra=6):
                    and any(source.startswith('rank31-mestre-nagao-20') for source in row['source_campaigns'])),
                   key=lambda row:(-row['score'],Fraction(row['t'])))[:standalone_extra]
     chosen.extend(extras)
+    lowden=sorted((row for row in seen.values() if row not in chosen
+                   and Fraction(row['t']).denominator<=100),
+                  key=lambda row:(-row['score'],Fraction(row['t'])))[:lowden_extra]
+    chosen.extend(lowden)
+    tiny=sorted((row for row in seen.values() if row not in chosen
+                 and Fraction(row['t']).denominator<=20),
+                key=lambda row:(-row['score'],Fraction(row['t'])))[:tiny_extra]
+    chosen.extend(tiny)
     for row in chosen:
         row['selection_reason'] = ('required strong lead' if row['t'] in CORE else
-                                   'standalone refined frontier' if row in extras else 'global Stage B frontier')
+                                   'standalone refined frontier' if row in extras else
+                                   'small-denominator arithmetic frontier' if row in lowden else
+                                   'very-small-denominator arithmetic frontier' if row in tiny else
+                                   'global Stage B frontier')
     control=calibration()
     return {'campaign_files': [str(p.relative_to(RESULTS_DIR)) for p in sources+standalone_sources],
             'deduplicated_count': len(seen), 'selected': chosen,

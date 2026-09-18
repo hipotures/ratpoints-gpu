@@ -17,7 +17,7 @@ class MultifiberTests(unittest.TestCase):
     def test_inventory_and_sections(self):
         data=inventory(24)
         rows=data['selected']
-        self.assertEqual(len({Fraction(r['t']) for r in rows}),30)
+        self.assertEqual(len({Fraction(r['t']) for r in rows}),44)
         self.assertTrue({'-47/80','-191989/4040887','532929/2579219','-47/500','-353682/460195'}
                         <= {r['t'] for r in rows})
         self.assertEqual(data['control']['exact_curve_witnesses_verified'],31)
@@ -96,6 +96,14 @@ class MultifiberTests(unittest.TestCase):
         proof=json.loads((script.with_name('results')/'rank31-multifiber-sage-01-height-proof.json').read_text())
         self.assertEqual(proof['proof']['certified_rank'],3)
         self.assertEqual(proof['dependent_control']['relation'],'P0+PD+PE=O')
+        new_reports=[script.with_name('results')/f'rank31-multifiber-lowden-30-{label}.json'
+                     for label in ('P0','PE')]
+        growth_cmd=[sys.executable,str(script),'30','--height-proof','--timeout','30']
+        for report in new_reports:growth_cmd.extend(['--report',str(report)])
+        growth_run=subprocess.run(growth_cmd,capture_output=True,text=True,timeout=40)
+        self.assertEqual(growth_run.returncode,0,growth_run.stderr)
+        growth=json.loads((script.with_name('results')/'rank31-multifiber-sage-30-height-proof.json').read_text())
+        self.assertEqual(growth['cumulative_growth_tests'][1]['proof']['certified_rank'],5)
 
     def test_sage_timeout_removes_container(self):
         calls=[]

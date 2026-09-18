@@ -1,0 +1,429 @@
+{
+  "ainvariants": [
+    "-16704003",
+    "-1688856324136740",
+    "20238997032363848033790",
+    "711403375080236738406790551300",
+    "0"
+  ],
+  "certified_subgroup_rank": 12,
+  "gpu_points_verified": [
+    {
+      "x": "0",
+      "y": "-20238997032363848033790"
+    },
+    {
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "x": "803739763059210",
+      "y": "-6813325619003515016160"
+    },
+    {
+      "x": "803739763059210",
+      "y": "0"
+    },
+    {
+      "x": "885116561077530",
+      "y": "-5454007340775103681200"
+    },
+    {
+      "x": "885116561077530",
+      "y": "0"
+    },
+    {
+      "x": "969286802809680",
+      "y": "-6219583245515586595950"
+    },
+    {
+      "x": "969286802809680",
+      "y": "2171555875145041711200"
+    },
+    {
+      "x": "0",
+      "y": "-20238997032363848033790"
+    },
+    {
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "x": "803739763059210",
+      "y": "-6813325619003515016160"
+    },
+    {
+      "x": "803739763059210",
+      "y": "0"
+    },
+    {
+      "x": "20093730411862026/25",
+      "y": "-851634620687098973979504/125"
+    },
+    {
+      "x": "20093730411862026/25",
+      "y": "-11342953709440793856/125"
+    },
+    {
+      "x": "804355385023818",
+      "y": "-6797158746942392224704"
+    },
+    {
+      "x": "804355385023818",
+      "y": "-5883520917444865632"
+    },
+    {
+      "x": "884496088124010",
+      "y": "-5456249009318273796000"
+    },
+    {
+      "x": "884496088124010",
+      "y": "-8122713533846825760"
+    },
+    {
+      "x": "885116561077530",
+      "y": "-5454007340775103681200"
+    },
+    {
+      "x": "885116561077530",
+      "y": "0"
+    },
+    {
+      "x": "886374985122234",
+      "y": "-5449899642920490417984"
+    },
+    {
+      "x": "886374985122234",
+      "y": "16913021163394486896"
+    },
+    {
+      "x": "969286802809680",
+      "y": "-6219583245515586595950"
+    },
+    {
+      "x": "969286802809680",
+      "y": "2171555875145041711200"
+    },
+    {
+      "x": "-132260572662750",
+      "y": "-11408902798751626217040"
+    },
+    {
+      "x": "-132260572662750",
+      "y": "-11039375236152515805000"
+    },
+    {
+      "x": "-132260572662750",
+      "y": "-11408902798751626217040"
+    },
+    {
+      "x": "-132260572662750",
+      "y": "-11039375236152515805000"
+    },
+    {
+      "x": "-132273244727766",
+      "y": "-11369751330536807683104"
+    },
+    {
+      "x": "-132273244727766",
+      "y": "-11078738378579377797984"
+    },
+    {
+      "x": "-132260572662750",
+      "y": "-11408902798751626217040"
+    },
+    {
+      "x": "-132260572662750",
+      "y": "-11039375236152515805000"
+    },
+    {
+      "x": "-131111878422366",
+      "y": "-12313064660974102814544"
+    },
+    {
+      "x": "-131111878422366",
+      "y": "-10116025581892582150344"
+    },
+    {
+      "x": "-132260572662750",
+      "y": "-11408902798751626217040"
+    },
+    {
+      "x": "-132260572662750",
+      "y": "-11039375236152515805000"
+    },
+    {
+      "x": "804355385023818",
+      "y": "-6797158746942392224704"
+    },
+    {
+      "x": "804355385023818",
+      "y": "-5883520917444865632"
+    },
+    {
+      "x": "764514769502538",
+      "y": "-7924901178007545665472"
+    },
+    {
+      "x": "764514769502538",
+      "y": "456361148958400891296"
+    },
+    {
+      "x": "787419496369098",
+      "y": "-7258898810002096190304"
+    },
+    {
+      "x": "787419496369098",
+      "y": "172959407246150255808"
+    },
+    {
+      "x": "803739763059210",
+      "y": "-6813325619003515016160"
+    },
+    {
+      "x": "803739763059210",
+      "y": "0"
+    },
+    {
+      "x": "804355385023818",
+      "y": "-6797158746942392224704"
+    },
+    {
+      "x": "804355385023818",
+      "y": "-5883520917444865632"
+    }
+  ],
+  "independent_generators": [
+    {
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "x": "803739763059210",
+      "y": "0"
+    },
+    {
+      "x": "969286802809680",
+      "y": "2171555875145041711200"
+    },
+    {
+      "x": "20093730411862026/25",
+      "y": "-851634620687098973979504/125"
+    },
+    {
+      "x": "804355385023818",
+      "y": "-6797158746942392224704"
+    },
+    {
+      "x": "884496088124010",
+      "y": "-5456249009318273796000"
+    },
+    {
+      "x": "886374985122234",
+      "y": "-5449899642920490417984"
+    },
+    {
+      "x": "-132260572662750",
+      "y": "-11408902798751626217040"
+    },
+    {
+      "x": "-132273244727766",
+      "y": "-11369751330536807683104"
+    },
+    {
+      "x": "-131111878422366",
+      "y": "-12313064660974102814544"
+    },
+    {
+      "x": "764514769502538",
+      "y": "-7924901178007545665472"
+    },
+    {
+      "x": "787419496369098",
+      "y": "-7258898810002096190304"
+    }
+  ],
+  "model_sha256": "ba2f99107b5a0d64b90d65437a99956f6d870e126ef48c483060b791c4d6b2da",
+  "runner_elapsed_seconds": 32.3662072570005,
+  "runner_status": "completed",
+  "saturation": "through prime 11 (Sage/eclib)",
+  "sections_verified": [
+    {
+      "label": "P0",
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "label": "PD",
+      "x": "803739763059210",
+      "y": "0"
+    },
+    {
+      "label": "PE",
+      "x": "885116561077530",
+      "y": "0"
+    },
+    {
+      "label": "PQ",
+      "x": "969286802809680",
+      "y": "2171555875145041711200"
+    }
+  ],
+  "steps": [
+    {
+      "label": "PE",
+      "proof": "P0 + PD + PE = O, exact group law",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 0.32491475799906766,
+      "label": "P0,PD,PQ",
+      "regulator": "7789.98037662533",
+      "saturation_index": "1",
+      "status": "certified"
+    },
+    {
+      "label": "GPU:rank31-multifiber-screen-38-P0.json",
+      "status": "known section or inverse"
+    },
+    {
+      "label": "GPU:rank31-multifiber-screen-38-PD.json",
+      "status": "known section or inverse"
+    },
+    {
+      "label": "GPU:rank31-multifiber-screen-38-PE.json",
+      "status": "known section or inverse"
+    },
+    {
+      "label": "GPU:rank31-multifiber-screen-38-PQ.json",
+      "status": "known section or inverse"
+    },
+    {
+      "elapsed_seconds": 0.4165662239993253,
+      "label": "GPU:rank31-multifiber-lowden-38-PD.json",
+      "regulator": "181527.577135759",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 0.4960966919989005,
+      "label": "GPU:rank31-multifiber-lowden-38-PD.json",
+      "regulator": "181527.577135759",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 0.6070966179995594,
+      "label": "GPU:rank31-multifiber-lowden-38-PD.json",
+      "regulator": "2.85471899837445e6",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 0.7111330580009962,
+      "label": "GPU:rank31-multifiber-lowden-38-PD.json",
+      "regulator": "2.85471899837445e6",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 0.8332631049997872,
+      "label": "GPU:rank31-multifiber-lowden-38-PE.json",
+      "regulator": "4.56278582670182e7",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 0.968525676000354,
+      "label": "GPU:rank31-multifiber-lowden-38-PE.json",
+      "regulator": "4.56278582670182e7",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 1.1045639629992365,
+      "label": "GPU:rank31-multifiber-lowden-38-PE.json",
+      "regulator": "1.03446247020658e9",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 1.2475566360008088,
+      "label": "GPU:rank31-multifiber-lowden-38-PE.json",
+      "regulator": "1.03446247020658e9",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 1.4225922639998316,
+      "label": "GPU:rank31-multifiber-lowden-38-R.json",
+      "regulator": "2.46518467790426e10",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 1.5935863000013342,
+      "label": "GPU:rank31-multifiber-lowden-38-R.json",
+      "regulator": "2.46518467790426e10",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 1.7862228150006558,
+      "label": "GPU:rank31-multifiber-discovery-38-N0-f.json",
+      "regulator": "4.29587110444285e11",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 1.978641482999592,
+      "label": "GPU:rank31-multifiber-discovery-38-N0-f.json",
+      "regulator": "4.29587110444285e11",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 2.2117927170002076,
+      "label": "GPU:rank31-multifiber-discovery-38-N0-f.json",
+      "regulator": "5.88366004888452e12",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 2.3969752100001642,
+      "label": "GPU:rank31-multifiber-discovery-38-N0-f.json",
+      "regulator": "5.88366004888452e12",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 2.636655188998702,
+      "label": "GPU:rank31-multifiber-discovery-38-N1-f.json",
+      "regulator": "8.80404684255030e13",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 2.8510196799998084,
+      "label": "GPU:rank31-multifiber-discovery-38-N1-f.json",
+      "regulator": "8.80404684255030e13",
+      "saturation_index": "1",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 3.126023664999593,
+      "label": "GPU:rank31-multifiber-discovery-38-N1-f.json",
+      "regulator": "1.12355214483401e15",
+      "saturation_index": "1",
+      "status": "independent"
+    },
+    {
+      "elapsed_seconds": 3.3594785569985106,
+      "label": "GPU:rank31-multifiber-discovery-38-N1-f.json",
+      "regulator": "1.12355214483401e15",
+      "saturation_index": "1",
+      "status": "dependent"
+    }
+  ],
+  "t": "-7/12"
+}

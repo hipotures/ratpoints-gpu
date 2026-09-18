@@ -1,0 +1,123 @@
+{
+  "basis": [
+    {
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "x": "803739763059210",
+      "y": "0"
+    },
+    {
+      "x": "969286802809680",
+      "y": "2171555875145041711200"
+    },
+    {
+      "x": "-132273244727766",
+      "y": "-11369751330536807683104"
+    },
+    {
+      "x": "-132260572662750",
+      "y": "-11408902798751626217040"
+    },
+    {
+      "x": "-131111878422366",
+      "y": "-12313064660974102814544"
+    },
+    {
+      "x": "764514769502538",
+      "y": "-7924901178007545665472"
+    },
+    {
+      "x": "787419496369098",
+      "y": "-7258898810002096190304"
+    },
+    {
+      "x": "804355385023818",
+      "y": "-6797158746942392224704"
+    },
+    {
+      "x": "884496088124010",
+      "y": "-5456249009318273796000"
+    },
+    {
+      "x": "886374985122234",
+      "y": "-5449899642920490417984"
+    },
+    {
+      "x": "20093730411862026/25",
+      "y": "-851634620687098973979504/125"
+    }
+  ],
+  "canonical_height_evaluations": 78,
+  "classification": "heuristic point selection only; certify basis exactly before rank claim",
+  "mode": "numerical_point_selection",
+  "model_sha256": "ba2f99107b5a0d64b90d65437a99956f6d870e126ef48c483060b791c4d6b2da",
+  "new_x_candidates": 9,
+  "runner_elapsed_seconds": 2.431298385001355,
+  "runner_status": "completed",
+  "selected": [
+    {
+      "label": "P0",
+      "numerical_pivot": "28.378662661230442254232119120",
+      "x": "0"
+    },
+    {
+      "label": "PD",
+      "numerical_pivot": "17.755939760620584074264058926",
+      "x": "803739763059210"
+    },
+    {
+      "label": "PQ",
+      "numerical_pivot": "15.459689786882735382467923945",
+      "x": "969286802809680"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-38-N0-f.json",
+      "numerical_pivot": "25.556395521455695621846720672",
+      "x": "-132273244727766"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-38-R.json",
+      "numerical_pivot": "24.837057991584020476113820861",
+      "x": "-132260572662750"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-38-N0-f.json",
+      "numerical_pivot": "19.741741858085921693740900027",
+      "x": "-131111878422366"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-38-N1-f.json",
+      "numerical_pivot": "18.652505868878221823890166763",
+      "x": "764514769502538"
+    },
+    {
+      "label": "GPU:rank31-multifiber-discovery-38-N1-f.json",
+      "numerical_pivot": "19.960298639258767932297686285",
+      "x": "787419496369098"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-38-PD.json",
+      "numerical_pivot": "11.954331626897861333508402172",
+      "x": "804355385023818"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-38-PE.json",
+      "numerical_pivot": "13.640889872198707611967670877",
+      "x": "884496088124010"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-38-PE.json",
+      "numerical_pivot": "15.822309786726650088589339704",
+      "x": "886374985122234"
+    },
+    {
+      "label": "GPU:rank31-multifiber-lowden-38-PD.json",
+      "numerical_pivot": "11.982006279037983037546898494",
+      "x": "20093730411862026/25"
+    }
+  ],
+  "skipped": [],
+  "t": "-7/12"
+}

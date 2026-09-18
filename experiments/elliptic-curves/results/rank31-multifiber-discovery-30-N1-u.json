@@ -1,0 +1,60 @@
+{
+  "center": "-377642887394838",
+  "center_label": "N1-u",
+  "denominator_mode": "consecutive",
+  "denominators": 65536,
+  "devices": "0,1",
+  "elapsed_seconds": 15.494231316999503,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 96.36363636363636,
+      "samples": 55
+    },
+    "1": {
+      "max": 100,
+      "mean": 96.49090909090908,
+      "samples": 55
+    }
+  },
+  "height": 2000000000,
+  "metrics": {
+    "basis_ms": "1.298",
+    "basis_wall_ms": "1.321",
+    "denominators": "65536",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "15370.665",
+    "plan_ms": "6.175",
+    "sieve_ms": "29845.944",
+    "sieve_wall_ms": "29848.415",
+    "survivor_setup_ms": "0.473",
+    "survivors": "300676",
+    "verification_ms": "24.771",
+    "wall_ms": "15125.747",
+    "words": "125000001",
+    "workspace_ms": "6.216"
+  },
+  "model_sha256": "56acfc74ecdd2b8232238b98ae9bdcf2d3fa04340193430552e9abc30c3bff4a",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "-377642887394838",
+      "y": "-56139904858384163112192"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "-377642887394838",
+      "y": "3815683873498577062944"
+    }
+  ],
+  "returncode": 0,
+  "sites": 262144000065536,
+  "sites_per_second": 16918812860236.867,
+  "stderr_tail": "wall_ms=15125.747 devices=2 denominators=65536 basis_ms=1.298 sieve_ms=29845.944 words=125000001 initial_mask_gbs=15370.665 survivors=300676 exact_survivors=1 plan_ms=6.175 workspace_ms=6.216 basis_wall_ms=1.321 survivor_setup_ms=0.473 verification_ms=24.771 sieve_wall_ms=29848.415\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=32768 batches=1 basis_ms=0.624 sieve_ms=14958.845\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=32768 batches=1 basis_ms=0.675 sieve_ms=14887.100\n",
+  "stride": "1",
+  "t": "-5/36",
+  "timed_out": false
+}

@@ -1,0 +1,84 @@
+{
+  "center": "804355385023818",
+  "center_label": "N1-s",
+  "denominator_mode": "squares",
+  "denominators": 46340,
+  "devices": "0,1",
+  "elapsed_seconds": 11.796139460000632,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 94.42857142857143,
+      "samples": 42
+    },
+    "1": {
+      "max": 100,
+      "mean": 94.21428571428571,
+      "samples": 42
+    }
+  },
+  "height": 2000000000,
+  "metrics": {
+    "basis_ms": "1.566",
+    "basis_wall_ms": "1.588",
+    "denominators": "46340",
+    "devices": "2",
+    "exact_survivors": "3",
+    "initial_mask_gbs": "14481.158",
+    "plan_ms": "4.839",
+    "sieve_ms": "22400.143",
+    "sieve_wall_ms": "22402.461",
+    "survivor_setup_ms": "0.542",
+    "survivors": "302706",
+    "verification_ms": "34.183",
+    "wall_ms": "11451.221",
+    "words": "125000001",
+    "workspace_ms": "5.693"
+  },
+  "model_sha256": "ba2f99107b5a0d64b90d65437a99956f6d870e126ef48c483060b791c4d6b2da",
+  "points": [
+    {
+      "d": 1,
+      "n": -1921325980,
+      "x": "764514769502538",
+      "y": "-7924901178007545665472"
+    },
+    {
+      "d": 1,
+      "n": -1921325980,
+      "x": "764514769502538",
+      "y": "456361148958400891296"
+    },
+    {
+      "d": 4,
+      "n": -118754237,
+      "x": "803739763059210",
+      "y": "-6813325619003515016160"
+    },
+    {
+      "d": 4,
+      "n": -118754237,
+      "x": "803739763059210",
+      "y": "0"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "804355385023818",
+      "y": "-6797158746942392224704"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "804355385023818",
+      "y": "-5883520917444865632"
+    }
+  ],
+  "returncode": 0,
+  "sites": 185360000046340,
+  "sites_per_second": 15713615515896.086,
+  "stderr_tail": "wall_ms=11451.221 devices=2 denominators=46340 basis_ms=1.566 sieve_ms=22400.143 words=125000001 initial_mask_gbs=14481.158 survivors=302706 exact_survivors=3 plan_ms=4.839 workspace_ms=5.693 basis_wall_ms=1.588 survivor_setup_ms=0.542 verification_ms=34.183 sieve_wall_ms=22402.461\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=23170 batches=1 basis_ms=0.645 sieve_ms=11246.272\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=23170 batches=1 basis_ms=0.921 sieve_ms=11153.870\n",
+  "stride": "20736",
+  "t": "-7/12",
+  "timed_out": false
+}

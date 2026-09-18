@@ -2248,6 +2248,1055 @@
       "stage_a_prime_bound": 5000,
       "stage_a_score": 89.0811878790258,
       "t": "792596/3829929"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9584,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "9675039280943850",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "-434069086564230",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "1076425499682000",
+          "y": "230239614519703051567200"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-236086971",
+          "-9240970194379620",
+          "-36832344419855798406450",
+          "-4199635463152341600308048485500",
+          "0"
+        ],
+        "model_sha256": "56acfc74ecdd2b8232238b98ae9bdcf2d3fa04340193430552e9abc30c3bff4a",
+        "scale": "1296",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "9675039280943850",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "-434069086564230",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "1076425499682000",
+            "y": "230239614519703051567200"
+          }
+        ],
+        "t": "-5/36"
+      },
+      "prime_bound": 100000,
+      "score": 159.52131974028475,
+      "selection_reason": "small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-campaign-20260917T220002Z"
+      ],
+      "source_seeds": [
+        304
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 93.12588613652984,
+      "t": "-5/36"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9582,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "2140880199992407440",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "-20802277567878964312",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "-4722000491909626416",
+          "y": "-36925161604156347497865525888"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-5462472828",
+          "18661397367886556872",
+          "-2981126241491106421363617792",
+          "-44535184159818288151496647290723281280",
+          "0"
+        ],
+        "model_sha256": "04e9f2e24f422e9d626dc2e9ac39e4bed631d7e6ff4588fef7de294a6167cb1a",
+        "scale": "7225",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "2140880199992407440",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "-20802277567878964312",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "-4722000491909626416",
+            "y": "-36925161604156347497865525888"
+          }
+        ],
+        "t": "57/85"
+      },
+      "prime_bound": 100000,
+      "score": 158.84469585851406,
+      "selection_reason": "small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-campaign-20260917T221154Z"
+      ],
+      "source_seeds": [
+        311
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 93.37088473730279,
+      "t": "57/85"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9582,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "376647325500962460",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "120525166334729100",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "197124683111435100",
+          "y": "61324268794859149850232000"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-807299347",
+          "-497172491835691560",
+          "53611140716457555320159700",
+          "45395481555534353933612573369586000",
+          "0"
+        ],
+        "model_sha256": "245accde6955186cbf377fccc0e4de7481eaded2cb9f2019876cfe2dc981c7e8",
+        "scale": "5476",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "376647325500962460",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "120525166334729100",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "197124683111435100",
+            "y": "61324268794859149850232000"
+          }
+        ],
+        "t": "-19/74"
+      },
+      "prime_bound": 100000,
+      "score": 158.51838934641498,
+      "selection_reason": "small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-campaign-20260917T222012Z"
+      ],
+      "source_seeds": [
+        314
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 93.8928574247981,
+      "t": "-19/74"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9584,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "121480864540278900",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "-640388801966596620",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "-119566844349959988",
+          "y": "-215955676877826544506996192"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-1518862011",
+          "518907937426317720",
+          "-35158443922091483415116100",
+          "-77794985304815614035910338597318000",
+          "0"
+        ],
+        "model_sha256": "e01dbae13d06bb692e992715e1a7f58da211c5c8082f334e6806f49fbfeddd91",
+        "scale": "2916",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "121480864540278900",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "-640388801966596620",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "-119566844349959988",
+            "y": "-215955676877826544506996192"
+          }
+        ],
+        "t": "23/54"
+      },
+      "prime_bound": 100000,
+      "score": 158.44462161287848,
+      "selection_reason": "small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-campaign-20260917T220002Z"
+      ],
+      "source_seeds": [
+        308
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 88.97107516726203,
+      "t": "23/54"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9581,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "769513333733449800",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "-34016130952505753760",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "-8916968428737102400",
+          "y": "-65587633840084446458525348800"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-4267810919",
+          "33246617618772303960",
+          "-5522037944211652129905772800",
+          "-26175866329976291721424036674121248000",
+          "0"
+        ],
+        "model_sha256": "d1a1521a671e8916b884de249fbd3b59d7b93e719387a3d0fd982edbbedd5a5f",
+        "scale": "2209",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "769513333733449800",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "-34016130952505753760",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "-8916968428737102400",
+            "y": "-65587633840084446458525348800"
+          }
+        ],
+        "t": "70/47"
+      },
+      "prime_bound": 100000,
+      "score": 158.3792341320086,
+      "selection_reason": "small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-campaign-20260917T222012Z"
+      ],
+      "source_seeds": [
+        318
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 88.48204820860558,
+      "t": "70/47"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9580,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "185518568784757560",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "203980303938901010",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "221168717047345260",
+          "y": "6802791431753745048549000"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-255349368",
+          "-389498872723658570",
+          "69594534186579341665158180",
+          "37842134047024760476104025689135600",
+          "0"
+        ],
+        "model_sha256": "a3f2d6851a6d4b46b9fc3dd6b1293d27d2231d594a96864ef772ee601f42e751",
+        "scale": "2209",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "185518568784757560",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "203980303938901010",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "221168717047345260",
+            "y": "6802791431753745048549000"
+          }
+        ],
+        "t": "-27/47"
+      },
+      "prime_bound": 100000,
+      "score": 156.76792685648806,
+      "selection_reason": "small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-campaign-20260917T222012Z"
+      ],
+      "source_seeds": [
+        315
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 90.80186357364062,
+      "t": "-27/47"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9582,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "7827643562615340",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "16337961681071228",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "-17585889165636",
+          "y": "167268381267383250970368"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-845917227",
+          "-24165605243686568",
+          "-195634875704205732405468",
+          "127887740579093296458464505437520",
+          "0"
+        ],
+        "model_sha256": "f72bed53e69754f797d705a2415ce86e1b583f876bc64c16a3f2d7d6b378c672",
+        "scale": "2500",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "7827643562615340",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "16337961681071228",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "-17585889165636",
+            "y": "167268381267383250970368"
+          }
+        ],
+        "t": "9/50"
+      },
+      "prime_bound": 100000,
+      "score": 154.4106691853793,
+      "selection_reason": "small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-20260917T194611Z.json.gz",
+        "rank31-mestre-nagao-20260917T195946Z.json.gz"
+      ],
+      "source_seeds": [
+        303
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 89.28612218933739,
+      "t": "9/50"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9583,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "4237080940030050",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "94794018801273090",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "-13385143367294400",
+          "y": "-21883727147406013774684800"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-1276744459",
+          "-99031099741303140",
+          "5960339721258486494152950",
+          "401649930291724417638882856354500",
+          "0"
+        ],
+        "model_sha256": "6f5c71ff8f904a23669a26be9d2070cf67984a88c46174d62c782ad269673065",
+        "scale": "4624",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "4237080940030050",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "94794018801273090",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "-13385143367294400",
+            "y": "-21883727147406013774684800"
+          }
+        ],
+        "t": "5/68"
+      },
+      "prime_bound": 100000,
+      "score": 153.26417511658804,
+      "selection_reason": "small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-campaign-20260917T221154Z"
+      ],
+      "source_seeds": [
+        313
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 90.57997923235946,
+      "t": "5/68"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9585,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "803739763059210",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "885116561077530",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "969286802809680",
+          "y": "2171555875145041711200"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-16704003",
+          "-1688856324136740",
+          "20238997032363848033790",
+          "711403375080236738406790551300",
+          "0"
+        ],
+        "model_sha256": "ba2f99107b5a0d64b90d65437a99956f6d870e126ef48c483060b791c4d6b2da",
+        "scale": "144",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "803739763059210",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "885116561077530",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "969286802809680",
+            "y": "2171555875145041711200"
+          }
+        ],
+        "t": "-7/12"
+      },
+      "prime_bound": 100000,
+      "score": 152.2372281128431,
+      "selection_reason": "small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-campaign-20260917T222012Z"
+      ],
+      "source_seeds": [
+        318
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 89.1842020463569,
+      "t": "-7/12"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9586,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "4004578040905728360",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "2612591897855538330",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "5850611075833813980",
+          "y": "4637515118706940408561528200"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-1246884888",
+          "-6617169938761266690",
+          "10198624733615615529298012740",
+          "10462328144000510463690257448548038800",
+          "0"
+        ],
+        "model_sha256": "345378403d0e270af6171d03767bc9091dc70d432c6f2178c3fe5fc261db06da",
+        "scale": "8649",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "4004578040905728360",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "2612591897855538330",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "5850611075833813980",
+            "y": "4637515118706940408561528200"
+          }
+        ],
+        "t": "-73/93"
+      },
+      "prime_bound": 100000,
+      "score": 150.91093916191946,
+      "selection_reason": "small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-campaign-20260917T222012Z"
+      ],
+      "source_seeds": [
+        314
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 91.1336292839104,
+      "t": "-73/93"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9583,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "23018805556777260",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "-86721069786771960",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "-14093697012554160",
+          "y": "-11039071459482718664720400"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-759979327",
+          "63702264229994700",
+          "-3113071052799097310980320",
+          "-1996215443097414946855476133629600",
+          "0"
+        ],
+        "model_sha256": "ecb27d47bde52aae86691dcc18429d95da1b892229c0dc5324d442206fbeb6f6",
+        "scale": "1681",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "23018805556777260",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "-86721069786771960",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "-14093697012554160",
+            "y": "-11039071459482718664720400"
+          }
+        ],
+        "t": "14/41"
+      },
+      "prime_bound": 100000,
+      "score": 150.53520989381235,
+      "selection_reason": "small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-20260917T194611Z.json.gz",
+        "rank31-mestre-nagao-20260917T195946Z.json.gz"
+      ],
+      "source_seeds": [
+        303
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 88.56616983574386,
+      "t": "14/41"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9585,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "1582655533631220",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "-5233945584660108",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "-810171842418996",
+          "y": "-164752322815034737802208"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-210183451",
+          "3651290051028888",
+          "-57585883488565770740292",
+          "-8283532942287010982526717371760",
+          "0"
+        ],
+        "model_sha256": "b85d943688beab22537fb034b4e5f5ced0e1c17e811c4c49fe693850a93d68ea",
+        "scale": "484",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "1582655533631220",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "-5233945584660108",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "-810171842418996",
+            "y": "-164752322815034737802208"
+          }
+        ],
+        "t": "7/22"
+      },
+      "prime_bound": 100000,
+      "score": 150.5181637283707,
+      "selection_reason": "small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-campaign-20260917T220002Z",
+        "rank31-mestre-nagao-campaign-20260917T222012Z"
+      ],
+      "source_seeds": [
+        304,
+        318
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 89.75863668038218,
+      "t": "7/22"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9584,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "306853346451120",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "103076432168472",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "-125298811987216",
+          "y": "-7509376314264828959872"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-77779004",
+          "-409929778619592",
+          "-589486223212711913088",
+          "31629348151137508987153088640",
+          "0"
+        ],
+        "model_sha256": "f8225a1227ea671fc0cd600eecec72f39788044af00f4f937faf67554ac6caa0",
+        "scale": "361",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "306853346451120",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "103076432168472",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "-125298811987216",
+            "y": "-7509376314264828959872"
+          }
+        ],
+        "t": "-1/19"
+      },
+      "prime_bound": 100000,
+      "score": 150.28088963355682,
+      "selection_reason": "very-small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-campaign-20260917T220002Z",
+        "rank31-mestre-nagao-campaign-20260917T221154Z",
+        "rank31-mestre-nagao-campaign-20260917T222012Z"
+      ],
+      "source_seeds": [
+        304,
+        312,
+        318
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 89.76146571287747,
+      "t": "-1/19"
+    },
+    {
+      "already_deeply_searched": false,
+      "control": false,
+      "existing_certified_rank_lower_bound": null,
+      "good_primes": 9584,
+      "known_rational_points": [
+        {
+          "label": "P0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "label": "PD",
+          "x": "883584977010",
+          "y": "0"
+        },
+        {
+          "label": "PE",
+          "x": "-1419312809550",
+          "y": "0"
+        },
+        {
+          "label": "PQ",
+          "x": "-198163768800",
+          "y": "-771336349291656000"
+        }
+      ],
+      "model": {
+        "ainvariants": [
+          "-6157027",
+          "535727832540",
+          "-788134950910943850",
+          "-1254083476196235258445500",
+          "0"
+        ],
+        "model_sha256": "a74ded3f5a84c452dc8d11904dc9558f72dcb5f1769f567ed055d3f17ce2a0b0",
+        "scale": "16",
+        "sections": [
+          {
+            "label": "P0",
+            "x": "0",
+            "y": "0"
+          },
+          {
+            "label": "PD",
+            "x": "883584977010",
+            "y": "0"
+          },
+          {
+            "label": "PE",
+            "x": "-1419312809550",
+            "y": "0"
+          },
+          {
+            "label": "PQ",
+            "x": "-198163768800",
+            "y": "-771336349291656000"
+          }
+        ],
+        "t": "1/4"
+      },
+      "prime_bound": 100000,
+      "score": 146.92262499530713,
+      "selection_reason": "very-small-denominator arithmetic frontier",
+      "source_campaigns": [
+        "rank31-mestre-nagao-campaign-20260917T221154Z",
+        "rank31-mestre-nagao-campaign-20260917T222012Z",
+        "rank31-mestre-nagao-20260917T194611Z.json.gz",
+        "rank31-mestre-nagao-20260917T195946Z.json.gz"
+      ],
+      "source_seeds": [
+        312,
+        315,
+        303
+      ],
+      "stage_a_prime_bound": 5000,
+      "stage_a_score": 88.7004210660201,
+      "t": "1/4"
     }
   ]
 }

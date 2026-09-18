@@ -14,7 +14,7 @@ RESULTS=HERE/'results'
 def point_json(p):
     return {'x':str(p[0]),'y':str(p[1])} if not p.is_zero() else {'infinity':True}
 
-def run(index, reports, output=None, verify_only=False, max_prime=11, descent=False, pairing=False, height_proof=False, rank_bound=False, minimal_info=False, pari_rank=False, pari_effort=0, geometry=False):
+def run(index, reports, output=None, verify_only=False, max_prime=11, descent=False, pairing=False, height_proof=False, rank_bound=False, minimal_info=False, pari_rank=False, pari_effort=0, geometry=False, extended_height=False, basis_height=False, max_doublings=6, greedy_height=False, numerical_select=False, selected_height=False):
     inventory=json.loads((RESULTS/'rank31-multifiber-inventory.json').read_text())
     row=inventory['selected'][index]
     model=row['model']
@@ -37,6 +37,82 @@ def run(index, reports, output=None, verify_only=False, max_prime=11, descent=Fa
             if all(p!=old for _,old in candidates):
                 candidates.append((f"GPU:{Path(report_path).name}",p))
             gpu.append(point_json(p))
+    if basis_height:
+        from rank31_height_certificate import certify
+        source=RESULTS/f'rank31-multifiber-sage-{index:02d}.json'
+        raw=source.read_bytes();baseline=json.loads(raw)
+        if baseline.get('model_sha256')!=digest:raise ValueError('stale Sage basis for another model')
+        basis=[E(QQ(p['x']),QQ(p['y'])) for p in baseline['independent_generators']]
+        proof=certify(E,basis,max_doublings=max_doublings)
+        return {'t':model['t'],'model_sha256':digest,'mode':'exact_basis_height_certificate',
+                'source':source.name,'source_sha256':hashlib.sha256(raw).hexdigest(),
+                'basis':[point_json(p) for p in basis],'proof':proof}
+    if greedy_height:
+        from rank31_height_certificate import greedy_certify
+        fixed=[(label,p) for label,p in candidates if label in ('P0','PD','PQ')]
+        section_x={p[0] for _,p in candidates[:4]}
+        seen_x=set();new=[]
+        for label,p in candidates[4:]:
+            if p[0] not in section_x and p[0] not in seen_x:
+                new.append((label,p));seen_x.add(p[0])
+        new.sort(key=lambda item:(max(abs(item[1][0].numerator()).nbits(),
+                                      item[1][0].denominator().nbits()),item[1][0]))
+        proof=greedy_certify(E,fixed,new,doublings=max_doublings)
+        basis=proof.pop('basis')
+        return {'t':model['t'],'model_sha256':digest,'mode':'exact_greedy_height_certificate',
+                'new_x_candidates':len(new),'basis':[point_json(p) for p in basis],
+                'proof':proof}
+    if numerical_select:
+        from sage.all import RealField, matrix, vector
+        RR=RealField(100);height_cache={}
+        def height(P):
+            key=(P[0],P[1])
+            if key not in height_cache:height_cache[key]=RR(P.height(precision=100))
+            return height_cache[key]
+        fixed=[(label,p) for label,p in candidates if label in ('P0','PD','PQ')]
+        section_x={p[0] for _,p in candidates[:4]};seen_x=set();new=[]
+        for label,p in candidates[4:]:
+            if p[0] not in section_x and p[0] not in seen_x:
+                new.append((label,p));seen_x.add(p[0])
+        new.sort(key=lambda item:(max(abs(item[1][0].numerator()).nbits(),
+                                      item[1][0].denominator().nbits()),item[1][0]))
+        basis=[];gram=matrix(RR,0,0);selected=[];skipped=[]
+        for label,P in fixed+new:
+            if len(basis)>=24:break
+            if any(P[0]==Q[0] for Q in basis):continue
+            diagonal=height(P)
+            cross=vector(RR,[(height(P+Q)-height(P)-height(Q))/2 for Q in basis])
+            pivot=diagonal-cross.dot_product(gram.solve_right(cross)) if basis else diagonal
+            threshold=RR(2)**(-40)*max(RR(1),abs(diagonal))
+            if pivot>threshold:
+                size=len(basis)+1
+                expanded=matrix(RR,size,size)
+                for a in range(size-1):
+                    for b in range(size-1):expanded[a,b]=gram[a,b]
+                    expanded[a,size-1]=expanded[size-1,a]=cross[a]
+                expanded[size-1,size-1]=diagonal
+                gram=expanded;basis.append(P)
+                selected.append({'label':label,'x':str(P[0]),'numerical_pivot':str(pivot)})
+            else:
+                skipped.append({'label':label,'x':str(P[0]),'numerical_pivot':str(pivot)})
+                if len(basis)<len(fixed):raise ArithmeticError('fixed numerical baseline singular')
+        return {'t':model['t'],'model_sha256':digest,'mode':'numerical_point_selection',
+                'classification':'heuristic point selection only; certify basis exactly before rank claim',
+                'new_x_candidates':len(new),'basis':[point_json(p) for p in basis],
+                'selected':selected,'skipped':skipped,
+                'canonical_height_evaluations':len(height_cache)}
+    if selected_height:
+        from rank31_height_certificate import greedy_certify
+        source=RESULTS/f'rank31-multifiber-sage-{index:02d}-numerical-select.json'
+        raw=source.read_bytes();selection=json.loads(raw)
+        if selection['model_sha256']!=digest:raise ValueError('stale numerical selection')
+        fixed=[(f'S{i}',E(QQ(p['x']),QQ(p['y']))) for i,p in enumerate(selection['basis'])]
+        proof=greedy_certify(E,fixed,[],doublings=max_doublings,max_rank=24)
+        basis=proof.pop('basis')
+        if len(basis)!=len(fixed):raise ArithmeticError('selected basis not fully certified')
+        return {'t':model['t'],'model_sha256':digest,'mode':'exact_selected_basis_certificate',
+                'selection_source':source.name,'selection_sha256':hashlib.sha256(raw).hexdigest(),
+                'basis':[point_json(p) for p in basis],'proof':proof}
     if geometry:
         from itertools import product
         known=[p for label,p in candidates if label in ('P0','PD','PQ')]
@@ -70,7 +146,10 @@ def run(index, reports, output=None, verify_only=False, max_prime=11, descent=Fa
                 'integral_coefficient_max_bits':max(max(abs(a.numerator()).nbits(),a.denominator().nbits()) for a in E.ainvs()),
                 'minimal_coefficient_max_bits':max(max(abs(a.numerator()).nbits(),a.denominator().nbits()) for a in minimal.ainvs())}
     if pari_rank:
-        known=[p for label,p in candidates if label in ('P0','PD','PQ')]
+        known=[]
+        for label,p in candidates:
+            if label not in ('P0','PD','PQ') and not label.startswith('GPU:'):continue
+            if all(p[0]!=q[0] for q in known):known.append(p)
         result=pari.ellrank(pari.ellinit([int(a) for a in E.ainvs()]),pari_effort,
                             [[p[0],p[1]] for p in known])
         discovered=[]
@@ -99,7 +178,7 @@ def run(index, reports, output=None, verify_only=False, max_prime=11, descent=Fa
                 'matrix':[[str(x) for x in row] for row in matrix.rows()],
                 'determinant':str(matrix.det()),
                 'classification':'numerical heuristic; not a rank certificate'}
-    if height_proof:
+    if height_proof or extended_height:
         from rank31_height_certificate import certify
         known=[p for label,p in candidates if label in ('P0','PD','PQ')]
         proof=certify(E,known)
@@ -112,15 +191,22 @@ def run(index, reports, output=None, verify_only=False, max_prime=11, descent=Fa
         if negative_four['certified_rank'] is not None:
             raise ArithmeticError('height certificate falsely proved dependent four-point control')
         growth=[]
+        distinct_novel=[]
         for label,p in candidates[4:]:
             if any(p==q or p==-q for _,q in candidates[:4]):continue
             growth.append({'label':label,'point':point_json(p),
                            'proof':certify(E,known+[p])})
-        return {'t':model['t'],'model_sha256':digest,'mode':'exact_height_certificate',
+            if all(p[0]!=q[0] for q in distinct_novel):distinct_novel.append(p)
+        cumulative=[]
+        for size in range(1,min(10 if extended_height else 2,len(distinct_novel))+1):
+            pts=distinct_novel[:size]
+            cumulative.append({'points':[point_json(p) for p in pts],
+                               'proof':certify(E,known+pts)})
+        return {'t':model['t'],'model_sha256':digest,'mode':'exact_height_certificate_extended' if extended_height else 'exact_height_certificate',
                 'sections_verified':[{'label':label,**point_json(p)} for label,p in candidates[:4]],
                 'proof':proof,'dependent_control':{'relation':'P0+PD+PE=O',
                                                    'interval_test':'inconclusive for both dependent triples and quadruples'},
-                'gpu_rank_growth_tests':growth}
+                'gpu_rank_growth_tests':growth,'cumulative_growth_tests':cumulative}
     if verify_only:
         return {'t':model['t'],'model_sha256':digest,'sections_verified':[
             {'label':label,**point_json(p)} for label,p in candidates[:4]],
@@ -129,8 +215,10 @@ def run(index, reports, output=None, verify_only=False, max_prime=11, descent=Fa
     steps=[{'label':'PE','status':'dependent','proof':'P0 + PD + PE = O, exact group law'}]
     started=time.monotonic()
     if output:
-        Path(output).write_text(json.dumps({'t':model['t'],'status':'running',
-            'current_label':'P0,PD,PQ','certified_subgroup_rank':0,'steps':steps},indent=2)+'\n')
+        Path(output).write_text(json.dumps({'t':model['t'],'model_sha256':digest,
+            'status':'running','current_label':'P0,PD,PQ',
+            'certified_subgroup_rank':0,'independent_generators':[],
+            'steps':steps},indent=2)+'\n')
     try:
         sat,index_sat,reg=E.saturation([p for label,p in candidates if label in ('P0','PD','PQ')], max_prime=max_prime)
         basis=list(sat)
@@ -147,8 +235,12 @@ def run(index, reports, output=None, verify_only=False, max_prime=11, descent=Fa
             steps.append({'label':label,'status':'awaiting baseline certification'});continue
         started=time.monotonic()
         if output:
-            Path(output).write_text(json.dumps({'t':model['t'],'status':'running',
-                'current_label':label,'certified_subgroup_rank':len(basis),'steps':steps},indent=2)+'\n')
+            Path(output).write_text(json.dumps({'t':model['t'],'model_sha256':digest,
+                'status':'running','current_label':label,
+                'certified_subgroup_rank':len(basis),
+                'independent_generators':[point_json(q) for q in basis],
+                'saturation':f'through prime {max_prime} for certified prefix; current point pending',
+                'steps':steps},indent=2)+'\n')
         try:
             sat,index_sat,reg=E.saturation(basis+[p], max_prime=max_prime)
             grew=len(sat)>len(basis)
@@ -171,6 +263,12 @@ if __name__=='__main__':
     ap.add_argument('--descent',action='store_true')
     ap.add_argument('--pairing',action='store_true')
     ap.add_argument('--height-proof',action='store_true')
+    ap.add_argument('--extended-height-proof',action='store_true')
+    ap.add_argument('--basis-height-proof',action='store_true')
+    ap.add_argument('--greedy-height-proof',action='store_true')
+    ap.add_argument('--numerical-select',action='store_true')
+    ap.add_argument('--selected-height-proof',action='store_true')
+    ap.add_argument('--max-doublings',type=int,default=6)
     ap.add_argument('--rank-bound',action='store_true')
     ap.add_argument('--minimal-info',action='store_true')
     ap.add_argument('--pari-rank',action='store_true')
@@ -178,4 +276,4 @@ if __name__=='__main__':
     ap.add_argument('--geometry',action='store_true')
     ap.add_argument('--max-prime',type=int,default=11)
     ap.add_argument('index',type=int);ap.add_argument('output');ap.add_argument('reports',nargs='*')
-    args=ap.parse_args();Path(args.output).write_text(json.dumps(run(args.index,args.reports,args.output,args.verify_only,args.max_prime,args.descent,args.pairing,args.height_proof,args.rank_bound,args.minimal_info,args.pari_rank,args.pari_effort,args.geometry),indent=2,sort_keys=True)+'\n')
+    args=ap.parse_args();Path(args.output).write_text(json.dumps(run(args.index,args.reports,args.output,args.verify_only,args.max_prime,args.descent,args.pairing,args.height_proof,args.rank_bound,args.minimal_info,args.pari_rank,args.pari_effort,args.geometry,args.extended_height_proof,args.basis_height_proof,args.max_doublings,args.greedy_height_proof,args.numerical_select,args.selected_height_proof),indent=2,sort_keys=True)+'\n')

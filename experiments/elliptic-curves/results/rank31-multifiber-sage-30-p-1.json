@@ -1,0 +1,39 @@
+{
+  "certified_subgroup_rank": 3,
+  "current_label": "GPU:rank31-multifiber-lowden-30-P0.json",
+  "runner_elapsed_seconds": 120.3157109090007,
+  "runner_status": "timeout",
+  "status": "timeout",
+  "steps": [
+    {
+      "label": "PE",
+      "proof": "P0 + PD + PE = O, exact group law",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 8.571109538999735,
+      "label": "P0,PD,PQ",
+      "regulator": "9930.03919981409",
+      "saturation_index": "1",
+      "status": "certified"
+    },
+    {
+      "label": "GPU:rank31-multifiber-screen-30-P0.json",
+      "status": "known section or inverse"
+    },
+    {
+      "label": "GPU:rank31-multifiber-screen-30-PD.json",
+      "status": "known section or inverse"
+    },
+    {
+      "label": "GPU:rank31-multifiber-screen-30-PE.json",
+      "status": "known section or inverse"
+    },
+    {
+      "label": "GPU:rank31-multifiber-screen-30-PQ.json",
+      "status": "known section or inverse"
+    }
+  ],
+  "t": "-5/36",
+  "timeout_seconds": 120
+}
