@@ -27,7 +27,7 @@ def candidate_entry(row):
 
 def main():
     ap=argparse.ArgumentParser()
-    ap.add_argument('--stage',choices=('screen','promote','rescale','coarse','structured','deeper','standalone','outer','square','square_rescale','square_frontier'),required=True)
+    ap.add_argument('--stage',choices=('screen','promote','rescale','coarse','structured','deeper','standalone','outer','square','square_rescale','square_frontier','group'),required=True)
     ap.add_argument('--limit',type=int,default=24)
     args=ap.parse_args()
     inventory=json.loads(INVENTORY.read_text())
@@ -41,8 +41,27 @@ def main():
         entry.update(score=row['score'],prime_bound=row['prime_bound'],
                      stage_a_score=row['stage_a_score'],stage_a_prime_bound=row['stage_a_prime_bound'],
                      source_campaigns=row['source_campaigns'],source_seeds=row['source_seeds'])
-    selected=inventory['selected'][:args.limit]
-    if args.stage=='square_frontier':
+    selected=inventory['selected'][:max(args.limit,25) if args.stage=='group' else args.limit]
+    group_centers={}
+    if args.stage=='group':
+        jobs=[]
+        for i in (0,1,3,5,21,24):
+            if i>=len(selected):continue
+            source=RESULTS_DIR/f'rank31-multifiber-sage-{i:02d}-geometry.json'
+            diagnostic=json.loads(source.read_text())
+            if diagnostic['model_sha256']!=selected[i]['model']['model_sha256']:
+                raise RuntimeError(f'stale subgroup geometry: {source}')
+            distinct=[]
+            for point in diagnostic['smallest_nonsection_points']:
+                x=int(point['x']) if '/' not in point['x'] else None
+                if x is not None and x not in distinct:distinct.append(x)
+                if len(distinct)==3:break
+            for number,x in enumerate(distinct):
+                label=f'G{number}'
+                group_centers[i,label]=x
+                jobs.append((i,label,2_000_000_000,46340,
+                             int(selected[i]['model']['scale'])**2,None))
+    elif args.stage=='square_frontier':
         jobs=[(i,label,2_000_000_000,46340,
                int(selected[i]['model']['scale'])**2,None)
               for i in range(min(14,len(selected))) if i!=3
@@ -104,12 +123,13 @@ def main():
               if label in centers(selected[i]['model'])]
     for number,(i,label,h,d,stride,stride_label) in enumerate(jobs,1):
         row=selected[i]; entry=board['candidate_rows'][row['t']]
-        mode='squares' if args.stage in ('square','square_rescale','square_frontier') else 'consecutive'
+        mode='squares' if args.stage in ('square','square_rescale','square_frontier','group') else 'consecutive'
         key=(label,h,d,str(stride),mode)
         if any((run['center_label'],run['height'],run['denominators'],str(run.get('stride',1)),
                 run.get('denominator_mode','consecutive'))==key
                for run in entry['gpu_searches']):continue
-        override=(1 if label[6]=='p' else -1)*(1<<int(label[7:]))*stride if label.startswith('outer-') else None
+        override=(group_centers[i,label] if args.stage=='group' else
+                  (1 if label[6]=='p' else -1)*(1<<int(label[7:]))*stride if label.startswith('outer-') else None)
         try: result=search(row['model'],label,h,d,timeout=180,stride=stride,
                            center_override=override,square_denominators=mode=='squares')
         except Exception as exc:
@@ -133,7 +153,10 @@ def main():
         for p in result['points']:
             if (p['x'],p['y']) not in seen:
                 entry['exact_points'].append({'x':p['x'],'y':p['y']});seen.add((p['x'],p['y']))
-        novel=[p for p in entry['exact_points'] if p['x'] not in {s['x'] for s in row['model']['sections']}]
+        known_x={s['x'] for s in row['model']['sections']}
+        if args.stage=='group':
+            known_x.update(str(x) for (index,_),x in group_centers.items() if index==i)
+        novel=[p for p in entry['exact_points'] if p['x'] not in known_x]
         entry['status_reason']=('promoted: non-section exact point; needs subgroup test' if novel else
             'screened: only section x-coordinates found; wider search scheduled' if args.stage=='screen' else
             f'{args.stage} rectangle completed; only section x-coordinates found')

@@ -1726,10 +1726,15 @@
           "elapsed_seconds": 2.3756549270001415,
           "path": "rank31-multifiber-sage-01-pairing.json",
           "status": "completed"
+        },
+        {
+          "elapsed_seconds": 2.3034689529995376,
+          "path": "rank31-multifiber-sage-01-geometry.json",
+          "status": "completed"
         }
       ],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 187.02318875499986,
+      "cpu_elapsed_seconds": 189.32259741799862,
       "exact_points": [
         {
           "x": "0",
@@ -1762,10 +1767,26 @@
         {
           "x": "247352589864562079928330871615807920",
           "y": "919831986961134316186160863757425838174873756625758400"
+        },
+        {
+          "x": "-101210865240076076693214721270371267",
+          "y": "-193550226520945483119103443056529971874719132725610469"
+        },
+        {
+          "x": "-101210865240076076693214721270371267",
+          "y": "-125335498615903664870490885189850877633424886485983727"
+        },
+        {
+          "x": "-2204000099936024043290656037673248640",
+          "y": "-4214811498577040393798034972639906426406641041731812480"
+        },
+        {
+          "x": "-2204000099936024043290656037673248640",
+          "y": "-3576923808696550684055529424585946662700145430763289600"
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 207.23537373999625,
+      "gpu_elapsed_seconds": 230.6604592099966,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
@@ -1874,6 +1895,20 @@
         },
         {
           "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "266628656127923565309939361"
+        },
+        {
+          "center": "G0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "266628656127923565309939361"
+        },
+        {
+          "center": "G1",
           "denominator_mode": "squares",
           "denominators": 46340,
           "height": 2000000000,
@@ -2106,9 +2141,41 @@
           "stride_source": null,
           "survivors": 319900,
           "timed_out": false
+        },
+        {
+          "center": "-101210865240076076693214721270371267",
+          "center_label": "G0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.704148188000545,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-group-01-G0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "266628656127923565309939361",
+          "stride_source": null,
+          "survivors": 318882,
+          "timed_out": false
+        },
+        {
+          "center": "-2204000099936024043290656037673248640",
+          "center_label": "G1",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.720937281999795,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-group-01-G1.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "266628656127923565309939361",
+          "stride_source": null,
+          "survivors": 320122,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 2995436800764424,
+      "gpu_sites": 3366156800857104,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -2133,6 +2200,37 @@
           "y": "-749009442664083636911900961945617850265999904174156800"
         }
       ],
+      "known_subgroup_geometry": {
+        "integer_centers": [
+          {
+            "coefficients": [
+              0,
+              -1,
+              1
+            ],
+            "section_x": false,
+            "x": "-101210865240076076693214721270371267",
+            "x_denominator_bits": 1,
+            "x_height_bits": 117,
+            "y": "-125335498615903664870490885189850877633424886485983727"
+          },
+          {
+            "coefficients": [
+              -1,
+              -1,
+              1
+            ],
+            "section_x": false,
+            "x": "-2204000099936024043290656037673248640",
+            "x_denominator_bits": 1,
+            "x_height_bits": 121,
+            "y": "-4214811498577040393798034972639906426406641041731812480"
+          }
+        ],
+        "minimum_nonsection_x_denominator_bits": 1,
+        "minimum_nonsection_x_height_bits": 117,
+        "source": "rank31-multifiber-sage-01-geometry.json"
+      },
       "model_ainvariants": [
         "-3553779646022049308",
         "-833778013132278521090763011782556400",
@@ -2147,7 +2245,7 @@
       "sage_current_step": "P0,PD,PQ",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-01-verify.json",
-        "points_checked": 28
+        "points_checked": 32
       },
       "sage_status": "timeout",
       "saturation_index": null,
@@ -2156,7 +2254,8 @@
         "required strong lead",
         "promoted to wide rectangles by Stage B score after clean screen",
         "promoted to rescaled family-coordinate grid by smaller parameter denominator or top score",
-        "extended square-denominator search to the high-score frontier"
+        "extended square-denominator search to the high-score frontier",
+        "searched around exact small-height sums of known generators"
       ],
       "score": 167.98915937194252,
       "sections": [
@@ -4155,10 +4254,15 @@
           "elapsed_seconds": 60.276255598000716,
           "path": "rank31-multifiber-sage-21-pari-rank-e0.json",
           "status": "timeout"
+        },
+        {
+          "elapsed_seconds": 2.2006134299990663,
+          "path": "rank31-multifiber-sage-21-geometry.json",
+          "status": "completed"
         }
       ],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 325.1956030810006,
+      "cpu_elapsed_seconds": 327.3508125170001,
       "exact_points": [
         {
           "x": "0",
@@ -4191,10 +4295,26 @@
         {
           "x": "-437755320693150360",
           "y": "0"
+        },
+        {
+          "x": "-158138293398162880",
+          "y": "-265269745232272062330910400"
+        },
+        {
+          "x": "-158138293398162880",
+          "y": "60053188451970793756786480"
+        },
+        {
+          "x": "2040719620981880400",
+          "y": "-2716559581566304555640420400"
+        },
+        {
+          "x": "2040719620981880400",
+          "y": "3423213709442061505787082000"
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 688.7108913419979,
+      "gpu_elapsed_seconds": 711.2185962669973,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
@@ -4471,6 +4591,20 @@
         },
         {
           "center": "R",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "G0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "G1",
           "denominator_mode": "squares",
           "denominators": 46340,
           "height": 2000000000,
@@ -5080,9 +5214,41 @@
           "stride_source": null,
           "survivors": 237911,
           "timed_out": false
+        },
+        {
+          "center": "-158138293398162880",
+          "center_label": "G0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.241259497999636,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-group-21-G0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 284797,
+          "timed_out": false
+        },
+        {
+          "center": "2040719620981880400",
+          "center_label": "G1",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.26644542699978,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-group-21-G1.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 282382,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 11559481602921000,
+      "gpu_sites": 11930201603013680,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -5107,6 +5273,37 @@
           "y": "162168485218162020914177232"
         }
       ],
+      "known_subgroup_geometry": {
+        "integer_centers": [
+          {
+            "coefficients": [
+              -1,
+              -1,
+              1
+            ],
+            "section_x": false,
+            "x": "-158138293398162880",
+            "x_denominator_bits": 1,
+            "x_height_bits": 58,
+            "y": "-265269745232272062330910400"
+          },
+          {
+            "coefficients": [
+              0,
+              -1,
+              1
+            ],
+            "section_x": false,
+            "x": "2040719620981880400",
+            "x_denominator_bits": 1,
+            "x_height_bits": 61,
+            "y": "-2716559581566304555640420400"
+          }
+        ],
+        "minimum_nonsection_x_denominator_bits": 1,
+        "minimum_nonsection_x_height_bits": 58,
+        "source": "rank31-multifiber-sage-21-geometry.json"
+      },
       "model_ainvariants": [
         "-414701959",
         "235627737342176910",
@@ -5120,7 +5317,7 @@
       "sage_certificate_path": "rank31-multifiber-sage-21.json",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-21-verify.json",
-        "points_checked": 60
+        "points_checked": 64
       },
       "saturation_index": "1",
       "saturation_status": "through prime 11 (Sage/eclib)",
@@ -5132,7 +5329,8 @@
         "extended denominator depth for two small-denominator high-score fibers",
         "searched logarithmically spaced family-coordinate regions away from known sections",
         "searched deeper square denominators on the integral model",
-        "combined deeper square denominators with rescaled family-coordinate spacing"
+        "combined deeper square denominators with rescaled family-coordinate spacing",
+        "searched around exact small-height sums of known generators"
       ],
       "score": 164.18648091039853,
       "sections": [
@@ -5637,10 +5835,15 @@
           "elapsed_seconds": 45.246146815999964,
           "path": "rank31-multifiber-sage-03-pari-rank-e0.json",
           "status": "timeout"
+        },
+        {
+          "elapsed_seconds": 2.2025596940002288,
+          "path": "rank31-multifiber-sage-03-geometry.json",
+          "status": "completed"
         }
       ],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 139.82809305199953,
+      "cpu_elapsed_seconds": 142.0800784639996,
       "exact_points": [
         {
           "x": "0",
@@ -5673,10 +5876,26 @@
         {
           "x": "-3287682352055864862",
           "y": "293175082202138363702013476256"
+        },
+        {
+          "x": "-27153083585231523966",
+          "y": "-611071595253777454425154819008"
+        },
+        {
+          "x": "-27153083585231523966",
+          "y": "-281028150291892723783554867648"
+        },
+        {
+          "x": "-349516736765162769726",
+          "y": "-9036522103662983269608471042048"
+        },
+        {
+          "x": "-349516736765162769726",
+          "y": "-7865764093885379941745490045888"
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 799.1438772580004,
+      "gpu_elapsed_seconds": 822.6380286050007,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
@@ -5988,6 +6207,20 @@
         },
         {
           "center": "R",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "G0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "G1",
           "denominator_mode": "squares",
           "denominators": 46340,
           "height": 2000000000,
@@ -6663,9 +6896,41 @@
           "stride_source": null,
           "survivors": 266572,
           "timed_out": false
+        },
+        {
+          "center": "-27153083585231523966",
+          "center_label": "G0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.747962490000646,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-group-03-G0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 313188,
+          "timed_out": false
+        },
+        {
+          "center": "-349516736765162769726",
+          "center_label": "G1",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.746188856999652,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-group-03-G1.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 313462,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 12870201603248680,
+      "gpu_sites": 13240921603341360,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -6690,6 +6955,37 @@
           "y": "-636581501873965373266403175808"
         }
       ],
+      "known_subgroup_geometry": {
+        "integer_centers": [
+          {
+            "coefficients": [
+              0,
+              -1,
+              1
+            ],
+            "section_x": false,
+            "x": "-27153083585231523966",
+            "x_denominator_bits": 1,
+            "x_height_bits": 65,
+            "y": "-281028150291892723783554867648"
+          },
+          {
+            "coefficients": [
+              -1,
+              -1,
+              1
+            ],
+            "section_x": false,
+            "x": "-349516736765162769726",
+            "x_denominator_bits": 1,
+            "x_height_bits": 69,
+            "y": "-7865764093885379941745490045888"
+          }
+        ],
+        "minimum_nonsection_x_denominator_bits": 1,
+        "minimum_nonsection_x_height_bits": 65,
+        "source": "rank31-multifiber-sage-03-geometry.json"
+      },
       "model_ainvariants": [
         "-49664986403",
         "-234564207638872997028",
@@ -6704,7 +7000,7 @@
       "sage_current_step": "P0,PD,PQ",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-03-verify.json",
-        "points_checked": 68
+        "points_checked": 72
       },
       "sage_status": "timeout",
       "saturation_index": null,
@@ -6718,7 +7014,8 @@
         "extended denominator depth for two small-denominator high-score fibers",
         "searched logarithmically spaced family-coordinate regions away from known sections",
         "searched deeper square denominators on the integral model",
-        "combined deeper square denominators with rescaled family-coordinate spacing"
+        "combined deeper square denominators with rescaled family-coordinate spacing",
+        "searched around exact small-height sums of known generators"
       ],
       "score": 167.39693065481762,
       "sections": [
@@ -6820,9 +7117,15 @@
     },
     "-47/80": {
       "already_deeply_searched": true,
-      "auxiliary_cpu_experiments": [],
+      "auxiliary_cpu_experiments": [
+        {
+          "elapsed_seconds": 2.2403963039996597,
+          "path": "rank31-multifiber-sage-00-geometry.json",
+          "status": "completed"
+        }
+      ],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 12.492499105999741,
+      "cpu_elapsed_seconds": 14.720717623999008,
       "exact_points": [
         {
           "x": "0",
@@ -6855,11 +7158,27 @@
         {
           "x": "1764543340156700718",
           "y": "0"
+        },
+        {
+          "x": "121559399477231814",
+          "y": "-1883729838608498939637319488"
+        },
+        {
+          "x": "121559399477231814",
+          "y": "156947481082959990153180912"
+        },
+        {
+          "x": "3951533418614401014",
+          "y": "-3980043004090023008441197488"
+        },
+        {
+          "x": "3951533418614401014",
+          "y": "5101894375373488111548454512"
         }
       ],
       "existing_certified_rank_lower_bound": 3,
       "full_saturation_source": "rank31-t-minus-47-80-sage-sections.json",
-      "gpu_elapsed_seconds": 271.15703449399916,
+      "gpu_elapsed_seconds": 294.57789091799896,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
@@ -7031,6 +7350,20 @@
         },
         {
           "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "40960000"
+        },
+        {
+          "center": "G0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "40960000"
+        },
+        {
+          "center": "G1",
           "denominator_mode": "squares",
           "denominators": 46340,
           "height": 2000000000,
@@ -7398,9 +7731,41 @@
           "stride_source": null,
           "survivors": 311009,
           "timed_out": false
+        },
+        {
+          "center": "121559399477231814",
+          "center_label": "G0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.80189214100028,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-group-00-G0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "40960000",
+          "stride_source": null,
+          "survivors": 312136,
+          "timed_out": false
+        },
+        {
+          "center": "3951533418614401014",
+          "center_label": "G1",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.618964282999514,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-group-00-G1.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "40960000",
+          "stride_source": null,
+          "survivors": 310961,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 4309433601108488,
+      "gpu_sites": 4680153601201168,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -7425,6 +7790,37 @@
           "y": "203546904176741168766498512"
         }
       ],
+      "known_subgroup_geometry": {
+        "integer_centers": [
+          {
+            "coefficients": [
+              -1,
+              -1,
+              1
+            ],
+            "section_x": false,
+            "x": "121559399477231814",
+            "x_denominator_bits": 1,
+            "x_height_bits": 57,
+            "y": "156947481082959990153180912"
+          },
+          {
+            "coefficients": [
+              0,
+              -1,
+              1
+            ],
+            "section_x": false,
+            "x": "3951533418614401014",
+            "x_denominator_bits": 1,
+            "x_height_bits": 62,
+            "y": "-3980043004090023008441197488"
+          }
+        ],
+        "minimum_nonsection_x_denominator_bits": 1,
+        "minimum_nonsection_x_height_bits": 57,
+        "source": "rank31-multifiber-sage-00-geometry.json"
+      },
       "model_ainvariants": [
         "-743773643",
         "-3366407387247597108",
@@ -7438,7 +7834,7 @@
       "sage_certificate_path": "rank31-multifiber-sage-00.json",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-00-verify.json",
-        "points_checked": 48
+        "points_checked": 52
       },
       "saturation_index": "1",
       "saturation_status": "full Sage/eclib saturation from issue 14",
@@ -7448,7 +7844,8 @@
         "promoted to rescaled family-coordinate grid by smaller parameter denominator or top score",
         "searched rational x lattices generated by differences of known section x-coordinates",
         "extended to coarse family-coordinate grid after rescaled search",
-        "extended square-denominator search to the high-score frontier"
+        "extended square-denominator search to the high-score frontier",
+        "searched around exact small-height sums of known generators"
       ],
       "score": 170.1939234594218,
       "sections": [
@@ -8723,10 +9120,15 @@
           "elapsed_seconds": 2.3662072449988045,
           "path": "rank31-multifiber-sage-05-rank-bound.json",
           "status": "error"
+        },
+        {
+          "elapsed_seconds": 2.2139688980005303,
+          "path": "rank31-multifiber-sage-05-geometry.json",
+          "status": "completed"
         }
       ],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 55.96915160699609,
+      "cpu_elapsed_seconds": 58.14854239399574,
       "exact_points": [
         {
           "x": "0",
@@ -8759,11 +9161,27 @@
         {
           "x": "388190021368421687758200",
           "y": "201849883646257222877231399003049000"
+        },
+        {
+          "x": "497466996554076110683110",
+          "y": "139306715519175736778372918240019780"
+        },
+        {
+          "x": "497466996554076110683110",
+          "y": "195666855228525566974349696429139750"
+        },
+        {
+          "x": "565150498950113346223200",
+          "y": "195138589814627607406169027747124000"
+        },
+        {
+          "x": "565150498950113346223200",
+          "y": "222288557082962825114819117953020000"
         }
       ],
       "existing_certified_rank_lower_bound": null,
       "full_saturation_source": "rank31-multifiber-sage-05-p-1.json",
-      "gpu_elapsed_seconds": 254.56191974900594,
+      "gpu_elapsed_seconds": 276.5112440900057,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
@@ -8935,6 +9353,20 @@
         },
         {
           "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "72401192014321"
+        },
+        {
+          "center": "G0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "72401192014321"
+        },
+        {
+          "center": "G1",
           "denominator_mode": "squares",
           "denominators": 46340,
           "height": 2000000000,
@@ -9302,9 +9734,41 @@
           "stride_source": null,
           "survivors": 205591,
           "timed_out": false
+        },
+        {
+          "center": "497466996554076110683110",
+          "center_label": "G0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.027818672999274,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-group-05-G0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "72401192014321",
+          "stride_source": null,
+          "survivors": 204895,
+          "timed_out": false
+        },
+        {
+          "center": "565150498950113346223200",
+          "center_label": "G1",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 10.921505668000464,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-group-05-G1.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "72401192014321",
+          "stride_source": null,
+          "survivors": 205370,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 4309433601108488,
+      "gpu_sites": 4680153601201168,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -9329,6 +9793,37 @@
           "y": "236289871374990266306137727122346000"
         }
       ],
+      "known_subgroup_geometry": {
+        "integer_centers": [
+          {
+            "coefficients": [
+              -1,
+              -1,
+              1
+            ],
+            "section_x": false,
+            "x": "497466996554076110683110",
+            "x_denominator_bits": 1,
+            "x_height_bits": 79,
+            "y": "195666855228525566974349696429139750"
+          },
+          {
+            "coefficients": [
+              0,
+              -1,
+              1
+            ],
+            "section_x": false,
+            "x": "565150498950113346223200",
+            "x_denominator_bits": 1,
+            "x_height_bits": 79,
+            "y": "195138589814627607406169027747124000"
+          }
+        ],
+        "minimum_nonsection_x_denominator_bits": 1,
+        "minimum_nonsection_x_height_bits": 79,
+        "source": "rank31-multifiber-sage-05-geometry.json"
+      },
       "model_ainvariants": [
         "-1218222657383",
         "-1387070929460506004398860",
@@ -9342,7 +9837,7 @@
       "sage_certificate_path": "rank31-multifiber-sage-05.json",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-05-verify.json",
-        "points_checked": 48
+        "points_checked": 52
       },
       "saturation_index": "1",
       "saturation_status": "full Sage/eclib saturation",
@@ -9352,7 +9847,8 @@
         "promoted to rescaled family-coordinate grid by smaller parameter denominator or top score",
         "searched rational x lattices generated by differences of known section x-coordinates",
         "extended to coarse family-coordinate grid after rescaled search",
-        "extended square-denominator search to the high-score frontier"
+        "extended square-denominator search to the high-score frontier",
+        "searched around exact small-height sums of known generators"
       ],
       "score": 165.75517362338513,
       "sections": [
@@ -12800,9 +13296,15 @@
     },
     "432533/1540803": {
       "already_deeply_searched": false,
-      "auxiliary_cpu_experiments": [],
+      "auxiliary_cpu_experiments": [
+        {
+          "elapsed_seconds": 2.2763688689992705,
+          "path": "rank31-multifiber-sage-24-geometry.json",
+          "status": "completed"
+        }
+      ],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 34.962525250997714,
+      "cpu_elapsed_seconds": 37.15221044799728,
       "exact_points": [
         {
           "x": "0",
@@ -12835,10 +13337,26 @@
         {
           "x": "-9524493498092317010951380606831356",
           "y": "2620224931782748795214490891211715577872026698081924"
+        },
+        {
+          "x": "17128958434125396676502258167478523",
+          "y": "710519466796301522232196935768879470696358801852003"
+        },
+        {
+          "x": "17128958434125396676502258167478523",
+          "y": "20037982881790235655857176825620248431527003237730737"
+        },
+        {
+          "x": "182553303574370045696232189153591756",
+          "y": "-33132205535683480469124991686093042087089472915897816"
+        },
+        {
+          "x": "182553303574370045696232189153591756",
+          "y": "213556474324193805996451705494245919868206367074596964"
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 79.92415540899856,
+      "gpu_elapsed_seconds": 102.42312560999744,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
@@ -12902,6 +13420,20 @@
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
+        },
+        {
+          "center": "G0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "5636226810532097000966481"
+        },
+        {
+          "center": "G1",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "5636226810532097000966481"
         }
       ],
       "gpu_searches": [
@@ -13039,9 +13571,41 @@
           "stride_source": null,
           "survivors": 257157,
           "timed_out": false
+        },
+        {
+          "center": "17128958434125396676502258167478523",
+          "center_label": "G0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.321852279999803,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-group-24-G0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "5636226810532097000966481",
+          "stride_source": null,
+          "survivors": 228208,
+          "timed_out": false
+        },
+        {
+          "center": "182553303574370045696232189153591756",
+          "center_label": "G1",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.17711792099908,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-group-24-G1.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "5636226810532097000966481",
+          "stride_source": null,
+          "survivors": 229350,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 1313996800344064,
+      "gpu_sites": 1684716800436744,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -13066,6 +13630,37 @@
           "y": "-7598953734925568957452593744308023262723942450204088"
         }
       ],
+      "known_subgroup_geometry": {
+        "integer_centers": [
+          {
+            "coefficients": [
+              0,
+              -1,
+              1
+            ],
+            "section_x": false,
+            "x": "17128958434125396676502258167478523",
+            "x_denominator_bits": 1,
+            "x_height_bits": 114,
+            "y": "710519466796301522232196935768879470696358801852003"
+          },
+          {
+            "coefficients": [
+              -1,
+              -1,
+              1
+            ],
+            "section_x": false,
+            "x": "182553303574370045696232189153591756",
+            "x_denominator_bits": 1,
+            "x_height_bits": 118,
+            "y": "213556474324193805996451705494245919868206367074596964"
+          }
+        ],
+        "minimum_nonsection_x_denominator_bits": 1,
+        "minimum_nonsection_x_height_bits": 114,
+        "source": "rank31-multifiber-sage-24-geometry.json"
+      },
       "model_ainvariants": [
         "-965249500033097976",
         "39643222423584574006234393525515738",
@@ -13080,14 +13675,15 @@
       "sage_current_step": "P0,PD,PQ",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-24-verify.json",
-        "points_checked": 16
+        "points_checked": 20
       },
       "sage_status": "timeout",
       "saturation_index": null,
       "saturation_status": "rank 3 certified by exact height intervals; saturation not completed",
       "scheduling_decisions": [
         "standalone refined frontier",
-        "widened a newly inventoried standalone refined lead"
+        "widened a newly inventoried standalone refined lead",
+        "searched around exact small-height sums of known generators"
       ],
       "score": 164.5571454841519,
       "sections": [
@@ -15298,27 +15894,27 @@
     "t": "164518/924945",
     "verified_witness_rows_sha256": "89fe4873d7e0ac6da4fd74b7c0a3cd427e09ec6b2b0f45ecbe5acd77fefe9944"
   },
-  "generated_at_utc": "2026-09-18T01:44:22.049818+00:00",
+  "generated_at_utc": "2026-09-18T01:53:56.745259+00:00",
   "inventory_count": 159995,
   "ranked_candidates": [
     {
       "certified_subgroup_rank": 3,
-      "exact_point_count": 8,
-      "gpu_sites": 4309433601108488,
+      "exact_point_count": 12,
+      "gpu_sites": 4680153601201168,
       "score": 170.1939234594218,
       "t": "-47/80"
     },
     {
       "certified_subgroup_rank": 3,
-      "exact_point_count": 8,
-      "gpu_sites": 2995436800764424,
+      "exact_point_count": 12,
+      "gpu_sites": 3366156800857104,
       "score": 167.98915937194252,
       "t": "-191989/4040887"
     },
     {
       "certified_subgroup_rank": 3,
-      "exact_point_count": 8,
-      "gpu_sites": 12870201603248680,
+      "exact_point_count": 12,
+      "gpu_sites": 13240921603341360,
       "score": 167.39693065481762,
       "t": "-47/500"
     },
@@ -15331,8 +15927,8 @@
     },
     {
       "certified_subgroup_rank": 3,
-      "exact_point_count": 8,
-      "gpu_sites": 4309433601108488,
+      "exact_point_count": 12,
+      "gpu_sites": 4680153601201168,
       "score": 165.75517362338513,
       "t": "-802/2917"
     },
@@ -15394,8 +15990,8 @@
     },
     {
       "certified_subgroup_rank": 3,
-      "exact_point_count": 8,
-      "gpu_sites": 1313996800344064,
+      "exact_point_count": 12,
+      "gpu_sites": 1684716800436744,
       "score": 164.5571454841519,
       "t": "432533/1540803"
     },
@@ -15457,8 +16053,8 @@
     },
     {
       "certified_subgroup_rank": 3,
-      "exact_point_count": 8,
-      "gpu_sites": 11559481602921000,
+      "exact_point_count": 12,
+      "gpu_sites": 11930201603013680,
       "score": 164.18648091039853,
       "t": "-44/43"
     },

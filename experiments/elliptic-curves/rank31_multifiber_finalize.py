@@ -23,6 +23,22 @@ def main():
     ranked=[]
     for i,row in enumerate(inventory['selected']):
         entry=board['candidate_rows'][row['t']]
+        known_subgroup_x=set()
+        geometry_path=RESULTS_DIR/f'rank31-multifiber-sage-{i:02d}-geometry.json'
+        if geometry_path.exists():
+            geometry=json.loads(geometry_path.read_text())
+            if geometry['t']!=row['t'] or geometry['model_sha256']!=entry['model_sha256']:
+                raise RuntimeError(f'subgroup geometry model mismatch: {row["t"]}')
+            known_subgroup_x={point['x'] for point in geometry['smallest_nonsection_points']}
+            integer_centers=[]
+            for point in geometry['smallest_nonsection_points']:
+                if '/' not in point['x'] and point['x'] not in {p['x'] for p in integer_centers}:
+                    integer_centers.append(point)
+                if len(integer_centers)==3:break
+            entry['known_subgroup_geometry']={'source':geometry_path.name,
+                'minimum_nonsection_x_height_bits':geometry['min_nonsection_x_height_bits'],
+                'minimum_nonsection_x_denominator_bits':geometry['min_nonsection_x_denominator_bits'],
+                'integer_centers':integer_centers}
         if i in sparse_by_index:
             scan=sparse_by_index[i]
             if scan['t']!=row['t'] or scan['model_sha256']!=entry['model_sha256']:
@@ -97,7 +113,7 @@ def main():
                 entry['regulator_numerical']=certified[-1].get('regulator') if certified else None
                 entry['full_saturation_source']=full_path.name
         entry['auxiliary_cpu_experiments']=[]
-        for suffix in ('p2','pairing','descent','rank-bound','pari-rank-e0'):
+        for suffix in ('p2','pairing','descent','rank-bound','pari-rank-e0','geometry'):
             auxiliary=RESULTS_DIR/f'rank31-multifiber-sage-{i:02d}-{suffix}.json'
             if auxiliary.exists():
                 experiment=json.loads(auxiliary.read_text())
@@ -154,8 +170,9 @@ def main():
         if 'square' in used:decisions.append('searched deeper square denominators on the integral model')
         if 'square_rescale' in used:decisions.append('combined deeper square denominators with rescaled family-coordinate spacing')
         if 'square_frontier' in used:decisions.append('extended square-denominator search to the high-score frontier')
+        if 'group' in used:decisions.append('searched around exact small-height sums of known generators')
         entry['scheduling_decisions']=decisions
-        novel=any(point['x'] not in {section['x'] for section in row['model']['sections']}
+        novel=any(point['x'] not in {section['x'] for section in row['model']['sections']} | known_subgroup_x
                   for point in entry['exact_points'])
         if entry['certified_subgroup_rank']>=4:
             entry['status_reason']='new exact GPU point and independent rank-four height certificate; inspect saturation status'
@@ -186,8 +203,8 @@ def main():
             stages[stage]['exact_x_survivors']+=run.get('exact_survivors') or 0
     total_sites=sum(value['sites'] for value in stages.values())
     total_seconds=sum(value['seconds'] for value in stages.values())
-    bulk_sites=sum(stages[name]['sites'] for name in ('promote','rescale','coarse','standalone','deeper','outer','square','square_rescale','square_frontier'))
-    bulk_seconds=sum(stages[name]['seconds'] for name in ('promote','rescale','coarse','standalone','deeper','outer','square','square_rescale','square_frontier'))
+    bulk_sites=sum(stages[name]['sites'] for name in ('promote','rescale','coarse','standalone','deeper','outer','square','square_rescale','square_frontier','group'))
+    bulk_seconds=sum(stages[name]['seconds'] for name in ('promote','rescale','coarse','standalone','deeper','outer','square','square_rescale','square_frontier','group'))
     total_cpu_seconds=sum(r['cpu_elapsed_seconds'] for r in ranked)
     best_rank=max(r['certified_subgroup_rank'] for r in ranked)
     doubling_counts=', '.join(map(str,sorted({r['height_certificate']['doublings'] for r in ranked})))
@@ -243,6 +260,7 @@ def main():
                   'Candidates with only known points were demoted from further identical-width searches. '
                   'Fourteen outer windows on two small-denominator fibers tested logarithmically spaced family-coordinate regions and found no points. '
                   'A new GPU mode enumerated square denominators k² through k=46,340. Forty-six rectangles across 15 fibers, including rescaled family-coordinate windows, returned only known points; the square mode matched exact CPU enumeration on a small reference rectangle. '
+                  'Exact Sage group arithmetic identified small-height integral x-coordinates of sums of the three known generators on six fibers. Twelve GPU rectangles centered at those subgroup points found no new points. '
                   'A separate sparse-coordinate scan tested 2,929,536 low-complexity expressions over Q(T) and 87,886,080 specialized expressions across all 30 fibers. Its modular filter left only the three known generic section forms; exact fixed-fiber checks returned only the 90 known section x-coordinates. This excludes only the explicitly recorded ansatz. '
                   'Minimal-model diagnostics on six leading fibers found larger maximum coefficient bit sizes than the integral factored models, so repeating the failed descents on these minimal models was not prioritized. '
                   'Promising follow-up is to derive candidate x-coordinates from covering curves or lattice reduction, then feed those centers to the exact GPU sieve; repeated local rectangles around section points have low yield. '

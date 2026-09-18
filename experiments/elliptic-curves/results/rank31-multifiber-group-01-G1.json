@@ -1,0 +1,60 @@
+{
+  "center": "-2204000099936024043290656037673248640",
+  "center_label": "G1",
+  "denominator_mode": "squares",
+  "denominators": 46340,
+  "devices": "0,1",
+  "elapsed_seconds": 11.720937281999795,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 95.1219512195122,
+      "samples": 41
+    },
+    "1": {
+      "max": 100,
+      "mean": 95.1219512195122,
+      "samples": 41
+    }
+  },
+  "height": 2000000000,
+  "metrics": {
+    "basis_ms": "1.284",
+    "basis_wall_ms": "1.305",
+    "denominators": "46340",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "14434.325",
+    "plan_ms": "4.682",
+    "sieve_ms": "22472.821",
+    "sieve_wall_ms": "22475.327",
+    "survivor_setup_ms": "0.460",
+    "survivors": "320122",
+    "verification_ms": "35.015",
+    "wall_ms": "11447.974",
+    "words": "125000001",
+    "workspace_ms": "10.822"
+  },
+  "model_sha256": "6f6c256d53f26c39052695e64288aa74327a3465f913461943c396452cef2e89",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "-2204000099936024043290656037673248640",
+      "y": "-4214811498577040393798034972639906426406641041731812480"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "-2204000099936024043290656037673248640",
+      "y": "-3576923808696550684055529424585946662700145430763289600"
+    }
+  ],
+  "returncode": 0,
+  "sites": 185360000046340,
+  "sites_per_second": 15814434936957.053,
+  "stderr_tail": "wall_ms=11447.974 devices=2 denominators=46340 basis_ms=1.284 sieve_ms=22472.821 words=125000001 initial_mask_gbs=14434.325 survivors=320122 exact_survivors=1 plan_ms=4.682 workspace_ms=10.822 basis_wall_ms=1.305 survivor_setup_ms=0.460 verification_ms=35.015 sieve_wall_ms=22475.327\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=23170 batches=1 basis_ms=0.655 sieve_ms=11274.987\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=23170 batches=1 basis_ms=0.629 sieve_ms=11197.834\n",
+  "stride": "266628656127923565309939361",
+  "t": "-191989/4040887",
+  "timed_out": false
+}

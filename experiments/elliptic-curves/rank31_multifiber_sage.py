@@ -14,7 +14,7 @@ RESULTS=HERE/'results'
 def point_json(p):
     return {'x':str(p[0]),'y':str(p[1])} if not p.is_zero() else {'infinity':True}
 
-def run(index, reports, output=None, verify_only=False, max_prime=11, descent=False, pairing=False, height_proof=False, rank_bound=False, minimal_info=False, pari_rank=False, pari_effort=0):
+def run(index, reports, output=None, verify_only=False, max_prime=11, descent=False, pairing=False, height_proof=False, rank_bound=False, minimal_info=False, pari_rank=False, pari_effort=0, geometry=False):
     inventory=json.loads((RESULTS/'rank31-multifiber-inventory.json').read_text())
     row=inventory['selected'][index]
     model=row['model']
@@ -37,6 +37,27 @@ def run(index, reports, output=None, verify_only=False, max_prime=11, descent=Fa
             if all(p!=old for _,old in candidates):
                 candidates.append((f"GPU:{Path(report_path).name}",p))
             gpu.append(point_json(p))
+    if geometry:
+        from itertools import product
+        known=[p for label,p in candidates if label in ('P0','PD','PQ')]
+        section_x={p[0] for _,p in candidates[:4]}
+        rows=[]
+        for coefficients in product(range(-2,3),repeat=3):
+            if coefficients==(0,0,0):continue
+            p=sum((coefficient*q for coefficient,q in zip(coefficients,known)),E(0))
+            if p.is_zero():continue
+            x=p[0]
+            rows.append({'coefficients':coefficients,'x':str(x),'y':str(p[1]),
+                         'x_height_bits':max(abs(x.numerator()).nbits(),x.denominator().nbits()),
+                         'x_denominator_bits':x.denominator().nbits(),
+                         'section_x':x in section_x})
+        unseen=[row for row in rows if not row['section_x']]
+        unseen.sort(key=lambda row:(row['x_height_bits'],row['x_denominator_bits'],row['coefficients']))
+        return {'t':model['t'],'model_sha256':digest,'mode':'small_subgroup_geometry',
+                'coefficient_range':[-2,2],'nonzero_combinations_checked':len(rows),
+                'min_nonsection_x_height_bits':min(row['x_height_bits'] for row in unseen),
+                'min_nonsection_x_denominator_bits':min(row['x_denominator_bits'] for row in unseen),
+                'smallest_nonsection_points':unseen[:12]}
     if minimal_info:
         minimal=E.minimal_model()
         iso=E.isomorphism_to(minimal)
@@ -154,6 +175,7 @@ if __name__=='__main__':
     ap.add_argument('--minimal-info',action='store_true')
     ap.add_argument('--pari-rank',action='store_true')
     ap.add_argument('--pari-effort',type=int,default=0)
+    ap.add_argument('--geometry',action='store_true')
     ap.add_argument('--max-prime',type=int,default=11)
     ap.add_argument('index',type=int);ap.add_argument('output');ap.add_argument('reports',nargs='*')
-    args=ap.parse_args();Path(args.output).write_text(json.dumps(run(args.index,args.reports,args.output,args.verify_only,args.max_prime,args.descent,args.pairing,args.height_proof,args.rank_bound,args.minimal_info,args.pari_rank,args.pari_effort),indent=2,sort_keys=True)+'\n')
+    args=ap.parse_args();Path(args.output).write_text(json.dumps(run(args.index,args.reports,args.output,args.verify_only,args.max_prime,args.descent,args.pairing,args.height_proof,args.rank_bound,args.minimal_info,args.pari_rank,args.pari_effort,args.geometry),indent=2,sort_keys=True)+'\n')
