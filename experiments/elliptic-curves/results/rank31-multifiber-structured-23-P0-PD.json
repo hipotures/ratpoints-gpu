@@ -1,0 +1,71 @@
+{
+  "center": "0",
+  "center_label": "P0",
+  "denominators": 4096,
+  "devices": "0,1",
+  "elapsed_seconds": 0.4551357210002607,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 0,
+      "mean": 0.0,
+      "samples": 1
+    },
+    "1": {
+      "max": 0,
+      "mean": 0.0,
+      "samples": 1
+    }
+  },
+  "height": 100000000,
+  "metrics": {
+    "basis_ms": "1.302",
+    "basis_wall_ms": "1.323",
+    "denominators": "4096",
+    "devices": "2",
+    "exact_survivors": "2",
+    "initial_mask_gbs": "14541.043",
+    "plan_ms": "0.404",
+    "sieve_ms": "98.590",
+    "sieve_wall_ms": "98.800",
+    "survivor_setup_ms": "0.703",
+    "survivors": "9490",
+    "verification_ms": "0.173",
+    "wall_ms": "187.888",
+    "words": "6250001",
+    "workspace_ms": "7.367"
+  },
+  "model_sha256": "f605553985f126c5e065cebdfbf1ce91912d05e781e7557889b31004ff6474dc",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "0",
+      "y": "4149958537218139088662737420310272"
+    },
+    {
+      "d": 1,
+      "n": 1,
+      "x": "28189411528613794355040",
+      "y": "0"
+    },
+    {
+      "d": 1,
+      "n": 1,
+      "x": "28189411528613794355040",
+      "y": "27126039733427286125977206201028992"
+    }
+  ],
+  "returncode": 0,
+  "sites": 819200004096,
+  "sites_per_second": 1799902680228.2803,
+  "stderr_tail": "wall_ms=187.888 devices=2 denominators=4096 basis_ms=1.302 sieve_ms=98.590 words=6250001 initial_mask_gbs=14541.043 survivors=9490 exact_survivors=2 plan_ms=0.404 workspace_ms=7.367 basis_wall_ms=1.323 survivor_setup_ms=0.703 verification_ms=0.173 sieve_wall_ms=98.800\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=2048 batches=1 basis_ms=0.652 sieve_ms=49.322\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=2048 batches=1 basis_ms=0.650 sieve_ms=49.268\n",
+  "stride": "28189411528613794355040",
+  "t": "473/1325",
+  "timed_out": false
+}

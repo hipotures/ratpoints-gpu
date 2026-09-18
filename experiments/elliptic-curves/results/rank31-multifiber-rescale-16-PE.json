@@ -1,0 +1,59 @@
+{
+  "center": "-7848782856167598342041716968",
+  "center_label": "PE",
+  "denominators": 65536,
+  "devices": "0,1",
+  "elapsed_seconds": 14.764239648999137,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 98.07692307692308,
+      "samples": 52
+    },
+    "1": {
+      "max": 100,
+      "mean": 96.15384615384616,
+      "samples": 52
+    }
+  },
+  "height": 2000000000,
+  "metrics": {
+    "basis_ms": "1.249",
+    "basis_wall_ms": "1.280",
+    "denominators": "65536",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "16047.698",
+    "plan_ms": "6.754",
+    "sieve_ms": "28586.779",
+    "sieve_wall_ms": "28589.178",
+    "survivor_setup_ms": "0.836",
+    "survivors": "258887",
+    "verification_ms": "24.412",
+    "wall_ms": "14500.967",
+    "words": "125000001",
+    "workspace_ms": "8.976"
+  },
+  "model_sha256": "fa39c0bb11afcf6ddd0737d4f98a3cbabb4eedae36efbaa000fda8b1bb362b44",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "-7848782856167598342041716968",
+      "y": "-254897173052688718334584792321484421938904"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "-7848782856167598342041716968",
+      "y": "0"
+    }
+  ],
+  "returncode": 0,
+  "sites": 262144000065536,
+  "sites_per_second": 17755333582878.184,
+  "stderr_tail": "wall_ms=14500.967 devices=2 denominators=65536 basis_ms=1.249 sieve_ms=28586.779 words=125000001 initial_mask_gbs=16047.698 survivors=258887 exact_survivors=1 plan_ms=6.754 workspace_ms=8.976 basis_wall_ms=1.280 survivor_setup_ms=0.836 verification_ms=24.412 sieve_wall_ms=28589.178\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=32768 batches=1 basis_ms=0.608 sieve_ms=14333.658\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=32768 batches=1 basis_ms=0.641 sieve_ms=14253.121\n",
+  "stride": "86007076",
+  "t": "-12701/9274",
+  "timed_out": false
+}

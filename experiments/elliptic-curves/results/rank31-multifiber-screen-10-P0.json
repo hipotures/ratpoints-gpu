@@ -1,0 +1,46 @@
+{
+  "center": "0",
+  "center_label": "P0",
+  "denominators": 4096,
+  "devices": "0,1",
+  "elapsed_seconds": 0.4786968150001485,
+  "height": 100000000,
+  "metrics": {
+    "basis_ms": "1.300",
+    "basis_wall_ms": "1.300",
+    "denominators": "4096",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "14964.142",
+    "plan_ms": "0.433",
+    "sieve_ms": "95.802",
+    "sieve_wall_ms": "95.965",
+    "survivor_setup_ms": "0.456",
+    "survivors": "4967",
+    "verification_ms": "0.121",
+    "wall_ms": "209.488",
+    "words": "6250001",
+    "workspace_ms": "18.966"
+  },
+  "model_sha256": "fb4f3501eb83ce828719c3b2d2baefe083573e2358228a06b87db48eada5d0cb",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "0",
+      "y": "201605255088631129735028581833047019405250914408784500"
+    }
+  ],
+  "returncode": 0,
+  "sites": 819200004096,
+  "sites_per_second": 1711312836070.877,
+  "stderr_tail": "wall_ms=209.488 devices=2 denominators=4096 basis_ms=1.300 sieve_ms=95.802 words=6250001 initial_mask_gbs=14964.142 survivors=4967 exact_survivors=1 plan_ms=0.433 workspace_ms=18.966 basis_wall_ms=1.300 survivor_setup_ms=0.456 verification_ms=0.121 sieve_wall_ms=95.965\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=2048 batches=1 basis_ms=0.639 sieve_ms=47.973\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=2048 batches=1 basis_ms=0.661 sieve_ms=47.829\n",
+  "t": "1071727/1978006",
+  "timed_out": false
+}

@@ -1,0 +1,71 @@
+{
+  "center": "0",
+  "center_label": "P0",
+  "denominators": 4096,
+  "devices": "0,1",
+  "elapsed_seconds": 0.465274803000284,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 6,
+      "mean": 6.0,
+      "samples": 1
+    },
+    "1": {
+      "max": 0,
+      "mean": 0.0,
+      "samples": 1
+    }
+  },
+  "height": 100000000,
+  "metrics": {
+    "basis_ms": "1.809",
+    "basis_wall_ms": "1.831",
+    "denominators": "4096",
+    "devices": "2",
+    "exact_survivors": "2",
+    "initial_mask_gbs": "14772.624",
+    "plan_ms": "0.476",
+    "sieve_ms": "97.044",
+    "sieve_wall_ms": "97.214",
+    "survivor_setup_ms": "2.052",
+    "survivors": "8739",
+    "verification_ms": "0.091",
+    "wall_ms": "196.683",
+    "words": "6250001",
+    "workspace_ms": "7.660"
+  },
+  "model_sha256": "f6653e2242809dab07177b879b287c688a86a802adb9389cd09cf264d8fd1500",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "0",
+      "y": "630566354623823757056323971880636750423026871500"
+    },
+    {
+      "d": 1,
+      "n": 1,
+      "x": "76712881918239968961009881822400",
+      "y": "0"
+    },
+    {
+      "d": 1,
+      "n": 1,
+      "x": "76712881918239968961009881822400",
+      "y": "4428954484866495891985632500257484858790584157900"
+    }
+  ],
+  "returncode": 0,
+  "sites": 819200004096,
+  "sites_per_second": 1760679922517.7468,
+  "stderr_tail": "wall_ms=196.683 devices=2 denominators=4096 basis_ms=1.809 sieve_ms=97.044 words=6250001 initial_mask_gbs=14772.624 survivors=8739 exact_survivors=2 plan_ms=0.476 workspace_ms=7.660 basis_wall_ms=1.831 survivor_setup_ms=2.052 verification_ms=0.091 sieve_wall_ms=97.214\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=2048 batches=1 basis_ms=0.888 sieve_ms=48.415\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=2048 batches=1 basis_ms=0.921 sieve_ms=48.630\n",
+  "stride": "76712881918239968961009881822400",
+  "t": "101145/345199",
+  "timed_out": false
+}

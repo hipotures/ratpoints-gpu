@@ -138,3 +138,42 @@ the real branch endpoint). Each run writes exact points, throughput, survivor
 counts, and sampled utilization under `results/`. The Sage verification mode
 checks all returned coordinates on the minimal model and tests additions to
 the known rank-3 subgroup.
+
+## Multi-fiber rank search (issue 15)
+
+`rank31_multifiber.py inventory` deduplicates the existing compressed Stage B
+campaign and standalone refined files, verifies the 31 record-control witnesses exactly, and writes 30
+selected non-control fibers with integral models and all four known sections.
+The other modes use the existing CUDA sieve on two RTX 4090s. A search uses
+`x = center + stride*n/d` with the rectangle recorded in each JSON result;
+every emitted point passes exact integer-square and curve-equation checks.
+
+```bash
+python3 experiments/elliptic-curves/rank31_multifiber.py inventory
+python3 experiments/elliptic-curves/rank31_multifiber_campaign.py --stage screen
+python3 experiments/elliptic-curves/rank31_multifiber_campaign.py --stage promote
+python3 experiments/elliptic-curves/rank31_multifiber_campaign.py --stage structured
+python3 experiments/elliptic-curves/rank31_multifiber_campaign.py --stage rescale
+python3 experiments/elliptic-curves/rank31_multifiber_campaign.py --stage coarse
+python3 experiments/elliptic-curves/rank31_multifiber_campaign.py --stage standalone --limit 30
+python3 experiments/elliptic-curves/rank31_multifiber_campaign.py --stage deeper
+```
+
+The campaign checkpoints a machine-readable scoreboard after each bounded GPU
+run. It promotes the strongest Stage B leads to wider windows, then favors
+smaller parameter denominators for rescaled family-coordinate grids. New
+non-section points trigger bounded Sage rank-growth and saturation attempts.
+`run_multifiber_sage.py` runs exact checks in a named Docker container with a
+hard timeout and forced container cleanup. `--height-proof` certifies the rank
+of `P0, PD, PQ` using exact doubled points, rational logarithm intervals, and
+an upward Silverman height-difference bound; it also checks the dependent
+`P0, PD, PE` triple as a negative control. `--verify-only` checks every GPU
+point on its exact Sage curve.
+
+After the GPU and Sage runs, `rank31_multifiber_finalize.py` merges the
+certificates into the scoreboard and writes the concise research report. The
+GPU/CPU and Docker/Sage integration checks run with:
+
+```bash
+RANK31_TEST_SAGE=1 PYTHONPATH=experiments/elliptic-curves python3 -m unittest test_rank31_multifiber
+```

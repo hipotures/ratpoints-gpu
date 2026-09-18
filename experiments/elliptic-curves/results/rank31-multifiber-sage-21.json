@@ -1,0 +1,64 @@
+{
+  "ainvariants": [
+    "-414701959",
+    "235627737342176910",
+    "139636296715166355237042000",
+    "-88482425070736862081911253217942000",
+    "0"
+  ],
+  "certified_subgroup_rank": 3,
+  "gpu_points_verified": [],
+  "independent_generators": [
+    {
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "x": "202127583350973450",
+      "y": "0"
+    },
+    {
+      "x": "317326481398000272",
+      "y": "162168485218162020914177232"
+    }
+  ],
+  "model_sha256": "598d6c1c0e076031c8ca55d934d5a18668cdd33752029222865e48eec4940705",
+  "saturation": "through prime 11 (Sage/eclib)",
+  "sections_verified": [
+    {
+      "label": "P0",
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "label": "PD",
+      "x": "202127583350973450",
+      "y": "0"
+    },
+    {
+      "label": "PE",
+      "x": "-437755320693150360",
+      "y": "0"
+    },
+    {
+      "label": "PQ",
+      "x": "317326481398000272",
+      "y": "162168485218162020914177232"
+    }
+  ],
+  "steps": [
+    {
+      "label": "PE",
+      "proof": "P0 + PD + PE = O, exact group law",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 44.68457763099923,
+      "label": "P0,PD,PQ",
+      "regulator": "9207.12985423662",
+      "saturation_index": "1",
+      "status": "certified"
+    }
+  ],
+  "t": "-44/43"
+}

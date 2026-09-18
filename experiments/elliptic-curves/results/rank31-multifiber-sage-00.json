@@ -1,0 +1,79 @@
+{
+  "ainvariants": [
+    "-743773643",
+    "-3366407387247597108",
+    "1817195034915611951338416978",
+    "2826558536130700845922071875576608020",
+    "0"
+  ],
+  "certified_subgroup_rank": 3,
+  "gpu_points_verified": [
+    {
+      "x": "0",
+      "y": "-1817195034915611951338416978"
+    },
+    {
+      "x": "0",
+      "y": "0"
+    }
+  ],
+  "independent_generators": [
+    {
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "x": "1601864047090896390",
+      "y": "0"
+    },
+    {
+      "x": "1942076385439057064",
+      "y": "203546904176741168766498512"
+    }
+  ],
+  "model_sha256": "82404d6c9beda2a94e9ada920431b8176d47612d511d73ab52a904626fddb036",
+  "runner_elapsed_seconds": 7.834527734999938,
+  "runner_status": "completed",
+  "saturation": "through prime 11 (Sage/eclib)",
+  "sections_verified": [
+    {
+      "label": "P0",
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "label": "PD",
+      "x": "1601864047090896390",
+      "y": "0"
+    },
+    {
+      "label": "PE",
+      "x": "1764543340156700718",
+      "y": "0"
+    },
+    {
+      "label": "PQ",
+      "x": "1942076385439057064",
+      "y": "203546904176741168766498512"
+    }
+  ],
+  "steps": [
+    {
+      "label": "PE",
+      "proof": "P0 + PD + PE = O, exact group law",
+      "status": "dependent"
+    },
+    {
+      "elapsed_seconds": 5.496120832000088,
+      "label": "P0,PD,PQ",
+      "regulator": "22656.3901108778",
+      "saturation_index": "1",
+      "status": "certified"
+    },
+    {
+      "label": "GPU:rank31-multifiber-screen-00-P0.json",
+      "status": "known section or inverse"
+    }
+  ],
+  "t": "-47/80"
+}

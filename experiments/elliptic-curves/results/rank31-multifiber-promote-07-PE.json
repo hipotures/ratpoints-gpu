@@ -1,0 +1,59 @@
+{
+  "center": "5103442006002725323611779916265302",
+  "center_label": "PE",
+  "denominators": 65536,
+  "devices": "0,1",
+  "elapsed_seconds": 15.866306235000593,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 99.41071428571429,
+      "samples": 56
+    },
+    "1": {
+      "max": 100,
+      "mean": 98.21428571428571,
+      "samples": 56
+    }
+  },
+  "height": 2000000000,
+  "metrics": {
+    "basis_ms": "1.272",
+    "basis_wall_ms": "1.289",
+    "denominators": "65536",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "14896.825",
+    "plan_ms": "6.792",
+    "sieve_ms": "30795.286",
+    "sieve_wall_ms": "30798.173",
+    "survivor_setup_ms": "0.477",
+    "survivors": "372266",
+    "verification_ms": "35.365",
+    "wall_ms": "15600.818",
+    "words": "125000001",
+    "workspace_ms": "6.083"
+  },
+  "model_sha256": "871fabfac30036f021c57d4265b34e681af9eae9a2a28278b4575c9b4d851ec3",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "5103442006002725323611779916265302",
+      "y": "0"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "5103442006002725323611779916265302",
+      "y": "9389203118828630381616059905353433213165138162569336"
+    }
+  ],
+  "returncode": 0,
+  "sites": 262144000065536,
+  "sites_per_second": 16522055996073.885,
+  "stderr_tail": "wall_ms=15600.818 devices=2 denominators=65536 basis_ms=1.272 sieve_ms=30795.286 words=125000001 initial_mask_gbs=14896.825 survivors=372266 exact_survivors=1 plan_ms=6.792 workspace_ms=6.083 basis_wall_ms=1.289 survivor_setup_ms=0.477 verification_ms=35.365 sieve_wall_ms=30798.173\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=32768 batches=1 basis_ms=0.655 sieve_ms=15441.443\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=32768 batches=1 basis_ms=0.616 sieve_ms=15353.843\n",
+  "stride": "1",
+  "t": "-183569/2305416",
+  "timed_out": false
+}

@@ -1,0 +1,59 @@
+{
+  "center": "3458672871601442984880144316324784",
+  "center_label": "PQ",
+  "denominators": 65536,
+  "devices": "0,1",
+  "elapsed_seconds": 15.743592540999089,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 98.33928571428571,
+      "samples": 56
+    },
+    "1": {
+      "max": 100,
+      "mean": 96.80357142857143,
+      "samples": 56
+    }
+  },
+  "height": 2000000000,
+  "metrics": {
+    "basis_ms": "1.237",
+    "basis_wall_ms": "1.251",
+    "denominators": "65536",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "15080.967",
+    "plan_ms": "6.297",
+    "sieve_ms": "30419.270",
+    "sieve_wall_ms": "30422.078",
+    "survivor_setup_ms": "0.500",
+    "survivors": "357339",
+    "verification_ms": "33.113",
+    "wall_ms": "15428.084",
+    "words": "125000001",
+    "workspace_ms": "6.808"
+  },
+  "model_sha256": "3f79117909d0640ee73ed97f1011ca35903ad4da27160d5d6e84f60fd631e4b2",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "3458672871601442984880144316324784",
+      "y": "114232528136820584921745602880816298343033560058528"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "3458672871601442984880144316324784",
+      "y": "173885155988083958142885641356724566544130703585808"
+    }
+  ],
+  "returncode": 0,
+  "sites": 262144000065536,
+  "sites_per_second": 16650837436427.984,
+  "stderr_tail": "wall_ms=15428.084 devices=2 denominators=65536 basis_ms=1.237 sieve_ms=30419.270 words=125000001 initial_mask_gbs=15080.967 survivors=357339 exact_survivors=1 plan_ms=6.297 workspace_ms=6.808 basis_wall_ms=1.251 survivor_setup_ms=0.500 verification_ms=33.113 sieve_wall_ms=30422.078\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=32768 batches=1 basis_ms=0.603 sieve_ms=15248.047\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=32768 batches=1 basis_ms=0.634 sieve_ms=15171.223\n",
+  "stride": "1",
+  "t": "-215006/886235",
+  "timed_out": false
+}

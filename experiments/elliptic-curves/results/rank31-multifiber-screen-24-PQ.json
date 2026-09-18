@@ -1,0 +1,59 @@
+{
+  "center": "-9524493498092317010951380606831356",
+  "center_label": "PQ",
+  "denominators": 4096,
+  "devices": "0,1",
+  "elapsed_seconds": 0.46760160899975745,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 0,
+      "mean": 0.0,
+      "samples": 1
+    },
+    "1": {
+      "max": 0,
+      "mean": 0.0,
+      "samples": 1
+    }
+  },
+  "height": 100000000,
+  "metrics": {
+    "basis_ms": "1.324",
+    "basis_wall_ms": "1.338",
+    "denominators": "4096",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "15095.573",
+    "plan_ms": "0.421",
+    "sieve_ms": "94.968",
+    "sieve_wall_ms": "95.104",
+    "survivor_setup_ms": "0.493",
+    "survivors": "4980",
+    "verification_ms": "0.117",
+    "wall_ms": "200.200",
+    "words": "6250001",
+    "workspace_ms": "7.993"
+  },
+  "model_sha256": "49937e16eaad4052f5a90ffd2ba1b7019696e75912db0f63a62db27353ea668e",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "-9524493498092317010951380606831356",
+      "y": "-7598953734925568957452593744308023262723942450204088"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "-9524493498092317010951380606831356",
+      "y": "2620224931782748795214490891211715577872026698081924"
+    }
+  ],
+  "returncode": 0,
+  "sites": 819200004096,
+  "sites_per_second": 1751918702436.3403,
+  "stderr_tail": "wall_ms=200.200 devices=2 denominators=4096 basis_ms=1.324 sieve_ms=94.968 words=6250001 initial_mask_gbs=15095.573 survivors=4980 exact_survivors=1 plan_ms=0.421 workspace_ms=7.993 basis_wall_ms=1.338 survivor_setup_ms=0.493 verification_ms=0.117 sieve_wall_ms=95.104\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=2048 batches=1 basis_ms=0.610 sieve_ms=47.715\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=2048 batches=1 basis_ms=0.714 sieve_ms=47.253\n",
+  "stride": "1",
+  "t": "432533/1540803",
+  "timed_out": false
+}

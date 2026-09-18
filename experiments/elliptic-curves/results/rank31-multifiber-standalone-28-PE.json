@@ -1,0 +1,59 @@
+{
+  "center": "1912998567970693888962448570027128",
+  "center_label": "PE",
+  "denominators": 65536,
+  "devices": "0,1",
+  "elapsed_seconds": 15.777634400999887,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 100,
+      "mean": 98.48214285714286,
+      "samples": 56
+    },
+    "1": {
+      "max": 100,
+      "mean": 97.78571428571429,
+      "samples": 56
+    }
+  },
+  "height": 2000000000,
+  "metrics": {
+    "basis_ms": "1.305",
+    "basis_wall_ms": "1.315",
+    "denominators": "65536",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "15089.332",
+    "plan_ms": "6.858",
+    "sieve_ms": "30402.407",
+    "sieve_wall_ms": "30405.378",
+    "survivor_setup_ms": "0.501",
+    "survivors": "357808",
+    "verification_ms": "33.683",
+    "wall_ms": "15411.963",
+    "words": "125000001",
+    "workspace_ms": "5.468"
+  },
+  "model_sha256": "3f79117909d0640ee73ed97f1011ca35903ad4da27160d5d6e84f60fd631e4b2",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "1912998567970693888962448570027128",
+      "y": "0"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "1912998567970693888962448570027128",
+      "y": "104877411597730705563884617822277855766992693629224"
+    }
+  ],
+  "returncode": 0,
+  "sites": 262144000065536,
+  "sites_per_second": 16614911551564.598,
+  "stderr_tail": "wall_ms=15411.963 devices=2 denominators=65536 basis_ms=1.305 sieve_ms=30402.407 words=125000001 initial_mask_gbs=15089.332 survivors=357808 exact_survivors=1 plan_ms=6.858 workspace_ms=5.468 basis_wall_ms=1.315 survivor_setup_ms=0.501 verification_ms=33.683 sieve_wall_ms=30405.378\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=32768 batches=1 basis_ms=0.631 sieve_ms=15244.226\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=32768 batches=1 basis_ms=0.675 sieve_ms=15158.182\n",
+  "stride": "1",
+  "t": "-215006/886235",
+  "timed_out": false
+}

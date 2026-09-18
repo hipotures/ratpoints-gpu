@@ -1,0 +1,71 @@
+{
+  "center": "0",
+  "center_label": "P0",
+  "denominators": 4096,
+  "devices": "0,1",
+  "elapsed_seconds": 0.4652343739999196,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 1,
+      "mean": 1.0,
+      "samples": 1
+    },
+    "1": {
+      "max": 3,
+      "mean": 3.0,
+      "samples": 1
+    }
+  },
+  "height": 100000000,
+  "metrics": {
+    "basis_ms": "1.314",
+    "basis_wall_ms": "1.324",
+    "denominators": "4096",
+    "devices": "2",
+    "exact_survivors": "2",
+    "initial_mask_gbs": "14807.129",
+    "plan_ms": "0.423",
+    "sieve_ms": "96.818",
+    "sieve_wall_ms": "97.006",
+    "survivor_setup_ms": "0.753",
+    "survivors": "8924",
+    "verification_ms": "0.115",
+    "wall_ms": "193.225",
+    "words": "6250001",
+    "workspace_ms": "12.556"
+  },
+  "model_sha256": "c4c754d3248eac618538f64da06ed515840d006573d2c49f2adb94f67083e60c",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "0",
+      "y": "4273541769774484522942325488824378053309579456400"
+    },
+    {
+      "d": 1,
+      "n": 1,
+      "x": "277296369389864305538889173622450",
+      "y": "0"
+    },
+    {
+      "d": 1,
+      "n": 1,
+      "x": "277296369389864305538889173622450",
+      "y": "29365019311297038909967155091421366075356953187950"
+    }
+  ],
+  "returncode": 0,
+  "sites": 819200004096,
+  "sites_per_second": 1760832926107.3506,
+  "stderr_tail": "wall_ms=193.225 devices=2 denominators=4096 basis_ms=1.314 sieve_ms=96.818 words=6250001 initial_mask_gbs=14807.129 survivors=8924 exact_survivors=2 plan_ms=0.423 workspace_ms=12.556 basis_wall_ms=1.324 survivor_setup_ms=0.753 verification_ms=0.115 sieve_wall_ms=97.006\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=2048 batches=1 basis_ms=0.667 sieve_ms=47.772\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=2048 batches=1 basis_ms=0.647 sieve_ms=49.047\n",
+  "stride": "277296369389864305538889173622450",
+  "t": "141580/460867",
+  "timed_out": false
+}

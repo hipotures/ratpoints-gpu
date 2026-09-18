@@ -1,0 +1,71 @@
+{
+  "center": "0",
+  "center_label": "P0",
+  "denominators": 4096,
+  "devices": "0,1",
+  "elapsed_seconds": 0.5094166500002757,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 6,
+      "mean": 6.0,
+      "samples": 1
+    },
+    "1": {
+      "max": 7,
+      "mean": 7.0,
+      "samples": 1
+    }
+  },
+  "height": 100000000,
+  "metrics": {
+    "basis_ms": "1.257",
+    "basis_wall_ms": "1.268",
+    "denominators": "4096",
+    "devices": "2",
+    "exact_survivors": "2",
+    "initial_mask_gbs": "14361.480",
+    "plan_ms": "0.427",
+    "sieve_ms": "99.823",
+    "sieve_wall_ms": "100.037",
+    "survivor_setup_ms": "0.676",
+    "survivors": "9199",
+    "verification_ms": "0.148",
+    "wall_ms": "190.151",
+    "words": "6250001",
+    "workspace_ms": "7.569"
+  },
+  "model_sha256": "82404d6c9beda2a94e9ada920431b8176d47612d511d73ab52a904626fddb036",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "0",
+      "y": "-1817195034915611951338416978"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "d": 1,
+      "n": 1,
+      "x": "1764543340156700718",
+      "y": "-504774206575874467450841304"
+    },
+    {
+      "d": 1,
+      "n": 1,
+      "x": "1764543340156700718",
+      "y": "0"
+    }
+  ],
+  "returncode": 0,
+  "sites": 819200004096,
+  "sites_per_second": 1608113916369.9434,
+  "stderr_tail": "wall_ms=190.151 devices=2 denominators=4096 basis_ms=1.257 sieve_ms=99.823 words=6250001 initial_mask_gbs=14361.480 survivors=9199 exact_survivors=2 plan_ms=0.427 workspace_ms=7.569 basis_wall_ms=1.268 survivor_setup_ms=0.676 verification_ms=0.148 sieve_wall_ms=100.037\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=2048 batches=1 basis_ms=0.629 sieve_ms=50.151\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=2048 batches=1 basis_ms=0.629 sieve_ms=49.671\n",
+  "stride": "1764543340156700718",
+  "t": "-47/80",
+  "timed_out": false
+}

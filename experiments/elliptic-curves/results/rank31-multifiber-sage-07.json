@@ -1,0 +1,14 @@
+{
+  "certified_subgroup_rank": 0,
+  "current_label": "P0,PD,PQ",
+  "status": "timeout",
+  "steps": [
+    {
+      "label": "PE",
+      "proof": "P0 + PD + PE = O, exact group law",
+      "status": "dependent"
+    }
+  ],
+  "t": "-183569/2305416",
+  "timeout_seconds": 90
+}

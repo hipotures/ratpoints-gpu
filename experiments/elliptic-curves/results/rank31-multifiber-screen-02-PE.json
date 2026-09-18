@@ -1,0 +1,59 @@
+{
+  "center": "16952071120530921779322880688301122",
+  "center_label": "PE",
+  "denominators": 4096,
+  "devices": "0,1",
+  "elapsed_seconds": 0.49891066900090664,
+  "gpu_utilization_percent": {
+    "0": {
+      "max": 49,
+      "mean": 49.0,
+      "samples": 1
+    },
+    "1": {
+      "max": 5,
+      "mean": 5.0,
+      "samples": 1
+    }
+  },
+  "height": 100000000,
+  "metrics": {
+    "basis_ms": "1.251",
+    "basis_wall_ms": "1.261",
+    "denominators": "4096",
+    "devices": "2",
+    "exact_survivors": "1",
+    "initial_mask_gbs": "15031.638",
+    "plan_ms": "0.405",
+    "sieve_ms": "95.372",
+    "sieve_wall_ms": "95.552",
+    "survivor_setup_ms": "0.674",
+    "survivors": "5027",
+    "verification_ms": "0.142",
+    "wall_ms": "183.199",
+    "words": "6250001",
+    "workspace_ms": "7.412"
+  },
+  "model_sha256": "2ee40ca235dde7be4e791b395ca46610d9f1fe077db68d7b00f6ff102c9cd8e6",
+  "points": [
+    {
+      "d": 1,
+      "n": 0,
+      "x": "16952071120530921779322880688301122",
+      "y": "0"
+    },
+    {
+      "d": 1,
+      "n": 0,
+      "x": "16952071120530921779322880688301122",
+      "y": "59579228232249415255070668540654892792144743037780076"
+    }
+  ],
+  "returncode": 0,
+  "sites": 819200004096,
+  "sites_per_second": 1641977321784.8572,
+  "stderr_tail": "wall_ms=183.199 devices=2 denominators=4096 basis_ms=1.251 sieve_ms=95.372 words=6250001 initial_mask_gbs=15031.638 survivors=5027 exact_survivors=1 plan_ms=0.405 workspace_ms=7.412 basis_wall_ms=1.261 survivor_setup_ms=0.674 verification_ms=0.142 sieve_wall_ms=95.552\ndevice=0 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:01:00.0\ngpu=0 denominators=2048 batches=1 basis_ms=0.630 sieve_ms=48.170\ndevice=1 name=\"NVIDIA GeForce RTX 4090\" compute=8.9 sm=128 memory_mib=24163 pci=0000:02:00.0\ngpu=1 denominators=2048 batches=1 basis_ms=0.622 sieve_ms=47.202\n",
+  "stride": "1",
+  "t": "532929/2579219",
+  "timed_out": false
+}

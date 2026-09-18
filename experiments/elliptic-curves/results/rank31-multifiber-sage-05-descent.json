@@ -1,0 +1,10 @@
+{
+  "attempts": 2,
+  "error_type": "RuntimeError from Sage gp_simon",
+  "mode": "simon_two_descent",
+  "note": "Both bounded attempts failed before returning any bound; not a rank proof.",
+  "rank_bound": null,
+  "status": "error",
+  "t": "-802/2917",
+  "underlying_error": "PARI bnfinit stack overflow at 1073741824 bytes"
+}

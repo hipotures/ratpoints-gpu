@@ -1,0 +1,17 @@
+{
+  "certified_subgroup_rank": 0,
+  "current_label": "P0,PD,PQ",
+  "note": "Original bounded runner reported a 90-second timeout; normalized after container cleanup.",
+  "runner_elapsed_seconds": 90,
+  "runner_status": "timeout",
+  "status": "timeout",
+  "steps": [
+    {
+      "label": "PE",
+      "proof": "P0 + PD + PE = O, exact group law",
+      "status": "dependent"
+    }
+  ],
+  "t": "-191989/4040887",
+  "timeout_seconds": 90
+}
