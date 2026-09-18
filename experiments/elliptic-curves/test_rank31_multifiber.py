@@ -9,6 +9,7 @@ import subprocess
 import sys
 
 from rank31_multifiber import coefficients, exact_points, integral_model, inventory, search, torsion_triviality_certificate
+from rank31_sparse_coordinate_scan import modular_rows, survives
 import run_multifiber_sage
 
 
@@ -57,6 +58,15 @@ class MultifiberTests(unittest.TestCase):
                                           model,0,coeffs)),1)
         with self.assertRaises(ArithmeticError):
             exact_points('0 1 1',model,0,coeffs)
+
+    def test_sparse_filter_keeps_known_sections(self):
+        model=integral_model('-47/500')
+        sections=model['sections']
+        basis=(int(sections[1]['x'])*-1,int(sections[2]['x'])*-1,
+               int(sections[3]['x'])*-1,0,0,0,0,0)
+        rows=modular_rows(tuple(map(int,model['ainvariants'])),basis)
+        for index in range(3):
+            self.assertTrue(survives(1,(index,),(-1,),rows))
 
     @unittest.skipUnless(os.environ.get('RANK31_TEST_SAGE')=='1','opt-in Docker integration')
     def test_sage_subgroup_growth(self):

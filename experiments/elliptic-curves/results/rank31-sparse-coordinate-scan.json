@@ -1,0 +1,1634 @@
+{
+  "ansatz": "x=(sum c_i*b_i)/d; d=1..4; 1..3 nonzero c_i in [-12,12]; b_i=D,E,pq,p^2,q^2,L^2,pL,qL",
+  "fibers": [
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "1601864047090896390",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "1764543340156700718",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "1942076385439057064",
+          "y": "203546904176741168766498512"
+        }
+      ],
+      "index": 0,
+      "model_sha256": "82404d6c9beda2a94e9ada920431b8176d47612d511d73ab52a904626fddb036",
+      "modular_survivors": 25,
+      "new_x_count": 0,
+      "t": "-47/80",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "586425423267716441162432140166748480",
+          "y": "2124822120828289518674180231718932273432185918722890880"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "247352589864562079928330871615807920",
+          "y": "919831986961134316186160863757425838174873756625758400"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-265961757926848816384536761250218560",
+          "y": "-155364651566981369996495554475800343880446359793760640"
+        }
+      ],
+      "index": 1,
+      "model_sha256": "6f6c256d53f26c39052695e64288aa74327a3465f913461943c396452cef2e89",
+      "modular_survivors": 29,
+      "new_x_count": 0,
+      "t": "-191989/4040887",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "86140190972634877913347103616208920",
+          "y": "223211300431283681968094921882054014977435390258196668"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "16952071120530921779322880688301122",
+          "y": "59579228232249415255070668540654892792144743037780076"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-5350811371699423620635036489107956",
+          "y": "4282927670255780197846747010467922528514079003602516"
+        }
+      ],
+      "index": 2,
+      "model_sha256": "2ee40ca235dde7be4e791b395ca46610d9f1fe077db68d7b00f6ff102c9cd8e6",
+      "modular_survivors": 35,
+      "new_x_count": 0,
+      "t": "532929/2579219",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "237851889990928861890",
+          "y": "12269368663841709670276763829312"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-3287682352055864862",
+          "y": "293175082202138363702013476256"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-27677929940932718656",
+          "y": "-281584730791268740752012310918"
+        }
+      ],
+      "index": 3,
+      "model_sha256": "9e8be83e71925e212bb8765678ef6a7d033cab671fc4a2ee11ee2cfa5ee40135",
+      "modular_survivors": 25,
+      "new_x_count": 0,
+      "t": "-47/500",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "2357371600327964243787502970014440",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "1725921563356176181222625560935968",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "3405642162184291306388806570384704",
+          "y": "59643013348637667369017310608403407771460861104832"
+        }
+      ],
+      "index": 4,
+      "model_sha256": "57e6b270a82006a0a7f57265578ad6f26c01aebe80c237dcbdd244055280d664",
+      "modular_survivors": 18,
+      "new_x_count": 0,
+      "t": "-353682/460195",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "998880908092084316640660",
+          "y": "945807358510338145021189547761251180"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "388190021368421687758200",
+          "y": "201849883646257222877231399003049000"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "573543917012540790945200",
+          "y": "236289871374990266306137727122346000"
+        }
+      ],
+      "index": 5,
+      "model_sha256": "5e5eb9af90e8534f924946b34c21b52e3f54858c2ec524d3aa50d1602634f945",
+      "modular_survivors": 13,
+      "new_x_count": 0,
+      "t": "-802/2917",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "5209350962203387871789091840",
+          "y": "438850406393840145575521017123988355123328"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "1463299034551758314120493648",
+          "y": "66750841260984004135552796993997606252864"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "2569810300680494179068246144",
+          "y": "105557514251267862209569352145219297036288"
+        }
+      ],
+      "index": 6,
+      "model_sha256": "68499f8f616b6308879fdd0e4f942437779da6e6cbd0983e6f6a48c3fa63c79d",
+      "modular_survivors": 21,
+      "new_x_count": 0,
+      "t": "-6341/25735",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "92152796676337809945745493572765470",
+          "y": "103921488946074181535602567336977083634859907352712848"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "5103442006002725323611779916265302",
+          "y": "9389203118828630381616059905353433213165138162569336"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-18964511602848357506330851261331496",
+          "y": "-3968940365014791574095290900474917306774023695015874"
+        }
+      ],
+      "index": 7,
+      "model_sha256": "871fabfac30036f021c57d4265b34e681af9eae9a2a28278b4575c9b4d851ec3",
+      "modular_survivors": 21,
+      "new_x_count": 0,
+      "t": "-183569/2305416",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "277296369389864305538889173622450",
+          "y": "29365019311297038909967155091421366075356953187950"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-853030965683315832504183663159720",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-128899891141655413500521094752400",
+          "y": "3486028080420911842604720746121413770180741414000"
+        }
+      ],
+      "index": 8,
+      "model_sha256": "c4c754d3248eac618538f64da06ed515840d006573d2c49f2adb94f67083e60c",
+      "modular_survivors": 22,
+      "new_x_count": 0,
+      "t": "141580/460867",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "547114666090334051920139941305840",
+          "y": "15342528898159950935357721498499847875140776531328"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "145917754824374572498235555400648",
+          "y": "2208953836305835637803721145141555843821773737864"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "263786101723799840651264070895844",
+          "y": "3661716274066595077882489556157126256105393816688"
+        }
+      ],
+      "index": 9,
+      "model_sha256": "3a366dfd810de852bf539317d6c8f39323e5d37c4bec5cfe031922defff381d7",
+      "modular_survivors": 49,
+      "new_x_count": 0,
+      "t": "-112991/465710",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "388757552008503673423987169121761700",
+          "y": "1153168784020349625375156684400264000512992811329251200"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-2829101893885340691374686908991622460",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-594172152062800417701680831640482388",
+          "y": "676548164631479176979108322438418891488886011891840504"
+        }
+      ],
+      "index": 10,
+      "model_sha256": "fb4f3501eb83ce828719c3b2d2baefe083573e2358228a06b87db48eada5d0cb",
+      "modular_survivors": 45,
+      "new_x_count": 0,
+      "t": "1071727/1978006",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "239310230681819288060306571192485760",
+          "y": "87513959021242328241775070878326318291939335783667840"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "119788541622158009659032702463127280",
+          "y": "24177292234937061143881217598213952335466625621254800"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "156437273619814012315021974614467680",
+          "y": "22062090954020035520363388901879553905723253210455200"
+        }
+      ],
+      "index": 11,
+      "model_sha256": "6c0718cebf160c93ec39a061f5ab53dd0ce1faa0c37ddf6778c3f0f02e072ac3",
+      "modular_survivors": 24,
+      "new_x_count": 0,
+      "t": "-600578/1968423",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "3507517118740472164383158686957094400",
+          "y": "97414387361686197024435887562084601990350528267209777100"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-172941015263559959196430638018047313450",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-45464152274668938114300360274375657500",
+          "y": "380033074339616529192392829397869782548327282232098510500"
+        }
+      ],
+      "index": 12,
+      "model_sha256": "ac1d9afba73c342852e5d7557b9b7c73b414d5cc7219dbe57af9a0cfe1e7a1f1",
+      "modular_survivors": 27,
+      "new_x_count": 0,
+      "t": "3334535/2160657",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "2707243315400051806779297701828445000",
+          "y": "22224954384709027120968541392777326204624027979527139600"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-35854060754743842323790718328024089900",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-8616271125168331748414457351704057928",
+          "y": "33220452170453418925189812268672697997056936719691385264"
+        }
+      ],
+      "index": 13,
+      "model_sha256": "d911112a09001d7fe348ff1ec2011cd12934b9bdbb24b1a6fdafd0f38f834967",
+      "modular_survivors": 25,
+      "new_x_count": 0,
+      "t": "2112933/2552189",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-1723800508676693118344181338815920",
+          "y": "163080994250941115604960427619645528337942745276962240"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-1911219964582415066139657693628192440",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-118098336781517430058915338707410800",
+          "y": "212952343816806548932590037204305122536656179959606080"
+        }
+      ],
+      "index": 14,
+      "model_sha256": "bc420a05a56acb5588b47f5c36c9ca5252e196b388bdeb8622f81ce8228af3ea",
+      "modular_survivors": 43,
+      "new_x_count": 0,
+      "t": "-1554197/1082271",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "76712881918239968961009881822400",
+          "y": "4428954484866495891985632500257484858790584157900"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-211726809803517944343277871072650",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-31012029678411355938622885489500",
+          "y": "446662971161422309297322313362185813225046734500"
+        }
+      ],
+      "index": 15,
+      "model_sha256": "f6653e2242809dab07177b879b287c688a86a802adb9389cd09cf264d8fd1500",
+      "modular_survivors": 29,
+      "new_x_count": 0,
+      "t": "101145/345199",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "127129629534223151448181920",
+          "y": "40842324391412398243270603470977750416128"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-7848782856167598342041716968",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-212149197809794452936280956",
+          "y": "41505442384353794444080604124476649853596"
+        }
+      ],
+      "index": 16,
+      "model_sha256": "fa39c0bb11afcf6ddd0737d4f98a3cbabb4eedae36efbaa000fda8b1bb362b44",
+      "modular_survivors": 36,
+      "new_x_count": 0,
+      "t": "-12701/9274",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "75931553985386686685221156800",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-238985680370955111934908957840",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "117874762595137718458673285472",
+          "y": "42699476828225976314089876756679469765214368"
+        }
+      ],
+      "index": 17,
+      "model_sha256": "e6ceb2bb073540a6a01879fcb13a74ce4d3dd142ae80ba7f96b6403fad2c3313",
+      "modular_survivors": 30,
+      "new_x_count": 0,
+      "t": "-35942/33829",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "792784492423659097296717112439820",
+          "y": "157841620291992569989743967246205767759275997386048"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-1698723019214080229736155202910948",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-237710094942241414666181420305476",
+          "y": "11486227209178507230618343317277024342848032158416"
+        }
+      ],
+      "index": 18,
+      "model_sha256": "f7072d8c86fe2cd1cbac9eb018af8b04c6356f814f0c7776da350fee119170ba",
+      "modular_survivors": 34,
+      "new_x_count": 0,
+      "t": "176571/658166",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "1746494304215640561492806614064525520",
+          "y": "11080408281164625430235080055670543202986033679337129772"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-12102173275305415197375871047892086418",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-2501731352543745753294162423108613836",
+          "y": "5938408749176977657236968497546880139008122350364943364"
+        }
+      ],
+      "index": 19,
+      "model_sha256": "e461ef31bf638f170c0b8ca38ad497591c32c3ca06cf22838550c72c2f5bf46e",
+      "modular_survivors": 30,
+      "new_x_count": 0,
+      "t": "1536363/2942293",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "5990852393734419457347646986870",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "1542879636500662447004441823422",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "9071150166764975964942876962184",
+          "y": "12097516060527487224729173087240181340431270672"
+        }
+      ],
+      "index": 20,
+      "model_sha256": "81c04b89cdbd9de15c1bae7757dbc63e9667113ec908a4b4896540d85957ab14",
+      "modular_survivors": 18,
+      "new_x_count": 0,
+      "t": "-85857/101408",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "202127583350973450",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-437755320693150360",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "317326481398000272",
+          "y": "162168485218162020914177232"
+        }
+      ],
+      "index": 21,
+      "model_sha256": "598d6c1c0e076031c8ca55d934d5a18668cdd33752029222865e48eec4940705",
+      "modular_survivors": 11,
+      "new_x_count": 0,
+      "t": "-44/43",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "5213139829084821303981017791362068700",
+          "y": "63305470603468327448936270468041917465727748520534041700"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-25659042914748225879473670678434834520",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-4657501537703119304454654209436012400",
+          "y": "17513511190091289432598758809534723732219595315583844000"
+        }
+      ],
+      "index": 22,
+      "model_sha256": "f76e8560123c2bcf0aa461daf9a133f3deb9869b3257ac47523108ba4a2a8df8",
+      "modular_survivors": 29,
+      "new_x_count": 0,
+      "t": "1827370/4505123",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "28189411528613794355040",
+          "y": "27126039733427286125977206201028992"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-114396707756183317950432",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-19157413294047026339616",
+          "y": "5187677519657582674743918374589312"
+        }
+      ],
+      "index": 23,
+      "model_sha256": "f605553985f126c5e065cebdfbf1ce91912d05e781e7557889b31004ff6474dc",
+      "modular_survivors": 16,
+      "new_x_count": 0,
+      "t": "473/1325",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "27045564320412986854099167883357920",
+          "y": "30320501222350910036845507454982796172225205140383212"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-66688786743997560860333561408873658",
+          "y": "0"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-9524493498092317010951380606831356",
+          "y": "2620224931782748795214490891211715577872026698081924"
+        }
+      ],
+      "index": 24,
+      "model_sha256": "49937e16eaad4052f5a90ffd2ba1b7019696e75912db0f63a62db27353ea668e",
+      "modular_survivors": 26,
+      "new_x_count": 0,
+      "t": "432533/1540803",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "109420793956788849507636022294197570",
+          "y": "33140567691355188613087728541865154587542321903300542"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "44375740837206176167624737467005112",
+          "y": "7389680025424720762442669229972656296693680309693144"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "64167223587653742119956702339954224",
+          "y": "8305073163456232184505542515368168409721312789091312"
+        }
+      ],
+      "index": 25,
+      "model_sha256": "8883144d275dc271f7751e0babefd00b189ad0a94d2a59b0aec46c14c80de162",
+      "modular_survivors": 26,
+      "new_x_count": 0,
+      "t": "-466332/1668773",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "1699130408280052761224527593419760",
+          "y": "362897561815409024501270409967383804681150056090640"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "1152775123539710422533844607210640",
+          "y": "246638593553944483915501748621458341636639533228400"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-966556436126550481153086960478560",
+          "y": "-31615157048907144844239768220778094656554616505600"
+        }
+      ],
+      "index": 26,
+      "model_sha256": "b20d989e4191419fa729d56726798a333ea84fc182248483eca92e7aaa3f2fea",
+      "modular_survivors": 15,
+      "new_x_count": 0,
+      "t": "-34886/977341",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "6717531178193635225384417348890",
+          "y": "167515981218365761338908726506079862263928655878"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "10712047313760287396273222696648",
+          "y": "262583728049983263541107033909069216100625282664"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-65484270943570158711357399216",
+          "y": "5154410739302777830558496611557177559848186768"
+        }
+      ],
+      "index": 27,
+      "model_sha256": "1f6a38060bae3214eb978e9ec6f20fe079ef34eee66aaa5144be9f43b5f00d5d",
+      "modular_survivors": 36,
+      "new_x_count": 0,
+      "t": "48996/263795",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "7174237529856169495937460206686740",
+          "y": "728599277803245098076788178822774595629902785165548"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "1912998567970693888962448570027128",
+          "y": "104877411597730705563884617822277855766992693629224"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "3458672871601442984880144316324784",
+          "y": "173885155988083958142885641356724566544130703585808"
+        }
+      ],
+      "index": 28,
+      "model_sha256": "3f79117909d0640ee73ed97f1011ca35903ad4da27160d5d6e84f60fd631e4b2",
+      "modular_survivors": 32,
+      "new_x_count": 0,
+      "t": "-215006/886235",
+      "tested_expressions": 2929536
+    },
+    {
+      "exact_points": [
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "D",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "420855943189387780540486473314900610",
+          "y": "2407315795435043678608145454112173441846435871197394830"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "E",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "75290575048847055613663306314873720",
+          "y": "604166904930851354298420835474702436073391122428765400"
+        },
+        {
+          "formula": {
+            "denominator": 1,
+            "terms": [
+              [
+                "pq",
+                -1
+              ]
+            ]
+          },
+          "known_section_x": true,
+          "x": "-26572643599277956534047594247398480",
+          "y": "46732711005878502670520037201573990049918823187668400"
+        }
+      ],
+      "index": 29,
+      "model_sha256": "6843222fee20dbcb7c68e77a9877bffea661c87bdd176ad01a28de52e19b7020",
+      "modular_survivors": 20,
+      "new_x_count": 0,
+      "t": "792596/3829929",
+      "tested_expressions": 2929536
+    }
+  ],
+  "generic": {
+    "interpretation": "A square discriminant over Q(T) must survive every sample; the surviving expressions are the known x=-D,-E,-pq sections.",
+    "modular_survivors": [
+      {
+        "denominator": 1,
+        "terms": [
+          [
+            "D",
+            -1
+          ]
+        ]
+      },
+      {
+        "denominator": 1,
+        "terms": [
+          [
+            "E",
+            -1
+          ]
+        ]
+      },
+      {
+        "denominator": 1,
+        "terms": [
+          [
+            "pq",
+            -1
+          ]
+        ]
+      }
+    ],
+    "sample_T": [
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3
+    ],
+    "sample_primes": [
+      11,
+      13,
+      17,
+      19,
+      23,
+      29,
+      31,
+      37,
+      41,
+      43,
+      47,
+      53,
+      59,
+      61,
+      67,
+      71,
+      73,
+      79,
+      83,
+      89,
+      97,
+      101,
+      103,
+      107
+    ],
+    "tested_expressions": 2929536
+  },
+  "modular_filter": "For each odd test prime, d^4 times the discriminant cubic must be a quadratic residue; no rational point in the finite ansatz is rejected."
+}

@@ -6,7 +6,7 @@ import json
 import time
 from pathlib import Path
 
-from sage.all import EllipticCurve, QQ
+from sage.all import EllipticCurve, QQ, pari
 
 HERE=Path(__file__).resolve().parent
 RESULTS=HERE/'results'
@@ -14,7 +14,7 @@ RESULTS=HERE/'results'
 def point_json(p):
     return {'x':str(p[0]),'y':str(p[1])} if not p.is_zero() else {'infinity':True}
 
-def run(index, reports, output=None, verify_only=False, max_prime=11, descent=False, pairing=False, height_proof=False, rank_bound=False, minimal_info=False):
+def run(index, reports, output=None, verify_only=False, max_prime=11, descent=False, pairing=False, height_proof=False, rank_bound=False, minimal_info=False, pari_rank=False, pari_effort=0):
     inventory=json.loads((RESULTS/'rank31-multifiber-inventory.json').read_text())
     row=inventory['selected'][index]
     model=row['model']
@@ -48,6 +48,19 @@ def run(index, reports, output=None, verify_only=False, max_prime=11, descent=Fa
                 'minimal_sections':[{'label':label,**point_json(p)} for label,p in mapped],
                 'integral_coefficient_max_bits':max(max(abs(a.numerator()).nbits(),a.denominator().nbits()) for a in E.ainvs()),
                 'minimal_coefficient_max_bits':max(max(abs(a.numerator()).nbits(),a.denominator().nbits()) for a in minimal.ainvs())}
+    if pari_rank:
+        known=[p for label,p in candidates if label in ('P0','PD','PQ')]
+        result=pari.ellrank(pari.ellinit([int(a) for a in E.ainvs()]),pari_effort,
+                            [[p[0],p[1]] for p in known])
+        discovered=[]
+        for point in result[3]:
+            p=E(QQ(point[0]),QQ(point[1]))
+            discovered.append(point_json(p))
+        return {'t':model['t'],'model_sha256':digest,'mode':'pari_ellrank',
+                'effort':pari_effort,'lower_bound':int(result[0]),
+                'upper_bound':int(result[1]),'sha_information':str(result[2]),
+                'points':discovered,'known_points_supplied':[point_json(p) for p in known],
+                'note':'PARI rank bounds are unconditional; independently certify any new lower bound before reporting it'}
     if descent:
         known=[p for label,p in candidates if label in ('P0','PD','PQ')]
         lower,upper,discovered=E.simon_two_descent(known_points=known,limbigprime=0)
@@ -139,6 +152,8 @@ if __name__=='__main__':
     ap.add_argument('--height-proof',action='store_true')
     ap.add_argument('--rank-bound',action='store_true')
     ap.add_argument('--minimal-info',action='store_true')
+    ap.add_argument('--pari-rank',action='store_true')
+    ap.add_argument('--pari-effort',type=int,default=0)
     ap.add_argument('--max-prime',type=int,default=11)
     ap.add_argument('index',type=int);ap.add_argument('output');ap.add_argument('reports',nargs='*')
-    args=ap.parse_args();Path(args.output).write_text(json.dumps(run(args.index,args.reports,args.output,args.verify_only,args.max_prime,args.descent,args.pairing,args.height_proof,args.rank_bound,args.minimal_info),indent=2,sort_keys=True)+'\n')
+    args=ap.parse_args();Path(args.output).write_text(json.dumps(run(args.index,args.reports,args.output,args.verify_only,args.max_prime,args.descent,args.pairing,args.height_proof,args.rank_bound,args.minimal_info,args.pari_rank,args.pari_effort),indent=2,sort_keys=True)+'\n')

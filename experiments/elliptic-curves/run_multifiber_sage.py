@@ -22,10 +22,12 @@ def main():
     ap.add_argument('--height-proof',action='store_true')
     ap.add_argument('--rank-bound',action='store_true')
     ap.add_argument('--minimal-info',action='store_true')
+    ap.add_argument('--pari-rank',action='store_true')
+    ap.add_argument('--pari-effort',type=int,default=0)
     ap.add_argument('--max-prime',type=int,default=11)
     args=ap.parse_args()
     name='sage-mf-'+uuid.uuid4().hex
-    suffix='-minimal-info' if args.minimal_info else '-height-proof' if args.height_proof else '-rank-bound' if args.rank_bound else '-descent' if args.descent else '-pairing' if args.pairing else '-verify' if args.verify_only else ('-p'+str(args.max_prime) if args.max_prime!=11 else '')
+    suffix=('-pari-rank-e'+str(args.pari_effort) if args.pari_rank else '-minimal-info' if args.minimal_info else '-height-proof' if args.height_proof else '-rank-bound' if args.rank_bound else '-descent' if args.descent else '-pairing' if args.pairing else '-verify' if args.verify_only else ('-p'+str(args.max_prime) if args.max_prime!=11 else ''))
     out=HERE/'results'/f'rank31-multifiber-sage-{args.index:02d}{suffix}.json'
     with tempfile.NamedTemporaryFile(dir=out.parent,prefix='sage-mf-',suffix='.json',delete=False) as stream:
         temporary=Path(stream.name)
@@ -39,6 +41,7 @@ def main():
          *(['--height-proof'] if args.height_proof else []),
          *(['--rank-bound'] if args.rank_bound else []),
          *(['--minimal-info'] if args.minimal_info else []),
+         *(['--pari-rank','--pari-effort',str(args.pari_effort)] if args.pari_rank else []),
          '--max-prime',str(args.max_prime),
          str(args.index),'/work/'+str(temporary.relative_to(ROOT)),*paths]
     started=time.monotonic()

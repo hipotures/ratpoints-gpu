@@ -11,15 +11,25 @@ from rank31_multifiber import RESULTS_DIR, torsion_triviality_certificate
 INVENTORY=RESULTS_DIR/'rank31-multifiber-inventory.json'
 SCOREBOARD=RESULTS_DIR/'rank31-multifiber-scoreboard.json'
 REPORT=RESULTS_DIR/'rank31-multifiber-report.md'
+SPARSE=RESULTS_DIR/'rank31-sparse-coordinate-scan.json'
 
 def main():
     inventory=json.loads(INVENTORY.read_text())
     board=json.loads(SCOREBOARD.read_text())
+    sparse=json.loads(SPARSE.read_text()) if SPARSE.exists() else None
+    sparse_by_index={row['index']:row for row in sparse['fibers']} if sparse else {}
     board['control']=inventory['control']
     board['sieve_contract']='For each tested odd prime coprime to d, a rational square remains a quadratic residue modulo that prime. The GPU filter therefore has no false negatives for reduced n/d in each explicit rectangle; every emitted point is checked exactly.'
     ranked=[]
     for i,row in enumerate(inventory['selected']):
         entry=board['candidate_rows'][row['t']]
+        if i in sparse_by_index:
+            scan=sparse_by_index[i]
+            if scan['t']!=row['t'] or scan['model_sha256']!=entry['model_sha256']:
+                raise RuntimeError(f'sparse scan model mismatch: {row["t"]}')
+            entry['sparse_coordinate_scan']={'tested_expressions':scan['tested_expressions'],
+                'modular_survivors':scan['modular_survivors'],'exact_points':scan['exact_points'],
+                'new_x_count':scan['new_x_count'],'source':SPARSE.name}
         entry['source_seeds']=row['source_seeds']
         entry['already_deeply_searched']=row['already_deeply_searched']
         entry['existing_certified_rank_lower_bound']=row['existing_certified_rank_lower_bound']
@@ -87,7 +97,7 @@ def main():
                 entry['regulator_numerical']=certified[-1].get('regulator') if certified else None
                 entry['full_saturation_source']=full_path.name
         entry['auxiliary_cpu_experiments']=[]
-        for suffix in ('p2','pairing','descent','rank-bound'):
+        for suffix in ('p2','pairing','descent','rank-bound','pari-rank-e0'):
             auxiliary=RESULTS_DIR/f'rank31-multifiber-sage-{i:02d}-{suffix}.json'
             if auxiliary.exists():
                 experiment=json.loads(auxiliary.read_text())
@@ -221,12 +231,14 @@ def main():
                   'Every GPU output passed Python integer-square and curve-equation checks. '
                   'The separate Sage verification artifacts record exact point construction for each completed report. '
                   'Absence of a new point excludes only these rectangles. A bounded Simon 2-descent for T=-44/43 timed out at 120 seconds; '
-                  'for T=-802/2917 it hit PARI’s 1 GiB bnfinit stack limit before returning a bound. Bounded mwrank bounds on both fibers failed because their 2-descents did not complete. None supplies an upper bound.','',
+                  'for T=-802/2917 it hit PARI’s 1 GiB bnfinit stack limit before returning a bound. Bounded mwrank bounds on both fibers failed because their 2-descents did not complete. '
+                  'PARI ellrank with known points and zero search effort also timed out at 60 seconds for T=-44/43 and 45 seconds for T=-47/500. None supplies an upper bound.','',
                   '## Adaptation and next work','',
                   'The cheap screen returned only known section points. Wide windows therefore went to the strongest 12 Stage B leads; '
                   'six additional standalone refined leads were screened and widened. Structured x lattices and subsequent rescaled windows favored smaller parameter denominators, which provide better resolution in family coordinates. '
                   'Candidates with only known points were demoted from further identical-width searches. '
                   'Fourteen outer windows on two small-denominator fibers tested logarithmically spaced family-coordinate regions and found no points. '
+                  'A separate sparse-coordinate scan tested 2,929,536 low-complexity expressions over Q(T) and 87,886,080 specialized expressions across all 30 fibers. Its modular filter left only the three known generic section forms; exact fixed-fiber checks returned only the 90 known section x-coordinates. This excludes only the explicitly recorded ansatz. '
                   'Minimal-model diagnostics on six leading fibers found larger maximum coefficient bit sizes than the integral factored models, so repeating the failed descents on these minimal models was not prioritized. '
                   'Promising follow-up is to derive candidate x-coordinates from covering curves or lattice reduction, then feed those centers to the exact GPU sieve; repeated local rectangles around section points have low yield. '
                   'Alternative bounded descent algorithms may resolve upper bounds for the smaller-denominator fibers. '

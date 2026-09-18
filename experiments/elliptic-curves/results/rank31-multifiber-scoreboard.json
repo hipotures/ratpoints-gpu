@@ -295,6 +295,56 @@
       "source_seeds": [
         308
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "547114666090334051920139941305840",
+            "y": "15342528898159950935357721498499847875140776531328"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "145917754824374572498235555400648",
+            "y": "2208953836305835637803721145141555843821773737864"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "263786101723799840651264070895844",
+            "y": "3661716274066595077882489556157126256105393816688"
+          }
+        ],
+        "modular_survivors": 49,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 92.12086773638501,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -817,6 +867,56 @@
       "source_seeds": [
         314
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "127129629534223151448181920",
+            "y": "40842324391412398243270603470977750416128"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-7848782856167598342041716968",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-212149197809794452936280956",
+            "y": "41505442384353794444080604124476649853596"
+          }
+        ],
+        "modular_survivors": 36,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 95.02123558352241,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -1035,6 +1135,56 @@
       "source_seeds": [
         315
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-1723800508676693118344181338815920",
+            "y": "163080994250941115604960427619645528337942745276962240"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-1911219964582415066139657693628192440",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-118098336781517430058915338707410800",
+            "y": "212952343816806548932590037204305122536656179959606080"
+          }
+        ],
+        "modular_survivors": 43,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 92.5846787688498,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -1353,6 +1503,56 @@
       "source_seeds": [
         307
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "92152796676337809945745493572765470",
+            "y": "103921488946074181535602567336977083634859907352712848"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "5103442006002725323611779916265302",
+            "y": "9389203118828630381616059905353433213165138162569336"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-18964511602848357506330851261331496",
+            "y": "-3968940365014791574095290900474917306774023695015874"
+          }
+        ],
+        "modular_survivors": 21,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 92.46796342419759,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -1792,6 +1992,56 @@
       "source_seeds": [
         308
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "586425423267716441162432140166748480",
+            "y": "2124822120828289518674180231718932273432185918722890880"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "247352589864562079928330871615807920",
+            "y": "919831986961134316186160863757425838174873756625758400"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-265961757926848816384536761250218560",
+            "y": "-155364651566981369996495554475800343880446359793760640"
+          }
+        ],
+        "modular_survivors": 29,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 90.40955863944863,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -2127,6 +2377,56 @@
       "source_seeds": [
         303
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "7174237529856169495937460206686740",
+            "y": "728599277803245098076788178822774595629902785165548"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "1912998567970693888962448570027128",
+            "y": "104877411597730705563884617822277855766992693629224"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "3458672871601442984880144316324784",
+            "y": "173885155988083958142885641356724566544130703585808"
+          }
+        ],
+        "modular_survivors": 32,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 91.24062245926048,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -2465,6 +2765,56 @@
       "source_seeds": [
         303
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "1699130408280052761224527593419760",
+            "y": "362897561815409024501270409967383804681150056090640"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "1152775123539710422533844607210640",
+            "y": "246638593553944483915501748621458341636639533228400"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-966556436126550481153086960478560",
+            "y": "-31615157048907144844239768220778094656554616505600"
+          }
+        ],
+        "modular_survivors": 15,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 89.40852223273976,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -2864,6 +3214,56 @@
       "source_seeds": [
         315
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "2357371600327964243787502970014440",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "1725921563356176181222625560935968",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "3405642162184291306388806570384704",
+            "y": "59643013348637667369017310608403407771460861104832"
+          }
+        ],
+        "modular_survivors": 18,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 92.55024195221493,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -3378,6 +3778,56 @@
       "source_seeds": [
         316
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "75931553985386686685221156800",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-238985680370955111934908957840",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "117874762595137718458673285472",
+            "y": "42699476828225976314089876756679469765214368"
+          }
+        ],
+        "modular_survivors": 30,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 92.58967921261443,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -3409,10 +3859,15 @@
           "elapsed_seconds": 5.143085271000018,
           "path": "rank31-multifiber-sage-21-rank-bound.json",
           "status": "error"
+        },
+        {
+          "elapsed_seconds": 60.276255598000716,
+          "path": "rank31-multifiber-sage-21-pari-rank-e0.json",
+          "status": "timeout"
         }
       ],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 264.915582351,
+      "cpu_elapsed_seconds": 325.1918379490007,
       "exact_points": [
         {
           "x": "0",
@@ -4155,6 +4610,56 @@
       "source_seeds": [
         318
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "202127583350973450",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-437755320693150360",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "317326481398000272",
+            "y": "162168485218162020914177232"
+          }
+        ],
+        "modular_survivors": 11,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 88.97527232897154,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -4490,6 +4995,56 @@
       "source_seeds": [
         303
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "109420793956788849507636022294197570",
+            "y": "33140567691355188613087728541865154587542321903300542"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "44375740837206176167624737467005112",
+            "y": "7389680025424720762442669229972656296693680309693144"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "64167223587653742119956702339954224",
+            "y": "8305073163456232184505542515368168409721312789091312"
+          }
+        ],
+        "modular_survivors": 26,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 97.097293734515,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -4515,9 +5070,15 @@
     },
     "-47/500": {
       "already_deeply_searched": false,
-      "auxiliary_cpu_experiments": [],
+      "auxiliary_cpu_experiments": [
+        {
+          "elapsed_seconds": 45.246146815999964,
+          "path": "rank31-multifiber-sage-03-pari-rank-e0.json",
+          "status": "timeout"
+        }
+      ],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 94.67166541000006,
+      "cpu_elapsed_seconds": 139.91781222600002,
       "exact_points": [
         {
           "x": "0",
@@ -5359,6 +5920,56 @@
       "source_seeds": [
         309
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "237851889990928861890",
+            "y": "12269368663841709670276763829312"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-3287682352055864862",
+            "y": "293175082202138363702013476256"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-27677929940932718656",
+            "y": "-281584730791268740752012310918"
+          }
+        ],
+        "modular_survivors": 25,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 96.4174209789572,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -5969,6 +6580,56 @@
       "source_seeds": [
         318
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "1601864047090896390",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "1764543340156700718",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "1942076385439057064",
+            "y": "203546904176741168766498512"
+          }
+        ],
+        "modular_survivors": 25,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 91.43417133499639,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -6283,6 +6944,56 @@
       "source_seeds": [
         306
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "239310230681819288060306571192485760",
+            "y": "87513959021242328241775070878326318291939335783667840"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "119788541622158009659032702463127280",
+            "y": "24177292234937061143881217598213952335466625621254800"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "156437273619814012315021974614467680",
+            "y": "22062090954020035520363388901879553905723253210455200"
+          }
+        ],
+        "modular_survivors": 24,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 89.89434270216881,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -6894,6 +7605,56 @@
       "source_seeds": [
         308
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "5209350962203387871789091840",
+            "y": "438850406393840145575521017123988355123328"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "1463299034551758314120493648",
+            "y": "66750841260984004135552796993997606252864"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "2569810300680494179068246144",
+            "y": "105557514251267862209569352145219297036288"
+          }
+        ],
+        "modular_survivors": 21,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 91.29195832327007,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -7527,6 +8288,56 @@
       "source_seeds": [
         312
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "998880908092084316640660",
+            "y": "945807358510338145021189547761251180"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "388190021368421687758200",
+            "y": "201849883646257222877231399003049000"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "573543917012540790945200",
+            "y": "236289871374990266306137727122346000"
+          }
+        ],
+        "modular_survivors": 13,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 93.33836381949864,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -7943,6 +8754,56 @@
       "source_seeds": [
         317
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "5990852393734419457347646986870",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "1542879636500662447004441823422",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "9071150166764975964942876962184",
+            "y": "12097516060527487224729173087240181340431270672"
+          }
+        ],
+        "modular_survivors": 18,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 95.09618838011785,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -8351,6 +9212,56 @@
       "source_seeds": [
         313
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "76712881918239968961009881822400",
+            "y": "4428954484866495891985632500257484858790584157900"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-211726809803517944343277871072650",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-31012029678411355938622885489500",
+            "y": "446662971161422309297322313362185813225046734500"
+          }
+        ],
+        "modular_survivors": 29,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 89.82129995773911,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -8664,6 +9575,56 @@
       "source_seeds": [
         313
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "388757552008503673423987169121761700",
+            "y": "1153168784020349625375156684400264000512992811329251200"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-2829101893885340691374686908991622460",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-594172152062800417701680831640482388",
+            "y": "676548164631479176979108322438418891488886011891840504"
+          }
+        ],
+        "modular_survivors": 45,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 96.6513550006722,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -9063,6 +10024,56 @@
       "source_seeds": [
         310
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "277296369389864305538889173622450",
+            "y": "29365019311297038909967155091421366075356953187950"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-853030965683315832504183663159720",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-128899891141655413500521094752400",
+            "y": "3486028080420911842604720746121413770180741414000"
+          }
+        ],
+        "modular_survivors": 22,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 91.76217684535823,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -9280,6 +10291,56 @@
       "source_seeds": [
         308
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "1746494304215640561492806614064525520",
+            "y": "11080408281164625430235080055670543202986033679337129772"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-12102173275305415197375871047892086418",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-2501731352543745753294162423108613836",
+            "y": "5938408749176977657236968497546880139008122350364943364"
+          }
+        ],
+        "modular_survivors": 30,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 101.40171618544105,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -9506,6 +10567,56 @@
       "source_seeds": [
         312
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "792784492423659097296717112439820",
+            "y": "157841620291992569989743967246205767759275997386048"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-1698723019214080229736155202910948",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-237710094942241414666181420305476",
+            "y": "11486227209178507230618343317277024342848032158416"
+          }
+        ],
+        "modular_survivors": 34,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 94.24717625916234,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -9724,6 +10835,56 @@
       "source_seeds": [
         308
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "5213139829084821303981017791362068700",
+            "y": "63305470603468327448936270468041917465727748520534041700"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-25659042914748225879473670678434834520",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-4657501537703119304454654209436012400",
+            "y": "17513511190091289432598758809534723732219595315583844000"
+          }
+        ],
+        "modular_survivors": 29,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 94.35137571482035,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -9945,6 +11106,56 @@
       "source_seeds": [
         318
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "2707243315400051806779297701828445000",
+            "y": "22224954384709027120968541392777326204624027979527139600"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-35854060754743842323790718328024089900",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-8616271125168331748414457351704057928",
+            "y": "33220452170453418925189812268672697997056936719691385264"
+          }
+        ],
+        "modular_survivors": 25,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 91.81118437563678,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -10163,6 +11374,56 @@
       "source_seeds": [
         316
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "3507517118740472164383158686957094400",
+            "y": "97414387361686197024435887562084601990350528267209777100"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-172941015263559959196430638018047313450",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-45464152274668938114300360274375657500",
+            "y": "380033074339616529192392829397869782548327282232098510500"
+          }
+        ],
+        "modular_survivors": 27,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 94.22995360919379,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -10498,6 +11759,56 @@
       "source_seeds": [
         303
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "27045564320412986854099167883357920",
+            "y": "30320501222350910036845507454982796172225205140383212"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-66688786743997560860333561408873658",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-9524493498092317010951380606831356",
+            "y": "2620224931782748795214490891211715577872026698081924"
+          }
+        ],
+        "modular_survivors": 26,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 92.4595814715244,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -11011,6 +12322,56 @@
       "source_seeds": [
         311
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "28189411528613794355040",
+            "y": "27126039733427286125977206201028992"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-114396707756183317950432",
+            "y": "0"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-19157413294047026339616",
+            "y": "5187677519657582674743918374589312"
+          }
+        ],
+        "modular_survivors": 16,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 90.76727564168252,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -11533,6 +12894,56 @@
       "source_seeds": [
         303
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "6717531178193635225384417348890",
+            "y": "167515981218365761338908726506079862263928655878"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "10712047313760287396273222696648",
+            "y": "262583728049983263541107033909069216100625282664"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-65484270943570158711357399216",
+            "y": "5154410739302777830558496611557177559848186768"
+          }
+        ],
+        "modular_survivors": 36,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 90.21857530639704,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -11952,6 +13363,56 @@
       "source_seeds": [
         314
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "86140190972634877913347103616208920",
+            "y": "223211300431283681968094921882054014977435390258196668"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "16952071120530921779322880688301122",
+            "y": "59579228232249415255070668540654892792144743037780076"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-5350811371699423620635036489107956",
+            "y": "4282927670255780197846747010467922528514079003602516"
+          }
+        ],
+        "modular_survivors": 35,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 96.3740821727473,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -12282,6 +13743,56 @@
       "source_seeds": [
         303
       ],
+      "sparse_coordinate_scan": {
+        "exact_points": [
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "D",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "420855943189387780540486473314900610",
+            "y": "2407315795435043678608145454112173441846435871197394830"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "E",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "75290575048847055613663306314873720",
+            "y": "604166904930851354298420835474702436073391122428765400"
+          },
+          {
+            "formula": {
+              "denominator": 1,
+              "terms": [
+                [
+                  "pq",
+                  -1
+                ]
+              ]
+            },
+            "known_section_x": true,
+            "x": "-26572643599277956534047594247398480",
+            "y": "46732711005878502670520037201573990049918823187668400"
+          }
+        ],
+        "modular_survivors": 20,
+        "new_x_count": 0,
+        "source": "rank31-sparse-coordinate-scan.json",
+        "tested_expressions": 2929536
+      },
       "stage_a_prime_bound": 5000,
       "stage_a_score": 89.0811878790258,
       "status_reason": "certified visible rank 3; no new independent GPU point in completed rectangles",
@@ -12321,7 +13832,7 @@
     "t": "164518/924945",
     "verified_witness_rows_sha256": "89fe4873d7e0ac6da4fd74b7c0a3cd427e09ec6b2b0f45ecbe5acd77fefe9944"
   },
-  "generated_at_utc": "2026-09-18T01:20:31.230523+00:00",
+  "generated_at_utc": "2026-09-18T01:29:11.067338+00:00",
   "inventory_count": 159995,
   "ranked_candidates": [
     {
