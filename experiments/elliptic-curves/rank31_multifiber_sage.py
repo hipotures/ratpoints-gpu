@@ -14,7 +14,7 @@ RESULTS=HERE/'results'
 def point_json(p):
     return {'x':str(p[0]),'y':str(p[1])} if not p.is_zero() else {'infinity':True}
 
-def run(index, reports, output=None, verify_only=False, max_prime=11, descent=False, pairing=False, height_proof=False, rank_bound=False):
+def run(index, reports, output=None, verify_only=False, max_prime=11, descent=False, pairing=False, height_proof=False, rank_bound=False, minimal_info=False):
     inventory=json.loads((RESULTS/'rank31-multifiber-inventory.json').read_text())
     row=inventory['selected'][index]
     model=row['model']
@@ -37,6 +37,17 @@ def run(index, reports, output=None, verify_only=False, max_prime=11, descent=Fa
             if all(p!=old for _,old in candidates):
                 candidates.append((f"GPU:{Path(report_path).name}",p))
             gpu.append(point_json(p))
+    if minimal_info:
+        minimal=E.minimal_model()
+        iso=E.isomorphism_to(minimal)
+        mapped=[(label,iso(p)) for label,p in candidates[:4]]
+        return {'t':model['t'],'model_sha256':digest,'mode':'minimal_model_diagnostic',
+                'integral_ainvariants':[str(a) for a in E.ainvs()],
+                'minimal_ainvariants':[str(a) for a in minimal.ainvs()],
+                'isomorphism_parameters':[str(z) for z in iso.tuple()],
+                'minimal_sections':[{'label':label,**point_json(p)} for label,p in mapped],
+                'integral_coefficient_max_bits':max(max(abs(a.numerator()).nbits(),a.denominator().nbits()) for a in E.ainvs()),
+                'minimal_coefficient_max_bits':max(max(abs(a.numerator()).nbits(),a.denominator().nbits()) for a in minimal.ainvs())}
     if descent:
         known=[p for label,p in candidates if label in ('P0','PD','PQ')]
         lower,upper,discovered=E.simon_two_descent(known_points=known,limbigprime=0)
@@ -127,6 +138,7 @@ if __name__=='__main__':
     ap.add_argument('--pairing',action='store_true')
     ap.add_argument('--height-proof',action='store_true')
     ap.add_argument('--rank-bound',action='store_true')
+    ap.add_argument('--minimal-info',action='store_true')
     ap.add_argument('--max-prime',type=int,default=11)
     ap.add_argument('index',type=int);ap.add_argument('output');ap.add_argument('reports',nargs='*')
-    args=ap.parse_args();Path(args.output).write_text(json.dumps(run(args.index,args.reports,args.output,args.verify_only,args.max_prime,args.descent,args.pairing,args.height_proof,args.rank_bound),indent=2,sort_keys=True)+'\n')
+    args=ap.parse_args();Path(args.output).write_text(json.dumps(run(args.index,args.reports,args.output,args.verify_only,args.max_prime,args.descent,args.pairing,args.height_proof,args.rank_bound,args.minimal_info),indent=2,sort_keys=True)+'\n')

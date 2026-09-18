@@ -139,6 +139,7 @@ def main():
         if 'coarse' in used:decisions.append('extended to coarse family-coordinate grid after rescaled search')
         if 'deeper' in used:decisions.append('extended denominator depth for two small-denominator high-score fibers')
         if 'standalone' in used:decisions.append('widened a newly inventoried standalone refined lead')
+        if 'outer' in used:decisions.append('searched logarithmically spaced family-coordinate regions away from known sections')
         entry['scheduling_decisions']=decisions
         novel=any(point['x'] not in {section['x'] for section in row['model']['sections']}
                   for point in entry['exact_points'])
@@ -171,8 +172,8 @@ def main():
             stages[stage]['exact_x_survivors']+=run.get('exact_survivors') or 0
     total_sites=sum(value['sites'] for value in stages.values())
     total_seconds=sum(value['seconds'] for value in stages.values())
-    bulk_sites=sum(stages[name]['sites'] for name in ('promote','rescale','coarse','standalone','deeper'))
-    bulk_seconds=sum(stages[name]['seconds'] for name in ('promote','rescale','coarse','standalone','deeper'))
+    bulk_sites=sum(stages[name]['sites'] for name in ('promote','rescale','coarse','standalone','deeper','outer'))
+    bulk_seconds=sum(stages[name]['seconds'] for name in ('promote','rescale','coarse','standalone','deeper','outer'))
     total_cpu_seconds=sum(r['cpu_elapsed_seconds'] for r in ranked)
     best_rank=max(r['certified_subgroup_rank'] for r in ranked)
     doubling_counts=', '.join(map(str,sorted({r['height_certificate']['doublings'] for r in ranked})))
@@ -225,6 +226,8 @@ def main():
                   'The cheap screen returned only known section points. Wide windows therefore went to the strongest 12 Stage B leads; '
                   'six additional standalone refined leads were screened and widened. Structured x lattices and subsequent rescaled windows favored smaller parameter denominators, which provide better resolution in family coordinates. '
                   'Candidates with only known points were demoted from further identical-width searches. '
+                  'Fourteen outer windows on two small-denominator fibers tested logarithmically spaced family-coordinate regions and found no points. '
+                  'Minimal-model diagnostics on six leading fibers found larger maximum coefficient bit sizes than the integral factored models, so repeating the failed descents on these minimal models was not prioritized. '
                   'Promising follow-up is to derive candidate x-coordinates from covering curves or lattice reduction, then feed those centers to the exact GPU sieve; repeated local rectangles around section points have low yield. '
                   'Alternative bounded descent algorithms may resolve upper bounds for the smaller-denominator fibers. '
                   'No global upper bound is claimed.',''])

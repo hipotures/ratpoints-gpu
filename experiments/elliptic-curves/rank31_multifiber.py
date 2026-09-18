@@ -187,8 +187,8 @@ def exact_points(stdout, model, center, coeffs, stride=1):
     return sorted(found.values(),key=lambda p:(Fraction(p['x']),Fraction(p['y'])))
 
 
-def search(model, label, height, denominators, timeout=90, stride=1):
-    center=centers(model)[label]
+def search(model, label, height, denominators, timeout=90, stride=1, center_override=None):
+    center=centers(model)[label] if center_override is None else int(center_override)
     coeffs=coefficients(model,center,stride)
     command=[str(ROOT/'ratpoints_gpu'),' '.join(map(str,coeffs)),str(height),
              '-dl','1','-du',str(denominators),'--devices','0,1','-i','-v','-f','%x %y %z\\n']
@@ -221,6 +221,7 @@ def main():
     ap.add_argument('mode',choices=('inventory','search'))
     ap.add_argument('--index',type=int,default=0)
     ap.add_argument('--center',default='P0')
+    ap.add_argument('--center-x',type=int,help='explicit integral-model x center')
     ap.add_argument('--height',type=int,default=1000000)
     ap.add_argument('--denominators',type=int,default=64)
     ap.add_argument('--stride',default='1',help='integer x increment per n/d, or family')
@@ -241,7 +242,8 @@ def main():
         row=data['selected'][args.index]
         stride=int(row['model']['scale'])**2 if args.stride=='family' else int(args.stride)
         if stride<1:ap.error('--stride must be positive')
-        output=search(row['model'],args.center,args.height,args.denominators,stride=stride)
+        output=search(row['model'],args.center,args.height,args.denominators,stride=stride,
+                      center_override=args.center_x)
         target=RESULTS_DIR/f'rank31-multifiber-{args.tag}-{args.index:02d}-{args.center}.json'
         target.write_text(json.dumps(output,indent=2,sort_keys=True)+'\n')
         print(target, len(output['points']), round(output['sites_per_second']/1e12,3),'Tsites/s')

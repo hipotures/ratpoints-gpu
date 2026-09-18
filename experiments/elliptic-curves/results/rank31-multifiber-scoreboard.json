@@ -3448,7 +3448,7 @@
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 467.1984647629997,
+      "gpu_elapsed_seconds": 576.1644174639987,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
@@ -3585,6 +3585,48 @@
         {
           "center": "R",
           "denominators": 262144,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "outer-p33",
+          "denominators": 65536,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "outer-p35",
+          "denominators": 65536,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "outer-p37",
+          "denominators": 65536,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "outer-p39",
+          "denominators": 65536,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "outer-m33",
+          "denominators": 65536,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "outer-m35",
+          "denominators": 65536,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "outer-m37",
+          "denominators": 65536,
           "height": 2000000000,
           "stride": "3418801"
         }
@@ -3927,9 +3969,114 @@
           "stride_source": null,
           "survivors": 1345419,
           "timed_out": false
+        },
+        {
+          "center": "29367276973064192",
+          "center_label": "outer-p33",
+          "denominators": 65536,
+          "elapsed_seconds": 15.60924140499992,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-21-outer-p33.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 332122,
+          "timed_out": false
+        },
+        {
+          "center": "117469107892256768",
+          "center_label": "outer-p35",
+          "denominators": 65536,
+          "elapsed_seconds": 15.581817989999763,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-21-outer-p35.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 338223,
+          "timed_out": false
+        },
+        {
+          "center": "469876431569027072",
+          "center_label": "outer-p37",
+          "denominators": 65536,
+          "elapsed_seconds": 15.527712745000827,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-21-outer-p37.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 336695,
+          "timed_out": false
+        },
+        {
+          "center": "1879505726276108288",
+          "center_label": "outer-p39",
+          "denominators": 65536,
+          "elapsed_seconds": 15.499220055999103,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-21-outer-p39.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 334659,
+          "timed_out": false
+        },
+        {
+          "center": "-29367276973064192",
+          "center_label": "outer-m33",
+          "denominators": 65536,
+          "elapsed_seconds": 15.57546718499907,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-21-outer-m33.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 336097,
+          "timed_out": false
+        },
+        {
+          "center": "-117469107892256768",
+          "center_label": "outer-m35",
+          "denominators": 65536,
+          "elapsed_seconds": 15.58873797600063,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-21-outer-m35.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 336861,
+          "timed_out": false
+        },
+        {
+          "center": "-469876431569027072",
+          "center_label": "outer-m37",
+          "denominators": 65536,
+          "elapsed_seconds": 15.583755343999655,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-21-outer-m37.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 334839,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 7870873601998848,
+      "gpu_sites": 9705881602457600,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -3976,7 +4123,8 @@
         "promoted to rescaled family-coordinate grid by smaller parameter denominator or top score",
         "searched rational x lattices generated by differences of known section x-coordinates",
         "extended to coarse family-coordinate grid after rescaled search",
-        "extended denominator depth for two small-denominator high-score fibers"
+        "extended denominator depth for two small-denominator high-score fibers",
+        "searched logarithmically spaced family-coordinate regions away from known sections"
       ],
       "score": 164.18648091039853,
       "sections": [
@@ -4405,7 +4553,7 @@
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 568.677751260002,
+      "gpu_elapsed_seconds": 682.0010982870026,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
@@ -4572,6 +4720,48 @@
         {
           "center": "R",
           "denominators": 262144,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "outer-p33",
+          "denominators": 65536,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "outer-p35",
+          "denominators": 65536,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "outer-p37",
+          "denominators": 65536,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "outer-p39",
+          "denominators": 65536,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "outer-m33",
+          "denominators": 65536,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "outer-m35",
+          "denominators": 65536,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "outer-m37",
+          "denominators": 65536,
           "height": 2000000000,
           "stride": "62500000000"
         }
@@ -4980,9 +5170,114 @@
           "stride_source": null,
           "survivors": 1512524,
           "timed_out": false
+        },
+        {
+          "center": "536870912000000000000",
+          "center_label": "outer-p33",
+          "denominators": 65536,
+          "elapsed_seconds": 16.22906733000127,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-03-outer-p33.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 373941,
+          "timed_out": false
+        },
+        {
+          "center": "2147483648000000000000",
+          "center_label": "outer-p35",
+          "denominators": 65536,
+          "elapsed_seconds": 16.133429084000454,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-03-outer-p35.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 374031,
+          "timed_out": false
+        },
+        {
+          "center": "8589934592000000000000",
+          "center_label": "outer-p37",
+          "denominators": 65536,
+          "elapsed_seconds": 16.2564130640003,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-03-outer-p37.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 381758,
+          "timed_out": false
+        },
+        {
+          "center": "34359738368000000000000",
+          "center_label": "outer-p39",
+          "denominators": 65536,
+          "elapsed_seconds": 16.163804283998616,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-03-outer-p39.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 374633,
+          "timed_out": false
+        },
+        {
+          "center": "-536870912000000000000",
+          "center_label": "outer-m33",
+          "denominators": 65536,
+          "elapsed_seconds": 16.18457730999944,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-03-outer-m33.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 379292,
+          "timed_out": false
+        },
+        {
+          "center": "-2147483648000000000000",
+          "center_label": "outer-m35",
+          "denominators": 65536,
+          "elapsed_seconds": 16.134528418000627,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-03-outer-m35.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 377443,
+          "timed_out": false
+        },
+        {
+          "center": "-8589934592000000000000",
+          "center_label": "outer-m37",
+          "denominators": 65536,
+          "elapsed_seconds": 16.22152753699993,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-outer-03-outer-m37.json",
+          "returncode": 0,
+          "sites": 262144000065536,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 376448,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 9181593602326528,
+      "gpu_sites": 11016601602785280,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -5032,7 +5327,8 @@
         "promoted to rescaled family-coordinate grid by smaller parameter denominator or top score",
         "searched rational x lattices generated by differences of known section x-coordinates",
         "extended to coarse family-coordinate grid after rescaled search",
-        "extended denominator depth for two small-denominator high-score fibers"
+        "extended denominator depth for two small-denominator high-score fibers",
+        "searched logarithmically spaced family-coordinate regions away from known sections"
       ],
       "score": 167.39693065481762,
       "sections": [
@@ -12025,7 +12321,7 @@
     "t": "164518/924945",
     "verified_witness_rows_sha256": "89fe4873d7e0ac6da4fd74b7c0a3cd427e09ec6b2b0f45ecbe5acd77fefe9944"
   },
-  "generated_at_utc": "2026-09-18T01:09:40.112957+00:00",
+  "generated_at_utc": "2026-09-18T01:20:31.230523+00:00",
   "inventory_count": 159995,
   "ranked_candidates": [
     {
@@ -12045,7 +12341,7 @@
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 9181593602326528,
+      "gpu_sites": 11016601602785280,
       "score": 167.39693065481762,
       "t": "-47/500"
     },
@@ -12185,7 +12481,7 @@
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 7870873601998848,
+      "gpu_sites": 9705881602457600,
       "score": 164.18648091039853,
       "t": "-44/43"
     },

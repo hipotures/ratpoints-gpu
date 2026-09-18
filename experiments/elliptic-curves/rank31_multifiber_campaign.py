@@ -27,7 +27,7 @@ def candidate_entry(row):
 
 def main():
     ap=argparse.ArgumentParser()
-    ap.add_argument('--stage',choices=('screen','promote','rescale','coarse','structured','deeper','standalone'),required=True)
+    ap.add_argument('--stage',choices=('screen','promote','rescale','coarse','structured','deeper','standalone','outer'),required=True)
     ap.add_argument('--limit',type=int,default=24)
     args=ap.parse_args()
     inventory=json.loads(INVENTORY.read_text())
@@ -42,7 +42,15 @@ def main():
                      stage_a_score=row['stage_a_score'],stage_a_prime_bound=row['stage_a_prime_bound'],
                      source_campaigns=row['source_campaigns'],source_seeds=row['source_seeds'])
     selected=inventory['selected'][:args.limit]
-    if args.stage=='screen':
+    if args.stage=='outer':
+        # Probe logarithmically spaced family-coordinate regions away from the
+        # known sections. The earlier rectangles were centered on sections.
+        jobs=[(i,f'outer-{sign}{power}',2_000_000_000,65536,
+               int(selected[i]['model']['scale'])**2,None)
+              for i in (3,21) if i<len(selected)
+              for sign,powers in (('p',(33,35,37,39)),('m',(33,35,37)))
+              for power in powers]
+    elif args.stage=='screen':
         jobs=[(i,label,100_000_000,4096,1,None) for i,row in enumerate(selected) for label in ('P0','PD','PE','PQ')]
     elif args.stage=='promote':
         # Prioritize observed non-section points, then heuristic score and model size.
@@ -88,7 +96,8 @@ def main():
         key=(label,h,d,str(stride))
         if any((run['center_label'],run['height'],run['denominators'],str(run.get('stride',1)))==key
                for run in entry['gpu_searches']):continue
-        try: result=search(row['model'],label,h,d,timeout=180,stride=stride)
+        override=(1 if label[6]=='p' else -1)*(1<<int(label[7:]))*stride if label.startswith('outer-') else None
+        try: result=search(row['model'],label,h,d,timeout=180,stride=stride,center_override=override)
         except Exception as exc:
             entry['status_reason']=f'{args.stage} {label} failed: {type(exc).__name__}: {exc}'
             write_board(board);raise
