@@ -31,9 +31,11 @@ constexpr int kMaximumPrime = 512;
 constexpr int kBlockSize = BLOCK;
 
 struct SievePlan {
-    SievePlan(long long numerator_bound, DenominatorRange range);
+    SievePlan(long long numerator_bound, DenominatorRange range,
+              bool square_denominators = false);
 
     DenominatorRange denominator_range;
+    bool square_denominators;
     long long numerator_bound;
     long long word_count;
     long long mask_count = 0;

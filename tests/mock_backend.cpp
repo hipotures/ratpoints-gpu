@@ -86,7 +86,8 @@ const char *cudaGetErrorString(cudaError_t) { return "mock CUDA failure"; }
 namespace ratpoints_gpu {
 SieveResult run_modular_sieve(const Coefficients &, long long numerator_bound,
                                DenominatorRange range,
-                               const CandidateBatchCallback &callback) {
+                               const CandidateBatchCallback &callback,
+                               bool square_denominators) {
     ActiveJob job(range);
     if (range.first < 1 || range.last < range.first || range.count() > 65536) {
         throw std::runtime_error("invalid worker range");
@@ -114,7 +115,8 @@ SieveResult run_modular_sieve(const Coefficients &, long long numerator_bound,
         for (long long b = range.last; b >= range.first; --b) {
             for (long long a = bound; a >= -bound; --a) {
                 candidates.numerators.push_back(a);
-                candidates.denominators.push_back(static_cast<int>(b));
+                candidates.denominators.push_back(static_cast<int>(
+                    square_denominators ? b*b : b));
                 ++survivors;
                 if (candidates.size() == 97) {
                     callback(candidates);

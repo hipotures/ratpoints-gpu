@@ -27,6 +27,7 @@ struct SearchOptions {
     bool include_infinity = true;
     std::vector<int> devices;  // Empty means all visible GPUs.
     int denominator_batch_size = 1 << 16;
+    bool square_denominators = false;  // -dl/-du bound k, actual denominator k^2.
 
     bool accepts(long long numerator, int denominator) const;
 };

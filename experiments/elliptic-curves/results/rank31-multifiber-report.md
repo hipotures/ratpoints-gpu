@@ -1,6 +1,6 @@
 # Issue #15: multi-candidate fixed-fiber search
 
-Generated: 2026-09-18T01:29:11.067338+00:00
+Generated: 2026-09-18T01:44:22.049818+00:00
 
 Three completed Stage B campaigns and two standalone refined runs contributed 159,995 distinct non-control finalists. The selected frontier contains 30 specializations; selection includes the five requested strong leads. The rank-31 record is a calibration control, not a discovery candidate. Its 31 published witness coordinates were checked exactly on the recorded minimal model.
 
@@ -10,21 +10,21 @@ Best newly certified lower bound: **rank at least 3**. No fourth independent poi
 
 | T | Certified subgroup rank | Stage B score | GPU sites | Sage status |
 |---|---:|---:|---:|---|
-| -47/80 | 3 | 170.19 | 3,938,713,601,015,808 | full Sage/eclib saturation from issue 14 |
-| -191989/4040887 | 3 | 167.99 | 2,624,716,800,671,744 | rank 3 certified by exact height intervals; saturation not completed |
-| -47/500 | 3 | 167.40 | 11,016,601,602,785,280 | rank 3 certified by exact height intervals; saturation not completed |
-| 532929/2579219 | 3 | 166.01 | 2,624,716,800,671,744 | full Sage/eclib saturation |
-| -802/2917 | 3 | 165.76 | 3,938,713,601,015,808 | full Sage/eclib saturation |
-| -6341/25735 | 3 | 165.72 | 3,938,713,601,015,808 | rank 3 certified by exact height intervals; saturation not completed |
-| -183569/2305416 | 3 | 165.58 | 1,313,996,800,344,064 | rank 3 certified by exact height intervals; saturation not completed |
-| 141580/460867 | 3 | 165.28 | 1,317,273,600,360,448 | rank 3 certified by exact height intervals; saturation not completed |
-| -112991/465710 | 3 | 165.18 | 1,313,996,800,344,064 | rank 3 certified by exact height intervals; saturation not completed |
-| -353682/460195 | 3 | 165.01 | 1,317,273,600,360,448 | rank 3 certified by exact height intervals; saturation not completed |
-| 1071727/1978006 | 3 | 164.98 | 1,313,996,800,344,064 | full Sage/eclib saturation |
-| -600578/1968423 | 3 | 164.70 | 1,313,996,800,344,064 | rank 3 certified by exact height intervals; saturation not completed |
-| 3334535/2160657 | 3 | 164.68 | 3,276,800,016,384 | rank 3 certified by exact height intervals; saturation not completed |
+| -47/80 | 3 | 170.19 | 4,309,433,601,108,488 | full Sage/eclib saturation from issue 14 |
+| -191989/4040887 | 3 | 167.99 | 2,995,436,800,764,424 | rank 3 certified by exact height intervals; saturation not completed |
+| -47/500 | 3 | 167.40 | 12,870,201,603,248,680 | rank 3 certified by exact height intervals; saturation not completed |
+| 532929/2579219 | 3 | 166.01 | 2,995,436,800,764,424 | full Sage/eclib saturation |
+| -802/2917 | 3 | 165.76 | 4,309,433,601,108,488 | full Sage/eclib saturation |
+| -6341/25735 | 3 | 165.72 | 4,309,433,601,108,488 | rank 3 certified by exact height intervals; saturation not completed |
+| -183569/2305416 | 3 | 165.58 | 1,684,716,800,436,744 | rank 3 certified by exact height intervals; saturation not completed |
+| 141580/460867 | 3 | 165.28 | 1,687,993,600,453,128 | rank 3 certified by exact height intervals; saturation not completed |
+| -112991/465710 | 3 | 165.18 | 1,684,716,800,436,744 | rank 3 certified by exact height intervals; saturation not completed |
+| -353682/460195 | 3 | 165.01 | 1,687,993,600,453,128 | rank 3 certified by exact height intervals; saturation not completed |
+| 1071727/1978006 | 3 | 164.98 | 1,684,716,800,436,744 | full Sage/eclib saturation |
+| -600578/1968423 | 3 | 164.70 | 1,684,716,800,436,744 | rank 3 certified by exact height intervals; saturation not completed |
+| 3334535/2160657 | 3 | 164.68 | 373,996,800,109,064 | rank 3 certified by exact height intervals; saturation not completed |
 | 432533/1540803 | 3 | 164.56 | 1,313,996,800,344,064 | rank 3 certified by exact height intervals; saturation not completed |
-| 2112933/2552189 | 3 | 164.41 | 3,276,800,016,384 | full Sage/eclib saturation |
+| 2112933/2552189 | 3 | 164.41 | 373,996,800,109,064 | full Sage/eclib saturation |
 
 All 30 fibers have exact rank-at-least-three certificates for P0, PD, and PQ. Under pinned Sage 10.10.beta10, the certificates use 4 point-doubling rounds, exact x-coordinates, rational enclosures of logarithms, and an upward bound on Sage’s Silverman height-difference formula; all three leading principal minors are strictly positive. The known relation P0+PD+PE=O is checked as a negative control for both triples and quadruples. Sage/eclib saturation completed on a subset; a saturation timeout leaves the index unknown, not the rank-three lower bound. Good reductions separately prove torsion is trivial for every selected fiber.
 
@@ -38,13 +38,16 @@ All 30 fibers have exact rank-at-least-three certificates for P0, PD, and PQ. Un
 | promote | 60 | 15,728,640,003,932,160 | 21,221,815 | 48 | 966.6 s |
 | rescale | 65 | 17,039,360,004,259,840 | 23,491,918 | 52 | 1029.2 s |
 | screen | 120 | 98,304,000,491,520 | 598,055 | 120 | 56.7 s |
+| square | 10 | 1,853,600,000,463,400 | 2,889,646 | 8 | 114.8 s |
+| square_frontier | 26 | 4,819,360,001,204,840 | 6,554,628 | 26 | 294.7 s |
+| square_rescale | 10 | 1,853,600,000,463,400 | 2,892,103 | 8 | 114.9 s |
 | standalone | 30 | 7,864,320,001,966,080 | 10,390,457 | 24 | 475.6 s |
 | structured | 52 | 42,598,400,212,992 | 370,524 | 78 | 24.8 s |
 
-Scheduled scoreboard total (excluding overlapping pilot runs): 65,414,758,417,022,976 bounded sites in 4031.0 summed GPU-run seconds (16.23 trillion sites/s including startup). These sequential GPU jobs alone account for 67.2 minutes of active computation. Bulk stages averaged 16.53 trillion sites/s, consistent with the 16–20 trillion sites/s issue-14 baseline. Recorded bounded Sage CPU time: 2426.6 s across selected fibers. Every bulk invocation used devices 0 and 1; each raw JSON report records their denominator batches and kernel timings. GPU 0: 96.8% mean utilization across 11363 telemetry samples; GPU 1: 96.4% mean utilization across 11363 telemetry samples.
+Scheduled scoreboard total (excluding overlapping pilot runs): 73,941,318,419,154,616 bounded sites in 4555.4 summed GPU-run seconds (16.23 trillion sites/s including startup). These sequential GPU jobs alone account for 75.9 minutes of active computation. Bulk stages averaged 16.50 trillion sites/s, consistent with the 16–20 trillion sites/s issue-14 baseline. Recorded bounded Sage CPU time: 2425.3 s across selected fibers. Every bulk invocation used devices 0 and 1; each raw JSON report records their denominator batches and kernel timings. GPU 0: 96.7% mean utilization across 13213 telemetry samples; GPU 1: 96.2% mean utilization across 13213 telemetry samples.
 
-The exact finite regions are listed per candidate in the scoreboard and in each raw GPU JSON report: x = center + stride·n/d, |n| ≤ height, 1 ≤ d ≤ denominators, gcd(n,d)=1. The modular sieve rejects no rational point in that rectangle, as validated against exact CPU enumeration. Every GPU output passed Python integer-square and curve-equation checks. The separate Sage verification artifacts record exact point construction for each completed report. Absence of a new point excludes only these rectangles. A bounded Simon 2-descent for T=-44/43 timed out at 120 seconds; for T=-802/2917 it hit PARI’s 1 GiB bnfinit stack limit before returning a bound. Bounded mwrank bounds on both fibers failed because their 2-descents did not complete. PARI ellrank with known points and zero search effort also timed out at 60 seconds for T=-44/43 and 45 seconds for T=-47/500. None supplies an upper bound.
+The exact finite regions are listed per candidate in the scoreboard and in each raw GPU JSON report: x = center + stride·n/d, |n| ≤ height, gcd(n,d)=1. In consecutive mode 1 ≤ d ≤ denominators; in square mode d=k² with 1 ≤ k ≤ denominators. The modular sieve rejects no rational point in that rectangle, as validated against exact CPU enumeration. Every GPU output passed Python integer-square and curve-equation checks. The separate Sage verification artifacts record exact point construction for each completed report. Absence of a new point excludes only these rectangles. A bounded Simon 2-descent for T=-44/43 timed out at 120 seconds; for T=-802/2917 it hit PARI’s 1 GiB bnfinit stack limit before returning a bound. Bounded mwrank bounds on both fibers failed because their 2-descents did not complete. PARI ellrank with known points and zero search effort also timed out at 60 seconds for T=-44/43 and 45 seconds for T=-47/500. None supplies an upper bound.
 
 ## Adaptation and next work
 
-The cheap screen returned only known section points. Wide windows therefore went to the strongest 12 Stage B leads; six additional standalone refined leads were screened and widened. Structured x lattices and subsequent rescaled windows favored smaller parameter denominators, which provide better resolution in family coordinates. Candidates with only known points were demoted from further identical-width searches. Fourteen outer windows on two small-denominator fibers tested logarithmically spaced family-coordinate regions and found no points. A separate sparse-coordinate scan tested 2,929,536 low-complexity expressions over Q(T) and 87,886,080 specialized expressions across all 30 fibers. Its modular filter left only the three known generic section forms; exact fixed-fiber checks returned only the 90 known section x-coordinates. This excludes only the explicitly recorded ansatz. Minimal-model diagnostics on six leading fibers found larger maximum coefficient bit sizes than the integral factored models, so repeating the failed descents on these minimal models was not prioritized. Promising follow-up is to derive candidate x-coordinates from covering curves or lattice reduction, then feed those centers to the exact GPU sieve; repeated local rectangles around section points have low yield. Alternative bounded descent algorithms may resolve upper bounds for the smaller-denominator fibers. No global upper bound is claimed.
+The cheap screen returned only known section points. Wide windows therefore went to the strongest 12 Stage B leads; six additional standalone refined leads were screened and widened. Structured x lattices and subsequent rescaled windows favored smaller parameter denominators, which provide better resolution in family coordinates. Candidates with only known points were demoted from further identical-width searches. Fourteen outer windows on two small-denominator fibers tested logarithmically spaced family-coordinate regions and found no points. A new GPU mode enumerated square denominators k² through k=46,340. Forty-six rectangles across 15 fibers, including rescaled family-coordinate windows, returned only known points; the square mode matched exact CPU enumeration on a small reference rectangle. A separate sparse-coordinate scan tested 2,929,536 low-complexity expressions over Q(T) and 87,886,080 specialized expressions across all 30 fibers. Its modular filter left only the three known generic section forms; exact fixed-fiber checks returned only the 90 known section x-coordinates. This excludes only the explicitly recorded ansatz. Minimal-model diagnostics on six leading fibers found larger maximum coefficient bit sizes than the integral factored models, so repeating the failed descents on these minimal models was not prioritized. Promising follow-up is to derive candidate x-coordinates from covering curves or lattice reduction, then feed those centers to the exact GPU sieve; repeated local rectangles around section points have low yield. Alternative bounded descent algorithms may resolve upper bounds for the smaller-denominator fibers. No global upper bound is claimed.

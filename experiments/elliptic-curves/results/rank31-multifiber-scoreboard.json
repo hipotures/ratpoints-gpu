@@ -4,7 +4,7 @@
       "already_deeply_searched": false,
       "auxiliary_cpu_experiments": [],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 94.67063160399994,
+      "cpu_elapsed_seconds": 94.57934633300101,
       "exact_points": [
         {
           "x": "0",
@@ -40,61 +40,84 @@
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 77.03985415699754,
+      "gpu_elapsed_seconds": 98.7269716899973,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "47039452020103576810000"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "47039452020103576810000"
         }
       ],
       "gpu_searches": [
@@ -216,9 +239,41 @@
           "stride": "1",
           "survivors": 269988,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 10.819946710000295,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-09-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "47039452020103576810000",
+          "stride_source": null,
+          "survivors": 192891,
+          "timed_out": false
+        },
+        {
+          "center": "263786101723799840651264070895844",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 10.86717082299947,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-09-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "47039452020103576810000",
+          "stride_source": null,
+          "survivors": 193049,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 1313996800344064,
+      "gpu_sites": 1684716800436744,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -257,14 +312,15 @@
       "sage_current_step": "P0,PD,PQ",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-09-verify.json",
-        "points_checked": 16
+        "points_checked": 20
       },
       "sage_status": "timeout",
       "saturation_index": null,
       "saturation_status": "rank 3 certified by exact height intervals; saturation not completed",
       "scheduling_decisions": [
         "global Stage B frontier",
-        "promoted to wide rectangles by Stage B score after clean screen"
+        "promoted to wide rectangles by Stage B score after clean screen",
+        "extended square-denominator search to the high-score frontier"
       ],
       "score": 165.18394198508258,
       "sections": [
@@ -416,108 +472,126 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "127129629534223151448181920"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "7848782856167598342041716968"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "127129629534223151448181920"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "7848782856167598342041716968"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "86007076"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "86007076"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "86007076"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "86007076"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "86007076"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "7397217122069776"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "7397217122069776"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "7397217122069776"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "7397217122069776"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "7397217122069776"
@@ -980,24 +1054,28 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
@@ -1212,7 +1290,7 @@
       "already_deeply_searched": false,
       "auxiliary_cpu_experiments": [],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 94.6924873220014,
+      "cpu_elapsed_seconds": 94.60042112200063,
       "exact_points": [
         {
           "x": "0",
@@ -1248,61 +1326,84 @@
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 81.23506677300156,
+      "gpu_elapsed_seconds": 104.17546860600214,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "28248618381641916097499136"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "28248618381641916097499136"
         }
       ],
       "gpu_searches": [
@@ -1424,9 +1525,41 @@
           "stride": "1",
           "survivors": 372266,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.470217661000788,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-07-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "28248618381641916097499136",
+          "stride_source": null,
+          "survivors": 260276,
+          "timed_out": false
+        },
+        {
+          "center": "-18964511602848357506330851261331496",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.47018417199979,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-07-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "28248618381641916097499136",
+          "stride_source": null,
+          "survivors": 260792,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 1313996800344064,
+      "gpu_sites": 1684716800436744,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -1465,14 +1598,15 @@
       "sage_current_step": "P0,PD,PQ",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-07-verify.json",
-        "points_checked": 16
+        "points_checked": 20
       },
       "sage_status": "timeout",
       "saturation_index": null,
       "saturation_status": "rank 3 certified by exact height intervals; saturation not completed",
       "scheduling_decisions": [
         "global Stage B frontier",
-        "promoted to wide rectangles by Stage B score after clean screen"
+        "promoted to wide rectangles by Stage B score after clean screen",
+        "extended square-denominator search to the high-score frontier"
       ],
       "score": 165.58076872106795,
       "sections": [
@@ -1595,7 +1729,7 @@
         }
       ],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 187.11797112299973,
+      "cpu_elapsed_seconds": 187.02318875499986,
       "exact_points": [
         {
           "x": "0",
@@ -1631,91 +1765,119 @@
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 183.79011589799575,
+      "gpu_elapsed_seconds": 207.23537373999625,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "16328767746769"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "16328767746769"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "16328767746769"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "16328767746769"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "16328767746769"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "266628656127923565309939361"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "266628656127923565309939361"
         }
       ],
       "gpu_searches": [
@@ -1912,9 +2074,41 @@
           "stride_source": null,
           "survivors": 389374,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.743457347000003,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-01-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "266628656127923565309939361",
+          "stride_source": null,
+          "survivors": 319204,
+          "timed_out": false
+        },
+        {
+          "center": "-265961757926848816384536761250218560",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.701800495000498,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-01-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "266628656127923565309939361",
+          "stride_source": null,
+          "survivors": 319900,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 2624716800671744,
+      "gpu_sites": 2995436800764424,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -1953,7 +2147,7 @@
       "sage_current_step": "P0,PD,PQ",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-01-verify.json",
-        "points_checked": 24
+        "points_checked": 28
       },
       "sage_status": "timeout",
       "saturation_index": null,
@@ -1961,7 +2155,8 @@
       "scheduling_decisions": [
         "required strong lead",
         "promoted to wide rectangles by Stage B score after clean screen",
-        "promoted to rescaled family-coordinate grid by smaller parameter denominator or top score"
+        "promoted to rescaled family-coordinate grid by smaller parameter denominator or top score",
+        "extended square-denominator search to the high-score frontier"
       ],
       "score": 167.98915937194252,
       "sections": [
@@ -2109,54 +2304,63 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
@@ -2499,54 +2703,63 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
@@ -2838,7 +3051,7 @@
       "already_deeply_searched": false,
       "auxiliary_cpu_experiments": [],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 94.64218923300177,
+      "cpu_elapsed_seconds": 94.593725576,
       "exact_points": [
         {
           "x": "0",
@@ -2874,85 +3087,112 @@
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 82.51438296500328,
+      "gpu_elapsed_seconds": 105.20467311700395,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "2357371600327964243787502970014440"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1725921563356176181222625560935968"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "2357371600327964243787502970014440"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1725921563356176181222625560935968"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "44850530370184815900625"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "44850530370184815900625"
         }
       ],
       "gpu_searches": [
@@ -3134,9 +3374,41 @@
           "stride_source": "PE",
           "survivors": 5002,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.364394625999921,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-04-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "44850530370184815900625",
+          "stride_source": null,
+          "survivors": 254372,
+          "timed_out": false
+        },
+        {
+          "center": "3405642162184291306388806570384704",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.32589552600075,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-04-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "44850530370184815900625",
+          "stride_source": null,
+          "survivors": 255289,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 1317273600360448,
+      "gpu_sites": 1687993600453128,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -3175,7 +3447,7 @@
       "sage_current_step": "P0,PD,PQ",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-04-verify.json",
-        "points_checked": 28
+        "points_checked": 32
       },
       "sage_status": "timeout",
       "saturation_index": null,
@@ -3183,7 +3455,8 @@
       "scheduling_decisions": [
         "required strong lead",
         "promoted to wide rectangles by Stage B score after clean screen",
-        "searched rational x lattices generated by differences of known section x-coordinates"
+        "searched rational x lattices generated by differences of known section x-coordinates",
+        "extended square-denominator search to the high-score frontier"
       ],
       "score": 165.00814664763126,
       "sections": [
@@ -3327,108 +3600,126 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "75931553985386686685221156800"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "238985680370955111934908957840"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "75931553985386686685221156800"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "238985680370955111934908957840"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1144401241"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1144401241"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1144401241"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1144401241"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1144401241"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1309654200402340081"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1309654200402340081"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1309654200402340081"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1309654200402340081"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1309654200402340081"
@@ -3867,7 +4158,7 @@
         }
       ],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 325.1918379490007,
+      "cpu_elapsed_seconds": 325.1956030810006,
       "exact_points": [
         {
           "x": "0",
@@ -3903,185 +4194,285 @@
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 576.1644174639987,
+      "gpu_elapsed_seconds": 688.7108913419979,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "202127583350973450"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "437755320693150360"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "202127583350973450"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "437755320693150360"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1849"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1849"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1849"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1849"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1849"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 262144,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 262144,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 262144,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 262144,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 262144,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "outer-p33",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "outer-p35",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "outer-p37",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "outer-p39",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "outer-m33",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "outer-m35",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3418801"
         },
         {
           "center": "outer-m37",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "1"
+        },
+        {
+          "center": "PD",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "1"
+        },
+        {
+          "center": "PE",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "1"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "1"
+        },
+        {
+          "center": "R",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "1"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "PD",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "PE",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "3418801"
+        },
+        {
+          "center": "R",
+          "denominator_mode": "squares",
+          "denominators": 46340,
           "height": 2000000000,
           "stride": "3418801"
         }
@@ -4529,9 +4920,169 @@
           "stride_source": null,
           "survivors": 334839,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.254651733001083,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square-21-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "1",
+          "stride_source": null,
+          "survivors": 283528,
+          "timed_out": false
+        },
+        {
+          "center": "202127583350973450",
+          "center_label": "PD",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.341410233000715,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square-21-PD.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "1",
+          "stride_source": null,
+          "survivors": 282840,
+          "timed_out": false
+        },
+        {
+          "center": "-437755320693150360",
+          "center_label": "PE",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.255132151998623,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square-21-PE.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "1",
+          "stride_source": null,
+          "survivors": 282661,
+          "timed_out": false
+        },
+        {
+          "center": "317326481398000272",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.206509534998986,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square-21-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "1",
+          "stride_source": null,
+          "survivors": 283143,
+          "timed_out": false
+        },
+        {
+          "center": "-521656654676990402",
+          "center_label": "R",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.089331649000087,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square-21-R.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "1",
+          "stride_source": null,
+          "survivors": 236410,
+          "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.298516887000005,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_rescale-21-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 284162,
+          "timed_out": false
+        },
+        {
+          "center": "202127583350973450",
+          "center_label": "PD",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.387126788999012,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_rescale-21-PD.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 283044,
+          "timed_out": false
+        },
+        {
+          "center": "-437755320693150360",
+          "center_label": "PE",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.340731755999514,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_rescale-21-PE.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 284148,
+          "timed_out": false
+        },
+        {
+          "center": "317326481398000272",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.226919717000783,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_rescale-21-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 283361,
+          "timed_out": false
+        },
+        {
+          "center": "-521656654676990402",
+          "center_label": "R",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.146143427000425,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_rescale-21-R.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "3418801",
+          "stride_source": null,
+          "survivors": 237911,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 9705881602457600,
+      "gpu_sites": 11559481602921000,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -4569,7 +5120,7 @@
       "sage_certificate_path": "rank31-multifiber-sage-21.json",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-21-verify.json",
-        "points_checked": 44
+        "points_checked": 60
       },
       "saturation_index": "1",
       "saturation_status": "through prime 11 (Sage/eclib)",
@@ -4579,7 +5130,9 @@
         "searched rational x lattices generated by differences of known section x-coordinates",
         "extended to coarse family-coordinate grid after rescaled search",
         "extended denominator depth for two small-denominator high-score fibers",
-        "searched logarithmically spaced family-coordinate regions away from known sections"
+        "searched logarithmically spaced family-coordinate regions away from known sections",
+        "searched deeper square denominators on the integral model",
+        "combined deeper square denominators with rescaled family-coordinate spacing"
       ],
       "score": 164.18648091039853,
       "sections": [
@@ -4727,54 +5280,63 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
@@ -5078,7 +5640,7 @@
         }
       ],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 139.91781222600002,
+      "cpu_elapsed_seconds": 139.82809305199953,
       "exact_points": [
         {
           "x": "0",
@@ -5114,215 +5676,320 @@
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 682.0010982870026,
+      "gpu_elapsed_seconds": 799.1438772580004,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "237851889990928861890"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "3287682352055864862"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "237851889990928861890"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "3287682352055864862"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "250000"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "250000"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "250000"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "250000"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "250000"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 262144,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 262144,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 262144,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 262144,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 262144,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "outer-p33",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "outer-p35",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "outer-p37",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "outer-p39",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "outer-m33",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "outer-m35",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "62500000000"
         },
         {
           "center": "outer-m37",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "1"
+        },
+        {
+          "center": "PD",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "1"
+        },
+        {
+          "center": "PE",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "1"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "1"
+        },
+        {
+          "center": "R",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "1"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "PD",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "PE",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "62500000000"
+        },
+        {
+          "center": "R",
+          "denominator_mode": "squares",
+          "denominators": 46340,
           "height": 2000000000,
           "stride": "62500000000"
         }
@@ -5836,9 +6503,169 @@
           "stride_source": null,
           "survivors": 376448,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.901429019000716,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square-03-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "1",
+          "stride_source": null,
+          "survivors": 313979,
+          "timed_out": false
+        },
+        {
+          "center": "237851889990928861890",
+          "center_label": "PD",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.695260734999465,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square-03-PD.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "1",
+          "stride_source": null,
+          "survivors": 312709,
+          "timed_out": false
+        },
+        {
+          "center": "-3287682352055864862",
+          "center_label": "PE",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.694411996999406,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square-03-PE.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "1",
+          "stride_source": null,
+          "survivors": 314826,
+          "timed_out": false
+        },
+        {
+          "center": "-27677929940932718656",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.775126296000963,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square-03-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "1",
+          "stride_source": null,
+          "survivors": 312494,
+          "timed_out": false
+        },
+        {
+          "center": "-352576421982076167414",
+          "center_label": "R",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.574944570998923,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square-03-R.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "1",
+          "stride_source": null,
+          "survivors": 267056,
+          "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.849502181999924,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_rescale-03-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 312877,
+          "timed_out": false
+        },
+        {
+          "center": "237851889990928861890",
+          "center_label": "PD",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.694969508000213,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_rescale-03-PD.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 313458,
+          "timed_out": false
+        },
+        {
+          "center": "-3287682352055864862",
+          "center_label": "PE",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.681366863998846,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_rescale-03-PE.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 313666,
+          "timed_out": false
+        },
+        {
+          "center": "-27677929940932718656",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.686402156999975,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_rescale-03-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 312904,
+          "timed_out": false
+        },
+        {
+          "center": "-352576421982076167414",
+          "center_label": "R",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.589365641999393,
+          "exact_survivors": 0,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_rescale-03-R.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "62500000000",
+          "stride_source": null,
+          "survivors": 266572,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 11016601602785280,
+      "gpu_sites": 12870201603248680,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -5877,7 +6704,7 @@
       "sage_current_step": "P0,PD,PQ",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-03-verify.json",
-        "points_checked": 52
+        "points_checked": 68
       },
       "sage_status": "timeout",
       "saturation_index": null,
@@ -5889,7 +6716,9 @@
         "searched rational x lattices generated by differences of known section x-coordinates",
         "extended to coarse family-coordinate grid after rescaled search",
         "extended denominator depth for two small-denominator high-score fibers",
-        "searched logarithmically spaced family-coordinate regions away from known sections"
+        "searched logarithmically spaced family-coordinate regions away from known sections",
+        "searched deeper square denominators on the integral model",
+        "combined deeper square denominators with rescaled family-coordinate spacing"
       ],
       "score": 167.39693065481762,
       "sections": [
@@ -5993,7 +6822,7 @@
       "already_deeply_searched": true,
       "auxiliary_cpu_experiments": [],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 12.517266942999413,
+      "cpu_elapsed_seconds": 12.492499105999741,
       "exact_points": [
         {
           "x": "0",
@@ -6030,143 +6859,180 @@
       ],
       "existing_certified_rank_lower_bound": 3,
       "full_saturation_source": "rank31-t-minus-47-80-sage-sections.json",
-      "gpu_elapsed_seconds": 247.7808252520008,
+      "gpu_elapsed_seconds": 271.15703449399916,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1601864047090896390"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1764543340156700718"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1601864047090896390"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1764543340156700718"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "6400"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "6400"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "6400"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "6400"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "6400"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "40960000"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "40960000"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "40960000"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "40960000"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
+          "height": 2000000000,
+          "stride": "40960000"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "40960000"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
           "height": 2000000000,
           "stride": "40960000"
         }
@@ -6500,9 +7366,41 @@
           "stride_source": null,
           "survivors": 371361,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.711473731998922,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-00-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "40960000",
+          "stride_source": null,
+          "survivors": 310506,
+          "timed_out": false
+        },
+        {
+          "center": "1942076385439057064",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.664735509999446,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-00-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "40960000",
+          "stride_source": null,
+          "survivors": 311009,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 3938713601015808,
+      "gpu_sites": 4309433601108488,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -6540,7 +7438,7 @@
       "sage_certificate_path": "rank31-multifiber-sage-00.json",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-00-verify.json",
-        "points_checked": 44
+        "points_checked": 48
       },
       "saturation_index": "1",
       "saturation_status": "full Sage/eclib saturation from issue 14",
@@ -6549,7 +7447,8 @@
         "promoted to wide rectangles by Stage B score after clean screen",
         "promoted to rescaled family-coordinate grid by smaller parameter denominator or top score",
         "searched rational x lattices generated by differences of known section x-coordinates",
-        "extended to coarse family-coordinate grid after rescaled search"
+        "extended to coarse family-coordinate grid after rescaled search",
+        "extended square-denominator search to the high-score frontier"
       ],
       "score": 170.1939234594218,
       "sections": [
@@ -6653,7 +7552,7 @@
       "already_deeply_searched": false,
       "auxiliary_cpu_experiments": [],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 94.98888116300077,
+      "cpu_elapsed_seconds": 94.87993047700002,
       "exact_points": [
         {
           "x": "0",
@@ -6689,61 +7588,84 @@
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 81.00604577800186,
+      "gpu_elapsed_seconds": 103.72202451399971,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "15013215675354251595811041"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "15013215675354251595811041"
         }
       ],
       "gpu_searches": [
@@ -6865,9 +7787,41 @@
           "stride": "1",
           "survivors": 390203,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.35522447799849,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-11-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "15013215675354251595811041",
+          "stride_source": null,
+          "survivors": 276384,
+          "timed_out": false
+        },
+        {
+          "center": "156437273619814012315021974614467680",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.36075425799936,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-11-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "15013215675354251595811041",
+          "stride_source": null,
+          "survivors": 275956,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 1313996800344064,
+      "gpu_sites": 1684716800436744,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -6906,14 +7860,15 @@
       "sage_current_step": "P0,PD,PQ",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-11-verify.json",
-        "points_checked": 16
+        "points_checked": 20
       },
       "sage_status": "timeout",
       "saturation_index": null,
       "saturation_status": "rank 3 certified by exact height intervals; saturation not completed",
       "scheduling_decisions": [
         "global Stage B frontier",
-        "promoted to wide rectangles by Stage B score after clean screen"
+        "promoted to wide rectangles by Stage B score after clean screen",
+        "extended square-denominator search to the high-score frontier"
       ],
       "score": 164.69947439342175,
       "sections": [
@@ -7017,7 +7972,7 @@
       "already_deeply_searched": false,
       "auxiliary_cpu_experiments": [],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 94.638587352998,
+      "cpu_elapsed_seconds": 94.54216089999863,
       "exact_points": [
         {
           "x": "0",
@@ -7053,143 +8008,180 @@
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 238.97507711199887,
+      "gpu_elapsed_seconds": 261.57195889599916,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "5209350962203387871789091840"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1463299034551758314120493648"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "5209350962203387871789091840"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1463299034551758314120493648"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "662290225"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "662290225"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "662290225"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "662290225"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "662290225"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "438628342130550625"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "438628342130550625"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "438628342130550625"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "438628342130550625"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
+          "height": 2000000000,
+          "stride": "438628342130550625"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "438628342130550625"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
           "height": 2000000000,
           "stride": "438628342130550625"
         }
@@ -7523,9 +8515,41 @@
           "stride_source": null,
           "survivors": 290005,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.239705523999874,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-06-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "438628342130550625",
+          "stride_source": null,
+          "survivors": 250561,
+          "timed_out": false
+        },
+        {
+          "center": "2569810300680494179068246144",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.357176260000415,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-06-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "438628342130550625",
+          "stride_source": null,
+          "survivors": 250566,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 3938713601015808,
+      "gpu_sites": 4309433601108488,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -7564,7 +8588,7 @@
       "sage_current_step": "P0,PD,PQ",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-06-verify.json",
-        "points_checked": 44
+        "points_checked": 48
       },
       "sage_status": "timeout",
       "saturation_index": null,
@@ -7574,7 +8598,8 @@
         "promoted to wide rectangles by Stage B score after clean screen",
         "promoted to rescaled family-coordinate grid by smaller parameter denominator or top score",
         "searched rational x lattices generated by differences of known section x-coordinates",
-        "extended to coarse family-coordinate grid after rescaled search"
+        "extended to coarse family-coordinate grid after rescaled search",
+        "extended square-denominator search to the high-score frontier"
       ],
       "score": 165.72091704527776,
       "sections": [
@@ -7701,7 +8726,7 @@
         }
       ],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 56.05124535599498,
+      "cpu_elapsed_seconds": 55.96915160699609,
       "exact_points": [
         {
           "x": "0",
@@ -7738,143 +8763,180 @@
       ],
       "existing_certified_rank_lower_bound": null,
       "full_saturation_source": "rank31-multifiber-sage-05-p-1.json",
-      "gpu_elapsed_seconds": 232.6810247240055,
+      "gpu_elapsed_seconds": 254.56191974900594,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "998880908092084316640660"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "388190021368421687758200"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "998880908092084316640660"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "388190021368421687758200"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "8508889"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "8508889"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "8508889"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "8508889"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "8508889"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "72401192014321"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "72401192014321"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "72401192014321"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "72401192014321"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
+          "height": 2000000000,
+          "stride": "72401192014321"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "72401192014321"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
           "height": 2000000000,
           "stride": "72401192014321"
         }
@@ -8208,9 +9270,41 @@
           "stride_source": null,
           "survivors": 226710,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 10.959450984000796,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-05-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "72401192014321",
+          "stride_source": null,
+          "survivors": 205516,
+          "timed_out": false
+        },
+        {
+          "center": "573543917012540790945200",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 10.921444040999631,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-05-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "72401192014321",
+          "stride_source": null,
+          "survivors": 205591,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 3938713601015808,
+      "gpu_sites": 4309433601108488,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -8248,7 +9342,7 @@
       "sage_certificate_path": "rank31-multifiber-sage-05.json",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-05-verify.json",
-        "points_checked": 44
+        "points_checked": 48
       },
       "saturation_index": "1",
       "saturation_status": "full Sage/eclib saturation",
@@ -8257,7 +9351,8 @@
         "promoted to wide rectangles by Stage B score after clean screen",
         "promoted to rescaled family-coordinate grid by smaller parameter denominator or top score",
         "searched rational x lattices generated by differences of known section x-coordinates",
-        "extended to coarse family-coordinate grid after rescaled search"
+        "extended to coarse family-coordinate grid after rescaled search",
+        "extended square-denominator search to the high-score frontier"
       ],
       "score": 165.75517362338513,
       "sections": [
@@ -8409,78 +9504,91 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "5990852393734419457347646986870"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1542879636500662447004441823422"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "5990852393734419457347646986870"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1542879636500662447004441823422"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "10283582464"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "10283582464"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "10283582464"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "10283582464"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "10283582464"
@@ -8867,78 +9975,91 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "76712881918239968961009881822400"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "211726809803517944343277871072650"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "76712881918239968961009881822400"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "211726809803517944343277871072650"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "119162349601"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "119162349601"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "119162349601"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "119162349601"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "119162349601"
@@ -9285,7 +10406,7 @@
       "already_deeply_searched": false,
       "auxiliary_cpu_experiments": [],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 31.949638799998866,
+      "cpu_elapsed_seconds": 31.826049235000028,
       "exact_points": [
         {
           "x": "0",
@@ -9322,61 +10443,84 @@
       ],
       "existing_certified_rank_lower_bound": null,
       "full_saturation_source": "rank31-multifiber-sage-10-p-1.json",
-      "gpu_elapsed_seconds": 80.76972116300021,
+      "gpu_elapsed_seconds": 103.50902152099843,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "15307716784541546252993296"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "15307716784541546252993296"
         }
       ],
       "gpu_searches": [
@@ -9498,9 +10642,41 @@
           "stride": "1",
           "survivors": 336231,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.356347441998878,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-10-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "15307716784541546252993296",
+          "stride_source": null,
+          "survivors": 237837,
+          "timed_out": false
+        },
+        {
+          "center": "-594172152062800417701680831640482388",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.38295291599934,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-10-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "15307716784541546252993296",
+          "stride_source": null,
+          "survivors": 239219,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 1313996800344064,
+      "gpu_sites": 1684716800436744,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -9538,13 +10714,14 @@
       "sage_certificate_path": "rank31-multifiber-sage-10.json",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-10-verify.json",
-        "points_checked": 16
+        "points_checked": 20
       },
       "saturation_index": "1",
       "saturation_status": "full Sage/eclib saturation",
       "scheduling_decisions": [
         "global Stage B frontier",
-        "promoted to wide rectangles by Stage B score after clean screen"
+        "promoted to wide rectangles by Stage B score after clean screen",
+        "extended square-denominator search to the high-score frontier"
       ],
       "score": 164.98473993241592,
       "sections": [
@@ -9648,7 +10825,7 @@
       "already_deeply_searched": false,
       "auxiliary_cpu_experiments": [],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 94.64950713700091,
+      "cpu_elapsed_seconds": 94.55223434600157,
       "exact_points": [
         {
           "x": "0",
@@ -9684,85 +10861,112 @@
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 80.70010846100377,
+      "gpu_elapsed_seconds": 102.83482473300501,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "277296369389864305538889173622450"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "853030965683315832504183663159720"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "277296369389864305538889173622450"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "853030965683315832504183663159720"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "45113076792073864272721"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "45113076792073864272721"
         }
       ],
       "gpu_searches": [
@@ -9944,9 +11148,41 @@
           "stride_source": "PE",
           "survivors": 4881,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.043094172000565,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-08-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "45113076792073864272721",
+          "stride_source": null,
+          "survivors": 210928,
+          "timed_out": false
+        },
+        {
+          "center": "-128899891141655413500521094752400",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.091622100000677,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-08-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "45113076792073864272721",
+          "stride_source": null,
+          "survivors": 212008,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 1317273600360448,
+      "gpu_sites": 1687993600453128,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -9985,7 +11221,7 @@
       "sage_current_step": "P0,PD,PQ",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-08-verify.json",
-        "points_checked": 28
+        "points_checked": 32
       },
       "sage_status": "timeout",
       "saturation_index": null,
@@ -9993,7 +11229,8 @@
       "scheduling_decisions": [
         "global Stage B frontier",
         "promoted to wide rectangles by Stage B score after clean screen",
-        "searched rational x lattices generated by differences of known section x-coordinates"
+        "searched rational x lattices generated by differences of known section x-coordinates",
+        "extended square-denominator search to the high-score frontier"
       ],
       "score": 165.27816404157082,
       "sections": [
@@ -10138,24 +11375,28 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
@@ -10412,24 +11653,28 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
@@ -10680,24 +11925,28 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
@@ -10912,7 +12161,7 @@
       "already_deeply_searched": false,
       "auxiliary_cpu_experiments": [],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 28.698900610001147,
+      "cpu_elapsed_seconds": 28.599897627000246,
       "exact_points": [
         {
           "x": "0",
@@ -10949,31 +12198,49 @@
       ],
       "existing_certified_rank_lower_bound": null,
       "full_saturation_source": "rank31-multifiber-sage-13-p-1.json",
-      "gpu_elapsed_seconds": 1.8759722099985083,
+      "gpu_elapsed_seconds": 24.1492290089991,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "42427879825506363733941841"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "42427879825506363733941841"
         }
       ],
       "gpu_searches": [
@@ -11029,9 +12296,41 @@
           "stride": "1",
           "survivors": 5014,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.159622993000085,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-13-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "42427879825506363733941841",
+          "stride_source": null,
+          "survivors": 219961,
+          "timed_out": false
+        },
+        {
+          "center": "-8616271125168331748414457351704057928",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.113633806000507,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-13-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "42427879825506363733941841",
+          "stride_source": null,
+          "survivors": 220128,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 3276800016384,
+      "gpu_sites": 373996800109064,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -11069,13 +12368,14 @@
       "sage_certificate_path": "rank31-multifiber-sage-13.json",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-13-verify.json",
-        "points_checked": 8
+        "points_checked": 12
       },
       "saturation_index": "1",
       "saturation_status": "full Sage/eclib saturation",
       "scheduling_decisions": [
         "global Stage B frontier",
-        "demoted after screen found only known section points"
+        "demoted after screen found only known section points",
+        "extended square-denominator search to the high-score frontier"
       ],
       "score": 164.4102099793961,
       "sections": [
@@ -11179,7 +12479,7 @@
       "already_deeply_searched": false,
       "auxiliary_cpu_experiments": [],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 94.99237933199765,
+      "cpu_elapsed_seconds": 94.84669550999934,
       "exact_points": [
         {
           "x": "0",
@@ -11215,31 +12515,49 @@
         }
       ],
       "existing_certified_rank_lower_bound": null,
-      "gpu_elapsed_seconds": 1.8356854119983836,
+      "gpu_elapsed_seconds": 24.773284173998945,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "21794319630947879636379201"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "21794319630947879636379201"
         }
       ],
       "gpu_searches": [
@@ -11295,9 +12613,41 @@
           "stride": "1",
           "survivors": 5172,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.452714191000268,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-12-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "21794319630947879636379201",
+          "stride_source": null,
+          "survivors": 257541,
+          "timed_out": false
+        },
+        {
+          "center": "-45464152274668938114300360274375657500",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.484884571000293,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-12-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "21794319630947879636379201",
+          "stride_source": null,
+          "survivors": 257104,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 3276800016384,
+      "gpu_sites": 373996800109064,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -11336,14 +12686,15 @@
       "sage_current_step": "P0,PD,PQ",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-12-verify.json",
-        "points_checked": 8
+        "points_checked": 12
       },
       "sage_status": "timeout",
       "saturation_index": null,
       "saturation_status": "rank 3 certified by exact height intervals; saturation not completed",
       "scheduling_decisions": [
         "global Stage B frontier",
-        "demoted after screen found only known section points"
+        "demoted after screen found only known section points",
+        "extended square-denominator search to the high-score frontier"
       ],
       "score": 164.68081511583327,
       "sections": [
@@ -11491,54 +12842,63 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
@@ -11873,108 +13233,126 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "28189411528613794355040"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "114396707756183317950432"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "28189411528613794355040"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "114396707756183317950432"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1755625"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1755625"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1755625"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1755625"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1755625"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3082219140625"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3082219140625"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3082219140625"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3082219140625"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "3082219140625"
@@ -12435,108 +13813,126 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "6717531178193635225384417348890"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "10712047313760287396273222696648"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "6717531178193635225384417348890"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "10712047313760287396273222696648"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "69587802025"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "69587802025"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "69587802025"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "69587802025"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "69587802025"
@@ -12967,7 +14363,7 @@
       "already_deeply_searched": false,
       "auxiliary_cpu_experiments": [],
       "certified_subgroup_rank": 3,
-      "cpu_elapsed_seconds": 36.5439401069998,
+      "cpu_elapsed_seconds": 36.436584134999066,
       "exact_points": [
         {
           "x": "0",
@@ -13004,91 +14400,119 @@
       ],
       "existing_certified_rank_lower_bound": null,
       "full_saturation_source": "rank31-multifiber-sage-02-p-1.json",
-      "gpu_elapsed_seconds": 163.1279106750044,
+      "gpu_elapsed_seconds": 186.38727155100423,
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "6652370649961"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "6652370649961"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "6652370649961"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "6652370649961"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "6652370649961"
+        },
+        {
+          "center": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "44254035264462537589301521"
+        },
+        {
+          "center": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "height": 2000000000,
+          "stride": "44254035264462537589301521"
         }
       ],
       "gpu_searches": [
@@ -13285,9 +14709,41 @@
           "stride_source": null,
           "survivors": 329117,
           "timed_out": false
+        },
+        {
+          "center": "0",
+          "center_label": "P0",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.57577861900063,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-02-P0.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "44254035264462537589301521",
+          "stride_source": null,
+          "survivors": 278802,
+          "timed_out": false
+        },
+        {
+          "center": "-5350811371699423620635036489107956",
+          "center_label": "PQ",
+          "denominator_mode": "squares",
+          "denominators": 46340,
+          "elapsed_seconds": 11.683582256999216,
+          "exact_survivors": 1,
+          "height": 2000000000,
+          "path": "rank31-multifiber-square_frontier-02-PQ.json",
+          "returncode": 0,
+          "sites": 185360000046340,
+          "stride": "44254035264462537589301521",
+          "stride_source": null,
+          "survivors": 279238,
+          "timed_out": false
         }
       ],
-      "gpu_sites": 2624716800671744,
+      "gpu_sites": 2995436800764424,
       "height_certificate": {
         "doublings": 4,
         "principal_minor_lower_bounds": [
@@ -13325,14 +14781,15 @@
       "sage_certificate_path": "rank31-multifiber-sage-02.json",
       "sage_gpu_verification": {
         "path": "rank31-multifiber-sage-02-verify.json",
-        "points_checked": 24
+        "points_checked": 28
       },
       "saturation_index": "1",
       "saturation_status": "full Sage/eclib saturation",
       "scheduling_decisions": [
         "required strong lead",
         "promoted to wide rectangles by Stage B score after clean screen",
-        "promoted to rescaled family-coordinate grid by smaller parameter denominator or top score"
+        "promoted to rescaled family-coordinate grid by smaller parameter denominator or top score",
+        "extended square-denominator search to the high-score frontier"
       ],
       "score": 166.0084089084219,
       "sections": [
@@ -13477,54 +14934,63 @@
       "gpu_search_bounds_completed": [
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 4096,
           "height": 100000000,
           "stride": "1"
         },
         {
           "center": "P0",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PD",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PE",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "PQ",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
         },
         {
           "center": "R",
+          "denominator_mode": "consecutive",
           "denominators": 65536,
           "height": 2000000000,
           "stride": "1"
@@ -13832,97 +15298,97 @@
     "t": "164518/924945",
     "verified_witness_rows_sha256": "89fe4873d7e0ac6da4fd74b7c0a3cd427e09ec6b2b0f45ecbe5acd77fefe9944"
   },
-  "generated_at_utc": "2026-09-18T01:29:11.067338+00:00",
+  "generated_at_utc": "2026-09-18T01:44:22.049818+00:00",
   "inventory_count": 159995,
   "ranked_candidates": [
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 3938713601015808,
+      "gpu_sites": 4309433601108488,
       "score": 170.1939234594218,
       "t": "-47/80"
     },
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 2624716800671744,
+      "gpu_sites": 2995436800764424,
       "score": 167.98915937194252,
       "t": "-191989/4040887"
     },
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 11016601602785280,
+      "gpu_sites": 12870201603248680,
       "score": 167.39693065481762,
       "t": "-47/500"
     },
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 2624716800671744,
+      "gpu_sites": 2995436800764424,
       "score": 166.0084089084219,
       "t": "532929/2579219"
     },
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 3938713601015808,
+      "gpu_sites": 4309433601108488,
       "score": 165.75517362338513,
       "t": "-802/2917"
     },
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 3938713601015808,
+      "gpu_sites": 4309433601108488,
       "score": 165.72091704527776,
       "t": "-6341/25735"
     },
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 1313996800344064,
+      "gpu_sites": 1684716800436744,
       "score": 165.58076872106795,
       "t": "-183569/2305416"
     },
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 1317273600360448,
+      "gpu_sites": 1687993600453128,
       "score": 165.27816404157082,
       "t": "141580/460867"
     },
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 1313996800344064,
+      "gpu_sites": 1684716800436744,
       "score": 165.18394198508258,
       "t": "-112991/465710"
     },
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 1317273600360448,
+      "gpu_sites": 1687993600453128,
       "score": 165.00814664763126,
       "t": "-353682/460195"
     },
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 1313996800344064,
+      "gpu_sites": 1684716800436744,
       "score": 164.98473993241592,
       "t": "1071727/1978006"
     },
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 1313996800344064,
+      "gpu_sites": 1684716800436744,
       "score": 164.69947439342175,
       "t": "-600578/1968423"
     },
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 3276800016384,
+      "gpu_sites": 373996800109064,
       "score": 164.68081511583327,
       "t": "3334535/2160657"
     },
@@ -13936,7 +15402,7 @@
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 3276800016384,
+      "gpu_sites": 373996800109064,
       "score": 164.4102099793961,
       "t": "2112933/2552189"
     },
@@ -13992,7 +15458,7 @@
     {
       "certified_subgroup_rank": 3,
       "exact_point_count": 8,
-      "gpu_sites": 9705881602457600,
+      "gpu_sites": 11559481602921000,
       "score": 164.18648091039853,
       "t": "-44/43"
     },

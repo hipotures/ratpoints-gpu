@@ -88,7 +88,7 @@ VerifiedBatch search_batch(const SearchOptions &options, int device,
             options.coefficients, options.numerator_bound, range,
             [&](const CandidateBatch &candidates) {
                 append_verified_candidates(candidates, polynomial, batch.points);
-            });
+            },options.square_denominators);
         sort_points(batch.points);
         return batch;
     } catch (const std::exception &error) {

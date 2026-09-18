@@ -43,7 +43,8 @@ using CandidateBatchCallback =
 SieveResult run_modular_sieve(const Coefficients &coefficients,
                                long long numerator_bound,
                                DenominatorRange denominators,
-                               const CandidateBatchCallback &callback);
+                               const CandidateBatchCallback &callback,
+                               bool square_denominators = false);
 
 }  // namespace ratpoints_gpu
 

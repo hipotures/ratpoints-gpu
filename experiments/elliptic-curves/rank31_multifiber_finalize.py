@@ -128,6 +128,7 @@ def main():
         entry['sage_gpu_verification']={'path':verify.name,'points_checked':expected}
         entry['gpu_search_bounds_completed']=[{
             'center':run['center_label'],'height':run['height'],'denominators':run['denominators'],
+            'denominator_mode':run.get('denominator_mode','consecutive'),
             'stride':str(run.get('stride',1))} for run in entry['gpu_searches'] if run['returncode']==0]
         for run in entry['gpu_searches']:
             raw=json.loads((RESULTS_DIR/run['path']).read_text())
@@ -150,6 +151,9 @@ def main():
         if 'deeper' in used:decisions.append('extended denominator depth for two small-denominator high-score fibers')
         if 'standalone' in used:decisions.append('widened a newly inventoried standalone refined lead')
         if 'outer' in used:decisions.append('searched logarithmically spaced family-coordinate regions away from known sections')
+        if 'square' in used:decisions.append('searched deeper square denominators on the integral model')
+        if 'square_rescale' in used:decisions.append('combined deeper square denominators with rescaled family-coordinate spacing')
+        if 'square_frontier' in used:decisions.append('extended square-denominator search to the high-score frontier')
         entry['scheduling_decisions']=decisions
         novel=any(point['x'] not in {section['x'] for section in row['model']['sections']}
                   for point in entry['exact_points'])
@@ -182,8 +186,8 @@ def main():
             stages[stage]['exact_x_survivors']+=run.get('exact_survivors') or 0
     total_sites=sum(value['sites'] for value in stages.values())
     total_seconds=sum(value['seconds'] for value in stages.values())
-    bulk_sites=sum(stages[name]['sites'] for name in ('promote','rescale','coarse','standalone','deeper','outer'))
-    bulk_seconds=sum(stages[name]['seconds'] for name in ('promote','rescale','coarse','standalone','deeper','outer'))
+    bulk_sites=sum(stages[name]['sites'] for name in ('promote','rescale','coarse','standalone','deeper','outer','square','square_rescale','square_frontier'))
+    bulk_seconds=sum(stages[name]['seconds'] for name in ('promote','rescale','coarse','standalone','deeper','outer','square','square_rescale','square_frontier'))
     total_cpu_seconds=sum(r['cpu_elapsed_seconds'] for r in ranked)
     best_rank=max(r['certified_subgroup_rank'] for r in ranked)
     doubling_counts=', '.join(map(str,sorted({r['height_certificate']['doublings'] for r in ranked})))
@@ -226,7 +230,7 @@ def main():
                   +'; '.join(f"GPU {device}: {stats['weighted']/stats['samples']:.1f}% mean utilization across {stats['samples']} telemetry samples"
                              for device,stats in utilization.items() if stats['samples'])+'.','',
                   'The exact finite regions are listed per candidate in the scoreboard and in each raw GPU JSON report: '
-                  'x = center + stride·n/d, |n| ≤ height, 1 ≤ d ≤ denominators, gcd(n,d)=1. '
+                  'x = center + stride·n/d, |n| ≤ height, gcd(n,d)=1. In consecutive mode 1 ≤ d ≤ denominators; in square mode d=k² with 1 ≤ k ≤ denominators. '
                   'The modular sieve rejects no rational point in that rectangle, as validated against exact CPU enumeration. '
                   'Every GPU output passed Python integer-square and curve-equation checks. '
                   'The separate Sage verification artifacts record exact point construction for each completed report. '
@@ -238,6 +242,7 @@ def main():
                   'six additional standalone refined leads were screened and widened. Structured x lattices and subsequent rescaled windows favored smaller parameter denominators, which provide better resolution in family coordinates. '
                   'Candidates with only known points were demoted from further identical-width searches. '
                   'Fourteen outer windows on two small-denominator fibers tested logarithmically spaced family-coordinate regions and found no points. '
+                  'A new GPU mode enumerated square denominators k² through k=46,340. Forty-six rectangles across 15 fibers, including rescaled family-coordinate windows, returned only known points; the square mode matched exact CPU enumeration on a small reference rectangle. '
                   'A separate sparse-coordinate scan tested 2,929,536 low-complexity expressions over Q(T) and 87,886,080 specialized expressions across all 30 fibers. Its modular filter left only the three known generic section forms; exact fixed-fiber checks returned only the 90 known section x-coordinates. This excludes only the explicitly recorded ansatz. '
                   'Minimal-model diagnostics on six leading fibers found larger maximum coefficient bit sizes than the integral factored models, so repeating the failed descents on these minimal models was not prioritized. '
                   'Promising follow-up is to derive candidate x-coordinates from covering curves or lattice reduction, then feed those centers to the exact GPU sieve; repeated local rectangles around section points have low yield. '

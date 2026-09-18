@@ -46,11 +46,14 @@ std::vector<int> primes_below(int limit) {
 
 }  // namespace
 
-SievePlan::SievePlan(long long numerator_bound, DenominatorRange range)
+SievePlan::SievePlan(long long numerator_bound, DenominatorRange range,
+                     bool square_denominators)
     : denominator_range(range),
+      square_denominators(square_denominators),
       numerator_bound(numerator_bound),
       word_count((2 * numerator_bound + 32) / 32) {
-    if (range.first < 1 || range.first > range.last) {
+    if (range.first < 1 || range.first > range.last
+        || (square_denominators && range.last > 46340)) {
         throw std::invalid_argument("invalid denominator range");
     }
 
@@ -69,11 +72,12 @@ SievePlan::SievePlan(long long numerator_bound, DenominatorRange range)
 
     selected_primes.resize(static_cast<size_t>(range.count()) * kPrimeCount);
     // The inclusive endpoint can be INT_MAX; increment a wider cursor.
-    for (long long denominator = range.first;
-         denominator <= range.last; ++denominator) {
+    for (long long parameter = range.first;
+         parameter <= range.last; ++parameter) {
+        long long denominator = square_denominators ? parameter * parameter : parameter;
         int selected_count = 0;
         size_t row = static_cast<size_t>(
-            denominator - range.first) * kPrimeCount;
+            parameter - range.first) * kPrimeCount;
         for (int i = static_cast<int>(primes.size()) - 1;
              i >= 0 && selected_count < kPrimeCount; --i) {
             if (denominator % primes[i] != 0) {

@@ -241,6 +241,8 @@ private:
             if (result_.search.denominator_batch_size > (1 << 16)) {
                 throw std::invalid_argument("--batch-size must not exceed 65536");
             }
+        } else if (option == "--square-denominators") {
+            result_.search.square_denominators = true;
         } else if (option == "-q") {
             result_.quiet = true;
         } else if (option == "-v") {
@@ -304,6 +306,7 @@ void print_help(std::FILE *stream) {
         "GPU selection (IDs are relative to CUDA_VISIBLE_DEVICES):\n"
         "  --devices all|0,1,...  select GPUs (default: all visible)\n"
         "  --batch-size N        denominators per GPU batch, 1..65536\n"
+        "  --square-denominators  interpret -dl/-du as k bounds; search d=k^2\n"
         "  --list-devices        list GPUs and exit; use without a curve\n"
         "\n"
         "Supported options:\n"
@@ -350,6 +353,10 @@ ProgramOptions parse_command_line(int argc, char **argv) {
     if (result.search.denominators.last > result.search.numerator_bound) {
         result.search.denominators.last =
             static_cast<int>(result.search.numerator_bound);
+    }
+    if (result.search.square_denominators
+        && result.search.denominators.last > 46340) {
+        result.search.denominators.last = 46340;
     }
     if (result.search.denominators.first > result.search.denominators.last) {
         throw std::invalid_argument("empty denominator range");

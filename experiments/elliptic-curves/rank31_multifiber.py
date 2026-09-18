@@ -187,11 +187,15 @@ def exact_points(stdout, model, center, coeffs, stride=1):
     return sorted(found.values(),key=lambda p:(Fraction(p['x']),Fraction(p['y'])))
 
 
-def search(model, label, height, denominators, timeout=90, stride=1, center_override=None):
+def search(model, label, height, denominators, timeout=90, stride=1,
+           center_override=None, square_denominators=False):
+    if square_denominators and not 1<=denominators<=46340:
+        raise ValueError('square-denominator root bound must be in 1..46340')
     center=centers(model)[label] if center_override is None else int(center_override)
     coeffs=coefficients(model,center,stride)
     command=[str(ROOT/'ratpoints_gpu'),' '.join(map(str,coeffs)),str(height),
              '-dl','1','-du',str(denominators),'--devices','0,1','-i','-v','-f','%x %y %z\\n']
+    if square_denominators:command.append('--square-denominators')
     run=run_command(command,timeout)
     points=exact_points(run['stdout'],model,center,coeffs,stride) if run['returncode']==0 else []
     metrics_line=next((line for line in run['stderr'].splitlines() if line.startswith('wall_ms=')), '')
@@ -206,6 +210,7 @@ def search(model, label, height, denominators, timeout=90, stride=1, center_over
     sites=(2*height+1)*denominators
     return {'t':model['t'],'model_sha256':model['model_sha256'],'center_label':label,
             'center':str(center),'stride':str(stride),'height':height,'denominators':denominators,
+            'denominator_mode':'squares' if square_denominators else 'consecutive',
             'sites':sites,'elapsed_seconds':run['elapsed_seconds'],
             'sites_per_second':sites/run['elapsed_seconds'],'devices':'0,1',
             'returncode':run['returncode'],'timed_out':run['timed_out'],
@@ -225,6 +230,7 @@ def main():
     ap.add_argument('--height',type=int,default=1000000)
     ap.add_argument('--denominators',type=int,default=64)
     ap.add_argument('--stride',default='1',help='integer x increment per n/d, or family')
+    ap.add_argument('--square-denominators',action='store_true',help='search d=k^2, 1<=k<=--denominators')
     ap.add_argument('--tag',default='screen')
     args=ap.parse_args()
     path=RESULTS_DIR/'rank31-multifiber-inventory.json'
@@ -243,7 +249,7 @@ def main():
         stride=int(row['model']['scale'])**2 if args.stride=='family' else int(args.stride)
         if stride<1:ap.error('--stride must be positive')
         output=search(row['model'],args.center,args.height,args.denominators,stride=stride,
-                      center_override=args.center_x)
+                      center_override=args.center_x,square_denominators=args.square_denominators)
         target=RESULTS_DIR/f'rank31-multifiber-{args.tag}-{args.index:02d}-{args.center}.json'
         target.write_text(json.dumps(output,indent=2,sort_keys=True)+'\n')
         print(target, len(output['points']), round(output['sites_per_second']/1e12,3),'Tsites/s')

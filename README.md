@@ -74,6 +74,7 @@ Coefficients are listed from constant to leading term.
 | `--batch-size N` | Denominators per GPU batch, 1 through 65,536 |
 | `--list-devices` | List GPUs and exit; use without a curve |
 | `-dl B`, `-du B` | Set denominator bounds |
+| `--square-denominators` | Interpret `-dl` and `-du` as bounds on $k$, searching denominators $k^2$ with $k$ at most 46,340 |
 | `-l L`, `-u U` | Restrict $x$ to closed intervals |
 | `-1` | Stop after the first point |
 | `-i`, `-I` | Suppress or restore points at infinity |
@@ -88,6 +89,9 @@ Coefficients are listed from constant to leading term.
 
 Interval pairs may be repeated. The first `-l` and final `-u` are optional.
 Unsupported options return an error.
+Square-denominator mode searches the stated finite set of rational arguments;
+it is useful for x-coordinates on integral Weierstrass models. The output
+denominator is the actual $k^2$.
 
 ## Differences from `ratpoints`
 

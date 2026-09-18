@@ -30,13 +30,17 @@ class MultifiberTests(unittest.TestCase):
 
     def test_gpu_vs_exact_cpu(self):
         structured=int(integral_model('-47/80')['sections'][1]['x'])
-        for t,stride in [('-47/80',1),('-47/80',6400**4),('-47/80',structured),('-47/500',1)]:
+        for t,stride,square in [('-47/80',1,False),('-47/80',6400**4,False),
+                                ('-47/80',structured,False),('-47/500',1,False),
+                                ('-47/500',1,True)]:
             model=integral_model(t)
-            gpu=search(model,'P0',200,8,timeout=30,stride=stride)
+            gpu=search(model,'P0',200,8,timeout=30,stride=stride,
+                       square_denominators=square)
             self.assertEqual(gpu['returncode'],0)
             c=int(gpu['center']);coeffs=coefficients(model,c,stride)
             expected=set()
-            for d in range(1,9):
+            for parameter in range(1,9):
+                d=parameter**2 if square else parameter
                 for n in range(-200,201):
                     if math.gcd(n,d)!=1:continue
                     z=coeffs[3]*n**3*d+coeffs[2]*n*n*d*d+coeffs[1]*n*d**3+coeffs[0]*d**4
@@ -67,6 +71,14 @@ class MultifiberTests(unittest.TestCase):
         rows=modular_rows(tuple(map(int,model['ainvariants'])),basis)
         for index in range(3):
             self.assertTrue(survives(1,(index,),(-1,),rows))
+
+    def test_square_denominator_kernel_emits_nontrivial_root(self):
+        binary=Path(__file__).parents[2]/'ratpoints_gpu'
+        run=subprocess.run([str(binary),'1 -1 0 1','10','-dl','1','-du','3',
+                            '--square-denominators','--devices','0,1','-i',
+                            '-f','%x %y %z\\n'],capture_output=True,text=True,timeout=30)
+        self.assertEqual(run.returncode,0,run.stderr)
+        self.assertIn('1 14 4',run.stdout.splitlines())
 
     @unittest.skipUnless(os.environ.get('RANK31_TEST_SAGE')=='1','opt-in Docker integration')
     def test_sage_subgroup_growth(self):

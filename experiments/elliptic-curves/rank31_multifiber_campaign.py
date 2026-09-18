@@ -27,7 +27,7 @@ def candidate_entry(row):
 
 def main():
     ap=argparse.ArgumentParser()
-    ap.add_argument('--stage',choices=('screen','promote','rescale','coarse','structured','deeper','standalone','outer'),required=True)
+    ap.add_argument('--stage',choices=('screen','promote','rescale','coarse','structured','deeper','standalone','outer','square','square_rescale','square_frontier'),required=True)
     ap.add_argument('--limit',type=int,default=24)
     args=ap.parse_args()
     inventory=json.loads(INVENTORY.read_text())
@@ -42,7 +42,18 @@ def main():
                      stage_a_score=row['stage_a_score'],stage_a_prime_bound=row['stage_a_prime_bound'],
                      source_campaigns=row['source_campaigns'],source_seeds=row['source_seeds'])
     selected=inventory['selected'][:args.limit]
-    if args.stage=='outer':
+    if args.stage=='square_frontier':
+        jobs=[(i,label,2_000_000_000,46340,
+               int(selected[i]['model']['scale'])**2,None)
+              for i in range(min(14,len(selected))) if i!=3
+              for label in ('P0','PQ')]
+    elif args.stage in ('square','square_rescale'):
+        jobs=[(i,label,2_000_000_000,46340,
+               int(selected[i]['model']['scale'])**2 if args.stage=='square_rescale' else 1,None)
+              for i in (3,21) if i<len(selected)
+              for label in ('P0','PD','PE','PQ','R')
+              if label in centers(selected[i]['model'])]
+    elif args.stage=='outer':
         # Probe logarithmically spaced family-coordinate regions away from the
         # known sections. The earlier rectangles were centered on sections.
         jobs=[(i,f'outer-{sign}{power}',2_000_000_000,65536,
@@ -93,11 +104,14 @@ def main():
               if label in centers(selected[i]['model'])]
     for number,(i,label,h,d,stride,stride_label) in enumerate(jobs,1):
         row=selected[i]; entry=board['candidate_rows'][row['t']]
-        key=(label,h,d,str(stride))
-        if any((run['center_label'],run['height'],run['denominators'],str(run.get('stride',1)))==key
+        mode='squares' if args.stage in ('square','square_rescale','square_frontier') else 'consecutive'
+        key=(label,h,d,str(stride),mode)
+        if any((run['center_label'],run['height'],run['denominators'],str(run.get('stride',1)),
+                run.get('denominator_mode','consecutive'))==key
                for run in entry['gpu_searches']):continue
         override=(1 if label[6]=='p' else -1)*(1<<int(label[7:]))*stride if label.startswith('outer-') else None
-        try: result=search(row['model'],label,h,d,timeout=180,stride=stride,center_override=override)
+        try: result=search(row['model'],label,h,d,timeout=180,stride=stride,
+                           center_override=override,square_denominators=mode=='squares')
         except Exception as exc:
             entry['status_reason']=f'{args.stage} {label} failed: {type(exc).__name__}: {exc}'
             write_board(board);raise
@@ -107,6 +121,7 @@ def main():
         path.write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
         entry['gpu_searches'].append({'path':path.name,'center_label':label,'center':result['center'],
                                      'stride':str(stride),
+                                     'denominator_mode':result['denominator_mode'],
                                      'stride_source':stride_label,
                                      'height':h,'denominators':d,'sites':result['sites'],
                                      'survivors':result['metrics'].get('survivors'),

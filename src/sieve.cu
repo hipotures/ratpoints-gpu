@@ -225,6 +225,7 @@ __global__ void sieve_kernel(const uint32_t *__restrict__ masks,
                              const int *__restrict__ selected,
                              Word words, long long bound,
                              int min_denominator,
+                             bool square_denominators,
                              long long *__restrict__ output_numerators,
                              int *__restrict__ output_denominators,
                              unsigned long long *__restrict__ count,
@@ -246,8 +247,9 @@ __global__ void sieve_kernel(const uint32_t *__restrict__ masks,
     // slots contain a word at or beyond the end of the range.
     size_t progress_index = static_cast<size_t>(blockIdx.x) * kWarpsPerBlock
         + warp;
-    int denominator = static_cast<int>(
-        static_cast<long long>(blockIdx.x) + min_denominator);
+    long long parameter=static_cast<long long>(blockIdx.x)+min_denominator;
+    int denominator=static_cast<int>(square_denominators
+        ? parameter*parameter : parameter);
     if (threadIdx.x < kPrimeCount) {
         int index = selected[blockIdx.x * kPrimeCount + threadIdx.x];
         int prime = primes[index];
@@ -443,6 +445,7 @@ void launch_sieve_kernel(const SievePlan &plan, DeviceWorkspace &workspace,
         workspace.masks.data(), workspace.primes.data(),
         workspace.offsets.data(), workspace.selected.data(), words,
         plan.numerator_bound, plan.denominator_range.first,
+        plan.square_denominators,
         survivors.numerators.data(), survivors.denominators.data(),
         workspace.output_state.count.data(),
         workspace.output_state.output_full.data(),
@@ -500,13 +503,14 @@ CandidateBatch download_survivors(const DeviceSurvivors &survivors,
 SieveResult run_modular_sieve(const Coefficients &coefficients,
                                long long numerator_bound,
                                DenominatorRange denominators,
-                               const CandidateBatchCallback &callback) {
+                               const CandidateBatchCallback &callback,
+                               bool square_denominators) {
     using Clock = std::chrono::steady_clock;
     auto milliseconds = [](Clock::time_point first, Clock::time_point last) {
         return std::chrono::duration<double, std::milli>(last - first).count();
     };
     const auto plan_start = Clock::now();
-    SievePlan plan(numerator_bound, denominators);
+    SievePlan plan(numerator_bound, denominators, square_denominators);
     const auto workspace_start = Clock::now();
     DeviceWorkspace workspace(plan);
     configure_sieve_kernel(plan);
